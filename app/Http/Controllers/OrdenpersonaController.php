@@ -1,0 +1,242 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use \Eventviva\ImageResize;
+use App\Http\Requests;
+use Carbon\Carbon;
+use Auth;
+use DB;
+
+class OrdenpersonaController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        if (!Auth::user()->hasRole('Persona')) abort(403);
+
+        $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+        $ordenes = DB::table('ORDEN_SERVICIOS')
+            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+            ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+            ->where('ORD_USR_ID', $idPersona)
+            ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+            ->get();
+
+        return view('ordenpersona.index', compact('ordenes'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function comenzarOrden($ido)
+    {
+        if (!Auth::user()->hasRole('Persona')) abort(403);
+        if (!filter_var($ido, FILTER_VALIDATE_INT)) abort(404);
+
+        $idEmpresa = Session::get('idEmpresa');
+        $fecha = Carbon::now();
+        
+
+        $orden = DB::table('ORDEN_SERVICIOS')
+            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+            ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
+            ->join('LOOKUP', 'ORD_LOO_TIPOORDEN', '=', 'LOO_IDLOOKUP')
+            ->where('LOO_GRUPO', 1)
+            ->where('ORD_IDORDEN', $ido)
+            ->first();
+
+        $inventarios = DB::table('ORDEN_SERVICIOS')
+            ->join('INVENTARIOS', 'ORD_INM_IDINMUEBLE', '=', 'INV_INM_IDINMUEBLE')
+            ->join('ARTICULOS', 'INV_ART_IDARTICULO', '=', 'ART_IDARTICULO')
+            ->where('ORD_IDORDEN', $ido)
+            ->select('ART_NOMBRE', 'INV_CANTIDAD', 'INV_IDINVENTARIO')
+            ->get();
+
+        $tipo = $orden->ORD_LOO_TIPOORDEN;
+
+        DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $ido)->update(['ORD_LOO_ESTADOORDEN' => 2, 'ORD_INICIOORDEN' => $fecha]);
+        return view('ordenpersona.atenderOrden', compact('orden', 'tipo', 'inventarios'));
+    }
+
+    public function guardarEvidencias(Request $request)
+    {
+        if (!Auth::user()->hasRole('Persona')) abort(403);
+
+        $s_name = $_POST['fname'];
+        $i_idor = $_POST['idor'];
+        $s_desc = $_POST['s_desc'];
+        //$i_step = $_POST['i_step'];
+        $i_tipo = $_POST['i_tipo'];
+        $time   = time();
+        $s_name = $time."_".$s_name;
+
+        $filename = "image/evidencias/".$s_name;
+
+        $data = substr($_POST['data'], strpos($_POST['data'], ",") + 1);
+        $decodedData = base64_decode($data);
+        
+     
+        $fp = fopen($filename, 'wb');
+        fwrite($fp, $decodedData);
+        fclose($fp);
+        
+        DB::table('EVIDENCIAS')
+            ->insert(['EVI_ORD_IDORDEN' => $i_idor, 
+                      'EVI_DESCRIPCION' => $s_desc, 
+                      'EVI_IMAGEN'      => $s_name,
+                      'EVI_LOO_TIPO'    => $i_tipo,
+                      //'EVI_STEP'        => $i_step
+                   ]);
+
+
+    }
+
+    public function finalizarOrdenes($idor)
+    {
+        if (!Auth::user()->hasRole('Persona')) abort(403);
+        if (!filter_var($idor, FILTER_VALIDATE_INT)) abort(404);
+
+        $fecha = Carbon::now();
+
+        DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $idor)->update(['ORD_LOO_ESTADOORDEN' => 3, 'ORD_FINORDEN' => $fecha]);
+
+        $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+        $ordenes = DB::table('ORDEN_SERVICIOS')
+            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+            ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+            ->where('ORD_USR_ID', $idPersona)
+            ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+            ->get();
+        
+        return view('ordenpersona.index', compact('ordenes'));
+    }
+
+    public function novedadCheckin()
+    {
+        if (!Auth::user()->hasRole('Persona')) abort(403);
+
+        $i_idOrden = $_POST['i_idOrden'];
+
+        return view('ordenpersona.ajax.modalNovedadCheckin', compact('i_idOrden'));
+    }
+
+    public function guardarNovedades()
+    {
+        if (!Auth::user()->hasRole('Persona')) abort(403);
+
+        $s_desc = $_POST['s_desc'];
+        $i_tipo = $_POST['i_tipo'];
+        $i_idor = $_POST['i_idor'];
+        $s_name = $_POST['fname'];
+        $time   = time();
+        $s_name = $time."_".$s_name;
+
+        $idor = $_POST['idor'];
+        $filename = "image/novedades/".$s_name;
+
+        $data = substr($_POST['data'], strpos($_POST['data'], ",") + 1);
+        $decodedData = base64_decode($data);
+        
+        $fp = fopen($filename, 'wb');
+        fwrite($fp, $decodedData);
+        fclose($fp);
+
+        DB::table('NOVEDADES')->insert([
+                'NOV_ORD_IDORDEN'      => $i_idor, 
+                'NOV_DESCRIPCION'      => $s_desc, 
+                'NOV_IMAGEN'           => $s_name,
+                'NOV_LOO_TIPONOVEDAD'  => $i_tipo
+            ]);
+
+    }
+
+    public function continuarOrdenes($idor)
+    {
+        $orden = DB::table('ORDEN_SERVICIOS')
+            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+            ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
+            ->join('LOOKUP', 'ORD_LOO_TIPOORDEN', '=', 'LOO_IDLOOKUP')
+            ->where('LOO_GRUPO', 1)
+            ->where('ORD_IDORDEN', $idor)
+            ->first();
+              
+
+
+        $inventario = DB::table('LOOKUP')->select('LOO_DESCRIPCION')
+              ->where('LOO_GRUPO', 6) 
+              ->whereNotIn('LOO_DESCRIPCION', $prueba = DB::table('EVIDENCIAS')->select('EVI_STEP') 
+              ->where('EVI_ORD_IDORDEN', $idor)) 
+              ->get();
+                    
+
+
+        return view('ordenpersona.continuarOrdenAseo', compact('orden', 'inventario'));
+    }
+
+    public function checkoutOrdenes($idor)
+    {
+        $orden = DB::table('ORDEN_SERVICIOS')
+            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+            ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
+            ->join('LOOKUP', 'ORD_LOO_TIPOORDEN', '=', 'LOO_IDLOOKUP')
+            ->where('LOO_GRUPO', 1)
+            ->where('ORD_IDORDEN', $idor)
+            ->first();
+
+        $inventarioout = DB::table('LOOKUP')->select('LOO_DESCRIPCION')
+              ->where('LOO_GRUPO', 7) 
+              ->whereNotIn('LOO_DESCRIPCION', $prueba = DB::table('EVIDENCIAS')->select('EVI_STEP') 
+              ->where('EVI_ORD_IDORDEN', $idor)) 
+              ->get();
+
+
+        return view('ordenpersona.checkout', compact('orden', 'inventarioout'));
+    }
+
+    public function ordenesSinPagar()
+    
+    {
+        $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+        $ordenSin = DB::table('ORDEN_SERVICIOS')
+            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+            ->where('ORD_USR_ID', $idPersona)
+            ->where('ORD_PAGADO', 0)
+            ->where('ORD_LOO_ESTADOORDEN', 3)
+            ->get();
+
+        return view('ordenpersona.sinPagar', compact('ordenSin'));
+    }
+
+    public function guardarImagenNovedades(Request $request)
+    {
+        
+        $idor = $_POST['idor'];
+        $filename = "image/novedades/".$_POST["fname"];
+        
+        $data = substr($_POST['data'], strpos($_POST['data'], ",") + 1);
+        // decode it
+        $decodedData = base64_decode($data);
+        
+        $fp = fopen($filename, 'wb');
+        fwrite($fp, $decodedData);
+        fclose($fp);
+    }
+}
