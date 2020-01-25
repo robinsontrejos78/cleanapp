@@ -20,14 +20,16 @@
   <div class="col-md-12">
     <div class="box box-danger">
       <div class="box-header with-border">
-        <h3 class="box-title">Nueva Solicitud de Profesional</h3>
+        <h3 class="box-title">Cantidad de Solicitudes Pendientes</h3>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box" style="margin-top:20px">
             <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">Novedades</span>
-              <span class="info-box-number contador">{{ $contador }}</span>
+              <span class="info-box-text">Total</span>
+              @foreach($contador as $cont)
+              <span class="info-box-number contador">{{ $cont->total }}</span>
+               @endforeach
             </div>
            </div>
       </div>

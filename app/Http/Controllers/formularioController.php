@@ -198,13 +198,10 @@ class formularioController extends Controller
      if (!Auth::user()->hasRole('Administrador')) abort(403);
        $idEmpresa = Session::get('idEmpresa');
 
-        $contador = DB::table("NOVEDADES")
-            ->join('ORDEN_SERVICIOS', 'ORD_IDORDEN', '=', 'NOV_ORD_IDORDEN')
-            ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
-            ->where('NOV_ESTADO', 0)
-            ->count();
 
-       return view('users.mostrarprof', compact('resultados', 'contador'));
+  $contador = DB::select('select COUNT(PRO_numdocprof) as total FROM PROFESIONALES as t1 WHERE NOT EXISTS (SELECT NULL FROM users as t2 WHERE t2.USR_DOCUMENTO = t1.PRO_numdocprof)');
+              
+       return view('users.mostrarprof', compact('contador'));
     }
 
     /**
@@ -249,9 +246,6 @@ class formularioController extends Controller
          $docuprof   = $_POST['docuprof'];
          $nombreprof = $_POST['nombreprof'];
 
-
-
-       
             
     $busqueda = array();
 
@@ -262,9 +256,10 @@ class formularioController extends Controller
 
      $resultados =  DB::table('PROFESIONALES')
                     ->where($busqueda)
+                    ->orderby('PRO_fecharegistro', 'desc')
                     ->get();
 
-        return view('users.ajax.buscarinscprof', compact('resultados', 'contador'));
+        return view('users.ajax.buscarinscprof', compact('resultados'));
     }
 
    
