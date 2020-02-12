@@ -25,7 +25,7 @@ class OrdenpersonaController extends Controller
 
     public function index()
     {
-        if (!Auth::user()->hasRole('Persona')) abort(403);
+        if (!Auth::user()->hasRole('Profesional')) abort(403);
 
         $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
 
@@ -46,7 +46,7 @@ class OrdenpersonaController extends Controller
      */
     public function comenzarOrden($ido)
     {
-        if (!Auth::user()->hasRole('Persona')) abort(403);
+        if (!Auth::user()->hasRole('Profesional')) abort(403);
         if (!filter_var($ido, FILTER_VALIDATE_INT)) abort(404);
 
         $idEmpresa = Session::get('idEmpresa');
@@ -76,7 +76,7 @@ class OrdenpersonaController extends Controller
 
     public function guardarEvidencias(Request $request)
     {
-        if (!Auth::user()->hasRole('Persona')) abort(403);
+        if (!Auth::user()->hasRole('Profesional')) abort(403);
 
         $s_name = $_POST['fname'];
         $i_idor = $_POST['idor'];
@@ -109,7 +109,7 @@ class OrdenpersonaController extends Controller
 
     public function finalizarOrdenes($idor)
     {
-        if (!Auth::user()->hasRole('Persona')) abort(403);
+        if (!Auth::user()->hasRole('Profesional')) abort(403);
         if (!filter_var($idor, FILTER_VALIDATE_INT)) abort(404);
 
         $fecha = Carbon::now();
@@ -130,7 +130,7 @@ class OrdenpersonaController extends Controller
 
     public function novedadCheckin()
     {
-        if (!Auth::user()->hasRole('Persona')) abort(403);
+        if (!Auth::user()->hasRole('Profesional')) abort(403);
 
         $i_idOrden = $_POST['i_idOrden'];
 
@@ -139,7 +139,7 @@ class OrdenpersonaController extends Controller
 
     public function guardarNovedades()
     {
-        if (!Auth::user()->hasRole('Persona')) abort(403);
+        if (!Auth::user()->hasRole('Profesional')) abort(403);
 
         $s_desc = $_POST['s_desc'];
         $i_tipo = $_POST['i_tipo'];

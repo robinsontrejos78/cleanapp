@@ -122,7 +122,7 @@
 
 @endif
 
-@if(Auth::user()->hasRole('Persona'))
+@if(Auth::user()->hasRole('Profesional'))
 <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
     <a href="{{ url('ordenP') }}">
@@ -131,6 +131,24 @@
         <div class="info-box-content">
           <span class="info-box-text"></span>
           <span class="info-box-number">Ordenes de servicio</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+@endif
+
+
+@if(Auth::user()->hasRole('Cliente'))
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <a href="{{ url('ordenP') }}">
+      <div class="info-box">
+        <span class="info-box-icon bg-red"><i class="fa fa-fw fa-arrow-right"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-text"></span>
+          <span class="info-box-number">CREAR Orden de servicio</span>
         </div>
       </div>
     </a>
