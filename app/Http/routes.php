@@ -33,6 +33,8 @@ Route::resource('ciudad', 'CiudadController');
 
 Route::resource('orden', 'OrdenController');
 
+Route::resource('ordenCliente', 'OrdenClienteController');
+
 Route::resource('ordenP', 'OrdenpersonaController');
 
 Route::resource('inventario', 'ReportesinventarioController');

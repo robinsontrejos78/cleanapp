@@ -135,24 +135,31 @@
       </div>
     </a>
   </div>
+</div>
 
 
 @endif
 
 
 @if(Auth::user()->hasRole('Cliente'))
-<div class="row">
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <a href="{{ url('ordenP') }}">
-      <div class="info-box">
-        <span class="info-box-icon bg-red"><i class="fa fa-fw fa-arrow-right"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text"></span>
-          <span class="info-box-number">CREAR Orden de servicio</span>
-        </div>
+
+<div class="row" id="personal">
+  
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img data-src="..." alt="...">
+      <div class="caption">
+        <h3>Título de la imagen</h3>
+        <p>...</p>
+        <p>
+          <a href="#" class="btn btn-primary" role="button">Botón</a>
+          <a href="#" class="btn btn-default" role="button">Botón</a>
+        </p>
       </div>
-    </a>
+    </div>
   </div>
+
+</div>
 
 
 @endif
