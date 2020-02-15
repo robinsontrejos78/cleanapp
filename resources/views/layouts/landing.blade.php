@@ -23,7 +23,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <meta name="twitter:site" content="@acachawiki" />
     <meta name="twitter:creator" content="@acacha1" />
 
-    <title>C L E A N A P P</title>
+    <title>C L E A N A P P S</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
@@ -58,7 +58,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url ('home') }}"><b>CLEANAPP</b></a>
+            <a class="navbar-brand" href="{{ url ('home') }}"><b>CLEANAPPS</b></a>
         </div>
         <div class="navbar-collapse collapse">
             <!-- <ul class="nav navbar-nav">
@@ -86,7 +86,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="row centered">
             <div class="col-lg-12">
             <br><br><br>
-                <h1><font color="yellow">C L E A N<b></font><a href="#"> A P P</a></b></h2><br><br><br><br><br><br>
+                <h2><font color="yellow">C L E A N<b></font><a href="#"> A P P S</a></b></h2><br><br><br><br><br><br>
             </div>
         </div>
     </div> <!--/ .container -->
@@ -98,7 +98,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="row centered">
             <div class="col-lg-12">
             <br><br><br>
-                <h1><font color="red">SOLICITAR <b></font><a href="{{ url ('formcliente') }}"> SERVICIO</a></b></h2><br><br><br><br><br><br>
+                <h2><font color="red">SOLICITAR <b></font><a href="{{ url ('formcliente') }}"> SERVICIO</a></b></h2><br><br><br><br><br><br>
             </div>
         </div>
     </div> <!--/ .container -->
@@ -110,7 +110,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="row centered">
             <div class="col-lg-12">
             <br><br><br>
-                <h1><font color="blue">TRABAJA CON <b></font><a href="{{ url ('formprofe') }}"> NOSOTROS</a></b></h2><br><br><br><br><br><br>
+                <h2><font color="blue">TRABAJA CON <b></font><a href="{{ url ('formprofe') }}"> NOSOTROS</a></b></h2><br><br><br><br><br><br>
             </div>
         </div>
     </div> <!--/ .container -->

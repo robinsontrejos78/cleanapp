@@ -59,7 +59,7 @@
   </div><br><br>
 
   <div class="col-md-12">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Buscar Persona <span class="badge bg-teal"  data-toggle="tooltip" title="Puede filtrar la busqueda por Nombre de la persona, Apellido o email" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
@@ -93,7 +93,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Lista de Usuarios</h3>

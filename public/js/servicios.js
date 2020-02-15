@@ -242,21 +242,11 @@ $(document).on('click', '#inscripcion', function(){
     var parentrefa    = $('#parentrefa').val();
     var citirefa      = $('#citirefa').val();
     var telrefa       = $('#telrefa').val();
-    var nomrefb       = $('#nomrefb').val();
-    var aperefb       = $('#aperefb').val();
-    var parentrefb    = $('#parentrefb').val();
-    var citirefb      = $('#citirefb').val();
-    var telrefb       = $('#telrefb').val();
     var nomrefcoma    = $('#nomrefcoma').val();
     var aperefcoma    = $('#aperefcoma').val();
     var parentrefcoma = $('#parentrefcoma').val();
     var citicoma      = $('#citicoma').val();
     var telrefcoma    = $('#telrefcoma').val();
-    var nomrefcomb    = $('#nomrefcomb').val();
-    var aperefcomb    = $('#aperefcomb').val();
-    var parentrefcomb = $('#parentrefcomb').val();
-    var citicomb      = $('#citicomb').val();
-    var telrefcomb    = $('#telrefcomb').val();
     var s_terminos    =$('#terminos').is(":checked");
     var s_datos       =$('#datos').is(":checked");
 
@@ -284,21 +274,11 @@ $(document).on('click', '#inscripcion', function(){
         $('#parentrefa').val("");
         $('#citirefa').val("");
         $('#telrefa').val("");
-        $('#nomrefb').val("");
-        $('#aperefb').val("");
-        $('#parentrefb').val("");
-        $('#citirefb').val("");
-        $('#telrefb').val("");
         $('#nomrefcoma').val("");
         $('#aperefcoma').val("");
         $('#parentrefcoma').val("");
         $('#citicoma').val("");
         $('#telrefcoma').val("");
-        $('#nomrefcomb').val("");
-        $('#aperefcomb').val("");
-        $('#parentrefcomb').val("");
-        $('#citicomb').val("");
-        $('#telrefcomb').val("");      
 
     $.ajaxSetup({
         headers: {
@@ -316,11 +296,8 @@ $(document).on('click', '#inscripcion', function(){
                   nivelprof : nivelprof, percarprof : percarprof, nomcon : nomcon, apecon : apecon,   
                   tipodoccon : tipodoccon, numerodoccon : numerodoccon, nombrefa : nombrefa,  
                   aperefa : aperefa, parentrefa : parentrefa, citirefa : citirefa, telrefa : telrefa,  
-                  nomrefb : nomrefb, aperefb : aperefb, parentrefb : parentrefb, citirefb : citirefb, 
-                  telrefb : telrefb, nomrefcoma : nomrefcoma, aperefcoma : aperefcoma, parentrefcoma : parentrefcoma,  
-                  citicoma : citicoma, telrefcoma : telrefcoma, nomrefcomb : nomrefcomb, 
-                  aperefcomb : aperefcomb, parentrefcomb : parentrefcomb, citicomb : citicomb, 
-                  telrefcomb : telrefcomb, s_terminos : s_terminos, s_datos : s_datos},
+                  nomrefcoma : nomrefcoma, aperefcoma : aperefcoma, parentrefcoma : parentrefcoma,  
+                  citicoma : citicoma, telrefcoma : telrefcoma, s_terminos : s_terminos, s_datos : s_datos},
 
         beforeSend: function(){
             var dim = $('#dimmer');
