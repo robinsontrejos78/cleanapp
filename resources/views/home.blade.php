@@ -122,7 +122,7 @@
 
 @endif
 
-@if(Auth::user()->hasRole('Persona'))
+@if(Auth::user()->hasRole('Profesional'))
 <div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12">
     <a href="{{ url('ordenP') }}">
@@ -135,6 +135,31 @@
       </div>
     </a>
   </div>
+</div>
+
+
+@endif
+
+
+@if(Auth::user()->hasRole('Cliente'))
+
+<div class="row" id="personal">
+  
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img data-src="..." alt="...">
+      <div class="caption">
+        <h3>Título de la imagen</h3>
+        <p>...</p>
+        <p>
+          <a href="#" class="btn btn-primary" role="button">Botón</a>
+          <a href="#" class="btn btn-default" role="button">Botón</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 
 @endif

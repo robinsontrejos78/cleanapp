@@ -53,7 +53,7 @@
 
 <div class="row">
   <div class="col-xs-3">
-    <a href="{{ url('orden/create') }}"" class="btn btn-danger btn-flat">Agregar Orden de servicio</a>
+    <a href="{{ url('orden/create') }}" class="btn btn-danger btn-flat">Agregar Orden de servicio</a>
   </div><br><br>
 
   <div class="col-md-12">
