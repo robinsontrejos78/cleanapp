@@ -1108,3 +1108,8 @@ $(document).on('click', '.finished', function(event){
         buttonText : ' Tomar foto'
     });
 // FIN ESTILO DE INPUT FILE
+
+
+function verDispProf(id){
+  location.href = 'V_03_solicitudexamenes/'+id+'/edit';
+}
