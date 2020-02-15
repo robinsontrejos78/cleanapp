@@ -87,7 +87,6 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             <div class="col-lg-12">
             <br><br><br>
 
-                <h1><font color="yellow">C L E A N<b></font><a href="#"> A P P S</a></b></h2><br><br><br><br><br><br>
                 <h2><font color="yellow">C L E A N<b></font><a href="#"> A P P S</a></b></h2><br><br><br><br><br><br>
 
             </div>
