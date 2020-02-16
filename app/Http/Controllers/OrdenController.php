@@ -345,7 +345,6 @@ class OrdenController extends Controller
         $i_nombrePersona    = $_POST['i_nombrePersona'];
         $i_documentoPersona = $_POST['i_documentoPersona'];
         $i_estadoOrden      = $_POST['i_estadoOrden'];
-        $i_ordenPagada      = $_POST['i_ordenPagada'];
 
         $idp = DB::table('users')
             ->join('USERS_EMPRESAS', 'users.id', '=', 'USE_USR_id')
@@ -365,7 +364,6 @@ class OrdenController extends Controller
         $i_nombrePersona     ? $busqueda += array(0 => array('ORD_USR_ID', '=', $i_nombrePersona)) : null;
         $i_documentoPersona  ? $busqueda += array(1 => array('ORD_USR_ID', '=', $i_documentoPersona)) : null;
         $i_estadoOrden       ? $busqueda += array(2 => array('ORD_LOO_ESTADOORDEN', '=', $i_estadoOrden)) : null;
-        $i_ordenPagada       ? $busqueda += array(3 => array('ORD_PAGADO', '=', $i_ordenPagada)) : null;
 
         $busquedaOrden = DB::table('ORDEN_SERVICIOS')
             ->join('users', 'ORD_USR_ID', '=', 'users.id')

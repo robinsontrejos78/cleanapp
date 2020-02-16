@@ -558,7 +558,6 @@ $(document).on('click', '#buscarOrd', function(){
     var i_nombrePersona     = $('#nombrePer').val();
     var i_documentoPersona  = $('#documentoPer').val();
     var i_estadoOrden       = $('#estadoOrd').val();
-    var i_ordenPagada       = $('#ordenP').val();
 
     $.ajaxSetup({
         headers: {
@@ -569,7 +568,7 @@ $(document).on('click', '#buscarOrd', function(){
     $.ajax({
         type : 'POST',
         url : 'buscarOrd',
-        data : {i_nombrePersona : i_nombrePersona, i_documentoPersona : i_documentoPersona, i_estadoOrden : i_estadoOrden, i_ordenPagada : i_ordenPagada},
+        data : {i_nombrePersona : i_nombrePersona, i_documentoPersona : i_documentoPersona, i_estadoOrden : i_estadoOrden},
         beforeSend: function(){
             var dim = $('#dimmer');
             dim.css("display", "block");
