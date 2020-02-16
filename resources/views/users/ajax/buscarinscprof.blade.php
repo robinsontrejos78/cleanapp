@@ -25,7 +25,6 @@
     <th class="centro">Parentesco</th>
     <th class="centro">Ciudad</th>
     <th class="centro">Teléfono</th>
-    <th class="centro">Acciones</th>
   </tr>
 </thead>
 <tbody>
@@ -60,9 +59,6 @@
       <td>{{ $res->PRO_parentrefcoma }}</td>
       <td>{{ $res->PRO_citicoma }}</td>
       <td>{{ $res->PRO_telrefcoma }}</td>
-      <td class="centro">
-      <input type="checkbox"  class="checkIcon1" data-group-cls="btn-group-sm"  name="estado"  value="{{ $res->PRO_estado }}" @if($res->PRO_estado) checked @endif >
-      </td>
  </tr>
 
 

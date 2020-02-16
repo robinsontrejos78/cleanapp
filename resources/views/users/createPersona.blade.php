@@ -65,8 +65,6 @@
             <select name="tipoPer" id="tipoPer" class="form-control">
               <option value="">Seleccione opción</option>
               <option value="1" @if(old('tipoPer') == 1) selected @endif>Personal de Aseo</option>
-              <option value="2" @if(old('tipoPer') == 2) selected @endif>Personal de Mantenimiento</option>
-              <option value="3" @if(old('tipoPer') == 3) selected @endif>Personal Inventario</option>
             </select>
           </div>
           <div class="col-md-6">

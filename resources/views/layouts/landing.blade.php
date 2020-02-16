@@ -119,12 +119,6 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 </div>
 
 
-<!-
-
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <!-- <script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script> -->
 

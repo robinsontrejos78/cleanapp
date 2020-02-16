@@ -222,21 +222,9 @@ class formularioController extends Controller
      if (!Auth::user()->hasRole('Administrador')) abort(403);
        $idEmpresa = Session::get('idEmpresa');
 
-
-      
          $fechaprof  = $_POST['fechaprof'];
          $docuprof   = $_POST['docuprof'];
          $nombreprof = $_POST['nombreprof'];
-
-        // $users = DB::table('users')
-        //     ->join('USERS_EMPRESAS', 'users.id', '=', 'USE_USR_id')
-        //     ->join('EMPRESAS', 'EMP_IDEMPRESA', '=', 'USE_EMP_IDEMPRESA')
-        //     ->join('LOOKUP', 'USR_LOO_TIPO', '=', 'LOO_IDLOOKUP')
-        //     ->select('users.*', 'EMP_NOMBRE', 'LOO_DESCRIPCION')
-        //     ->where('LOO_GRUPO', 1)
-        //     ->where('EMP_IDEMPRESA', $idEmpresa)
-        //     ->wherenotnull('USR_LOO_TIPO')
-        //     ->get();
             
     $busqueda = array();
 
@@ -247,6 +235,7 @@ class formularioController extends Controller
 
      $resultados =  DB::table('PROFESIONALES')
                     ->where($busqueda)
+                    ->where('PRO_estado', 0)
                     ->orderby('PRO_fecharegistro', 'desc')
                     ->get();
 

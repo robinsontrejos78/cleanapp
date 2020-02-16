@@ -53,11 +53,11 @@
 
 <div class="row">
   <div class="col-xs-3">
-    <a href="{{ url('orden/create') }}" class="btn btn-danger btn-flat">Agregar Orden de servicio</a>
+    <a href="{{ url('orden/create') }}" class="btn btn-primary btn-flat">Agregar Orden de servicio</a>
   </div><br><br>
 
   <div class="col-md-12">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Buscar Ordenes <span class="badge bg-teal"  data-toggle="tooltip" title="Puede filtrar la busqueda por Nombre de Persona, Documento, Estado de la orden ó Estado del pago" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
@@ -109,7 +109,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Lista de Ordenes de Servicio</h3>
