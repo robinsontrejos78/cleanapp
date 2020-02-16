@@ -162,7 +162,7 @@
                 </div>
             <div class="box box-info">
             <div class="box-header with-border" >
-              <h3 class="box-title" >Datos Conyugue</h3>
+              <h3 class="box-title" >Datos Cónyugue</h3>
             </div>
             <div class="form-group">
                   <label for="nombres"  class="col-sm-2 control-label">Nombres</label>

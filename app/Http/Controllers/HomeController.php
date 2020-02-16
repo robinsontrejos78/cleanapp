@@ -53,7 +53,8 @@ class HomeController extends Controller
                 ->where('NOV_ESTADO', 0)
                 ->select('NOV_IDNOVEDAD', 'LOO_DESCRIPCION', 'NOV_DESCRIPCION', 'ORD_FECHAORDEN', 'INM_DIRECCION', 'INM_PROPIETARIO', 'INM_TELEFONO', 'name', 'USR_APELLIDOS', 'PRO_NOMBRE')
                 ->get();
-            // dd($novedades);
+
+                
             $contador = DB::table("NOVEDADES")
                 ->join('ORDEN_SERVICIOS', 'ORD_IDORDEN', '=', 'NOV_ORD_IDORDEN')
                 ->where('ORD_EMP_IDEMPRESA', $idEmpresa)

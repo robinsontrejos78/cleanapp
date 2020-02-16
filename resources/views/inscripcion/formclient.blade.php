@@ -35,31 +35,31 @@
 
 
 <div class="row">
-<div class="box box-info" style="width: 600px" align="center">
-            <div class="box-header with-border" align="center">
+<div class="box box-info box-solid" style="width: 500px" >
+            <div class="box-header with-border" >
               <h3 class="box-title" >Formulario de Inscripción Para Clientes</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" align="right">
+            <form class="form-horizontal" >
               <div class="box-body" align="center">
                  <div class="form-group">
                   <label for="nombres"  class="col-sm-2 control-label">Nombres</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nombres" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombres">
+                    <input type="text" class="form-control" id="nombres" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Name">
                   </div>
                 </div>
                  <div class="form-group">
                   <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="apellidos" onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellidos">
+                    <input type="text" class="form-control" id="apellidos" onkeyup="this.value=this.value.toUpperCase();" placeholder="Lastname">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="text" class="col-sm-2 control-label">Tipo Doc</label>
                   <div class="col-sm-10">
                     <select name="tipodo" id="tipodoc" class="form-control" >
-                    <option value="">Tipo Doc</option>
+                    <option value="">Id Type</option>
                     <option value="C.C">C.C.</option>
                     <option value="C.E">C.E.</option>
                   </select>
@@ -68,36 +68,36 @@
                 <div class="form-group">
                   <label for="numdoc" class="col-sm-2 control-label">Número Doc</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="numerodoc" placeholder="Número Doc">
+                    <input type="text" class="form-control" id="numerodoc" placeholder="Id">
                   </div>
                 </div>
                  <div class="form-group">
                   <label for="dir" class="col-sm-2 control-label">Dirección</label>
                   <div class="col-sm-10">
-                    <input type="direc" class="form-control" id="direccion" placeholder="Dirección">
+                    <input type="direc" class="form-control" id="direccion" placeholder="Address">
                   </div>
                 </div>
                  <div class="form-group">
                   <label for="telephone" class="col-sm-2 control-label">Teléfono</label>
                   <div class="col-sm-10">
-                    <input type="Number" class="form-control" id="telefono" placeholder="Teléfono">
+                    <input type="Number" class="form-control" id="telefono" placeholder="Phone Number">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="city" class="col-sm-2 control-label" >Ciudad</label>
 
                   <div class="col-sm-10">
-                    <input type="cyti" class="form-control" id="ciudad" onkeyup="this.value=this.value.toUpperCase();" placeholder="Ciudad">
+                    <input type="cyti" class="form-control" id="ciudad" onkeyup="this.value=this.value.toUpperCase();" placeholder="City">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="mail" class="col-sm-2 control-label">Correo Electrónico</label>
 
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" onkeyup="this.value=this.value.toLowerCase();" id="mail" placeholder="Correo Electrónico">
+                    <input type="email" class="form-control" onkeyup="this.value=this.value.toLowerCase();" id="mail" placeholder="mail">
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" align="left">
                   <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
                       <label>
@@ -106,7 +106,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" align="left">
                   <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
                       <label>
@@ -120,8 +120,8 @@
 
               <div class="box-footer box-solid">
                 <a href="http://localhost/cleanapps"> <button type="button" class="btn btn-default">Salir</button></a>
-                <button type="button" id="inscripcion" value class="btn btn-info pull-right">Aceptar</button>
-
+                <button type="button" id="inscripcion" class="btn btn-info pull-right">Aceptar</button>
+              </di>
               <!-- /.box-footer -->
             </form>
           </div>
