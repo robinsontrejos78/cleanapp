@@ -75,9 +75,19 @@ class OrdenController extends Controller
             ->select('INM_IDINMUEBLE', 'INM_DIRECCION')
             ->get();
 
-        $tipoOrden = DB::table('LOOKUP')->where('LOO_GRUPO', 1)->select('LOO_IDLOOKUP', 'LOO_DESCRIPCION')->get();
+        $cliente = DB::table('users')
+           // ->join('INMUEBLES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+            //->where('INM_ESTADO', 1)
+            //->where('PRO_EMP_IDEMPRESA', $idEmpresa)
+            //->select('INM_IDINMUEBLE', 'INM_DIRECCION')
+            ->get();
+
+        $profesional =DB::table('PROFESIONALES')
+        ->get();
+
+        $tipoOrden = DB::table('LOOKUP')->where('LOO_GRUPO', 1)->where('LOO_IDLOOKUP', 1)->select('LOO_IDLOOKUP', 'LOO_DESCRIPCION')->get();
         
-        return view('ordenes.create', compact('tipoOrden', 'inmuebles'));
+        return view('ordenes.create', compact('tipoOrden', 'inmuebles', 'cliente', 'profesional'));
     }
 
     /**

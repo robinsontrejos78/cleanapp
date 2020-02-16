@@ -8,12 +8,6 @@
 @section('main-content')
 <meta name="_token" content="{{ csrf_token() }}"/>
 
-<section class="content-header" style="margin-bottom:30px">
-    <ol class="breadcrumb">
-        <li><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active"> Crear Orden</li>
-    </ol>
-</section>
 
 @if (count($errors) > 0)
   <div class="alert alert-danger">
@@ -44,26 +38,30 @@
         <h3 class="box-title">Nueva Orden</h3>
       </div>
 
+
       <div class="box-body">
       <form action="{{ url('orden') }}" method="POST" class="form-group deshabilita">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
         <div class="col-md-6">
-          <label for="inmueble">Inmueble</label>
+           <label for="inmueble">Cliente</label>
+             <select name="nomcli" id="nombcli" class="form-control inmueble">
+              @foreach($cliente as $cli)   
+              <option value="{{ $cli->name }} {{ $cli->USR_APELLIDOS }}">{{ $cli->name }} {{ $cli->USR_APELLIDOS }}</option>
+              @endforeach
+             </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="inmueble">Dirección</label>
           <select name="inmueble" id="inmueble" class="form-control inmueble">
             <option value="">Seleccione opción</option>
-            @foreach($inmuebles as $inmueble)
-              <option value="{{ $inmueble->INM_IDINMUEBLE }}" @if($inmueble->INM_IDINMUEBLE == old('inmueble')) selected @endif>{{ $inmueble->INM_DIRECCION }}</option>
+             @foreach($cliente as $cli)   
+              <option value="{{ $cli->USR_DIRECCION }}">{{ $cli->USR_DIRECCION }} </option>
             @endforeach
           </select>
         </div>
 
-       
-        <div class="col-md-6">
-          <label for="Huespedes">Cantidad de Huespedes</label>
-          <input type="number" name="huesped" class="form-control" value="{{ old('huesped') }}">
-        </div>
-
-        
         <div class="col-md-6">
           <label for="tipoOrden">Tipo de Orden</label>
           <select name="tipoOrden" id="" class="form-control tipoOrden" data-ruta="../selectTipoper">
@@ -74,11 +72,13 @@
           </select>
         </div>
         
-        <div class="col-md-6">
-          <label for="persona">Persona</label>
-          <select name="persona" id="persona" class="form-control tipoPersona">
+      <div class="col-md-6">
+          <label for="tipoOrden">Profesional</label>
+          <select name="tipoOrden" id="" class="form-control tipoOrden" data-ruta="../selectTipoper">
             <option value="">Seleccione opción</option>
-                        
+            @foreach($profesional as $prof)
+              <option value="{{ $prof->PRO_nombresprof }} {{ $prof->PRO_apellidosprof }}">{{ $prof->PRO_nombresprof }} {{ $prof->PRO_apellidosprof }}</option>
+            @endforeach
           </select>
         </div>
 

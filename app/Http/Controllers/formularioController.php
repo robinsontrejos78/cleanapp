@@ -141,7 +141,8 @@ class formularioController extends Controller
              'PRO_citicoma'      => $citicoma,
              'PRO_telrefcoma'    => $telrefcoma,
              'PRO_terminos'      => $s_terminos,
-             'PRO_datos'         => $s_datos
+             'PRO_datos'         => $s_datos,
+             'PRO_estado'        => 0
              ]
             );
          return with("Te Has Registrado con Éxito, Uno de Nuestros Asesores se Contactará Pronto");
