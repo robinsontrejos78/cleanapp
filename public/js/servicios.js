@@ -1111,5 +1111,6 @@ $(document).on('click', '.finished', function(event){
 
 
 function verDispProf(id){
-  location.href = 'V_03_solicitudexamenes/'+id+'/edit';
+  location.href = 'visualizarAgenda/'+id+'/edit';
 }
+

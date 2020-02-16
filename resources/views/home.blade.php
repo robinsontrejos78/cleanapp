@@ -147,7 +147,7 @@
         <div class="thumbnail">
           <img src="{{ asset ($profesional->PRO_foto)}}" alt="...">
           <div class="caption">
-            <h3>Título de la imagen</h3>
+            <h3>{{$profesional->PRO_nombresprof}} {{$profesional->PRO_apellidosprof}}</h3>
             <p>
               <a class="btn btn-default" onclick="verDispProf({{$profesional->id}})" role="button">Ver disponibilidad</a>
             </p>

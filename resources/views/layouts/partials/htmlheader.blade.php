@@ -25,6 +25,22 @@
 
     <link href="{{ asset('/css/sweetalert.css') }}" rel="stylesheet" type="text/css">
 
+    <link href="{{ asset('plugins/fullcalendar4/core/main.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/fullcalendar4/daygrid/main.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/fullcalendar4/timegrid/main.css') }}" rel="stylesheet" />
+
+    <script src="{{ asset('plugins/fullcalendar4/core/main.js') }}"></script>
+    <script src="{{ asset('plugins/fullcalendar4/daygrid/main.js') }}"></script>
+    <script src="{{ asset('plugins/fullcalendar4/timegrid/main.js') }}"></script>
+
+
+
+    <!--<link href='fullcalendar/core/main.css' rel='stylesheet' /> -->
+    <!--<link href='fullcalendar/daygrid/main.css' rel='stylesheet' /> -->
+
+    <!--<script src='fullcalendar/core/main.js'></script> -->
+    <!--<script src='fullcalendar/daygrid/main.js'></script> -->
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
