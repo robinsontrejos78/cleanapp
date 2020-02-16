@@ -52,10 +52,6 @@
 @endif
 
 <div class="row">
-  <div class="col-xs-3">
-    <a href="{{ url('orden/create') }}" class="btn btn-primary btn-flat">Agregar Orden de servicio</a>
-  </div><br><br>
-
   <div class="col-md-12">
     <div class="box box-primary">
 
@@ -87,14 +83,6 @@
             </select>
         </div>
         <div class="col-md-3">
-            <label for="ordenP">Estado del Pago</label>
-            <select name="ordenP" id="ordenP" class="form-control">
-                <option value="">Seleccione opción</option>
-                <option value="False">SIN PAGAR</option>
-                <option value="True">PAGADOS</option>
-            </select>
-        </div>
-        <div class="col-md-3">
             <button style="margin-top:23px" type="button" id="buscarOrd" class="btn btn-primary" data-toggle="tooltip" title="Buscar" data-container="body">Buscar</button>
         </div>
       </div>
@@ -109,7 +97,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="box box-primary">
+    <div class="box box-info">
 
       <div class="box-header with-border">
         <h3 class="box-title">Lista de Ordenes de Servicio</h3>
@@ -128,7 +116,6 @@
                     <th class="centro">Duración</th>
                     <th class="centro">Asignado a</th>
                     <th class="centro">Costo</th>
-                    <th class="centro">Cancelado</th>
                     <th class="centro">Acciones</th>
                 </tr>
             </thead>
@@ -139,7 +126,7 @@
                         <td>{{ $orden->estado_orden }}</td>
                         <td>{{ $orden->tipoinmueble }}</td>
                         <td>{{ $orden->INM_DIRECCION }}</td>
-                        <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d / h:i') }}</td>
+                        <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d') }}</td>
                         <td>
                           <?php 
                             $start_date = new DateTime($orden->ORD_INICIOORDEN);
@@ -149,20 +136,11 @@
                         </td>
                         <td>{{ $orden->name }} {{ $orden->USR_APELLIDOS }}</td>
                         <td>{{ $orden->ORD_COSTO }}</td>
-                        <td class="centro cancelado">
-                            @if($orden->ORD_PAGADO)
-                              <span class="badge bg-red quitar" data-toggle="tooltip" data-placement="top" data-original-title="Orden de Pago ya Cancelada"> Cancelado </span> 
-                            @elseif($orden->estado_orden == "FINALIZADO")
-                              <button class="btn btn-info btn-sm cancelarOrden" data-id="{{ $orden->ORD_IDORDEN }}" data-email="{{ $orden->email }}" data-nombre="{{ $orden->name }} {{ $orden->USR_APELLIDOS }}" data-dir="{{ $orden->INM_DIRECCION }}" data-costo="{{ $orden->ORD_COSTO }}" data-toggle="tooltip" data-placement="top" data-original-title="Pagar la Orden de Servicio"><span class="glyphicon glyphicon-usd"></span></button> 
-                            @endif
-                        </td>
+
                         <td class="centro" style="width: 125px;">
                             @if($orden->estado_orden != "FINALIZADO")
                               <a class="btn btn-primary btn-sm borrar" href="orden/{{ $orden->ORD_IDORDEN }}/edit" role="button" data-toggle="tooltip" title="" data-placement="top" data-original-title="Modificar Orden de Servicio" data-container="body"><span class="glyphicon glyphicon-pencil"></span></a>
                               <button class="btn btn-danger btn-sm anularOrden borrar" data-id="{{ $orden->ORD_IDORDEN }}" data-email="{{ $orden->email }}" data-nombre="{{ $orden->name }} {{ $orden->USR_APELLIDOS }}" data-dir="{{ $orden->INM_DIRECCION }}" data-toggle="tooltip" data-placement="top" data-original-title="Anular la Orden de Servicio"><span class="glyphicon glyphicon-remove"></span></button>
-                            @endif
-                            @if($orden->estado_orden == "FINALIZADO")
-                              <a class="btn btn-info btn-sm" href="evidenciasOrden/{{ $orden->ORD_IDORDEN }}" role="button" data-toggle="tooltip" title="" data-placement="top" data-original-title="Evidencias" data-container="body"><span class="glyphicon glyphicon-camera"></span></a>
                             @endif
                         </td>
                     </tr>
