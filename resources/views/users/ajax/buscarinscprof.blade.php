@@ -17,19 +17,11 @@
     <th class="centro">Conyugue</th>
     <th class="centro">Tipo Documento</th>
     <th class="centro">Número</th>
-    <th class="centro">Ref/ Familiar 1</th>
+    <th class="centro">Ref/ Familiar</th>
     <th class="centro">Parentesco</th>
     <th class="centro">Ciudad</th>
     <th class="centro">Teléfono</th>
-    <th class="centro">Ref/ Familiar 2</th>
-    <th class="centro">Parentesco</th>
-    <th class="centro">Ciudad</th>
-    <th class="centro">Teléfono</th>
-    <th class="centro">Ref/ Comercial/Personal 1</th>
-    <th class="centro">Parentesco</th>
-    <th class="centro">Ciudad</th>
-    <th class="centro">Teléfono</th>
-    <th class="centro">Ref/ Comercial/Personal 2</th>
+    <th class="centro">Ref/ Comercial/Personal</th>
     <th class="centro">Parentesco</th>
     <th class="centro">Ciudad</th>
     <th class="centro">Teléfono</th>
@@ -63,18 +55,10 @@
       <td>{{ $res->PRO_parentrefa }}</td>
       <td>{{ $res->PRO_citirefa }}</td>
       <td>{{ $res->PRO_telrefa }}</td>
-      <td>{{ $res->PRO_nomrefb }} {{ $res->PRO_aperefb }}</td>
-      <td>{{ $res->PRO_parentrefb }}</td>
-      <td>{{ $res->PRO_citirefb }}</td>
-      <td>{{ $res->PRO_telrefb }}</td>
       <td>{{ $res->PRO_nomrefcoma }} {{ $res->PRO_aperefcoma }}</td>
       <td>{{ $res->PRO_parentrefcoma }}</td>
       <td>{{ $res->PRO_citicoma }}</td>
       <td>{{ $res->PRO_telrefcoma }}</td>
-      <td>{{ $res->PRO_nomrefcomb }} {{ $res->PRO_aperefcomb }}</td>
-      <td>{{ $res->PRO_parentrefcomb }}</td>
-      <td>{{ $res->PRO_citicomb }}</td>
-      <td>{{ $res->PRO_telrefcomb }}</td>
  </tr>
 
 

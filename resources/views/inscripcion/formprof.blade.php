@@ -35,14 +35,15 @@
 
 
 <div class="row">
-<div class="box box-info" style="width: 600px" align="center">
+
+<div class="box box-success box-solid" style="width: 500px" align="center">
             <div class="box-header with-border" align="center">
               <h3 class="box-title" >Formulario de Inscripción Para Profesionales de Aseo</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" align="right">
-              <div class="box-body" align="center">
+            <form class="form-horizontal" align="center">
+              <div class="box-body" >
                  <div class="form-group">
                   <label for="nombres"  class="col-sm-2 control-label">Nombres</label>
                   <div class="col-sm-8">
@@ -154,7 +155,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="city" class="col-sm-2 control-label">Número de Personas a Cargo</label>
+                  <label for="city" class="col-sm-2 control-label">Total Personas a Cargo</label>
                   <div class="col-sm-8">
                     <input type="number" class="form-control" id="percarprof"  placeholder="">
                   </div>
@@ -195,7 +196,7 @@
             </div>
             <div class="box box-info">
             <div class="box-header with-border" >
-              <h3 class="box-title" >2 Referencias Familiares</h3>
+              <h3 class="box-title" >Referencia Familiar</h3>
             </div>
                 <div class="form-group">
                   <label for="nombres"  class="col-sm-2 control-label">Nombres</label>
@@ -228,44 +229,13 @@
                   </div>
                 </div>
                 </div>
-                <div class="box-header with-border" >
-                <div class="form-group">
-                  <label for="nombres"  class="col-sm-2 control-label">Nombres</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="nomrefb" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Names">
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="aperefb" onkeyup="this.value=this.value.toUpperCase();" placeholder="Last Name">
-                  </div>
-                </div>
-            
-                <div class="form-group">
-                  <label for="numdoc" class="col-sm-2 control-label">Parentesco</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="parentrefb" onkeyup="this.value=this.value.toUpperCase();" placeholder="Relationship">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="numdoc" class="col-sm-2 control-label">Ciudad</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="citirefb" onkeyup="this.value=this.value.toUpperCase();" placeholder="City">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="numdoc" class="col-sm-2 control-label">Teléfono</label>
-                  <div class="col-sm-8">
-                    <input type="number" class="form-control" id="telrefb" placeholder="Phone Number">
-                  </div>
-                </div>
-              </div>
+               
+             
              <div class="box box-info">
             <div class="box-header with-border" >
-              <h3 class="box-title" >Ingresa 2 Referencias Personal/Comercial</h3>
+              <h3 class="box-title">Referencia Personal/Comercial</h3>
             </div>
-                          <div class="box-header with-border" >
+            <div class="box-header with-border" >
                 <div class="form-group">
                   <label for="nombres"  class="col-sm-2 control-label">Nombres</label>
                   <div class="col-sm-8">
@@ -298,39 +268,6 @@
                   </div>
                 </div>
               </div>
-               <div class="box-header with-border" >
-                <div class="form-group">
-                  <label for="nombres"  class="col-sm-2 control-label">Nombres</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="nomrefcomb" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Names">
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="aperefcomb" onkeyup="this.value=this.value.toUpperCase();" placeholder="Last Name">
-                  </div>
-                </div>
-            
-                <div class="form-group">
-                  <label for="numdoc" class="col-sm-2 control-label">Parentesco</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="parentrefcomb" onkeyup="this.value=this.value.toUpperCase();" placeholder="Relationship">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="numdoc" class="col-sm-2 control-label">Ciudad</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="citicomb" onkeyup="this.value=this.value.toUpperCase();" placeholder="City">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="numdoc" class="col-sm-2 control-label">Teléfono</label>
-                  <div class="col-sm-8">
-                    <input type="number" class="form-control" id="telrefcomb" placeholder="Phone Number">
-                  </div>
-                </div>
-              </div>
                <br>
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
@@ -353,8 +290,8 @@
                 <br>
               </div>
               <!-- /.box-body -->
-              <div class="box-footer">
-                <a href="http://localhost/cleanapp"> <button type="button" class="btn btn-default">Salir</button></a>
+              <div class="box-footer" align="center">
+                <a href="http://localhost/cleanapps"> <button type="button" class="btn btn-default">Salir</button></a>
                 <button type="button" id="inscripcion"  class="btn btn-info pull-right">Aceptar</button>
               </div>
               <!-- /.box-footer -->
@@ -362,6 +299,7 @@
           </div>
 </div>
 
+</div>
 </div>
 
 

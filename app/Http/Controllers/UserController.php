@@ -84,6 +84,8 @@ class UserController extends Controller
         $user->USR_ESTADO        = 1;
         $user->save();
 
+
+
         $userid = DB::table('users')->orderby('id', 'desc')->select('id')->first();
         $id = $userid->id;
 
@@ -270,6 +272,12 @@ class UserController extends Controller
         $user->password          = bcrypt($request->get('passwordPer'));
         $user->USR_ESTADO        = 1;
         $user->save();
+
+
+        DB::table('PROFESIONALES')
+            ->where('PRO_numdocprof', $request->get('USR_DOCUMENTO'))
+            ->update(['PRO_estado' => 1]);
+
 
         $userid = DB::table('users')->orderby('id', 'desc')->select('id')->first();
         $id = $userid->id;

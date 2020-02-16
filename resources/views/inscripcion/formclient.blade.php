@@ -117,10 +117,11 @@
                 </div>
               </div>
               <!-- /.box-body -->
-              <div class="box-footer">
-                <a href="http://localhost/cleanapp"> <button type="button" class="btn btn-default">Salir</button></a>
-                <button type="button" id="inscripcion" class="btn btn-info pull-right">Aceptar</button>
-              </div>
+
+              <div class="box-footer box-solid">
+                <a href="http://localhost/cleanapps"> <button type="button" class="btn btn-default">Salir</button></a>
+                <button type="button" id="inscripcion" value class="btn btn-info pull-right">Aceptar</button>
+
               <!-- /.box-footer -->
             </form>
           </div>

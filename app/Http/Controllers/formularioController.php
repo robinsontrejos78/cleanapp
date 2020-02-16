@@ -93,21 +93,11 @@ class formularioController extends Controller
          $parentrefa    = $_POST['parentrefa'];
          $citirefa      = $_POST['citirefa'];
          $telrefa       = $_POST['telrefa'];
-         $nomrefb       = $_POST['nomrefb'];
-         $aperefb       = $_POST['aperefb'];
-         $parentrefb    = $_POST['parentrefb'];
-         $citirefb      = $_POST['citirefb'];
-         $telrefb       = $_POST['telrefb'];
          $nomrefcoma    = $_POST['nomrefcoma'];
          $aperefcoma    = $_POST['aperefcoma'];
          $parentrefcoma = $_POST['parentrefcoma'];
          $citicoma      = $_POST['citicoma'];
          $telrefcoma    = $_POST['telrefcoma'];
-         $nomrefcomb    = $_POST['nomrefcomb'];
-         $aperefcomb    = $_POST['aperefcomb'];
-         $parentrefcomb = $_POST['parentrefcomb'];
-         $citicomb      = $_POST['citicomb'];
-         $telrefcomb    = $_POST['telrefcomb'];
          $s_terminos    = $_POST['s_terminos'];
          $s_datos       = $_POST['s_datos'];
 
@@ -145,21 +135,11 @@ class formularioController extends Controller
              'PRO_parentrefa'    => $parentrefa,
              'PRO_citirefa'      => $citirefa,
              'PRO_telrefa'       => $telrefa,
-             'PRO_nomrefb'       => $nomrefb,
-             'PRO_aperefb'       => $aperefb,
-             'PRO_parentrefb'    => $parentrefb,
-             'PRO_citirefb'      => $citirefb,
-             'PRO_telrefb'       => $telrefb,
              'PRO_nomrefcoma'    => $nomrefcoma,
              'PRO_aperefcoma'    => $aperefcoma,
              'PRO_parentrefcoma' => $parentrefcoma,
              'PRO_citicoma'      => $citicoma,
              'PRO_telrefcoma'    => $telrefcoma,
-             'PRO_nomrefcomb'    => $nomrefcomb,
-             'PRO_aperefcomb'    => $aperefcomb,
-             'PRO_parentrefcomb' => $parentrefcomb,
-             'PRO_citicomb'      => $citicomb,
-             'PRO_telrefcomb'    => $telrefcomb,
              'PRO_terminos'      => $s_terminos,
              'PRO_datos'         => $s_datos
              ]
@@ -241,11 +221,10 @@ class formularioController extends Controller
     {
      if (!Auth::user()->hasRole('Administrador')) abort(403);
        $idEmpresa = Session::get('idEmpresa');
-      
+
          $fechaprof  = $_POST['fechaprof'];
          $docuprof   = $_POST['docuprof'];
          $nombreprof = $_POST['nombreprof'];
-
             
     $busqueda = array();
 
@@ -256,10 +235,11 @@ class formularioController extends Controller
 
      $resultados =  DB::table('PROFESIONALES')
                     ->where($busqueda)
+                    ->where('PRO_estado', 0)
                     ->orderby('PRO_fecharegistro', 'desc')
                     ->get();
 
-        return view('users.ajax.buscarinscprof', compact('resultados'));
+        return view('users.ajax.buscarinscprof', compact('resultados', 'users'));
     }
 
    

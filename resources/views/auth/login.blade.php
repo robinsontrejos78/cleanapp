@@ -8,7 +8,9 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>C L E A N A P P S</b></a>
+
+            <a href="{{ url('/home') }}">Te damos la Bienvenida!</a>
+
         </div>
 
     @if (count($errors) > 0)
@@ -21,9 +23,10 @@
             </ul>
         </div>
     @endif
-
-    <div style="border-top: 2px solid black" class="login-box-body">
-    <p class="login-box-msg">Ingrese su documento y Contraseña</p>
+       
+<div class="box box-success box-solid">
+    <div style="border-top: 2px solid blue" class="login-box-body">
+    <p class="login-box-msg">Ingrese su Documento y Contraseña</p>
     <form action="{{ url('/login') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <meta name="_token" content="{{ csrf_token() }}"/>

@@ -86,7 +86,9 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="row centered">
             <div class="col-lg-12">
             <br><br><br>
-                <h1><font color="yellow">C L E A N<b></font><a href="#"> A P P S</a></b></h2><br><br><br><br><br><br>
+
+                <h2><font color="yellow">C L E A N<b></font><a href="#"> A P P S</a></b></h2><br><br><br><br><br><br>
+
             </div>
         </div>
     </div> <!--/ .container -->
@@ -98,7 +100,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="row centered">
             <div class="col-lg-12">
             <br><br><br>
-                <h1><font color="red">SOLICITAR <b></font><a href="{{ url ('formcliente') }}"> SERVICIO</a></b></h2><br><br><br><br><br><br>
+                <h2><font color="red">SOLICITAR <b></font><a href="{{ url ('formcliente') }}"> SERVICIO</a></b></h2><br><br><br><br><br><br>
             </div>
         </div>
     </div> <!--/ .container -->
@@ -110,19 +112,13 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="row centered">
             <div class="col-lg-12">
             <br><br><br>
-                <h1><font color="blue">TRABAJA CON <b></font><a href="{{ url ('formprofe') }}"> NOSOTROS</a></b></h2><br><br><br><br><br><br>
+                <h2><font color="blue">TRABAJA CON <b></font><a href="{{ url ('formprofe') }}"> NOSOTROS</a></b></h2><br><br><br><br><br><br>
             </div>
         </div>
     </div> <!--/ .container -->
 </div>
 
 
-<!-
-
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <!-- <script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script> -->
 

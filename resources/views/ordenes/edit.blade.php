@@ -16,7 +16,7 @@
 </section>
 
 @if (count($errors) > 0)
-  <div class="alert alert-danger">
+  <div class="alert alert-primary">
       <ul>
           @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
@@ -27,7 +27,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="box box-danger">
+    <div class="box box-info">
 
       <div class="box-header with-border">
         <h3 class="box-title">Editar Orden</h3>
@@ -47,15 +47,6 @@
           </div>
           
           <div class="col-md-6">
-            <label for="tipoOrden">Tipo de Orden</label>
-            <select name="tipoOrden" id="" class="form-control tipoOrden" data-ruta="../../selectTipoper">
-              @foreach($tipoOrden as $tipo)
-                <option value="{{ $tipo->LOO_IDLOOKUP }}" @if($orden->ORD_LOO_TIPOORDEN == $tipo->LOO_IDLOOKUP) selected @endif>{{ $tipo->LOO_DESCRIPCION }}</option>
-              @endforeach
-            </select>
-          </div>
-          
-          <div class="col-md-6">
             <label for="persona">Persona</label>
             <select name="persona" id="persona" class="form-control tipoPersona">
               @foreach($personas as $persona)
@@ -66,16 +57,8 @@
           
           <div class="col-md-6">
             <label for="Fecha">Fecha</label>
-            <?php $fecha = strftime('%Y-%m-%dT%H:%M:%S', strtotime($orden->ORD_FECHAORDEN)); ?>
-            <input type="datetime-local" name="Fecha" class="form-control" value="{{ $fecha }}">
-          </div>
-          
-          <div class="col-md-6">
-            <label for="costo">Valor a Pagar</label>
-            <input type="number" name="costo" class="form-control" value="{{ $orden->ORD_COSTO }}">
-          </div>
-          <div id="vacio">
-            
+            <?php $fecha = strftime('%Y-%m-%d', strtotime($orden->ORD_FECHAORDEN)); ?>
+            <input type="date" name="Fecha" class="form-control" value="{{ $fecha }}">
           </div>
 
           <div class="col-md-12" style="margin-top:30px">
