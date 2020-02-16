@@ -28,10 +28,13 @@
     <link href="{{ asset('plugins/fullcalendar4/core/main.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/fullcalendar4/daygrid/main.css') }}" rel="stylesheet" />
     <link href="{{ asset('plugins/fullcalendar4/timegrid/main.css') }}" rel="stylesheet" />
+    <link href="{{ asset('plugins/fullcalendar4/list/main.css') }}" rel="stylesheet" />
 
     <script src="{{ asset('plugins/fullcalendar4/core/main.js') }}"></script>
     <script src="{{ asset('plugins/fullcalendar4/daygrid/main.js') }}"></script>
     <script src="{{ asset('plugins/fullcalendar4/timegrid/main.js') }}"></script>
+    <script src="{{ asset('plugins/fullcalendar4/list/main.js') }}"></script>
+    <script src="{{ asset('plugins/fullcalendar4/interaction/main.js') }}"></script>
 
 
 
