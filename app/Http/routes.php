@@ -227,4 +227,5 @@ Route::post('cambioEstadoCiudad', 'CiudadController@cambioEstadoCiudades');
 //buscar reporte
 Route::post('buscarreporte', 'ReportesinventarioController@buscareporte');
 
-
+//agenda de profesional de servicio
+Route::Resource('visualizarAgenda', 'AgendaprofController');
