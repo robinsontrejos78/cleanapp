@@ -63,17 +63,13 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="navbar-collapse collapse">
     
             <ul class="nav navbar-nav navbar-right">
-                @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>
-                    <!-- <li><a href="{{ url('/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li> -->
-                @else
-                    <li><a href="{{ url ('home') }}">{{ Auth::user()->name }}</a></li>
-                @endif
+
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </div>
 
+<section id="home" name="home"></section>
 
 <div class="modal modal-success fade" id="myModalinfo">
     <div class="modal-dialog">
@@ -92,7 +88,6 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
               <li>Quieres ahorrar dinero y tiempo en cada limpieza</li>
             </ul>
             <br>
-
          <p>Queremos que estés 100% feliz y satisfecho con CLEANAPPS, por eso recuerda que:</p>
             <ul>
               <li>Si no quedas satisfecho, te compensaremos por ello</li>
@@ -100,58 +95,59 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
               <li>Cada limpieza cuenta con un seguro contra daños.</li>
             </ul>   
             <br>
-
          <p>¿Cómo funciona?</p>
             <ul>
               <li>Pagas el servicio en efectivo o por medio de la aplicación.</li>
               <li>Puedes agendar, reprogramar, congelar o anular la limpieza según tus necesidades.</li>
             </ul>  
              <br>
-
          <p>Entiende tu puntuación </p>
             <ul>
               <li>Las puntuaciones nos permiten asegurar una gran experiencia en CLEANAPPS tanto para los clientes como para las profesionales. De la misma forma que tú puedes evaluar a tus profesionales y los profesionales pueden evaluarte a ti.</li>
             </ul>  
              <br>
         <div class="modal-footer">
-          
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<section id="home" name="home"></section>
+
 <div id="headerwrap">
     <div class="container">
         <div class="row centered">
             <div class="col-lg-12">
-            <br><br><br><span>CONOCENOS:</span>
-                <h2><font color="yellow">C L E A N<b></font><a href="" id="btn_modalinfo"  data-toggle="modal" data-target="#myModalinfo"> A P P S</a></b></h2><br><br><br><br><br><br>
+            <br><br><span style="color:silver;font-weight:bold">CONOCENOS:</span>
+                <h2><font color="blue">C L E A N<b></font><a href="" id="btn_modalinfo"  data-toggle="modal" data-target="#myModalinfo"> A P P S</a></b></h2><br>
             </div>
         </div>
     </div> <!--/ .container -->
 </div><!--/ #headerwrap -->
 <br>
-<br>
+
 <div id="headerwrap">
-    <div class="container">
         <div class="row centered">
             <div class="col-lg-12">
-            <br><br><br><span>CLIENTES:</span>
-                <h2><font color="red">SOLICITAR <b></font><a href="{{ url ('formcliente') }}"> SERVICIO</a></b></h2><br><br><br><br><br><br>
+            <br><br><span style="color:silver;font-weight:bold">CLIENTES:</span>
+                <h2><font color="skyblue">SOLICITAR <b></font><a href="{{ url ('formcliente') }}"> SERVICIO</a></b></h2>
+                @if (Auth::guest())
+                    <B><h1><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></h1><B>
+                @endif<br>
             </div>
         </div>
-    </div> <!--/ .container -->
 </div>
 <br>
-<br>
+
 <div id="headerwrap">
     <div class="container">
         <div class="row centered">
             <div class="col-lg-12">
-            <br><br><br><span>PROFESIONALES:</span>
-                <h2><font color="blue">TRABAJA CON <b></font><a href="{{ url ('formprofe') }}"> NOSOTROS</a></b></h2><br><br><br><br><br><br>
+            <br><br><span style="color:silver;font-weight:bold">PROFESIONALES:</span>
+                <h2><font color="DODGERBLUE">TRABAJA CON <b></font><a href="{{ url ('formprofe') }}"> NOSOTROS</a></b></h2> 
+                @if (Auth::guest())
+                    <B><h1><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></h1></B>
+                @endif<br>
             </div>
         </div>
     </div> <!--/ .container -->

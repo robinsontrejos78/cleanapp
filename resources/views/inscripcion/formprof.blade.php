@@ -36,17 +36,17 @@
 
 <div class="row">
 
-<div class="box box-success box-solid" style="width: 500px" align="center">
+<div class="box box-primary box-solid" style="width: 500px" align="center">
             <div class="box-header with-border" align="center">
               <h3 class="box-title" >Formulario de Inscripción Para Profesionales de Aseo</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" align="center">
-              <div class="box-body" >
+            <form class="form-horizontal" >
+              <div class="box-body" align="right">
                  <div class="form-group">
                   <label for="nombres"  class="col-sm-2 control-label">Nombres</label>
-                  <div class="col-sm-8">
+                  <div class="col-sm-8" >
                     <input type="text" class="form-control" id="nombresprof" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Names">
                   </div>
                 </div>
@@ -91,15 +91,20 @@
                   </div>
                 </div>
                  <div class="form-group">
-                  <label for="dir" class="col-sm-2 control-label">Lugar de Nacimiento</label>
+                  <label for="dir" class="col-sm-2 control-label">Donde Vive</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="lugarnacprof" onkeyup="this.value=this.value.toUpperCase();" placeholder="Pais/Depto/Ciudad">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="dir" class="col-sm-2 control-label">Antiguedad en la Ciudad</label>
+                  <label for="dir" class="col-sm-2 control-label">Antiguedad en esta Ciudad</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" id="antigprof" placeholder="Años">
+                    <select name="estado" id="antigprof" class="form-control" >
+                    <option value="">Menos de 1 año</option>
+                    <option value="Casado">Entre 1 y 3</option>
+                    <option value="Union Libre">Entre 3 y 5</option>
+                    <option value="Separado">Más de 5 años</option>
+                  </select>
                   </div>
                 </div>
                 <div class="form-group">

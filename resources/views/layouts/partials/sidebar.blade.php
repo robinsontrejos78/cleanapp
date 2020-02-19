@@ -40,7 +40,7 @@
             @endif
             
             @if (Auth::user()->hasRole('Administrador'))    
-                <!-- <li><a href="{{ url('ciudad') }}"><i class='fa fa-map-marker'></i> <span>Ciudades</span></a></li> -->
+                <li><a href="{{ url('ciudad') }}"><i class='fa fa-map-marker'></i> <span>Ciudades</span></a></li>
                 <li><a href="{{ url('inscripcion') }}"><i class='fa fa-bank'></i> <span>Consultar Inscripción</span></a></li>
                 <li><a href="{{ url('indexPersona') }}"><i class='fa fa-users'></i> <span>Agregar Profesional </span></a></li>
                 <li><a href="{{ url('orden') }}"><i class='fa fa-briefcase'></i> <span>Ordenes de servicio</span></a></li>
