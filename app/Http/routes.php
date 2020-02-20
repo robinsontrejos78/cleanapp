@@ -228,4 +228,6 @@ Route::post('cambioEstadoCiudad', 'CiudadController@cambioEstadoCiudades');
 Route::post('buscarreporte', 'ReportesinventarioController@buscareporte');
 
 //agenda de profesional de servicio
-Route::Resource('visualizarAgenda', 'AgendaprofController');
+Route::get('visualizarAgenda/{id}/edit', 'AgendaprofController@edit');
+
+Route::post('agergarItem', 'AgendaprofController@store');
