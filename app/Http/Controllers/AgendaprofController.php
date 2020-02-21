@@ -60,6 +60,8 @@ class AgendaprofController extends Controller
 
         $datosEvento=request()->all();
 
+        
+
         // $empr               = new Empresa();
         // $empr->EMP_NOMBRE   = $request->get('nombreEmp');
         // $empr->EMP_CONTACTO = $request->get('nombreCon');
