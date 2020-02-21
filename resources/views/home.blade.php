@@ -170,18 +170,21 @@
                       <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
                         <thead>
                           <tr>
-                            <th class="centro">Titulo</th>
+                            <th class="centro"></th>
                           </tr>
                         </thead>
                         <tbody>
                             <tr>
-                            <th class="centro">Fecha del Servicio</th>
+                            <th class="centro">PLAN 1 (2) HORAS $22.000</th>
                           </tr>
                           <tr>
-                            <th class="centro">Fecha del Servicio</th>
+                            <th class="centro">PLAN 2 (4) HORAS $35.000</th>
                           </tr>
                           <tr>
-                            <th class="centro">Fecha del Servicio</th>
+                            <th class="centro">PLAN 3 (6) HORAS $48.000</th>
+                          </tr>
+                          <tr>
+                            <th class="centro">PLAN 4 (8) HORAS $60.000</th>
                           </tr>
                         </tbody>
                       </table>
@@ -207,18 +210,19 @@
                     <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
                       <thead>
                         <tr>
-                          <th class="centro">Titulo</th>
+                          <th class="centro">PLAN #</th>
                         </tr>
                       </thead>
                       <tbody>
                           <tr>
-                          <th class="centro">Fecha del Servicio</th>
+                          <th class="centro">ANEXO</th>
+                          <TEXTAREA></TEXTAREA>
                         </tr>
                         <tr>
-                          <th class="centro">Fecha del Servicio</th>
+                          <th class="centro">Adicional 1</th>
                         </tr>
                         <tr>
-                          <th class="centro">Fecha del Servicio</th>
+                          <th class="centro">Adicional 2</th>
                         </tr>
                       </tbody>
                     </table>
@@ -265,7 +269,7 @@
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
 
