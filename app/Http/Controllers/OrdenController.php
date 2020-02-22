@@ -51,7 +51,9 @@ class OrdenController extends Controller
             ->where('a.LOO_GRUPO', 1)
             ->where('b.LOO_GRUPO', 3)
             ->where('c.LOO_GRUPO', 2)
-            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'INM_DIRECCION', 'a.LOO_DESCRIPCION as tipoorden', 'b.LOO_DESCRIPCION as tipoinmueble', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO', 'ORD_FECHAORDEN')
+            ->where('users.id', '=', 'ORD_USR_CLI')
+            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'INM_DIRECCION', 'a.LOO_DESCRIPCION as tipoorden', 'b.LOO_DESCRIPCION as tipoinmueble', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO')
+            ->orderBy('ORD_FECHAORDEN', 'desc')
             ->get();
 
         return view('ordenes.index', compact('estadosO', 'personas', 'ordenServicio'));
@@ -111,7 +113,8 @@ class OrdenController extends Controller
         DB::table('ORDEN_SERVICIOS')->insert(
                 ['ORD_INM_IDINMUEBLE'  => $_POST['inmueble'], 
                  'ORD_EMP_IDEMPRESA'   => $idEmpresa, 
-                 'ORD_USR_ID'          => $_POST['persona'], 
+                 'ORD_USR_ID'          => $_POST['profesional'], 
+                 'ORD_USR_CLI'         => $_POST['persona'], 
                  'ORD_LOO_ESTADOORDEN' => 1, 
                  'ORD_LOO_TIPOORDEN'   => $_POST['tipoOrden'],
                  'ORD_FECHAORDEN'      => $fechaOrden,

@@ -26,7 +26,7 @@
        
 <div class="box box-success box-solid">
     <div style="border-top: 2px solid blue" class="login-box-body">
-    <p class="login-box-msg">Ingrese su Documento y Contraseña</p>
+    <p class="login-box-msg">Ingresa tu Documento y Contraseña</p>
     <form action="{{ url('/login') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <meta name="_token" content="{{ csrf_token() }}"/>

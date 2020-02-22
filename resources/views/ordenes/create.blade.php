@@ -78,7 +78,7 @@
           <select name="profesional" id="profesional" class="form-control tipoOrden" >
             <option value="">Seleccione opción</option>
             @foreach($profesional as $prof)
-              <option value="{{ $prof->name }} {{ $prof->USR_APELLIDOS }}">{{ $prof->name }} {{ $prof->USR_APELLIDOS }}</option>
+              <option value="{{ $prof->id }}">{{ $prof->name }} {{ $prof->USR_APELLIDOS }}</option>
             @endforeach
           </select>
         </div>
