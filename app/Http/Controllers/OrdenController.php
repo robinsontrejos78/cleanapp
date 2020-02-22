@@ -68,22 +68,20 @@ class OrdenController extends Controller
 
         $idEmpresa = Session::get('idEmpresa');
 
-        $inmuebles = DB::table('PROPIEDADES')
-            ->join('INMUEBLES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
-            ->where('INM_ESTADO', 1)
-            ->where('PRO_EMP_IDEMPRESA', $idEmpresa)
-            ->select('INM_IDINMUEBLE', 'INM_DIRECCION')
+        $inmuebles = DB::table('LOOKUP')
+            ->where('LOO_IDLOOKUP', 1)
+            ->where('LOO_GRUPO', 1)
             ->get();
 
         $cliente = DB::table('users')
-           // ->join('INMUEBLES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
-            //->where('INM_ESTADO', 1)
-            //->where('PRO_EMP_IDEMPRESA', $idEmpresa)
-            //->select('INM_IDINMUEBLE', 'INM_DIRECCION')
+          ->join('role_user', 'user_id', '=', 'users.id')
+            ->where('role_id', 4)
             ->get();
 
-        $profesional =DB::table('PROFESIONALES')
-        ->get();
+        $profesional = DB::table('users')
+           ->join('role_user', 'user_id', '=', 'users.id')
+            ->where('role_id', 3)
+            ->get();
 
         $tipoOrden = DB::table('LOOKUP')->where('LOO_GRUPO', 1)->where('LOO_IDLOOKUP', 1)->select('LOO_IDLOOKUP', 'LOO_DESCRIPCION')->get();
         
@@ -120,8 +118,7 @@ class OrdenController extends Controller
                  'ORD_FECHAORDEN'      => $fechaOrden,
                  'ORD_PAGADO'          => 0,
                  'ORD_DESCRIPCION'     => $_POST['ordDesc'],
-                 'ORD_COSTO'           => $_POST['costo'],
-                 'ORD_HUESPEDES'       => $_POST['huesped']
+                 'ORD_COSTO'           => $_POST['costo']
             ]);
 
         $persona = DB::table('users')

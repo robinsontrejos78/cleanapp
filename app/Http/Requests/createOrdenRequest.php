@@ -24,10 +24,10 @@ class createOrdenRequest extends Request
     public function rules()
     {
         return [
-            'inmueble'  => 'required',
-            'tipoOrden' => 'required',
-            'persona'   => 'required',
-            'Fecha'     => 'required',
+            'inmueble'    => 'required',
+            'tipoOrden'   => 'required',
+            'profesional' => 'required',
+            'Fecha'       => 'required',
         ];
     }
 }

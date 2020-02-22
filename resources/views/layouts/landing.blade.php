@@ -58,12 +58,14 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url ('home') }}"><b>CLEANAPPS</b></a>
+           <!--  <a class="navbar-brand" href="{{ url ('home') }}"><b>CLEANAPPS</b></a> -->
         </div>
         <div class="navbar-collapse collapse">
     
             <ul class="nav navbar-nav navbar-right">
-
+            @if (Auth::guest())
+                    <h3><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></h3>
+                @endif<br>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
