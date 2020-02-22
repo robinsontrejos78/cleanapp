@@ -55,7 +55,12 @@
 
         <div class="col-md-6">
           <label for="inmueble">Dirección</label>
-          <input type="number" name="inmueble" id="inmueble"  class="form-control inmueble">
+          <select name="inmueble" id="inmueble" class="form-control tipoOrden" >
+            <option value="">Seleccione opción</option>
+            @foreach($inmueble as $inm)
+              <option value="{{ $inm->INM_IDINMUEBLE }}">{{ $inm->INM_DIRECCION }} </option>
+            @endforeach
+          </select>
         </div>
 
         <div class="col-md-6">
@@ -81,12 +86,12 @@
         
         <div class="col-md-6">
           <label for="Fecha">Fecha</label>
-          <input type="datetime-local" name="Fecha" class="form-control" value="{{ old('Fecha') }}">
+          <input type="datetime-local" name="Fecha" class="form-control" >
         </div>
 
          <div class="col-md-6">
           <label for="costo">Costo</label>
-          <input type="number" name="costo" class="form-control" value="{{ old('costo') }}">
+          <input type="number" name="costo" class="form-control" >
         </div>
 
        

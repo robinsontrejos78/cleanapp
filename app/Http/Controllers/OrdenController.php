@@ -68,14 +68,13 @@ class OrdenController extends Controller
 
         $idEmpresa = Session::get('idEmpresa');
 
-        $inmuebles = DB::table('LOOKUP')
-            ->where('LOO_IDLOOKUP', 1)
-            ->where('LOO_GRUPO', 1)
-            ->get();
 
         $cliente = DB::table('users')
           ->join('role_user', 'user_id', '=', 'users.id')
             ->where('role_id', 4)
+            ->get();
+
+        $inmueble = DB::table('INMUEBLES')
             ->get();
 
         $profesional = DB::table('users')
@@ -85,7 +84,7 @@ class OrdenController extends Controller
 
         $tipoOrden = DB::table('LOOKUP')->where('LOO_GRUPO', 1)->where('LOO_IDLOOKUP', 1)->select('LOO_IDLOOKUP', 'LOO_DESCRIPCION')->get();
         
-        return view('ordenes.create', compact('tipoOrden', 'inmuebles', 'cliente', 'profesional'));
+        return view('ordenes.create', compact('tipoOrden', 'inmueble', 'cliente', 'profesional'));
     }
 
     /**
@@ -139,21 +138,21 @@ class OrdenController extends Controller
 
         $fechaOrden = strftime('%Y-%B-%A %H:%M', strtotime($_POST['Fecha']));
 
-        $user = array('email'=>$persona->email, 'name'=>'eduardo');
-                      $data= array(
-                      'detail'    => 'Este mensaje es automático. Por favor no responder', 
-                      'costo'     => $_POST['costo'],
-                      'direccion' => $inmueble->INM_DIRECCION,
-                      'tipo'      => $tipo->LOO_DESCRIPCION,
-                      'fecha'     => $fechaOrden, 
-                      'name'      => $persona->name,
-                      'surname'   => $persona->USR_APELLIDOS);
+        // $user = array('email'=>$persona->email, 'name'=>'eduardo');
+        //               $data= array(
+        //               'detail'    => 'Este mensaje es automático. Por favor no responder', 
+        //               'costo'     => $_POST['costo'],
+        //               'direccion' => $inmueble->INM_DIRECCION,
+        //               'tipo'      => $tipo->LOO_DESCRIPCION,
+        //               'fecha'     => $fechaOrden, 
+        //               'name'      => $persona->name,
+        //               'surname'   => $persona->USR_APELLIDOS);
 
-        Mail::send('emails.nuevaOrden', $data, function ($message) use ($user)
-        {
-        $message->from('ordendeservicio@conciergeguru.com', Session::get('nombreEmpresa'));
-        $message->to($user['email'], $user['name'])->subject('Nueva orden de servicio');
-        });
+        // Mail::send('emails.nuevaOrden', $data, function ($message) use ($user)
+        // {
+        // $message->from('ordendeservicio@conciergeguru.com', Session::get('nombreEmpresa'));
+        // $message->to($user['email'], $user['name'])->subject('Nueva orden de servicio');
+        // });
 
         return redirect('/orden')->with('message', 'Orden creada con exito. Se ha enviado e-mail de confirmación');
     }
