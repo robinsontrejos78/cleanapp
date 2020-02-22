@@ -48,7 +48,7 @@
              <select name="persona" id="persona" class="form-control inmueble">
             <option value="">Seleccione opción</option>
               @foreach($cliente as $cli)   
-              <option value="{{ $cli->id }}">{{ $cli->name }} {{ $cli->USR_APELLIDOS }}</option>
+              <option value="{{ $cli->name }} {{ $cli->USR_APELLIDOS }}">{{ $cli->name }} {{ $cli->USR_APELLIDOS }}</option>
               @endforeach
              </select>
         </div>

@@ -51,10 +51,18 @@ class OrdenController extends Controller
             ->where('a.LOO_GRUPO', 1)
             ->where('b.LOO_GRUPO', 3)
             ->where('c.LOO_GRUPO', 2)
-            ->where('users.id', '=', 'ORD_USR_CLI')
             ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'INM_DIRECCION', 'a.LOO_DESCRIPCION as tipoorden', 'b.LOO_DESCRIPCION as tipoinmueble', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO')
             ->orderBy('ORD_FECHAORDEN', 'desc')
             ->get();
+
+       $ordencli = DB::table('users')
+            ->join('role_user', 'users.id', '=', 'user_id')
+            ->join('ORDEN_SERVICIOS', 'users.id', '=', 'ORD_USR_CLI')
+            ->where('role_id', 4)
+            ->select('users.name', 'USR_APELLIDOS')
+            ->get();
+
+           // dd($ordencli);
 
         return view('ordenes.index', compact('estadosO', 'personas', 'ordenServicio'));
     }

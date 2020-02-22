@@ -2,17 +2,10 @@
 
 @section('main-content')
 
-<section class="content-header" style="margin-bottom:30px">
-    <h1>Crear Empresa<small>Módulo Administrador</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="{{ url ('home') }}"><i class="fa fa-home"></i>Inicio</a></li>
-        <li class="active">Creación de Ciudades</li>
-    </ol>
-</section>
+
 
 @if (count($errors) > 0)
-	<div class="alert alert-danger">
+	<div class="alert alert-primary">
 	    <ul>
 	        @foreach ($errors->all() as $error)
 	            <li>{{ $error }}</li>
@@ -24,7 +17,7 @@
 <div class="row">
 
   <div class="col-md-12">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Crear Ciudad</h3>
@@ -35,11 +28,11 @@
 	    	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	        <div class="col-md-6">
 	        	<label for="nombreCiu" style="margin-top:20px">Ciudad</label>
-	        	<input type="text" class="form-control" id="nombreCiu" name="nombreCiu" placeholder="Nombre de la Ciudad" value="{{ old('nombreCiu') }}" onkeyup="this.value=this.value.toUpperCase();">
+	        	<input type="text" class="form-control" id="nombreCiu" name="nombreCiu" placeholder="Ciudad o Municipio" value="{{ old('nombreCiu') }}" onkeyup="this.value=this.value.toUpperCase();">
 	        </div>
 	        <div class="col-md-6">
-	        	<label for="nombrePais" style="margin-top:20px">Pais</label>
-	        	<input type="text" class="form-control" id="nombrePais" name="nombrePais" placeholder="Nombre del Pais" value="{{ old('nombrePais') }}" onkeyup="this.value=this.value.toUpperCase();">
+	        	<label for="nombrePais" style="margin-top:20px">Departamento</label>
+	        	<input type="text" class="form-control" id="nombrePais" name="nombrePais" placeholder="Depto" value="{{ old('nombrePais') }}" onkeyup="this.value=this.value.toUpperCase();">
 	        </div>	       
 	        <div class="col-md-1 col-md-offset-9" style="margin-top:30px">
 	        	<input type="submit" name="guardarEmpresa" value="Guardar" class="btn btn-success" data-toggle="tooltip" title="" data-container="body" data-original-title="Crear empresa">

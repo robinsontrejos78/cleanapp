@@ -3,17 +3,6 @@
 @section('main-content')
 <meta name="_token" content="{{ csrf_token() }}"/>
 
-<section class="content-header" style="margin-bottom:30px">
-    <h1>{{Session::get('nombreEmpresa')}} - Ciudades<small>Módulo Administrador</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="{{ url('home') }}"><i class="fa fa-home"></i>Inicio</a></li>
-        <li class="active">Administrar Ciudades</li>
-    </ol>
-</section>
-
-
-
 @if(Session::has('message'))
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
@@ -41,10 +30,10 @@
 
 <div class="row">
   <div class="col-xs-3">
-      <a href="{{ url('ciudad/create') }}"" class="btn btn-danger btn-flat">Agregar Ciudad</a>
+      <a href="{{ url('ciudad/create') }}" class="btn btn-primary btn-flat">Agregar Ciudad</a>
   </div><br><br>
   <div class="col-md-12">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Buscar Ciudades <span class="badge bg-teal"  data-toggle="tooltip" title="Puede filtrar la busqueda por Ciudad o Pais" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
@@ -53,11 +42,11 @@
       <div class="box-body">
         <div class="col-md-3">
           <label for="nombreCiu">Ciudad</label>
-          <input type="text" class="form-control" id="nombreCiu" placeholder="Nombre de la ciudad">
+          <input type="text" class="form-control" id="nombreCiu" placeholder="Ciudad o Municipio">
         </div>
         <div class="col-md-3">
-          <label for="nombrePais">Pais</label>
-          <input type="text" class="form-control" id="nombrePais" placeholder="Nombre del país">
+          <label for="nombrePais">Departamento</label>
+          <input type="text" class="form-control" id="nombrePais" placeholder="Depto">
         </div>
         
         <div class="col-md-3">
@@ -75,7 +64,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Lista de Ciudades y Paises</h3>
