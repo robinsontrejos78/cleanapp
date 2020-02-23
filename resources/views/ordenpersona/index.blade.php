@@ -15,7 +15,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Lista de Ordenes de Servicio</h3>
@@ -26,11 +26,12 @@
           <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoEmp">
             <thead>
                 <tr>
-                    <th class="centro">Propiedad</th>
+                    <th class="centro">Cliente</th>
+                    <th class="centro">Teléfono</th>
                     <th class="centro">Dirección</th>
                     <th class="centro">Fecha de la orden</th>
                     <!-- <th class="centro">Costo</th> -->
-                    <th class="centro">Huespedes</th>
+                    <!-- <th class="centro">Huespedes</th> -->
                     <th class="centro">Descripción</th>
                     <th class="centro">Acciones</th>
                 </tr>
@@ -38,11 +39,12 @@
             <tbody>
 				@foreach($ordenes as $orden)
 	          <tr style="text-align:center;">
-	              <td>{{ $orden->PRO_NOMBRE }}</td>
+                <td>{{ $orden->name }} {{ $orden->USR_APELLIDOS }}</td>
+                <td>{{ $orden->USR_TELEFONO }}</td>
 	              <td>{{ $orden->INM_DIRECCION }}</td>
 	              <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d / h:i') }}</td>
                 <!-- <td>{{ $orden->ORD_COSTO }}</td>    -->
-                <td>{{ $orden->ORD_HUESPEDES }}</td>   
+              <!--   <td>{{ $orden->ORD_HUESPEDES }}</td>    -->
                 <td>{{ $orden->ORD_DESCRIPCION }}</td>   
 	              <td class="centro">
                   <a href="comenzarOrden/{{$orden->ORD_IDORDEN}}" class="btn btn-success btn-xs">Comenzar</a>

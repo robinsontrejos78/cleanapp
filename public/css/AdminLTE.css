@@ -18,6 +18,49 @@ body {
 .layout-boxed body {
   height: 100%;
 }
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway";
+    font-weight: 300;
+    color: #333;
+}
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -944,7 +987,7 @@ a:focus {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  background-color: #ffffff;
+  background-color: #d7e7e8;
   padding: 7px 10px;
   border-bottom: 1px solid #f4f4f4;
   color: #444444;
@@ -2948,6 +2991,7 @@ table.text-center th {
  */
 .modal {
   background: rgba(0, 0, 0, 0.3);
+   
 }
 .modal-content {
   border-radius: 0;

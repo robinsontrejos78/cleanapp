@@ -58,12 +58,14 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url ('home') }}"><b>CLEANAPPS</b></a>
+           <!--  <a class="navbar-brand" href="{{ url ('home') }}"><b>CLEANAPPS</b></a> -->
         </div>
         <div class="navbar-collapse collapse">
     
             <ul class="nav navbar-nav navbar-right">
-
+            @if (Auth::guest())
+                    <h3><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></h3>
+                @endif<br>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -73,13 +75,13 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 
 <div class="modal modal-success fade" id="myModalinfo">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content" style="background-color:LIGHTSTEELBLUE">
         <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">CleanApps</h4>
+          <h3 class="modal-title">CleanApps</h3>
         </div>
-        <div class="modal-body">
+        <div class="modal-body"><b>
         <p>Es la mejor opción para ti?. Sí:</p>
             <ul>
               <li>Buscas una frecuencia de limpiezas definida (semanal o quincenal)</li>
@@ -107,7 +109,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             </ul>  
              <br>
         <div class="modal-footer">
-        </div>
+        </div></b>
       </div>
     </div>
   </div>

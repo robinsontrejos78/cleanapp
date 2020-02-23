@@ -2,17 +2,8 @@
 
 @section('main-content')
 
-<section class="content-header" style="margin-bottom:30px">
-    <h1>Editar Ciudades<small>Módulo Administrador</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="{{ url ('home') }}"><i class="fa fa-home"></i>Inicio</a></li>
-        <li class="active">Edicion de Ciudades</li>
-    </ol>
-</section>
-
 @if (count($errors) > 0)
-  <div class="alert alert-danger">
+  <div class="alert alert-primary">
       <ul>
           @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
@@ -24,7 +15,7 @@
 <div class="row">
 
   <div class="col-md-12">
-    <div class="box box-danger">
+    <div class="box box-blue">
 
       <div class="box-header with-border">
         <h3 class="box-title">Editar Ciudad</h3>

@@ -44,8 +44,9 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="col-md-6">
-           <label for="inmueble">Cliente</label>
-             <select name="nomcli" id="nombcli" class="form-control inmueble">
+           <label for="persona">Cliente</label>
+             <select name="persona" id="persona" class="form-control inmueble">
+            <option value="">Seleccione opción</option>
               @foreach($cliente as $cli)   
               <option value="{{ $cli->name }} {{ $cli->USR_APELLIDOS }}">{{ $cli->name }} {{ $cli->USR_APELLIDOS }}</option>
               @endforeach
@@ -54,17 +55,17 @@
 
         <div class="col-md-6">
           <label for="inmueble">Dirección</label>
-          <select name="inmueble" id="inmueble" class="form-control inmueble">
+          <select name="inmueble" id="inmueble" class="form-control tipoOrden" >
             <option value="">Seleccione opción</option>
-             @foreach($cliente as $cli)   
-              <option value="{{ $cli->USR_DIRECCION }}">{{ $cli->USR_DIRECCION }} </option>
+            @foreach($inmueble as $inm)
+              <option value="{{ $inm->INM_IDINMUEBLE }}">{{ $inm->INM_DIRECCION }} </option>
             @endforeach
           </select>
         </div>
 
         <div class="col-md-6">
           <label for="tipoOrden">Tipo de Orden</label>
-          <select name="tipoOrden" id="" class="form-control tipoOrden" data-ruta="../selectTipoper">
+          <select name="tipoOrden" id="tipoOrden" class="form-control tipoOrden">
             <option value="">Seleccione opción</option>
             @foreach($tipoOrden as $tipo)
               <option value="{{ $tipo->LOO_IDLOOKUP }}">{{ $tipo->LOO_DESCRIPCION }}</option>
@@ -73,11 +74,11 @@
         </div>
         
       <div class="col-md-6">
-          <label for="tipoOrden">Profesional</label>
-          <select name="tipoOrden" id="" class="form-control tipoOrden" data-ruta="../selectTipoper">
+          <label for="profesional">Profesional</label>
+          <select name="profesional" id="profesional" class="form-control tipoOrden" >
             <option value="">Seleccione opción</option>
             @foreach($profesional as $prof)
-              <option value="{{ $prof->PRO_nombresprof }} {{ $prof->PRO_apellidosprof }}">{{ $prof->PRO_nombresprof }} {{ $prof->PRO_apellidosprof }}</option>
+              <option value="{{ $prof->id }}">{{ $prof->name }} {{ $prof->USR_APELLIDOS }}</option>
             @endforeach
           </select>
         </div>
@@ -85,12 +86,12 @@
         
         <div class="col-md-6">
           <label for="Fecha">Fecha</label>
-          <input type="datetime-local" name="Fecha" class="form-control" value="{{ old('Fecha') }}">
+          <input type="datetime-local" name="Fecha" class="form-control" >
         </div>
 
          <div class="col-md-6">
           <label for="costo">Costo</label>
-          <input type="number" name="costo" class="form-control" value="{{ old('costo') }}">
+          <input type="number" name="costo" class="form-control" >
         </div>
 
        

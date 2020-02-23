@@ -28,14 +28,15 @@ class OrdenpersonaController extends Controller
         if (!Auth::user()->hasRole('Profesional')) abort(403);
 
         $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+        //dd($idPersona);
 
         $ordenes = DB::table('ORDEN_SERVICIOS')
             ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
             ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+            ->join('users', 'ORD_USR_CLI', '=', 'users.id')
             ->where('ORD_USR_ID', $idPersona)
             ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
             ->get();
-
         return view('ordenpersona.index', compact('ordenes'));
     }
 
