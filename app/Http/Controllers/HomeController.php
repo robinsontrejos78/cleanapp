@@ -70,6 +70,7 @@ class HomeController extends Controller
 
            $profesionales = DB::table("PROFESIONALES")
                 ->select('PRO_nombresprof','PRO_apellidosprof','PRO_numdocprof','id','PRO_foto')
+                ->take(5)
                 ->get();
 
                 return view('home', compact('profesionales'));

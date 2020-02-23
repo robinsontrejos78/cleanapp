@@ -1144,4 +1144,3 @@ $(document).on('click', '.finished', function(event){
 function verDispProf(id){
   location.href = 'visualizarAgenda/'+id+'/edit';
 }
-

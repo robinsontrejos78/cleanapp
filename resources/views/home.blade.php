@@ -154,28 +154,13 @@
 
 
 @if(Auth::user()->hasRole('Cliente'))
-  <div class="container">
-    <div class="row" >
-      <div class="col-sm-6 col-md-3"></div>
-      <div class="col-sm-6 col-md-6" >
-        <div class="thumbnail">
+  <form>
+    <div class="container">
+      <div class="row" >
+        <div class="col-sm-6 col-md-3"></div>
+        <div class="col-sm-6 col-md-6" >
+          <div class="thumbnail"> 
 
-
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="true">Contact</a>
-          </li>
-        </ul>
-
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade active in" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-      
             <div class="row">  
               <div class="col-md-12">
                 <div class="box box-primary">
@@ -186,21 +171,32 @@
                       <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
                         <thead>
                           <tr>
-                            <th class="centro"></th>
+                            <th class="centro"> 
+                              Seleccione el plan
+                            </th>
                           </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                            <th class="centro">PLAN 1 (2) HORAS $22.000</th>
-                          </tr>
                           <tr>
-                            <th class="centro">PLAN 2 (4) HORAS $35.000</th>
+                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 1 (2) HORAS $22.000</button></th>
                           </tr>
+
                           <tr>
-                            <th class="centro">PLAN 3 (6) HORAS $48.000</th>
+                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 2 (4) HORAS $35.000</button></th>
                           </tr>
+
                           <tr>
-                            <th class="centro">PLAN 4 (8) HORAS $60.000</th>
+                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 3 (6) HORAS $48.000</button></th>
+                          </tr>
+
+                          <tr>
+                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 4 (8) HORAS $60.000</button></th>
+                          </tr>
+                       
+                            </div>
+                          </div>
+                        </div>
                           </tr>
                         </tbody>
                       </table>
@@ -212,34 +208,59 @@
               </div>
             </div>
 
-          </div>
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-      
+         
 
           <div class="row">  
             <div class="col-md-12">
               <div class="box box-primary">
-                <div class="box-header with-border">
+                <div cla
+                ss="box-header with-border">
                 </div>
                 <div class="box-body">
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
                       <thead>
-                        <tr>
-                          <th class="centro">PLAN #</th>
-                        </tr>
+                          <div class="form-group col-md-6">
+                            <label >plan 1</label>
+                          </div>
+                          
+                          <div class="form-group col-md-6">
+                            <label >$22.000</label>
+                          </div>
                       </thead>
                       <tbody>
-                          <tr>
-                          <th class="centro">ANEXO</th>
-                          <TEXTAREA></TEXTAREA>
-                        </tr>
-                        <tr>
-                          <th class="centro">Adicional 1</th>
-                        </tr>
-                        <tr>
-                          <th class="centro">Adicional 2</th>
-                        </tr>
+
+
+                          
+                        
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">ANEXO</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                            <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Adicional 1</label>
+                          </div>
+                            <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Adicional 2</label>
+                          </div>
+                          
+                          
+
+                          <div class="form-group col-md-6">
+                            <label >
+                              <button type="button" class="btn btn-primary">Atrás</button>
+                            </label>
+                          </div>
+
+                          <div class="form-group col-md-6">
+                            <label >
+                              <button type="button" class="btn btn-primary">Siguiente</button>
+                            </label>
+                          </div>
+                        
+                        
                       </tbody>
                     </table>
                   </div>
@@ -250,8 +271,6 @@
             </div>
           </div>
 
-          </div>
-          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
       
           <div class="row">  
             <div class="col-md-12">
@@ -261,24 +280,73 @@
                 <div class="box-body">
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
-                      <thead>
-                        <tr>
-                          <th class="centro">Titulo</th>
-                        </tr>
-                      </thead>
+                      <thead></thead>
+
                       <tbody>
-                          <tr>
-                          <th class="centro">Fecha del Servicio</th>
-                        </tr>
-                        <tr>
-                          <th class="centro">Fecha del Servicio</th>
-                        </tr>
-                        <tr>
-                          <th class="centro">Fecha del Servicio</th>
-                        </tr>
+                        <div class="form-group col-md-12">
+                          <label for="calendar">Calendario</label>
+                            <input type="datetime-local" name="Fecha" class="form-control" value="{{ old('Fecha') }}">
+                        </div>
+
+                        <div class="form-group  col-md-12">
+                          <label for="exampleFormControlInput1">Hora</label>
+                          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="--:--">
+                        </div>
+
+                        <div class="form-group  col-md-12">
+                          <label for="InputDireccion">Direccion</label>
+                          <input type="text" class="form-control" id="InputDireccion" placeholder="">
+                        </div>
+
+                       
+
+                        <div class="form-group col-md-6">
+                          <label >
+                            <button type="button" class="btn btn-primary">Atrás</button>
+                          </label>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                          <label >
+                            <button type="button" class="btn btn-primary">Siguiente</button>
+                          </label>
+                        </div>
                       </tbody>
+
                     </table>
                   </div>
+                </div>
+                <div class="box-footer">
+                </div>   
+              </div>
+            </div>
+          </div>
+
+          <div class="row">  
+            <div class="col-md-12">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                </div>
+                <div class="box-body">
+                  
+                    
+                      <div class="row" >
+                        @foreach($profesionales as $profesional)
+                        <div class="col-sm-12 col-md-12" >
+                          <div class="thumbnail">
+                            <img src="{{ asset ($profesional->PRO_foto)}}" alt="...">
+                            <div class="caption">
+                              <h3>{{$profesional->PRO_nombresprof}} {{$profesional->PRO_apellidosprof}}</h3>
+                              <p>
+                                <a class="btn btn-default" onclick="verDispProf({{$profesional->id}})" role="button">Ver disponibilidad</a>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        @endforeach
+                      </div>
+                    
+
                 </div>
                 <div class="box-footer">
                 </div>   
@@ -288,37 +356,15 @@
 
         </div>
       </div>
-
-          
-  
-
 
         </div>
       </div>
       <div class="col-sm-6 col-md-3"></div>
     </div>
   </div>
+</form>
 
 
-  
-
- <!--  <div class="container">
-    <div class="row" >
-      @foreach($profesionales as $profesional)
-      <div class="col-sm-6 col-md-3" >
-        <div class="thumbnail">
-          <img src="{{ asset ($profesional->PRO_foto)}}" alt="...">
-          <div class="caption">
-            <h3>{{$profesional->PRO_nombresprof}} {{$profesional->PRO_apellidosprof}}</h3>
-            <p>
-              <a class="btn btn-default" onclick="verDispProf({{$profesional->id}})" role="button">Ver disponibilidad</a>
-            </p>
-          </div>
-        </div>
-      </div>
-      @endforeach
-    </div>
-  </div> -->
 
 @endif
 
