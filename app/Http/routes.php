@@ -56,6 +56,8 @@ Route::post('inscripcionprof', 'formularioController@createprof');
 //Buscador de usuarios ajax
 Route::post('buscarUsu', 'UserController@buscarUsuario');
 
+Route::post('descartarregistro', 'formularioController@descartarins');
+
 //Buscar datos de profesional que se inscribio en la plataforma
 Route::post('buscarprof', 'formularioController@mostrardatosprof');
 
