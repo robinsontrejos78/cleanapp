@@ -15,7 +15,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Lista de Ordenes de Servicio</h3>
@@ -27,7 +27,7 @@
             <thead>
                 <tr>
                     <th class="centro">Cliente</th>
-                    <th class="centro">Propiedad</th>
+                    <th class="centro">Teléfono</th>
                     <th class="centro">Dirección</th>
                     <th class="centro">Fecha de la orden</th>
                     <!-- <th class="centro">Costo</th> -->
@@ -39,8 +39,8 @@
             <tbody>
 				@foreach($ordenes as $orden)
 	          <tr style="text-align:center;">
-                <td>{{ $orden->ORD_USR_CLI }}</td>
-	              <td>{{ $orden->PRO_NOMBRE }}</td>
+                <td>{{ $orden->name }} {{ $orden->USR_APELLIDOS }}</td>
+                <td>{{ $orden->USR_TELEFONO }}</td>
 	              <td>{{ $orden->INM_DIRECCION }}</td>
 	              <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d / h:i') }}</td>
                 <!-- <td>{{ $orden->ORD_COSTO }}</td>    -->
