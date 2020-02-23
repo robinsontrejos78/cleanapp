@@ -144,22 +144,11 @@
       <div class="col-sm-6 col-md-6" >
         <div class="thumbnail">
 
+          
 
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
-          </li>
-          <li class="nav-item" >
-            <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="true">Contact</a>
-          </li>
-        </ul>
-
-        <div class="tab-content" id="pills-tabContent">
-          <div class="tab-pane fade active in" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-      
+        
+            
+            <form>
             <div class="row">  
               <div class="col-md-12">
                 <div class="box box-primary">
@@ -174,17 +163,31 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th class="centro">PLAN 1 (2) HORAS $22.000</th>
+
+                          <div class="form-group col-md-6">
+                            <label >plan 1</label>
+                          </div>
+                          
+                          <div class="form-group col-md-6">
+                            <label >$22.000</label>
+                          </div>
+
+                          <tr>
+                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 1 (2) HORAS $22.000</button></th>
                           </tr>
                           <tr>
-                            <th class="centro">PLAN 2 (4) HORAS $35.000</th>
+                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 2 (4) HORAS $35.000</button></th>
                           </tr>
                           <tr>
-                            <th class="centro">PLAN 3 (6) HORAS $48.000</th>
+                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 3 (6) HORAS $48.000</button></th>
                           </tr>
                           <tr>
-                            <th class="centro">PLAN 4 (8) HORAS $60.000</th>
+                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 4 (8) HORAS $60.000</button></th>
+
+                       
+                            </div>
+                          </div>
+                        </div>
                           </tr>
                         </tbody>
                       </table>
@@ -196,34 +199,41 @@
               </div>
             </div>
 
-          </div>
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-      
+         
 
           <div class="row">  
             <div class="col-md-12">
               <div class="box box-primary">
-                <div class="box-header with-border">
+                <div cla
+                ss="box-header with-border">
                 </div>
                 <div class="box-body">
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
-                      <thead>
-                        <tr>
-                          <th class="centro">PLAN #</th>
-                        </tr>
-                      </thead>
+                      <thead>PLAN 1 $22.000</thead>
                       <tbody>
-                          <tr>
-                          <th class="centro">ANEXO</th>
-                          <TEXTAREA></TEXTAREA>
-                        </tr>
-                        <tr>
-                          <th class="centro">Adicional 1</th>
-                        </tr>
-                        <tr>
-                          <th class="centro">Adicional 2</th>
-                        </tr>
+
+
+                          
+                        
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">ANEXO</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                            <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Adicional 1</label>
+                          </div>
+                            <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Adicional 2</label>
+                          </div>
+                          
+                          <button type="button" class="btn btn-primary">Atrás</button>
+                          <button type="button" class="btn btn-primary">Siguiente</button>
+
+                        
+                        
                       </tbody>
                     </table>
                   </div>
@@ -234,8 +244,7 @@
             </div>
           </div>
 
-          </div>
-          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      
       
           <div class="row">  
             <div class="col-md-12">
@@ -245,21 +254,62 @@
                 <div class="box-body">
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
-                      <thead>
-                        <tr>
-                          <th class="centro">Titulo</th>
-                        </tr>
-                      </thead>
+                      <thead>                        </thead>
                       <tbody>
-                          <tr>
-                          <th class="centro">Fecha del Servicio</th>
-                        </tr>
-                        <tr>
-                          <th class="centro">Fecha del Servicio</th>
-                        </tr>
-                        <tr>
-                          <th class="centro">Fecha del Servicio</th>
-                        </tr>
+
+                        <div class="form-group col-md-12">
+                          <label for="calendar">Calendario</label>
+                            <input type="datetime-local" name="Fecha" class="form-control" value="{{ old('Fecha') }}">
+                        </div>
+
+                        <div class="form-group  col-md-12">
+                          <label for="exampleFormControlInput1">Hora</label>
+                          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="--:--">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Email address</label>
+                          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Example select</label>
+                          <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect2">Example multiple select</label>
+                          <select multiple class="form-control" id="exampleFormControlSelect2">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Example textarea</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+
+                        </form>     
                       </tbody>
                     </table>
                   </div>
@@ -272,10 +322,6 @@
 
         </div>
       </div>
-
-          
-  
-
 
         </div>
       </div>
@@ -283,10 +329,7 @@
     </div>
   </div>
 
-
-  
-
- <!--  <div class="container">
+  <div class="container">
     <div class="row" >
       @foreach($profesionales as $profesional)
       <div class="col-sm-6 col-md-3" >
@@ -302,7 +345,7 @@
       </div>
       @endforeach
     </div>
-  </div> -->
+  </div>
 
 @endif
 
