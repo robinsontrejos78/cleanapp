@@ -12,7 +12,7 @@
 <div class="example-modal">
   <div class="modal modal-default" id="imagenmodal">
     <div class="modal-dialog modal-sm">
-      <div style="background-color:lightblue">
+      <div class="modal-content" style="background-color:lightblue">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span></button>
