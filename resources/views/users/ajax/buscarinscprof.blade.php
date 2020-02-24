@@ -25,6 +25,7 @@
     <th class="centro">Parentesco</th>
     <th class="centro">Ciudad</th>
     <th class="centro">Teléfono</th>
+    <th class="centro">Acción</th>
   </tr>
 </thead>
 <tbody>
@@ -59,6 +60,10 @@
       <td>{{ $res->PRO_parentrefcoma }}</td>
       <td>{{ $res->PRO_citicoma }}</td>
       <td>{{ $res->PRO_telrefcoma }}</td>
+      <td class="centro">
+        <a class="btn active btn-danger" id="descartar" data-id="{{ $res->id }}" role="button" data-toggle="tooltip" data-placement="top" data-original-title="Descartar Inscripción" data-container="body"><span class="glyphicon glyphicon-remove"></span></a>
+      </td>
+ 
  </tr>
 
 

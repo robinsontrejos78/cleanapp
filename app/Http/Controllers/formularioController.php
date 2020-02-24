@@ -154,6 +154,22 @@ class formularioController extends Controller
            }
     }
 
+
+    public function descartarins()
+    {
+      if (!Auth::user()->hasRole('Administrador')) abort(403);
+       $idEmpresa = Session::get('idEmpresa');
+
+         $data  = $_POST['data'];
+
+
+// dd($data);
+      DB::table('PROFESIONALES')
+            ->where('id',$data)
+            ->update(['PRO_estado' => 1]);
+     
+    return with("Se ha descartado la inscripción");
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -168,9 +184,6 @@ class formularioController extends Controller
 
      
     return with($s_nombres);
-               // return view('ventas.ajax.buscar', compact('datos', 'validar','Saldo'));
-
- 
     }
     
      public function mostrarprof()
@@ -180,7 +193,7 @@ class formularioController extends Controller
        $idEmpresa = Session::get('idEmpresa');
 
 
-  $contador = DB::select('select COUNT(PRO_numdocprof) as total FROM PROFESIONALES as t1 WHERE NOT EXISTS (SELECT NULL FROM users as t2 WHERE t2.USR_DOCUMENTO = t1.PRO_numdocprof)');
+  $contador = DB::select('select COUNT(PRO_numdocprof) as total FROM PROFESIONALES as t1 where PRO_estado = 0 and NOT EXISTS (SELECT NULL FROM users as t2 WHERE t2.USR_DOCUMENTO = t1.PRO_numdocprof)');
               
        return view('users.mostrarprof', compact('contador'));
     }
