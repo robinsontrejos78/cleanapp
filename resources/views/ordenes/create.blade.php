@@ -73,7 +73,7 @@
           </select>
         </div>
         
-      <div class="col-md-6">
+        <div class="col-md-6">
           <label for="profesional">Profesional</label>
           <select name="profesional" id="profesional" class="form-control tipoOrden" >
             <option value="">Seleccione opción</option>
@@ -93,14 +93,11 @@
           <label for="costo">Costo</label>
           <input type="number" name="costo" class="form-control" >
         </div>
-
        
         <div class="col-md-6">
           <label for="ordDesc">Descripción</label>
           <textarea name="ordDesc" rows="4" class="form-control" style="margin-top:5px">{{ old('ordDesc')}}</textarea>
         </div>
-
-       
 
         <div id="vacio">
           
