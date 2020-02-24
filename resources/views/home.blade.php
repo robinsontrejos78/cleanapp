@@ -166,20 +166,22 @@
 
                         <tbody>
                           <tr>
-                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 1 (2) HORAS $22.000</button></th>
+                            <th class="centro"><button type="button" class="btn btn-primary" onClick="selecPlan(1)">PLAN 1 (2) HORAS $22.000</button></th>
                           </tr>
 
                           <tr>
-                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 2 (4) HORAS $35.000</button></th>
+                            <th class="centro"><button type="button" class="btn btn-primary" onClick="selecPlan(2)">PLAN 2 (4) HORAS $35.000</button></th>
                           </tr>
 
                           <tr>
-                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 3 (6) HORAS $48.000</button></th>
+                            <th class="centro"><button type="button" class="btn btn-primary" onClick="selecPlan(3)">PLAN 3 (6) HORAS $48.000</button></th>
                           </tr>
 
-                          <tr>
-                            <th class="centro"><button type="button" class="btn btn-primary">PLAN 4 (8) HORAS $60.000</button></th>
+                          <tr>  
+                            <th class="centro"><button type="button" class="btn btn-primary" onClick="selecPlan(4)">PLAN 4 (8) HORAS $60.000</button></th>
                           </tr>
+
+                            <input type="text" id="valSelectado">
                        
                             </div>
                           </div>
@@ -207,6 +209,8 @@
                   <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
                       <thead>
+
+                        <div class="row">                        
                           <div class="form-group col-md-6">
                             <label >plan 1</label>
                           </div>
@@ -214,39 +218,36 @@
                           <div class="form-group col-md-6">
                             <label >$22.000</label>
                           </div>
+                        </div>
+
                       </thead>
+
                       <tbody>
-
-
-                          
                         
-                          <div class="form-group">
-                            <label for="exampleFormControlTextarea1">ANEXO</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                          </div>
-                            <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Adicional 1</label>
-                          </div>
-                            <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Adicional 2</label>
-                          </div>
-                          
-                          
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">ANEXO</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Adicional 1</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Adicional 2</label>
+                        </div>
 
-                          <div class="form-group col-md-6">
-                            <label >
-                              <button type="button" class="btn btn-primary">Atrás</button>
-                            </label>
-                          </div>
+                        <div class="form-group col-md-6">
+                          <label>
+                            <button type="button" class="btn btn-primary">Atrás</button>
+                          </label>
+                        </div>
 
-                          <div class="form-group col-md-6">
-                            <label >
-                              <button type="button" class="btn btn-primary">Siguiente</button>
-                            </label>
-                          </div>
-                        
+                        <div class="form-group col-md-6">
+                          <label >
+                            <button type="button" class="btn btn-primary">Siguiente</button>
+                          </label>
+                        </div>
                         
                       </tbody>
                     </table>
@@ -272,6 +273,7 @@
                       <tbody>
                         <div class="form-group col-md-12">
                           <label for="calendar">Calendario</label>
+                            <div id='calendar' style="margin:2% auto;"></div>
                             <input type="datetime-local" name="Fecha" class="form-control" value="{{ old('Fecha') }}">
                         </div>
 
@@ -284,8 +286,6 @@
                           <label for="InputDireccion">Direccion</label>
                           <input type="text" class="form-control" id="InputDireccion" placeholder="">
                         </div>
-
-                       
 
                         <div class="form-group col-md-6">
                           <label >
@@ -315,11 +315,11 @@
                 <div class="box-header with-border">
                 </div>
                 <div class="box-body">
-                  
                     
+                      @foreach($profesionales as $profesional)
                       <div class="row" >
-                        @foreach($profesionales as $profesional)
-                        <div class="col-sm-12 col-md-12" >
+                        <div class="col-sm-1 col-md-3"></div>
+                        <div class="col-sm-9 col-md-6" >
                           <div class="thumbnail">
                             <img src="{{ asset ($profesional->PRO_foto)}}" alt="...">
                             <div class="caption">
@@ -330,9 +330,9 @@
                             </div>
                           </div>
                         </div>
-                        @endforeach
+                        <div class="col-sm-3 col-md-3"></div>
                       </div>
-                    
+                      @endforeach
 
                 </div>
                 <div class="box-footer">
@@ -351,7 +351,7 @@
   </div>
 </form>
 
-
+<script src="{{ asset('js/fullCalendarv4.js') }}"></script>
 
 @endif
 

@@ -1184,3 +1184,9 @@ $(document).on('click', '.finished', function(event){
 function verDispProf(id){
   location.href = 'visualizarAgenda/'+id+'/edit';
 }
+
+
+function selecPlan(plan){
+    
+    $('#valSelectado').val(plan);
+}
