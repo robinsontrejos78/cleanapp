@@ -30,8 +30,6 @@
                     <th class="centro">Teléfono</th>
                     <th class="centro">Dirección</th>
                     <th class="centro">Fecha de la orden</th>
-                    <!-- <th class="centro">Costo</th> -->
-                    <!-- <th class="centro">Huespedes</th> -->
                     <th class="centro">Descripción</th>
                     <th class="centro">Acciones</th>
                 </tr>
@@ -43,8 +41,6 @@
                 <td>{{ $orden->USR_TELEFONO }}</td>
 	              <td>{{ $orden->INM_DIRECCION }}</td>
 	              <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d / h:i') }}</td>
-                <!-- <td>{{ $orden->ORD_COSTO }}</td>    -->
-              <!--   <td>{{ $orden->ORD_HUESPEDES }}</td>    -->
                 <td>{{ $orden->ORD_DESCRIPCION }}</td>   
 	              <td class="centro">
                   <a href="comenzarOrden/{{$orden->ORD_IDORDEN}}" class="btn btn-success btn-xs">Comenzar</a>

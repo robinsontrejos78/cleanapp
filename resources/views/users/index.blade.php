@@ -54,7 +54,7 @@
 
 <div class="row">
   <div class="col-xs-3">
-    <a href="{{ url('user/create') }}"" class="btn btn-danger btn-flat">Agregar Usuario</a>
+    <a href="{{ url('user/create') }}" class="btn btn-danger btn-flat">Agregar Usuario</a>
   </div><br><br>
 
   <div class="col-md-12">

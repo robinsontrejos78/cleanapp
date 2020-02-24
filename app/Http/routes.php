@@ -179,11 +179,18 @@ Route::post('anularOrden', 'OrdenController@anularOrdenes');
 //Comenzar orden de trabajo
 Route::get('comenzarOrden/{idorden}', 'OrdenpersonaController@comenzarOrden');
 
+//Comenzar orden de trabajo
+Route::get('iniciarOrden/{idorden}', 'OrdenpersonaController@comenzarOrden');
+
 //Guardar evidencia de mantenimiento
 Route::post('guardarEvidencia', 'OrdenpersonaController@guardarEvidencias');
 
 //ruta para finalizar ordenes de servicio
 Route::get('finalizarOrden/{idor}', 'OrdenpersonaController@finalizarOrdenes');
+
+//ruta para finalizar ordenes de servicio
+Route::post('calificar', 'OrdenpersonaController@calificarorden');
+
 
 //buscar ciudad
 Route::post('buscarCiu', 'CiudadController@buscarCiudad');

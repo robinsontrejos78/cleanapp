@@ -480,7 +480,7 @@ $(document).on('click', '#busreporte', function(){
 
 });
 
-//Buscador de Ordenes Módulo Administrador----------------------------------------------------------------------------------------------------------
+//descartar inscripciones de profesionales desde el Módulo Administrador----------------------------------------------------------------------------------------------------------
 $(document).on('click', '#descartar', function(){
     
     var data  = $(this).attr('data-id');
@@ -512,6 +512,46 @@ $(document).on('click', '#descartar', function(){
         }
     });
 });
+
+
+//finalizar la orden de servicio con su respectiva calificación----------------------------------------------------------------------------------------------------------
+$(document).on('click', '#finalizar', function(){
+    
+    var calif     = $('input[name=estrellas]:checked', '#formulario').val();
+    var obser     = $('#obser').val();
+    var dataord   = $('#orden').val();
+    var dataruta  = $('#cliente').val();
+
+    
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type : 'POST',
+        url : 'calificar',
+        data : { calif : calif, obser : obser, dataord : dataord, dataruta : dataruta},
+        beforeSend: function(){
+            var dim = $('#dimmer');
+            dim.css("display", "block");
+        },
+        complete:function(){
+            var dim = $('#dimmer');
+            dim.css("display", "none");
+        },
+        success: function(data){
+            swal(data);
+            //  window.location.reload(true);
+        },
+        error: function(){
+            $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');
+        }
+    });
+});
+
+
 
 //Buscador de Persona Módulo Administrador--------------------------------------------------------------------------------------------------------
 $(document).on('click', '#buscarPer', function(){
