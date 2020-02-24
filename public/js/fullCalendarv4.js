@@ -1,7 +1,10 @@
+	
+
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
 
 		var calendar = new FullCalendar.Calendar(calendarEl, {
+			height: 455,
 			plugins: ['dayGrid', 'interaction','timeGrid','list'],
 			// defaultView:'timeGridDay'
 			header:{
@@ -17,25 +20,28 @@
 			// 	}
 			// },
 			eventClick:function(info){
-				console.log(info.event.title);
-				console.log(info.event.start);
-				console.log(info.event.extendedProps.descripcion);
+				// console.log(info.event.title);
+				// console.log(info.event.start);
+				// console.log(info.event.extendedProps.descripcion);
+				// $('#calendar').fullCalendar('removeEvents', function (calEvent) {
+			 //        return true;
+			 //    });
 
 			},
 			dateClick:function(info){
-				$('#ModalOrdenservicio').modal('toggle');
-				calendar.addEvent({ title:"Evento x", date:info.dateStr });
-			},
-			events:[
-			{
-				title:"Mi evento 1",
-				start: "2020-02-16 12:30:00",
-				descripcion: "la descripcion"
-			},
-			{
-				title:"Mi evento 2",
-				start: "2020-02-16 12:30:00"
-			}]
+				// $('#calendar').fullCalendar('removeEvents');
+				// alert(info.date);
+				// console.log(info);
+				$('#fechaAsig').val(info.dateStr);
+				// calendar.addEvent({ title:"Evento x", date:info.dateStr });
+			}
+			,
+			// events:[
+			// {
+			// 	title:"Mi evento 1",
+			// 	start: "2020-02-16 12:30:00",
+			// 	descripcion: "la descripcion"
+			// }]
 		});
 		calendar.setOption('locale','Es');
 

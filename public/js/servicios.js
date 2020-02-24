@@ -1149,4 +1149,21 @@ function verDispProf(id){
 function selecPlan(plan){
     
     $('#valSelectado').val(plan);
+    $('#etiqPlanSel').html('<label>plan '+plan+'</label> ');
+    var valPlansel='';
+    if (plan==1){
+        valPlansel='$22.000'
+    }
+    if (plan==2){
+        valPlansel='$35.000'
+    }
+    if (plan==3){
+        valPlansel='$48.000'
+    }
+    if (plan==4){
+        valPlansel='$60.000'
+    }
+    $('#valplanSel').html('<label>'+valPlansel+'</label> ');
+    
+    // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
