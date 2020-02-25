@@ -1,3 +1,9 @@
+/////////////////////////////variables globales
+
+var valPlansel='0';
+var horasplan='0';
+
+
 //Buscador de empresas Módulo SuperAdmin
 $(document).on('click', '#buscarEmp', function(){
     var s_nombreEmpresa     = $('#nombreEmp').val();
@@ -1150,20 +1156,124 @@ function selecPlan(plan){
     
     $('#valSelectado').val(plan);
     $('#etiqPlanSel').html('<label>plan '+plan+'</label> ');
-    var valPlansel='';
+    
     if (plan==1){
-        valPlansel='$22.000'
+        valPlansel=22000;
+        horasplan=2;
     }
     if (plan==2){
-        valPlansel='$35.000'
+        valPlansel=35000;
+        horasplan=4;
     }
     if (plan==3){
-        valPlansel='$48.000'
+        valPlansel=48000;
+        horasplan=6;
     }
     if (plan==4){
-        valPlansel='$60.000'
+        valPlansel=60000;
+        horasplan=8;
     }
-    $('#valplanSel').html('<label>'+valPlansel+'</label> ');
+
+
+    $('#valplanSel').html('<label>$'+valPlansel+'</label> ');
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
+
+$(document).on('change','#CheckAdicional1',function(){
+    calcAdicionales();
+});
+$(document).on('change','#CheckAdicional2',function(){
+    calcAdicionales();
+});
+
+function calcAdicionales(adicional){
+
+    valPlanseladi=valPlansel;
+
+    if(CheckAdicional1.checked==true && CheckAdicional2.checked==true){
+        valPlanseladi=valPlanseladi+30000;
+    }
+    if(CheckAdicional1.checked==true && CheckAdicional2.checked==false){
+        valPlanseladi=valPlanseladi+15000;
+    }
+    if(CheckAdicional1.checked==false && CheckAdicional2.checked==true){
+        valPlanseladi=valPlanseladi+15000;
+    }
+
+    $('#valplanSel').html('<label>$'+valPlanseladi+'</label> ');
+}
+
+function ClientGuardaOrden(idProfesional){
+
+     $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    var f = new Date();
+
+    horaInicial=$('#inputHoras').val();
+    horafin=(parseInt(horaInicial.substring(0,2))+horasplan)+horaInicial.substring(2,5);
+
+    var dd=f.getDate();
+    var mm=f.getMonth()+1;
+
+    if (dd<10){
+        dd='0'+dd;
+    }
+    if (mm<10){
+        mm='0'+mm;
+    }
+
+
+    inmueble=$('#InputDireccion').val()
+    empresa=1
+    usuarioId=idProfesional
+    estadoOrden=1
+    fechaOrden=f.getFullYear()+'-'+mm+'-'+dd+'T00:00:00'
+    inicioOrden=$('#fechaAsig').val()+'T'+ horaInicial+':00'
+    finOrden=$('#fechaAsig').val()+'T'+ horafin+':00'
+    tipoOrden=1
+    cliente=$('#idcliente').val()
+
+
+
+    $.ajax({
+        type: 'POST',
+        url: '../agergarItem',
+        data: {inmueble:inmueble,empresa:empresa,usuarioId:usuarioId,cliente:cliente,estadoOrden:estadoOrden,fechaOrden:fechaOrden,inicioOrden:inicioOrden,finOrden:finOrden,tipoOrden:tipoOrden},
+       
+        beforeSend: function(){
+            // var dim = $('#dimmer');
+            // dim.css("display", "block");
+        },
+        complete:function(){
+            // var dim = $('#dimmer');
+            // dim.css("display", "none");
+        },
+        success: function(){
+            swal("orden guardada con exito!", "Oprima OK para continuar!", "success");
+            // $(":file").filestyle('clear');
+            // $('#preview').removeAttr('src');
+            // $('#descripcion').val('');
+            // data_Imagen=null;
+            // window.location.reload(true);
+        },
+        error: function(){
+            swal("Error al guardar la Evidencia!", "Intente de nuevo!", "error");
+        }
+    });
+    
+}
+
+
+
+
+
+
+
+
+
+

@@ -195,6 +195,7 @@
                           </tr>
 
                             <input type="text" id="valSelectado">
+                            <input type="text" id="idcliente" value="{{ auth::user()->id }}">
                        
                             </div>
                           </div>
@@ -240,11 +241,11 @@
                           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <input type="checkbox" class="form-check-input" id="CheckAdicional1">
                           <label class="form-check-label" for="exampleCheck1">Adicional 1</label>
                         </div>
                         <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                          <input type="checkbox" class="form-check-input" id="CheckAdicional2">
                           <label class="form-check-label" for="exampleCheck2">Adicional 2</label>
                         </div>
 
@@ -293,13 +294,18 @@
                         </div>
 
                         <div class="form-group  col-md-6 col-xs-5">
-                          <label for="exampleFormControlInput1">Hora</label>
-                          <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="--:--">
+                          <label for="inputHoras">Hora</label>
+                          <input type="time" class="form-control" id="inputHoras" placeholder="--:--">
                         </div>
 
-                        <div class="form-group  col-md-12">
-                          <label for="InputDireccion">Direccion</label>
-                          <input type="text" class="form-control" id="InputDireccion" placeholder="">
+                        <div class="form-group col-xs-12">
+                          <h4>Direccion</h4>
+                          <select name="InputDireccion" id="InputDireccion" class="form-control">
+                            <option value="">Seleccione...</option>
+                            @foreach($inmuebles as $inmueble)
+                              <option value="{{ $inmueble->INM_IDINMUEBLE }}">{{ $inmueble->INM_DIRECCION }}</option>
+                            @endforeach
+                          </select>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -333,14 +339,14 @@
                     
                       @foreach($profesionales as $profesional)
                       <div class="row" >
-                        <div class="col-sm-1 col-md-3"></div>
-                        <div class="col-sm-9 col-md-6" >
+                        <div class="col-xs-1 col-sm-1"></div>
+                        <div class="col-xs-10 col-sm-10" >
                           <div class="thumbnail">
                             <img src="{{ asset ($profesional->PRO_foto)}}" alt="...">
                             <div class="caption">
                               <h3>{{$profesional->PRO_nombresprof}} {{$profesional->PRO_apellidosprof}}</h3>
                               <p>
-                                <a class="btn btn-default" onclick="verDispProf({{$profesional->id}})" role="button">Seleccionar</a>
+                                <a class="btn btn-default" onclick="ClientGuardaOrden({{$profesional->id}})" role="button">Seleccionar</a>
                               </p>
                             </div>
                           </div>
@@ -349,7 +355,7 @@
                       </div>
                       @endforeach
 
-                      <div class="col-sm-3 col-xs-4"></div>
+                      <div class="col-xs-1 col-md-1"></div>
                         <div class="form-group col-xs-4">
                           <label>
                             <button type="button" class="btn btn-primary">Atrás</button>
