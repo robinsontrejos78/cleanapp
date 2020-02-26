@@ -35,6 +35,8 @@ Route::resource('ordenCliente', 'OrdenClienteController');
 
 Route::resource('ordenP', 'OrdenpersonaController');
 
+Route::resource('historial', 'OrdenpersonaController@historialorden');
+
 Route::resource('inventario', 'ReportesinventarioController');
 
 Route::resource('terminos', 'formularioController@showterminos');

@@ -12,20 +12,6 @@
         {{Session::get('message')}}
     </div>
 @endif
-<div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-star-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Tu Promedio es:</span>
-               @foreach($contador as $conta)
-              <span class="info-box-number">{{ $conta->promedio }}</span>
-              @endforeach
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
 
 
 <div class="row">
@@ -34,7 +20,7 @@
 
       <div class="box-header with-border">
 
-        <h3 class="box-title">Calificaciones Otorgadas</h3>
+        <h3 class="box-title">Histórico de Órdenes de Servicio Ejecutadas</h3>
 
       </div>
         <div class="resultado"></div>
@@ -44,16 +30,22 @@
             <thead>
                 <tr>
                     <th class="centro">Cliente</th>
-                    <th class="centro">Estrellas Otorgadas</th>
+                    <th class="centro">Teléfono</th>
+                    <th class="centro">Dirección</th>
+                    <th class="centro">Fecha Orden</th>
                     <th class="centro">Observación</th>
+                    <th class="centro">Estado Orden</th>
                 </tr>
             </thead>
             <tbody>
-				@foreach($valoraciones as $valoracion)
+				@foreach($historico as $historial)
 	          <tr style="text-align:center;">
-                <td>{{ $valoracion->name }}{{ $valoracion->USR_APELLIDOS }}</td>
-                <td>{{ $valoracion->CAL_calificacion }}</td>
-                <td>{{ $valoracion->CAL_observacion }}</td>   
+                <td>{{ $historial->name }}{{ $historial->USR_APELLIDOS }}</td>
+                <td>{{ $historial->USR_TELEFONO }}</td>
+                <td>{{ $historial->USR_DIRECCION }}</td>   
+                <td>{{ $historial->ORD_FECHAORDEN }}</td>   
+                <td>{{ $historial->ORD_DESCRIPCION }}</td>   
+                <td>{{ $historial->LOO_DESCRIPCION }}</td>   
 	              <td class="centro">
                 </td>
 	          </tr>

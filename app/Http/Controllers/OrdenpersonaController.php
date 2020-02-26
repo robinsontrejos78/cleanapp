@@ -275,17 +275,46 @@ public function calificarorden()
     {
         $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
 
+   
+$contador = DB::table('CALIFICACIONES')
+                     ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
+                     ->where('CAL_IDUSERCLIENTE', '=', $idPersona)
+                     ->get();
 
         $valoraciones = DB::table('CALIFICACIONES')
          ->join('users', 'CAL_IDUSERCLIENTE', '=', 'users.id')
-         ->where('CAL_IDUSERPROF', $idPersona)
+         ->where('CAL_IDUSERCLIENTE', $idPersona)
          ->orderby('CAL_fecharegistro', 'desc')
          ->get();
 
- // dd($valoraciones);
-
-        return view('ordenpersona.vercalificacion', compact('valoraciones'));
+        return view('ordenpersona.vercalificacion', compact('valoraciones','contador'));
     }
+
+
+        public function historialorden()
+    
+    {
+        $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+  
+        // $historico = DB::table('ORDEN_SERVICIOS')
+        //  ->join('users', 'CAL_IDUSERCLIENTE', '=', 'users.id')
+        //  ->join('LOOKUP', 'ORD_LOO_ESTADOORDEN', '=', 'LOO_IDLOOKUP')
+        //  ->where('CAL_IDUSERCLIENTE', $idPersona)
+        //  ->orderby('CAL_fecharegistro', 'desc')
+        //  ->get();
+
+    $historico = DB::table('ORDEN_SERVICIOS')
+            ->join('users', 'ORD_USR_CLI', '=', 'users.id')
+            ->join('LOOKUP', 'ORD_LOO_ESTADOORDEN', '=', 'LOO_IDLOOKUP')
+            ->where('ORD_USR_ID', $idPersona)
+            ->where('LOO_GRUPO', 2)
+            ->whereBetween('ORD_LOO_ESTADOORDEN', [2, 4])
+            ->get();
+
+        return view('ordenpersona.historial', compact('historico'));
+    }
+    
 
     public function guardarImagenNovedades(Request $request)
     {

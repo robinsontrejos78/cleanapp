@@ -26,7 +26,7 @@
                 <strong>Whoops!</strong> Hay problema con los datos ingresados<br><br>
                 <ul>
                     @foreach ($errors->all() as $error)
-                       
+                        <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
