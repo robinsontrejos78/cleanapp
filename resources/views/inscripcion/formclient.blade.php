@@ -21,118 +21,99 @@
     <div class="login-box">
        
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> Hay problema con los datos ingresados<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-
-
-<div class="row">
-<div class="box box-info box-solid" style="width: 500px" >
-            <div class="box-header with-border" >
-              <h3 class="box-title" >Formulario de Inscripción Para Clientes</h3>
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> Hay problema con los datos ingresados<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal" >
-              <div class="box-body" align="center">
-                 <div class="form-group">
-                  <label for="nombres"  class="col-sm-2 control-label">Nombres</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nombres" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Name">
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="apellidos" onkeyup="this.value=this.value.toUpperCase();" placeholder="Lastname">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="text" class="col-sm-2 control-label">Tipo Doc</label>
-                  <div class="col-sm-10">
-                    <select name="tipodo" id="tipodoc" class="form-control" >
-                    <option value="">Id Type</option>
-                    <option value="C.C">C.C.</option>
-                    <option value="C.E">C.E.</option>
-                  </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="numdoc" class="col-sm-2 control-label">Número Doc</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="numerodoc" placeholder="Id">
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label for="dir" class="col-sm-2 control-label">Dirección</label>
-                  <div class="col-sm-10">
-                    <input type="direc" class="form-control" id="direccion" placeholder="Address">
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label for="telephone" class="col-sm-2 control-label">Teléfono</label>
-                  <div class="col-sm-10">
-                    <input type="Number" class="form-control" id="telefono" placeholder="Phone Number">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="city" class="col-sm-2 control-label" >Ciudad</label>
+        @endif
 
-                  <div class="col-sm-10">
-                    <input type="cyti" class="form-control" id="ciudad" onkeyup="this.value=this.value.toUpperCase();" placeholder="City">
-                  </div>
+        <div class="row">
+            <div class="box box-info box-solid" style="width: 500px" >
+                <div class="box-header with-border" >
+                    <h3 class="box-title" >Formulario de Inscripción Para Clientes</h3>
                 </div>
-                <div class="form-group">
-                  <label for="mail" class="col-sm-2 control-label">Correo Electrónico</label>
 
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control" onkeyup="this.value=this.value.toLowerCase();" id="mail" placeholder="mail">
-                  </div>
-                </div>
-                <div class="form-group" align="left">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox" id="datos" checked> <a target="_blank" href="{{ url('habeas') }}"> Acepto Política Tratamiento de Datos</a>
-                      </label>
+                <form >
+                    <div class="box-body">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nombres" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Ingrese su nombre">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="apellidos" onkeyup="this.value=this.value.toUpperCase();" placeholder="Ingrese sus apellidos">
+                        </div>
+                        <div class="form-group">
+                            <select name="tipodo" id="tipodoc" class="form-control" >
+                                <option value="">Seleccione tipo documento...</option>
+                                <option value="C.C">C.C.</option>
+                                <option value="C.E">C.E.</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="numerodoc" placeholder="Ingrese el número Documento">
+                        </div>
+
+                        <div class="form-group">
+                                <input type="direc" class="form-control" id="direccion" placeholder="ingrese su dirección">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="Number" class="form-control" id="telefono" placeholder="Ingrese su teléfono">
+                        </div>
+
+                        <div class="form-group">
+                            <select name="city" id="city" class="form-control">
+                                <option value="">Seleccione ciudad...</option>
+                                @foreach($ciudades as $ciudad)
+                                    <option value="{{ $ciudad->CIU_IDCIUDAD }}" @if($ciudad->CIU_IDCIUDAD == old('ciudadFrmcli')) selected @endif>{{ $ciudad->CIU_NOMBRE }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" class="form-control" onkeyup="this.value=this.value.toLowerCase();" id="mail" placeholder="Correo Electrónico">
+                        </div>
+
+                        <div class="form-group" align="left">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="datos" checked> <a target="_blank" href="{{ url('habeas') }}"> Acepto Política Tratamiento de Datos</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" align="left">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"  id="terminos"> <a target="_blank" href="{{ url('terminos') }}"> Terminos y Condiciones</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-                <div class="form-group" align="left">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"  id="terminos"> <a target="_blank" href="{{ url('terminos') }}"> Terminos y Condiciones</a>
-                      </label>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer box-solid">
+                        <a href="{{ url('/') }}"> <button type="button" class="btn btn-default">Salir</button></a>
+                        <button type="button" id="inscripcionCliente" class="btn btn-info pull-right">Aceptar</button>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.box-body -->
-
-              <div class="box-footer box-solid">
-                <a href="http://localhost/cleanapps"> <button type="button" class="btn btn-default">Salir</button></a>
-                <button type="button" id="inscripcion" class="btn btn-info pull-right">Aceptar</button>
-              </di>
-              <!-- /.box-footer -->
-            </form>
-          </div>
-
-    <br>
-    <!-- <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a> -->
-
-</div>
-
-</div>
-
+                      <!-- /.box-footer -->
+                </form>
+            </div>
+            <br>
+            <!-- <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a> -->
+        </div>
+    </div>
 
     @include('layouts.partials.scripts_auth')
     <script src="{{ asset('/js/servicios.js')}}" type="text/javascript"></script>
@@ -145,6 +126,7 @@
             });
         });
     </script>
+
 </body>
 
 @endsection
