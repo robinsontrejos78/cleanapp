@@ -233,6 +233,6 @@ Route::get('visualizarAgenda/{id}/edit', 'AgendaprofController@edit');
 Route::post('agergarItem', 'AgendaprofController@store');
 
 //rutas para el cliente
-Route::resource('formcliente', 'clienteController');
+Route::get('formcliente', 'clienteController@create');
 
-Route::post('agregarCliente', 'clienteController@store');
+Route::resource('cliente', 'clienteController');
