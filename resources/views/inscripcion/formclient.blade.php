@@ -13,8 +13,6 @@
 
 
 @section('content')
-<meta name="_token" content="{{ csrf_token() }}"/>
-
 
 
 <body class="hold-transition login-page">
@@ -38,18 +36,19 @@
                     <h3 class="box-title" >Formulario de Inscripción Para Clientes</h3>
                 </div>
 
-                <form >
+                <form action="{{ url('cliente') }}" method="POST" >
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="box-body">
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="nombres" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Ingrese su nombre">
+                            <input type="text" class="form-control" name="nombres" id="nombres" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Ingrese su nombre">
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="apellidos" onkeyup="this.value=this.value.toUpperCase();" placeholder="Ingrese sus apellidos">
+                            <input type="text" class="form-control" name="apellidos" id="apellidos" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Ingrese sus apellidos">
                         </div>
                         <div class="form-group">
-                            <select name="tipodo" id="tipodoc" class="form-control" >
+                            <select name="tipodoc" required id="tipodoc" class="form-control" >
                                 <option value="">Seleccione tipo documento...</option>
                                 <option value="C.C">C.C.</option>
                                 <option value="C.E">C.E.</option>
@@ -57,19 +56,23 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="numerodoc" placeholder="Ingrese el número Documento">
+                            <input type="text" required class="form-control" name="numerodoc" id="numerodoc" placeholder="Ingrese el número Documento">
                         </div>
 
                         <div class="form-group">
-                                <input type="direc" class="form-control" id="direccion" placeholder="ingrese su dirección">
+                                <input type="direc" required class="form-control" name="direccion" id="direccion" placeholder="ingrese su dirección">
                         </div>
 
                         <div class="form-group">
-                            <input type="Number" class="form-control" id="telefono" placeholder="Ingrese su teléfono">
+                            <input type="Number" required class="form-control" name="telefono" id="telefono" placeholder="Ingrese su teléfono">
                         </div>
 
                         <div class="form-group">
-                            <select name="city" id="city" class="form-control">
+                            <input type="number" class="form-control" id="celularUsu" name="celularUsu" placeholder="Teléfono Movil del Usuario" value="{{ old('celularUsu') }}">
+                        </div>
+
+                        <div class="form-group">
+                            <select name="city" required id="city" class="form-control">
                                 <option value="">Seleccione ciudad...</option>
                                 @foreach($ciudades as $ciudad)
                                     <option value="{{ $ciudad->CIU_IDCIUDAD }}" @if($ciudad->CIU_IDCIUDAD == old('ciudadFrmcli')) selected @endif>{{ $ciudad->CIU_NOMBRE }}</option>
@@ -78,14 +81,20 @@
                         </div>
                         
                         <div class="form-group">
-                            <input type="email" class="form-control" onkeyup="this.value=this.value.toLowerCase();" id="mail" placeholder="Correo Electrónico">
+                            <input type="email" required class="form-control" id="mail" name="mail"onkeyup="this.value=this.value.toLowerCase();"  placeholder="Correo Electrónico">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" required class="form-control" id="passwordUsu" name="passwordUsu" placeholder="Contraseña" value="{{ old('passwordUsu') }}">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" required class="form-control" id="passwordUsu_confirmation" name="passwordUsu_confirmation" placeholder="Confirmar Contraseña" value="{{ old('passwordUsu_confirmation') }}">
                         </div>
 
                         <div class="form-group" align="left">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" id="datos" checked> <a target="_blank" href="{{ url('habeas') }}"> Acepto Política Tratamiento de Datos</a>
+                                        <input type="checkbox" id="datos" name="datos" required> <a target="_blank" href="{{ url('habeas') }}"> Acepto Política Tratamiento de Datos</a>
                                     </label>
                                 </div>
                             </div>
@@ -95,17 +104,21 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox"  id="terminos"> <a target="_blank" href="{{ url('terminos') }}"> Terminos y Condiciones</a>
+                                        <input type="checkbox" required name="terminos" id="terminos"> <a target="_blank" href="{{ url('terminos') }}"> Terminos y Condiciones</a>
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- /.box-body -->
 
                     <div class="box-footer box-solid">
-                        <a href="{{ url('/') }}"> <button type="button" class="btn btn-default">Salir</button></a>
-                        <button type="button" id="inscripcionCliente" class="btn btn-info pull-right">Aceptar</button>
+                        <div class="form-group" align="left">
+                            <a href="{{ url('/') }}" class="btn btn-default">Salir</a>
+                            <button type="submit" id="inscripcionCliente" class="btn btn-primary">Inscribirme</button>
+                        </div>
+
                     </div>
                       <!-- /.box-footer -->
                 </form>

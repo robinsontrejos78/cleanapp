@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\editEmpresaRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Empresa;
+use App\Orden;
 use Auth;
 use DB;
 
@@ -60,14 +60,31 @@ class AgendaprofController extends Controller
 
         $datosEvento=request()->all();
 
-        
 
-        // $empr               = new Empresa();
-        // $empr->EMP_NOMBRE   = $request->get('nombreEmp');
-        // $empr->EMP_CONTACTO = $request->get('nombreCon');
-        // $empr->EMP_TELEFONO = $request->get('telefonoEmp');
-        // $empr->EMP_CORREO   = $request->get('emailCon');
-        // $empr->save();
+        // $ord               = new Orden();
+        // $ord->ORD_INM_IDINMUEBLE   = $request->get('inmueble');
+        // $ord->ORD_EMP_IDEMPRESA = $request->get('empresa');
+        // $ord->ORD_USR_ID = $request->get('usuarioId');
+        // $ord->ORD_USR_CLI   = $request->get('cliente');
+        // $ord->ORD_LOO_ESTADOORDEN   = $request->get('estadoOrden');
+        // $ord->ORD_FECHAORDEN   = $request->get('fechaOrden');
+        // $ord->ORD_INICIOORDEN   = $request->get('inicioOrden');
+        // $ord->ORD_FINORDEN   = $request->get('finOrden');
+        // $ord->ORD_LOO_TIPOORDEN   = $request->get('tipoOrden');
+        // $ord->save();
+
+        DB::table('ORDEN_SERVICIOS')->insert(
+        ['ORD_INM_IDINMUEBLE'  => $request->get('inmueble'), 
+         'ORD_EMP_IDEMPRESA'   => $request->get('empresa'), 
+         'ORD_USR_ID'          => $request->get('usuarioId'), 
+         'ORD_USR_CLI'         => $request->get('cliente'), 
+         'ORD_LOO_ESTADOORDEN' => $request->get('estadoOrden'), 
+         'ORD_LOO_TIPOORDEN'   => $request->get('tipoOrden'),
+         'ORD_FECHAORDEN'      => $request->get('fechaOrden'),
+         'ORD_INICIOORDEN'      => $request->get('inicioOrden'),
+         'ORD_FINORDEN'      => $request->get('finOrden'),
+         'ORD_PAGADO'          => 0
+    ]);
         
         // return "entro al controlador";
 

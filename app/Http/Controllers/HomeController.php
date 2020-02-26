@@ -73,7 +73,13 @@ class HomeController extends Controller
                 ->take(5)
                 ->get();
 
-                return view('home', compact('profesionales'));
+
+            $inmuebles = DB::table("INMUEBLES")
+                ->select('INM_IDINMUEBLE','INM_DIRECCION')
+                ->where('INM_USR_IDUSER', Auth::user()->id)
+                ->get();
+
+                return view('home', compact('profesionales','inmuebles'));
         }        
 
         return view('home');
