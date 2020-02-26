@@ -362,6 +362,10 @@ $(document).on('click', '#buscarprof', function(){
     });
 });
 
+
+
+
+
 //ventana modal modificar articulo Inventario--------------------------------------------------------------------------------------------------------
 $(document).on('click', '.btn_modal2', function(event) {
 
@@ -668,6 +672,7 @@ $(document).on('click', '.btn_buscarArt2', function(){
         url : '../../buscar_articulo2',
         data : {nombre_articulo : nombre_articulo},
         beforeSend: function(){
+
             var dim = $('#dimmer');
             dim.css("display", "block");
         },
@@ -1206,11 +1211,12 @@ function calcAdicionales(adicional){
 
 function ClientGuardaOrden(idProfesional){
 
-     $.ajaxSetup({
+    $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
+
 
     var f = new Date();
 
@@ -1238,21 +1244,11 @@ function ClientGuardaOrden(idProfesional){
     tipoOrden=1
     cliente=$('#idcliente').val()
 
-
-
     $.ajax({
         type: 'POST',
         url: '../agergarItem',
         data: {inmueble:inmueble,empresa:empresa,usuarioId:usuarioId,cliente:cliente,estadoOrden:estadoOrden,fechaOrden:fechaOrden,inicioOrden:inicioOrden,finOrden:finOrden,tipoOrden:tipoOrden},
-       
-        beforeSend: function(){
-            // var dim = $('#dimmer');
-            // dim.css("display", "block");
-        },
-        complete:function(){
-            // var dim = $('#dimmer');
-            // dim.css("display", "none");
-        },
+  
         success: function(){
             swal("orden guardada con exito!", "Oprima OK para continuar!", "success");
             // $(":file").filestyle('clear');
@@ -1262,7 +1258,7 @@ function ClientGuardaOrden(idProfesional){
             // window.location.reload(true);
         },
         error: function(){
-            swal("Error al guardar la Evidencia!", "Intente de nuevo!", "error");
+            swal("Error al guardar la orden!", "Intente de nuevo!", "error");
         }
     });
     
@@ -1270,10 +1266,49 @@ function ClientGuardaOrden(idProfesional){
 
 
 
+//Registrar datos del formulario para solicitud del cliente----------------------------------------------
+$(document).on('click', '#inscripcionCliente', function(){
+    
+    nuevoObjeto={
+        nombres       : $('#nombres').val(),
+        apellidos     : $('#apellidos').val(),
+        tipodoc       : $('#tipodoc').val(),
+        numerodoc     : $('#numerodoc').val(),
+        direccion     : $('#direccion').val(),
+        telefono      : $('#telefono').val(),
+        city          : $('#city').val(),
+        mail          : $('#mail').val(),
+        s_terminos    : $('#terminos').is(":checked"),
+        s_datos       : $('#datos').is(":checked"),
+    }
 
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
 
-
-
-
+     
+    $.ajax({
+        type : 'POST',
+        url :'{{ url("agregarCliente")}}',
+        data : nuevoObjeto,
+        beforeSend: function(){
+            // var dim = $('#dimmer');
+            // dim.css("display", "block");
+        },
+        complete:function(){
+            // var dim = $('#dimmer');
+            // dim.css("display", "none");
+        },
+        success: function(data){
+            console.log(data);
+            //swal('La Reserva se ha registrado con éxito');
+            },
+        error: function(){
+            alert('error');
+        }
+    });
+});
 
