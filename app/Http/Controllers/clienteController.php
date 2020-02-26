@@ -10,6 +10,9 @@ use App\devolucion;
 use Carbon\Carbon;
 use App\Ciudade;
 use App\User;
+use App\Role;
+use App\userRole;
+use App\Users_empresa;
 use Auth;
 use DB;
 
@@ -64,12 +67,18 @@ class clienteController extends Controller
         $user->USR_ESTADO        = 1;
         $user->save();
 
-        // $empr               = new Empresa();
-        // $empr->EMP_NOMBRE   = $request->get('nombreEmp');
-        // $empr->EMP_CONTACTO = $request->get('nombreCon');
-        // $empr->EMP_TELEFONO = $request->get('telefonoEmp');
-        // $empr->EMP_CORREO   = $request->get('emailCon');
-        // $empr->save();
+        $id = DB::getPdo()->lastInsertId();
+
+
+        $usuRol               = new userRole();
+        $usuRol->user_id = $id;
+        $usuRol->role_id = 4;//4 es el rol de cliente= crear ordenes de servicio
+        $usuRol->save();
+
+        $empresaUsu                     = new Users_empresa();
+        $empresaUsu->USE_EMP_IDEMPRESA  = 1;
+        $empresaUsu->USE_USR_id         = $id;
+        $empresaUsu->save();
         
         // return "entro al controlador";
 

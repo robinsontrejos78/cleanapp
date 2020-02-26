@@ -1196,6 +1196,15 @@ function verDispProf(id){
   location.href = 'visualizarAgenda/'+id+'/edit';
 }
 
+function mostrarOcultar(muestraOculta,id){
+  element = document.getElementById(id);
+  if(muestraOculta=='muestra'){
+     element.style.display='block'
+  }
+  else if(muestraOculta=='oculta'){
+    element.style.display = 'none';
+  }
+}
 
 function selecPlan(plan){
     
@@ -1205,20 +1214,29 @@ function selecPlan(plan){
     if (plan==1){
         valPlansel=22000;
         horasplan=2;
+        mostrarOcultar('oculta','fAdicional1')
+        mostrarOcultar('oculta','fAdicional2')
     }
     if (plan==2){
         valPlansel=35000;
         horasplan=4;
+        mostrarOcultar('oculta','fAdicional1')
+        mostrarOcultar('oculta','fAdicional2')
     }
     if (plan==3){
         valPlansel=48000;
         horasplan=6;
+        mostrarOcultar('muestra','fAdicional1')
+        mostrarOcultar('muestra','fAdicional2')
     }
     if (plan==4){
         valPlansel=60000;
         horasplan=8;
+        mostrarOcultar('muestra','fAdicional1')
+        mostrarOcultar('muestra','fAdicional2')
     }
-
+    mostrarOcultar('muestra','bloque2');
+    mostrarOcultar('oculta','bloque1');
 
     $('#valplanSel').html('<label>$'+valPlansel+'</label> ');
     
