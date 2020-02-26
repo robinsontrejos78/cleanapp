@@ -54,8 +54,9 @@
 
             @endif
             
-            @if (Auth::user()->hasRole('Persona'))
+            @if (Auth::user()->hasRole('Profesional'))
                 <li><a href="{{ url('ordenP') }}"><i class='fa fa-briefcase'></i> <span>Ordenes de Servicio</span></a></li>
+                <li><a href="{{ url('vercalificacion') }}"><i class='fa fa-thumbs-o-up'></i> <span>Calificaciones</span></a></li>
 
   <!-- Link para visualizar ordenes sin pagar desactivado     -->          
                 <!-- <li><a href="{{ url('ordenesSinPagar') }}"><i class='fa fa-money'></i> <span>Ordenes sin pagar</span></a></li> -->

@@ -128,7 +128,6 @@ class OrdenpersonaController extends Controller
 public function calificarorden()
     {
         if (!Auth::user()->hasRole('Profesional')) abort(403);
-        if (!filter_var($idor, FILTER_VALIDATE_INT)) abort(404);
         $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
 
          $calif    = $_POST['calif'];
@@ -148,7 +147,6 @@ public function calificarorden()
         //     ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
         //     ->get();
 
-
             DB::table('CALIFICACIONES')->insert(
             ['CAL_IDUSERPROF'    => $idPersona,
              'CAL_IDUSERCLIENTE' => $dataruta,
@@ -158,8 +156,20 @@ public function calificarorden()
              'CAL_ORD_IDORDEN'   => $dataord
              ]
             ); 
+
+             DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $dataord)->update(['ORD_LOO_ESTADOORDEN' => 3, 'ORD_FINORDEN' => $fecha]);
+       
+        $ordenes = DB::table('ORDEN_SERVICIOS')
+            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+            ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+            ->join('users', 'ORD_USR_CLI', '=', 'users.id')
+            ->where('ORD_USR_ID', $idPersona)
+            ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+            ->get();
+
+        return ('listo');
         
-        return view('Felicidades, CLEANAPPS agradece tu servicio');
+         
     }
 
 
@@ -258,6 +268,23 @@ public function calificarorden()
             ->get();
 
         return view('ordenpersona.sinPagar', compact('ordenSin'));
+    }
+
+        public function calificaciones()
+    
+    {
+        $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+
+        $valoraciones = DB::table('CALIFICACIONES')
+         ->join('users', 'CAL_IDUSERCLIENTE', '=', 'users.id')
+         ->where('CAL_IDUSERPROF', $idPersona)
+         ->orderby('CAL_fecharegistro', 'desc')
+         ->get();
+
+ // dd($valoraciones);
+
+        return view('ordenpersona.vercalificacion', compact('valoraciones'));
     }
 
     public function guardarImagenNovedades(Request $request)

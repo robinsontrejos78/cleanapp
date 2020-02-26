@@ -47,6 +47,10 @@ Route::resource('reporte', 'ReportesinventarioController@reporte_index');
 
 Route::resource('inscripcion', 'formularioController@mostrarprof');
 
+Route::resource('orden', 'OrdenController');
+
+Route::resource('vercalificacion', 'OrdenpersonaController@calificaciones');
+
 //Buscador de empresas ajax
 Route::post('buscarEmp', 'EmpresaController@buscarEmpresa');
 
@@ -161,8 +165,6 @@ Route::post('guardar_inv', 'InventarioController@guardar_inv');
 //update personas
 Route::put('updatePer/{id}', 'UserController@updatePersonas');
 
-//Rutas para ordenes de servicio Administrador
-Route::resource('orden', 'OrdenController');
 
 //Buscador de Ordenes ajax
 Route::post('buscarOrd', 'OrdenController@buscarOrdenes');
@@ -189,7 +191,7 @@ Route::post('guardarEvidencia', 'OrdenpersonaController@guardarEvidencias');
 Route::get('finalizarOrden/{idor}', 'OrdenpersonaController@finalizarOrdenes');
 
 //ruta para finalizar ordenes de servicio
-Route::post('calificar', 'OrdenpersonaController@calificarorden');
+Route::post('calificarorden', 'OrdenpersonaController@calificarorden');
 
 
 //buscar ciudad

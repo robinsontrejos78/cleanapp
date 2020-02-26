@@ -110,7 +110,7 @@
                   <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox"  id="terminos"> <a target="_blank" href="{{ url('terminos') }}"> Terminos y Condiciones</a>
+                        <input type="checkbox"  id="terminos"> <a target="_blank" href="{{ url('terminos') }}">Acepto Terminos y Condiciones</a>
                       </label>
                     </div>
                   </div>
