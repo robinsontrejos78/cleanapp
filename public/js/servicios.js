@@ -1239,6 +1239,7 @@ function selecPlan(plan){
     mostrarOcultar('oculta','bloque1');
 
     $('#valplanSel').html('<label>$'+valPlansel+'</label> ');
+    $('#nominacion').val(valPlansel);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
@@ -1255,16 +1256,14 @@ function calcAdicionales(adicional){
     valPlanseladi=valPlansel;
 
     if(CheckAdicional1.checked==true && CheckAdicional2.checked==true){
-        valPlanseladi=valPlanseladi+30000;
     }
     if(CheckAdicional1.checked==true && CheckAdicional2.checked==false){
-        valPlanseladi=valPlanseladi+15000;
     }
     if(CheckAdicional1.checked==false && CheckAdicional2.checked==true){
-        valPlanseladi=valPlanseladi+15000;
     }
 
     $('#valplanSel').html('<label>$'+valPlanseladi+'</label> ');
+
 }
 
 function ClientGuardaOrden(idProfesional){

@@ -185,8 +185,9 @@
                             <th class="centro"><button type="button" class="btn btn-primary" onClick="selecPlan(4)">PLAN 4 (8) HORAS $60.000</button></th>
                           </tr>
 
-                            <input type="text" id="valSelectado">
                             <input type="text" id="idcliente" value="{{ auth::user()->id }}">
+                            <input type="text" id="valSelectado">
+                            <input type="text" id="nominacion" value="">
                         </tbody>
                       </table>
                     </div>
@@ -344,6 +345,21 @@
                             </label>
                           </div>
                           <div class="col-sm-3 col-xs-4"></div>
+
+                  </div>
+                  <div class="box-footer">
+                  </div>   
+                </div>
+              </div>
+            </div>
+
+            <div class="row" id="bloque5"  style="display: none;">  
+              <div class="col-md-12">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                  </div>
+                  <div class="box-body">
+
 
                   </div>
                   <div class="box-footer">
