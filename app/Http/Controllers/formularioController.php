@@ -90,6 +90,8 @@ class formularioController extends Controller
          $mailprof      = $_POST['mailprof'];
          $nivelprof     = $_POST['nivelprof'];
          $percarprof    = $_POST['percarprof'];
+         $planchar      = $_POST['planchar'];
+         $cocinar       = $_POST['cocinar'];
          $nomcon        = $_POST['nomcon'];
          $apecon        = $_POST['apecon'];
          $tipodoccon    = $_POST['tipodoccon'];
@@ -132,6 +134,8 @@ class formularioController extends Controller
              'PRO_mailprof'      => $mailprof, 
              'PRO_nivelprof'     => $nivelprof, 
              'PRO_percarprof'    => $percarprof, 
+             'PRO_plancha'       => $planchar,
+             'PRO_cocina'        => $cocinar,
              'PRO_nomcon'        => $nomcon,
              'PRO_apecon'        => $apecon,
              'PRO_tipodoccon'    => $tipodoccon,

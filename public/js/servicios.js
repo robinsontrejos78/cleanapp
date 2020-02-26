@@ -239,6 +239,8 @@ $(document).on('click', '#inscripcion', function(){
     var mailprof      = $('#mailprof').val();
     var nivelprof     = $('#nivelprof').val();
     var percarprof    = $('#percarprof').val();
+    var planchar      = $('#planchar').val();
+    var cocinar       = $('#cocinar').val();
     var nomcon        = $('#nomcon').val();
     var apecon        = $('#apecon').val();
     var tipodoccon    = $('#tipodoccon').val();
@@ -271,6 +273,8 @@ $(document).on('click', '#inscripcion', function(){
         $('#mailprof').val("");
         $('#nivelprof').val("");
         $('#percarprof').val("");
+        $('#planchar').val("");
+        $('#cocinar').val("");
         $('#nomcon').val("");
         $('#apecon').val("");
         $('#tipodoccon').val("");
@@ -303,7 +307,8 @@ $(document).on('click', '#inscripcion', function(){
                   tipodoccon : tipodoccon, numerodoccon : numerodoccon, nombrefa : nombrefa,  
                   aperefa : aperefa, parentrefa : parentrefa, citirefa : citirefa, telrefa : telrefa,  
                   nomrefcoma : nomrefcoma, aperefcoma : aperefcoma, parentrefcoma : parentrefcoma,  
-                  citicoma : citicoma, telrefcoma : telrefcoma, s_terminos : s_terminos, s_datos : s_datos},
+                  citicoma : citicoma, telrefcoma : telrefcoma, s_terminos : s_terminos, s_datos : s_datos, 
+                  planchar : planchar, cocinar : cocinar},
 
         beforeSend: function(){
             var dim = $('#dimmer');
