@@ -23,8 +23,6 @@ Route::resource('empresa', 'EmpresaController');
 
 Route::resource('user', 'UserController');
 
-Route::resource('formcliente', 'formularioController');
-
 Route::resource('formprofe', 'formularioController@formprof');
 
 Route::resource('propiedad', 'PropiedadController');
@@ -242,3 +240,8 @@ Route::post('buscarreporte', 'ReportesinventarioController@buscareporte');
 Route::get('visualizarAgenda/{id}/edit', 'AgendaprofController@edit');
 
 Route::post('agergarItem', 'AgendaprofController@store');
+
+//rutas para el cliente
+Route::resource('formcliente', 'clienteController');
+
+Route::post('agregarCliente', 'clienteController@store');

@@ -211,12 +211,10 @@
                       <thead>
 
                         <div class="row">                        
-                          <div class="form-group col-md-6">
-                            <label >plan 1</label>
+                          <div class="form-group col-md-6" id='etiqPlanSel'>                            
                           </div>
                           
-                          <div class="form-group col-md-6">
-                            <label >$22.000</label>
+                          <div class="form-group col-md-6" id="valplanSel">                            
                           </div>
                         </div>
 
@@ -233,8 +231,8 @@
                           <label class="form-check-label" for="exampleCheck1">Adicional 1</label>
                         </div>
                         <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <label class="form-check-label" for="exampleCheck1">Adicional 2</label>
+                          <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                          <label class="form-check-label" for="exampleCheck2">Adicional 2</label>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -274,12 +272,16 @@
                         <div class="form-group col-md-12">
                           <label for="calendar">Calendario</label>
                             <div id='calendar' style="margin:2% auto;"></div>
-                            <input type="datetime-local" name="Fecha" class="form-control" value="{{ old('Fecha') }}">
                         </div>
 
-                        <div class="form-group  col-md-12">
+                        <div class="form-group col-md-6 col-xs-7">
+                          <label for="calendar">Fecha</label>
+                            <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
+                        </div>
+
+                        <div class="form-group  col-md-6 col-xs-5">
                           <label for="exampleFormControlInput1">Hora</label>
-                          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="--:--">
+                          <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="--:--">
                         </div>
 
                         <div class="form-group  col-md-12">
@@ -325,7 +327,7 @@
                             <div class="caption">
                               <h3>{{$profesional->PRO_nombresprof}} {{$profesional->PRO_apellidosprof}}</h3>
                               <p>
-                                <a class="btn btn-default" onclick="verDispProf({{$profesional->id}})" role="button">Ver disponibilidad</a>
+                                <a class="btn btn-default" onclick="verDispProf({{$profesional->id}})" role="button">Seleccionar</a>
                               </p>
                             </div>
                           </div>
@@ -333,6 +335,14 @@
                         <div class="col-sm-3 col-md-3"></div>
                       </div>
                       @endforeach
+
+                      <div class="col-sm-3 col-xs-4"></div>
+                        <div class="form-group col-xs-4">
+                          <label>
+                            <button type="button" class="btn btn-primary">Atrás</button>
+                          </label>
+                        </div>
+                        <div class="col-sm-3 col-xs-4"></div>
 
                 </div>
                 <div class="box-footer">
