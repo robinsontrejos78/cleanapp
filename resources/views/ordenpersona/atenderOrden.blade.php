@@ -13,7 +13,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">Agregar Novedad</h4>
+          <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body">   
           <div id="agregarNovedad">
@@ -53,48 +53,58 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <div class="box box-danger">
+    <div class="box box-primary">
 
       <div class="box-header with-border">
         <h3 class="box-title">Orden de Servicio {{ $orden->LOO_DESCRIPCION }} - {{ $orden->INM_DIRECCION }}</h3>
       </div>
 
+     <input type="hidden" id="orden" name="" value="{{  $orden->ORD_IDORDEN }}">
+     <input type="hidden" id="cliente" name="" value="{{  $orden->ORD_USR_CLI }}">
+      
       <div class="box-body">
       <div class="temporal"></div>
       	<div class="row">
       	  <div class="col-md-12">  
-      	      <span class="badge bg-yellow btn-block" style="font-size:15px; margin-bottom:20px" data-toggle="tooltip" title="Por favor guarde las evidencias suficientes del servicio que está realizando">Revisar Inventario</span>
+      	      <span class="badge bg-yellow btn-block" style="font-size:15px; margin-bottom:20px" data-toggle="tooltip" >Recuerda que el cliente también califica tu servicio</span>
       	  </div>
       	</div>
 	      <div class="table-responsive">
 			<table class="table table-striped table-bordered table-hover">
 	      		<thead>
-	      			<th class="centro">Artículo</th>
-	      			<th class="centro">Cantidad</th>
-	      			<th class="centro">Validar</th>
+	      			<th class="centro">Calificar Cliente</th>
+	      			<th class="centro">Observación</th>
 	      		</thead>
 	      		<tbody>
-					@foreach($inventarios as $inventario)
+					
 						<tr>
-			      			<td>{{ $inventario->ART_NOMBRE }}</td>
-			      			<td>{{ $inventario->INV_CANTIDAD }}</td>
-			      			<td class="centro">
-			      				<label class="btn btn-success btn-xs">
-			      				    <input type="radio" name="options{{$inventario->INV_IDINVENTARIO}}" id="bien" autocomplete="off" checked> Bién
-			      				</label>
-			      				<label class="btn btn-danger btn-xs">
-			      				    <input type="radio" name="options{{$inventario->INV_IDINVENTARIO}}" data-idorden="{{$orden->ORD_IDORDEN}}" id="novedad" autocomplete="off"> Novedad
-			      				</label>
-			      			</td>
+			      		<td class="centro"> 
+                   <form id="formulario">
+                        <p class="clasificacion" >
+                          <input id="radio1" type="radio" name="estrellas" value="5">
+                          <label for="radio1">★</label>
+                          <input id="radio2" type="radio" name="estrellas" value="4">
+                          <label for="radio2">★</label>
+                          <input id="radio3" type="radio" name="estrellas" value="3">
+                          <label for="radio3">★</label>
+                          <input id="radio4" type="radio" name="estrellas" value="2">
+                          <label for="radio4">★</label>
+                          <input id="radio5" type="radio" name="estrellas" value="1">
+                         <label for="radio5">★</label>
+                       </p>
+                   </form>
+               </td>
+			      			<td class="centro"><input type="text" class="form-control" id="obser"  placeholder="Alguna Novedad?" ></td>
+			      			
 			      		</tr>
-		      		@endforeach
+		      	
 	      		</tbody>
 	      	</table>
 	      </div>
 
 	      <div class="col-md-6 col-md-offset-3">
-	      	<a href="../continuarOrden/{{$orden->ORD_IDORDEN}}" class="btn btn-success btn-sm btn-block">Continuar Orden de Servicio</a>
-	      </div>
+          <button type="button" class="btn btn-primary" id="finalizar">Finalizar Orden</button>
+        </div>
       </div>
 
       <div class="box-footer">
@@ -107,73 +117,7 @@
 
 @endif
 
-@if($tipo == 2 || $tipo == 3)
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="box box-danger">
 
-      <div class="box-header with-border">
-        <h3 class="box-title">Orden de Servicio {{ $orden->LOO_DESCRIPCION }} - {{ $orden->INM_DIRECCION }}</h3>
-      </div>
-        <div class="resultado"></div>
-      <div class="box-body">
-      	<div class="row">
-      	  <div class="col-md-12">  
-      	      <span class="badge bg-yellow btn-block" style="font-size:15px; margin-bottom:20px" data-toggle="tooltip" title="Por favor guarde las evidencias suficientes del servicio que está realizando">Evidencias {{ $orden->LOO_DESCRIPCION }}</span>
-      	  </div>
-      	</div>
-        <div class="table-responsive">
-			<table class="table table-striped table-bordered table-hover">
-				<tr>
-				    <th>Propiedad</th>
-				    <td>{{ $orden->PRO_NOMBRE }}</td>
-				</tr>
-				<tr>
-				    <th>Dirección</th>
-				    <td>{{ $orden->INM_DIRECCION }}</td>
-				</tr>
-				<tr>
-				    <th>Descripción</th>
-				    <td>{{ $orden->ORD_DESCRIPCION }}</td>
-				</tr>
-			</table>
-		</div>
-	    <!-- <form method="post" action="" enctype="multipart/form-data" files="true" class="deshabilita"> -->
-	   		<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	    	<input type="hidden" name="idorden" value="{{ $orden->ORD_IDORDEN }}">
-	    	<input type="hidden" name="idor" value="{{ $orden->ORD_IDORDEN }}" id="idor">
-	    	<input type="hidden" name="ruta" value="comenzarOrden">
-        	<input type="hidden" name="tipo" value="@if($tipo == 2) 3 @endif @if($tipo == 3) 4 @endif" id="tipoNovedad">
-	    	<div class="col-md-12">
-	    		<label for="imagen">Capturar Imagen:</label>
-	    		<input type="file" accept="image/*" id="BSbtninfo" name="imagen" capture="camera">
-	    	</div>
-	    	<div class="col-md-12">
-	    		<label for="descripcion">Descripción: </label>
-				<textarea name="descripcion" id="descripcion" rows="3" style="width:100%; resize:none" placeholder="Agregue una descripción relacionada con la imagen capturada"></textarea>
-	    	</div>
-	    	<div class="col-md-4 col-md-offset-2">
-          		<button class="btn btn-primary btn-sm btn-block guardarEvidencia" data-id="{{ $orden->ORD_IDORDEN }}" style="margin-top:20px">Evidencias de Aseo</button>
-	    		
-	    		<!-- <input type="submit" class="btn btn-primary btn-sm btn-block" style="margin-top:20px" value="Guardar Evidencia"> -->
-	    	</div>
-	    	<div class="col-md-4">
-	    		<a href="../finalizarOrden/{{ $orden->ORD_IDORDEN }}" class="btn btn-danger btn-sm btn-block" style="margin-top:20px">Finalizar Orden</a>
-	    	</div>
-	    <!-- </form> -->
-	    <div class="col-md-12">
-	      <center><img  id="preview" class="" style="margin-top:20px"></center>
-	    </div>    
-      </div>
-
-      <div class="box-footer">
-        
-      </div>
-           
-    </div>
-  </div>
-</div>
-@endif
 
 @endsection
 

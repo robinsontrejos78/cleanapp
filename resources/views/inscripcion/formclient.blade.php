@@ -110,7 +110,9 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- /.box-body -->
+
                     <div class="box-footer box-solid">
                         <div class="form-group" align="left">
                             <a href="{{ url('/') }}" class="btn btn-default">Salir</a>

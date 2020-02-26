@@ -13,12 +13,15 @@
     </div>
 @endif
 
+
 <div class="row">
   <div class="col-xs-12">
     <div class="box box-primary">
 
       <div class="box-header with-border">
-        <h3 class="box-title">Lista de Ordenes de Servicio</h3>
+
+        <h3 class="box-title">Histórico de Órdenes de Servicio Ejecutadas</h3>
+
       </div>
         <div class="resultado"></div>
       <div class="box-body">
@@ -29,21 +32,21 @@
                     <th class="centro">Cliente</th>
                     <th class="centro">Teléfono</th>
                     <th class="centro">Dirección</th>
-                    <th class="centro">Fecha de la orden</th>
-                    <th class="centro">Descripción</th>
-                    <th class="centro">Acciones</th>
+                    <th class="centro">Fecha Orden</th>
+                    <th class="centro">Observación</th>
+                    <th class="centro">Estado Orden</th>
                 </tr>
             </thead>
             <tbody>
-				@foreach($ordenes as $orden)
+				@foreach($historico as $historial)
 	          <tr style="text-align:center;">
-                <td>{{ $orden->name }} {{ $orden->USR_APELLIDOS }}</td>
-                <td>{{ $orden->USR_TELEFONO }}</td>
-	              <td>{{ $orden->INM_DIRECCION }}</td>
-	              <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d / h:i') }}</td>
-                <td>{{ $orden->ORD_DESCRIPCION }}</td>   
+                <td>{{ $historial->name }}{{ $historial->USR_APELLIDOS }}</td>
+                <td>{{ $historial->USR_TELEFONO }}</td>
+                <td>{{ $historial->USR_DIRECCION }}</td>   
+                <td>{{ $historial->ORD_FECHAORDEN }}</td>   
+                <td>{{ $historial->ORD_DESCRIPCION }}</td>   
+                <td>{{ $historial->LOO_DESCRIPCION }}</td>   
 	              <td class="centro">
-                  <a href="comenzarOrden/{{$orden->ORD_IDORDEN}}" class="btn btn-success btn-xs">Comenzar</a>
                 </td>
 	          </tr>
 				@endforeach

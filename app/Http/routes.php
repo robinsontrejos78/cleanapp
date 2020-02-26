@@ -35,6 +35,8 @@ Route::resource('ordenCliente', 'OrdenClienteController');
 
 Route::resource('ordenP', 'OrdenpersonaController');
 
+Route::resource('historial', 'OrdenpersonaController@historialorden');
+
 Route::resource('inventario', 'ReportesinventarioController');
 
 Route::resource('terminos', 'formularioController@showterminos');
@@ -44,6 +46,10 @@ Route::resource('habeas', 'formularioController@showhabeas');
 Route::resource('reporte', 'ReportesinventarioController@reporte_index');
 
 Route::resource('inscripcion', 'formularioController@mostrarprof');
+
+Route::resource('orden', 'OrdenController');
+
+Route::resource('vercalificacion', 'OrdenpersonaController@calificaciones');
 
 //Buscador de empresas ajax
 Route::post('buscarEmp', 'EmpresaController@buscarEmpresa');
@@ -159,8 +165,6 @@ Route::post('guardar_inv', 'InventarioController@guardar_inv');
 //update personas
 Route::put('updatePer/{id}', 'UserController@updatePersonas');
 
-//Rutas para ordenes de servicio Administrador
-Route::resource('orden', 'OrdenController');
 
 //Buscador de Ordenes ajax
 Route::post('buscarOrd', 'OrdenController@buscarOrdenes');
@@ -177,11 +181,18 @@ Route::post('anularOrden', 'OrdenController@anularOrdenes');
 //Comenzar orden de trabajo
 Route::get('comenzarOrden/{idorden}', 'OrdenpersonaController@comenzarOrden');
 
+//Comenzar orden de trabajo
+Route::get('iniciarOrden/{idorden}', 'OrdenpersonaController@comenzarOrden');
+
 //Guardar evidencia de mantenimiento
 Route::post('guardarEvidencia', 'OrdenpersonaController@guardarEvidencias');
 
 //ruta para finalizar ordenes de servicio
 Route::get('finalizarOrden/{idor}', 'OrdenpersonaController@finalizarOrdenes');
+
+//ruta para finalizar ordenes de servicio
+Route::post('calificarorden', 'OrdenpersonaController@calificarorden');
+
 
 //buscar ciudad
 Route::post('buscarCiu', 'CiudadController@buscarCiudad');

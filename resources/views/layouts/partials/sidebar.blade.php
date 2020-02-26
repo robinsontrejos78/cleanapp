@@ -44,18 +44,20 @@
                 <li><a href="{{ url('inscripcion') }}"><i class='fa fa-bank'></i> <span>Consultar Inscripción</span></a></li>
                 <li><a href="{{ url('indexPersona') }}"><i class='fa fa-users'></i> <span>Agregar Profesional </span></a></li>
                 <li><a href="{{ url('orden') }}"><i class='fa fa-briefcase'></i> <span>Ordenes de servicio</span></a></li>
-                <!-- <li class="treeview">
-                    <a href=""><i class='glyphicon glyphicon-tasks'></i> <span>Inventario General</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <li class="treeview">
+                    <a href=""><i class='fa fa-star-half-o'></i> <span>Calificaciones</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                    <li><a href="{{ url('inventario') }}">Inventario</a></li>
-                    <li><a href="{{ url('reporte') }}">Reportes</a></li>
+                    <li><a href="">Clientes</a></li>
+                    <li><a href="">Profesionales</a></li>
                    </ul>
-                </li> -->
+                </li>
 
             @endif
             
-            @if (Auth::user()->hasRole('Persona'))
+            @if (Auth::user()->hasRole('Profesional'))
                 <li><a href="{{ url('ordenP') }}"><i class='fa fa-briefcase'></i> <span>Ordenes de Servicio</span></a></li>
+                <li><a href="{{ url('vercalificacion') }}"><i class='fa fa-thumbs-o-up'></i> <span>Calificaciones</span></a></li>
+                <li><a href="{{ url('historial') }}"><i class='fa fa-calendar'></i> <span>Historial de Ordenes</span></a></li>
 
   <!-- Link para visualizar ordenes sin pagar desactivado     -->          
                 <!-- <li><a href="{{ url('ordenesSinPagar') }}"><i class='fa fa-money'></i> <span>Ordenes sin pagar</span></a></li> -->

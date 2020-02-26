@@ -62,12 +62,7 @@ class OrdenpersonaController extends Controller
             ->where('ORD_IDORDEN', $ido)
             ->first();
 
-        $inventarios = DB::table('ORDEN_SERVICIOS')
-            ->join('INVENTARIOS', 'ORD_INM_IDINMUEBLE', '=', 'INV_INM_IDINMUEBLE')
-            ->join('ARTICULOS', 'INV_ART_IDARTICULO', '=', 'ART_IDARTICULO')
-            ->where('ORD_IDORDEN', $ido)
-            ->select('ART_NOMBRE', 'INV_CANTIDAD', 'INV_IDINVENTARIO')
-            ->get();
+      //dd($orden);
 
         $tipo = $orden->ORD_LOO_TIPOORDEN;
 
@@ -119,6 +114,7 @@ class OrdenpersonaController extends Controller
 
         $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
 
+
         $ordenes = DB::table('ORDEN_SERVICIOS')
             ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
             ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
@@ -128,6 +124,54 @@ class OrdenpersonaController extends Controller
         
         return view('ordenpersona.index', compact('ordenes'));
     }
+
+public function calificarorden()
+    {
+        if (!Auth::user()->hasRole('Profesional')) abort(403);
+        $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+         $calif    = $_POST['calif'];
+         $obser    = $_POST['obser'];
+         $dataord  = $_POST['dataord'];
+         $dataruta = $_POST['dataruta'];
+
+
+        $fecha   = Carbon::now();
+
+//dd($fecha);
+
+        // $ordenes = DB::table('ORDEN_SERVICIOS')
+        //     ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+        //     ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+        //     ->where('ORD_USR_ID', $idPersona)
+        //     ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+        //     ->get();
+
+            DB::table('CALIFICACIONES')->insert(
+            ['CAL_IDUSERPROF'    => $idPersona,
+             'CAL_IDUSERCLIENTE' => $dataruta,
+             'CAL_observacion'   => $obser, 
+             'CAL_calificacion'  => $calif, 
+             'CAL_fecharegistro' => $fecha,
+             'CAL_ORD_IDORDEN'   => $dataord
+             ]
+            ); 
+
+             DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $dataord)->update(['ORD_LOO_ESTADOORDEN' => 3, 'ORD_FINORDEN' => $fecha]);
+       
+        $ordenes = DB::table('ORDEN_SERVICIOS')
+            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+            ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+            ->join('users', 'ORD_USR_CLI', '=', 'users.id')
+            ->where('ORD_USR_ID', $idPersona)
+            ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+            ->get();
+
+        return ('listo');
+        
+         
+    }
+
 
     public function novedadCheckin()
     {
@@ -225,6 +269,52 @@ class OrdenpersonaController extends Controller
 
         return view('ordenpersona.sinPagar', compact('ordenSin'));
     }
+
+        public function calificaciones()
+    
+    {
+        $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+   
+$contador = DB::table('CALIFICACIONES')
+                     ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
+                     ->where('CAL_IDUSERCLIENTE', '=', $idPersona)
+                     ->get();
+
+        $valoraciones = DB::table('CALIFICACIONES')
+         ->join('users', 'CAL_IDUSERCLIENTE', '=', 'users.id')
+         ->where('CAL_IDUSERCLIENTE', $idPersona)
+         ->orderby('CAL_fecharegistro', 'desc')
+         ->get();
+
+        return view('ordenpersona.vercalificacion', compact('valoraciones','contador'));
+    }
+
+
+        public function historialorden()
+    
+    {
+        $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+  
+        // $historico = DB::table('ORDEN_SERVICIOS')
+        //  ->join('users', 'CAL_IDUSERCLIENTE', '=', 'users.id')
+        //  ->join('LOOKUP', 'ORD_LOO_ESTADOORDEN', '=', 'LOO_IDLOOKUP')
+        //  ->where('CAL_IDUSERCLIENTE', $idPersona)
+        //  ->orderby('CAL_fecharegistro', 'desc')
+        //  ->get();
+
+    $historico = DB::table('ORDEN_SERVICIOS')
+            ->join('users', 'ORD_USR_CLI', '=', 'users.id')
+            ->join('LOOKUP', 'ORD_LOO_ESTADOORDEN', '=', 'LOO_IDLOOKUP')
+            ->where('ORD_USR_ID', $idPersona)
+            ->where('LOO_GRUPO', 2)
+            ->whereBetween('ORD_LOO_ESTADOORDEN', [2, 4])
+            ->get();
+
+        return view('ordenpersona.historial', compact('historico'));
+    }
+    
 
     public function guardarImagenNovedades(Request $request)
     {
