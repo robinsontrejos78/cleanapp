@@ -31,7 +31,6 @@ class createUserRequest extends Request
             'direccionUsu'  => 'required',
             'emailUsu'      => 'required',
             'passwordUsu'   => 'required|confirmed|min:6',
-            'empresaUsu'    => 'required'
         ];
     }
 }

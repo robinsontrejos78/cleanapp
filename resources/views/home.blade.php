@@ -148,7 +148,7 @@
         <div class="col-sm-6 col-md-6" >
           <div class="thumbnail"> 
 
-            <div class="row">  
+            <div class="row" id="bloque1">  
               <div class="col-md-12">
                 <div class="box box-primary">
                   <div class="box-header with-border">
@@ -166,11 +166,15 @@
 
                         <tbody>
                           <tr>
-                            <th class="centro"><button type="button" class="btn btn-primary" onClick="selecPlan(1)">PLAN 1 (2) HORAS $22.000</button></th>
+                            <th class="centro">
+                              <button type="button" class="btn btn-primary" onClick="selecPlan(1)">PLAN 1 (2) HORAS $22.000</button>
+                            </th>
                           </tr>
 
                           <tr>
-                            <th class="centro"><button type="button" class="btn btn-primary" onClick="selecPlan(2)">PLAN 2 (4) HORAS $35.000</button></th>
+                            <th class="centro">
+                              <button type="button" class="btn btn-primary" onClick="selecPlan(2)">PLAN 2 (4) HORAS $35.000</button>
+                            </th>
                           </tr>
 
                           <tr>
@@ -181,12 +185,65 @@
                             <th class="centro"><button type="button" class="btn btn-primary" onClick="selecPlan(4)">PLAN 4 (8) HORAS $60.000</button></th>
                           </tr>
 
+                            <input type="text" id="idcliente" value="{{ auth::user()->id }}">
                             <input type="text" id="valSelectado">
-                       
+                            <input type="text" id="nominacion" value="">
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="box-footer"></div> 
+                </div>
+              </div>
+            </div>
+
+            <div class="row" id="bloque2" style="display: none;">  
+              <div class="col-md-12">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                  </div>
+                  <div class="box-body">
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
+                        <thead>
+
+                          <div class="row">                        
+                            <div class="form-group col-md-6" id='etiqPlanSel'>                            
+                            </div>
+                            
+                            <div class="form-group col-md-6" id="valplanSel">                            
                             </div>
                           </div>
-                        </div>
-                          </tr>
+
+                        </thead>
+
+                        <tbody>
+                          
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">ANEXO</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+                          <div class="form-check" id="fAdicional1">
+                            <input type="checkbox" class="form-check-input" id="CheckAdicional1">
+                            <label class="form-check-label" for="exampleCheck1">Adicional 1</label>
+                          </div>
+                          <div class="form-check" id="fAdicional2">
+                            <input type="checkbox" class="form-check-input" id="CheckAdicional2">
+                            <label class="form-check-label" for="exampleCheck2">Adicional 2</label>
+                          </div>
+
+                          <div class="form-group col-md-6">
+                            <label>
+                              <button type="button" class="btn btn-primary" onclick="mostrarOcultar('muestra','bloque1');mostrarOcultar('oculta','bloque2');">Atrás</button>
+                            </label>
+                          </div>
+
+                          <div class="form-group col-md-6">
+                            <label >
+                              <button type="button" class="btn btn-primary">Siguiente</button>
+                            </label>
+                          </div>
+                          
                         </tbody>
                       </table>
                     </div>
@@ -197,169 +254,127 @@
               </div>
             </div>
 
-         
-
-          <div class="row">  
-            <div class="col-md-12">
-              <div class="box box-primary">
-                <div cla
-                ss="box-header with-border">
-                </div>
-                <div class="box-body">
-                  <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
-                      <thead>
-
-                        <div class="row">                        
-                          <div class="form-group col-md-6" id='etiqPlanSel'>                            
-                          </div>
-                          
-                          <div class="form-group col-md-6" id="valplanSel">                            
-                          </div>
-                        </div>
-
-                      </thead>
-
-                      <tbody>
-                        
-                        <div class="form-group">
-                          <label for="exampleFormControlTextarea1">ANEXO</label>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                          <label class="form-check-label" for="exampleCheck1">Adicional 1</label>
-                        </div>
-                        <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                          <label class="form-check-label" for="exampleCheck2">Adicional 2</label>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                          <label>
-                            <button type="button" class="btn btn-primary">Atrás</button>
-                          </label>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                          <label >
-                            <button type="button" class="btn btn-primary">Siguiente</button>
-                          </label>
-                        </div>
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="box-footer">
-                </div>   
-              </div>
-            </div>
-          </div>
-
       
-          <div class="row">  
-            <div class="col-md-12">
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                </div>
-                <div class="box-body">
-                  <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
-                      <thead></thead>
-
-                      <tbody>
-                        <div class="form-group col-md-12">
-                          <label for="calendar">Calendario</label>
-                            <div id='calendar' style="margin:2% auto;"></div>
-                        </div>
-
-                        <div class="form-group col-md-6 col-xs-7">
-                          <label for="calendar">Fecha</label>
-                            <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
-                        </div>
-
-                        <div class="form-group  col-md-6 col-xs-5">
-                          <label for="exampleFormControlInput1">Hora</label>
-                          <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="--:--">
-                        </div>
-
-                        <div class="form-group  col-md-12">
-                          <label for="InputDireccion">Direccion</label>
-                          <input type="text" class="form-control" id="InputDireccion" placeholder="">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                          <label >
-                            <button type="button" class="btn btn-primary">Atrás</button>
-                          </label>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                          <label >
-                            <button type="button" class="btn btn-primary">Siguiente</button>
-                          </label>
-                        </div>
-                      </tbody>
-
-                    </table>
+            <div class="row" id="bloque3"  style="display: none;">  
+              <div class="col-md-12">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
                   </div>
+                  <div class="box-body">
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
+                        <thead></thead>
+
+                        <tbody>
+                          <div class="form-group col-md-12">
+                            <label for="calendar">Calendario</label>
+                              <div id='calendar' style="margin:2% auto;"></div>
+                          </div>
+
+                          <div class="form-group col-md-6 col-xs-7">
+                            <label for="calendar">Fecha</label>
+                              <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
+                          </div>
+
+                          <div class="form-group  col-md-6 col-xs-5">
+                            <label for="inputHoras">Hora</label>
+                            <input type="time" class="form-control" id="inputHoras" placeholder="--:--">
+                          </div>
+
+                          <div class="form-group col-xs-12">
+                            <h4>Direccion</h4>
+                            <select name="InputDireccion" id="InputDireccion" class="form-control">
+                              <option value="">Seleccione...</option>
+                              @foreach($inmuebles as $inmueble)
+                                <option value="{{ $inmueble->INM_IDINMUEBLE }}">{{ $inmueble->INM_DIRECCION }}</option>
+                              @endforeach
+                            </select>
+                          </div>
+
+                          <div class="form-group col-md-6">
+                            <label >
+                              <button type="button" class="btn btn-primary">Atrás</button>
+                            </label>
+                          </div>
+
+                          <div class="form-group col-md-6">
+                            <label >
+                              <button type="button" class="btn btn-primary">Siguiente</button>
+                            </label>
+                          </div>
+                        </tbody>
+
+                      </table>
+                    </div>
+                  </div>
+                  <div class="box-footer">
+                  </div>   
                 </div>
-                <div class="box-footer">
-                </div>   
               </div>
             </div>
-          </div>
 
-          <div class="row">  
-            <div class="col-md-12">
-              <div class="box box-primary">
-                <div class="box-header with-border">
-                </div>
-                <div class="box-body">
-                    
-                      @foreach($profesionales as $profesional)
-                      <div class="row" >
-                        <div class="col-sm-1 col-md-3"></div>
-                        <div class="col-sm-9 col-md-6" >
-                          <div class="thumbnail">
-                            <img src="{{ asset ($profesional->PRO_foto)}}" alt="...">
-                            <div class="caption">
-                              <h3>{{$profesional->PRO_nombresprof}} {{$profesional->PRO_apellidosprof}}</h3>
-                              <p>
-                                <a class="btn btn-default" onclick="verDispProf({{$profesional->id}})" role="button">Seleccionar</a>
-                              </p>
+            <div class="row" id="bloque4"  style="display: none;">  
+              <div class="col-md-12">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                  </div>
+                  <div class="box-body">
+                      
+                        @foreach($profesionales as $profesional)
+                        <div class="row" >
+                          <div class="col-xs-1 col-sm-1"></div>
+                          <div class="col-xs-10 col-sm-10" >
+                            <div class="thumbnail">
+                              <img src="{{ asset ($profesional->PRO_foto)}}" alt="...">
+                              <div class="caption">
+                                <h3>{{$profesional->PRO_nombresprof}} {{$profesional->PRO_apellidosprof}}</h3>
+                                <p>
+                                  <a class="btn btn-default" onclick="ClientGuardaOrden({{$profesional->id}})" role="button">Seleccionar</a>
+                                </p>
+                              </div>
                             </div>
                           </div>
+                          <div class="col-sm-3 col-md-3"></div>
                         </div>
-                        <div class="col-sm-3 col-md-3"></div>
-                      </div>
-                      @endforeach
+                        @endforeach
 
-                      <div class="col-sm-3 col-xs-4"></div>
-                        <div class="form-group col-xs-4">
-                          <label>
-                            <button type="button" class="btn btn-primary">Atrás</button>
-                          </label>
-                        </div>
-                        <div class="col-sm-3 col-xs-4"></div>
+                        <div class="col-xs-1 col-md-1"></div>
+                          <div class="form-group col-xs-4">
+                            <label>
+                              <button type="button" class="btn btn-primary">Atrás</button>
+                            </label>
+                          </div>
+                          <div class="col-sm-3 col-xs-4"></div>
 
+                  </div>
+                  <div class="box-footer">
+                  </div>   
                 </div>
-                <div class="box-footer">
-                </div>   
               </div>
             </div>
-          </div>
 
+            <div class="row" id="bloque5"  style="display: none;">  
+              <div class="col-md-12">
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                  </div>
+                  <div class="box-body">
+
+
+                  </div>
+                  <div class="box-footer">
+                  </div>   
+                </div>
+              </div>
+            </div>
+
+          </div><!-- fin del thumbnail -->
         </div>
+
       </div>
 
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3"></div>
-    </div>
-  </div>
-</form>
+    </div> <!-- fin del container -->
+  </form>
 
 <script src="{{ asset('js/fullCalendarv4.js') }}"></script>
 

@@ -1,3 +1,9 @@
+/////////////////////////////variables globales
+
+var valPlansel='0';
+var horasplan='0';
+
+
 //Buscador de empresas Módulo SuperAdmin
 $(document).on('click', '#buscarEmp', function(){
     var s_nombreEmpresa     = $('#nombreEmp').val();
@@ -233,6 +239,8 @@ $(document).on('click', '#inscripcion', function(){
     var mailprof      = $('#mailprof').val();
     var nivelprof     = $('#nivelprof').val();
     var percarprof    = $('#percarprof').val();
+    var planchar      = $('#planchar').val();
+    var cocinar       = $('#cocinar').val();
     var nomcon        = $('#nomcon').val();
     var apecon        = $('#apecon').val();
     var tipodoccon    = $('#tipodoccon').val();
@@ -265,6 +273,8 @@ $(document).on('click', '#inscripcion', function(){
         $('#mailprof').val("");
         $('#nivelprof').val("");
         $('#percarprof').val("");
+        $('#planchar').val("");
+        $('#cocinar').val("");
         $('#nomcon').val("");
         $('#apecon').val("");
         $('#tipodoccon').val("");
@@ -297,7 +307,8 @@ $(document).on('click', '#inscripcion', function(){
                   tipodoccon : tipodoccon, numerodoccon : numerodoccon, nombrefa : nombrefa,  
                   aperefa : aperefa, parentrefa : parentrefa, citirefa : citirefa, telrefa : telrefa,  
                   nomrefcoma : nomrefcoma, aperefcoma : aperefcoma, parentrefcoma : parentrefcoma,  
-                  citicoma : citicoma, telrefcoma : telrefcoma, s_terminos : s_terminos, s_datos : s_datos},
+                  citicoma : citicoma, telrefcoma : telrefcoma, s_terminos : s_terminos, s_datos : s_datos, 
+                  planchar : planchar, cocinar : cocinar},
 
         beforeSend: function(){
             var dim = $('#dimmer');
@@ -1190,46 +1201,77 @@ function verDispProf(id){
   location.href = 'visualizarAgenda/'+id+'/edit';
 }
 
+function mostrarOcultar(muestraOculta,id){
+  element = document.getElementById(id);
+  if(muestraOculta=='muestra'){
+     element.style.display='block'
+  }
+  else if(muestraOculta=='oculta'){
+    element.style.display = 'none';
+  }
+}
 
 function selecPlan(plan){
     
     $('#valSelectado').val(plan);
     $('#etiqPlanSel').html('<label>plan '+plan+'</label> ');
-    var valPlansel='';
+    
     if (plan==1){
-        valPlansel='$22.000'
+        valPlansel=22000;
+        horasplan=2;
+        mostrarOcultar('oculta','fAdicional1')
+        mostrarOcultar('oculta','fAdicional2')
     }
     if (plan==2){
-        valPlansel='$35.000'
+        valPlansel=35000;
+        horasplan=4;
+        mostrarOcultar('oculta','fAdicional1')
+        mostrarOcultar('oculta','fAdicional2')
     }
     if (plan==3){
-        valPlansel='$48.000'
+        valPlansel=48000;
+        horasplan=6;
+        mostrarOcultar('muestra','fAdicional1')
+        mostrarOcultar('muestra','fAdicional2')
     }
     if (plan==4){
-        valPlansel='$60.000'
+        valPlansel=60000;
+        horasplan=8;
+        mostrarOcultar('muestra','fAdicional1')
+        mostrarOcultar('muestra','fAdicional2')
     }
-    $('#valplanSel').html('<label>'+valPlansel+'</label> ');
+    mostrarOcultar('muestra','bloque2');
+    mostrarOcultar('oculta','bloque1');
+
+    $('#valplanSel').html('<label>$'+valPlansel+'</label> ');
+    $('#nominacion').val(valPlansel);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
 
+$(document).on('change','#CheckAdicional1',function(){
+    calcAdicionales();
+});
+$(document).on('change','#CheckAdicional2',function(){
+    calcAdicionales();
+});
 
-//Registrar datos del formulario para solicitud del cliente----------------------------------------------
-$(document).on('click', '#inscripcionCliente', function(){
-    
-    nuevoObjeto={
-        nombres       : $('#nombres').val(),
-        apellidos     : $('#apellidos').val(),
-        tipodoc       : $('#tipodoc').val(),
-        numerodoc     : $('#numerodoc').val(),
-        direccion     : $('#direccion').val(),
-        telefono      : $('#telefono').val(),
-        city          : $('#city').val(),
-        mail          : $('#mail').val(),
-        s_terminos    : $('#terminos').is(":checked"),
-        s_datos       : $('#datos').is(":checked"),
+function calcAdicionales(adicional){
+
+    valPlanseladi=valPlansel;
+
+    if(CheckAdicional1.checked==true && CheckAdicional2.checked==true){
+    }
+    if(CheckAdicional1.checked==true && CheckAdicional2.checked==false){
+    }
+    if(CheckAdicional1.checked==false && CheckAdicional2.checked==true){
     }
 
+    $('#valplanSel').html('<label>$'+valPlanseladi+'</label> ');
+
+}
+
+function ClientGuardaOrden(idProfesional){
 
     $.ajaxSetup({
         headers: {
@@ -1237,25 +1279,103 @@ $(document).on('click', '#inscripcionCliente', function(){
         }
     });
 
-    $.ajax({
-        type : 'POST',
-        url :'{{ url("agregarCliente")}}',
-        data : nuevoObjeto,
 
-        beforeSend: function(){
-            // var dim = $('#dimmer');
-            // dim.css("display", "block");
+    var f = new Date();
+
+    horaInicial=$('#inputHoras').val();
+    horafin=(parseInt(horaInicial.substring(0,2))+horasplan)+horaInicial.substring(2,5);
+
+    var dd=f.getDate();
+    var mm=f.getMonth()+1;
+
+    if (dd<10){
+        dd='0'+dd;
+    }
+    if (mm<10){
+        mm='0'+mm;
+    }
+
+
+    inmueble=$('#InputDireccion').val()
+    empresa=1
+    usuarioId=idProfesional
+    estadoOrden=1
+    fechaOrden=f.getFullYear()+'-'+mm+'-'+dd+'T00:00:00'
+    inicioOrden=$('#fechaAsig').val()+'T'+ horaInicial+':00'
+    finOrden=$('#fechaAsig').val()+'T'+ horafin+':00'
+    tipoOrden=1
+    cliente=$('#idcliente').val()
+
+
+
+    $.ajax({
+        type: 'POST',
+        url: '../agergarItem',
+        data: {inmueble:inmueble,empresa:empresa,usuarioId:usuarioId,cliente:cliente,estadoOrden:estadoOrden,fechaOrden:fechaOrden,inicioOrden:inicioOrden,finOrden:finOrden,tipoOrden:tipoOrden},
+  
+        success: function(){
+            swal("orden guardada con exito!", "Oprima OK para continuar!", "success");
+            // $(":file").filestyle('clear');
+            // $('#preview').removeAttr('src');
+            // $('#descripcion').val('');
+            // data_Imagen=null;
+            // window.location.reload(true);
         },
-        complete:function(){
-            // var dim = $('#dimmer');
-            // dim.css("display", "none");
-        },
-        success: function(data){
-            console.log(data);
-            //swal('La Reserva se ha registrado con éxito');
-            },
         error: function(){
-            alert('error');
+            swal("Error al guardar la orden!", "Intente de nuevo!", "error");
         }
     });
-});
+    
+}
+
+
+
+//Registrar datos del formulario para solicitud del cliente----------------------------------------------
+// $(document).on('click', '#inscripcionCliente', function(){
+    
+//     nuevoObjeto={
+//         nombreUsu       : $('#nombres').val(),
+//         apellidoUsu     : $('#apellidos').val(),
+//         tipodoc         : $('#tipodoc').val(),
+//         USR_DOCUMENTO   : $('#numerodoc').val(),
+//         direccionUsu    : $('#direccion').val(),
+//         telefono        : $('#telefono').val(),
+//         celularUsu      : $('#celularUsu').val(),
+//         city            : $('#city').val(),
+//         emailUsu        : $('#mail').val(),
+//         passwordUsu     : $('#passwordUsu').val(),
+//         passwordUsu     : $('#mail').val(),
+//         s_terminos      : $('#terminos').is(":checked"),
+//         s_datos         : $('#datos').is(":checked"),
+//     }
+
+
+//     $.ajaxSetup({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+//         }
+//     });
+
+     
+//     $.ajax({
+//         type : 'POST',
+//         url :'{{ url("agregarCliente")}}',
+//         data : nuevoObjeto,
+//         beforeSend: function(){
+//             // var dim = $('#dimmer');
+//             // dim.css("display", "block");
+//         },
+//         complete:function(){
+//             // var dim = $('#dimmer');
+//             // dim.css("display", "none");
+//         },
+//         success: function(data){
+//             console.log(data);
+//             //swal('La Reserva se ha registrado con éxito');
+//             },
+//         error: function(){
+//             alert('error');
+//         }
+//     });
+// });
+
