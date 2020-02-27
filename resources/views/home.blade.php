@@ -221,15 +221,16 @@
                           
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1">ANEXO</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <label for="lbl">ejemplo plan</label>
+                            <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
                           </div>
                           <div class="form-check" id="fAdicional1">
                             <input type="checkbox" class="form-check-input" id="CheckAdicional1">
-                            <label class="form-check-label" for="exampleCheck1">Adicional 1</label>
+                            <label class="form-check-label" for="exampleCheck1">Planchado</label>
                           </div>
                           <div class="form-check" id="fAdicional2">
                             <input type="checkbox" class="form-check-input" id="CheckAdicional2">
-                            <label class="form-check-label" for="exampleCheck2">Adicional 2</label>
+                            <label class="form-check-label" for="exampleCheck2">Preparación de alimentos</label>
                           </div>
 
                           <div class="form-group col-md-6">
@@ -240,7 +241,7 @@
 
                           <div class="form-group col-md-6">
                             <label >
-                              <button type="button" class="btn btn-primary">Siguiente</button>
+                              <button type="button" class="btn btn-primary" onclick="mostrarOcultar('muestra','bloque3');mostrarOcultar('oculta','bloque2');">Siguiente</button>
                             </label>
                           </div>
                           
@@ -277,9 +278,10 @@
                           </div>
 
                           <div class="form-group  col-md-6 col-xs-5">
-                            <label for="inputHoras">Hora</label>
+                            <label for="inputHoras">Hora +30</label>
                             <input type="time" class="form-control" id="inputHoras" placeholder="--:--">
                           </div>
+
 
                           <div class="form-group col-xs-12">
                             <h4>Direccion</h4>
@@ -291,15 +293,19 @@
                             </select>
                           </div>
 
+                          <div class="form-group col-xs-12">
+                            <h4>otra direccion</h4>
+                          </div>
+
                           <div class="form-group col-md-6">
                             <label >
-                              <button type="button" class="btn btn-primary">Atrás</button>
+                              <button type="button" class="btn btn-primary"  onclick="mostrarOcultar('muestra','bloque2');mostrarOcultar('oculta','bloque3');">Atrás</button>
                             </label>
                           </div>
 
                           <div class="form-group col-md-6">
                             <label >
-                              <button type="button" class="btn btn-primary">Siguiente</button>
+                              <button type="button" class="btn btn-primary"  onclick="mostrarOcultar('muestra','bloque4');mostrarOcultar('oculta','bloque3');">Siguiente</button>
                             </label>
                           </div>
                         </tbody>

@@ -1314,7 +1314,7 @@ function ClientGuardaOrden(idProfesional){
         data: {inmueble:inmueble,empresa:empresa,usuarioId:usuarioId,cliente:cliente,estadoOrden:estadoOrden,fechaOrden:fechaOrden,inicioOrden:inicioOrden,finOrden:finOrden,tipoOrden:tipoOrden},
   
         success: function(){
-            swal("orden guardada con exito!", "Oprima OK para continuar!", "success");
+            swal("orden de servicio creada y guardada con exito!", "Oprima OK para continuar!", "success");
             // $(":file").filestyle('clear');
             // $('#preview').removeAttr('src');
             // $('#descripcion').val('');

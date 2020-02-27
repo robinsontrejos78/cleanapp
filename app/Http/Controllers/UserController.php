@@ -56,7 +56,7 @@ class UserController extends Controller
 
         $empresas = DB::table('EMPRESAS')
             ->select('EMP_IDEMPRESA', 'EMP_NOMBRE')
-            ->where('EMP_IDEMPRESA', '!=', $idEmpresa)
+            // ->where('EMP_IDEMPRESA', '!=', $idEmpresa)
             ->get();
 
         return view('users.create', compact('empresas'));

@@ -70,18 +70,19 @@ class clienteController extends Controller
         $id = DB::getPdo()->lastInsertId();
 
 
-        $usuRol               = new userRole();
-        $usuRol->user_id = $id;
-        $usuRol->role_id = 4;//4 es el rol de cliente= crear ordenes de servicio
-        $usuRol->save();
+        DB::table('role_user')->insert(
+            ['user_id' => $id,
+             'role_id'   => 4
+             ]
+            );
+
 
         $empresaUsu                     = new Users_empresa();
         $empresaUsu->USE_EMP_IDEMPRESA  = 1;
         $empresaUsu->USE_USR_id         = $id;
         $empresaUsu->save();
         
-        // return "entro al controlador";
 
-        // return redirect('/empresa')->with('message', 'Empresa creada con exito');
+        return redirect('/')->with('message', 'Usuario creado con exito');
     }
 }
