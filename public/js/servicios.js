@@ -1212,6 +1212,8 @@ function mostrarOcultar(muestraOculta,id){
 }
 
 function selecPlan(plan){
+
+    var anexPlan='';
     
     $('#valSelectado').val(plan);
     $('#etiqPlanSel').html('<label>plan '+plan+'</label> ');
@@ -1219,24 +1221,38 @@ function selecPlan(plan){
     if (plan==1){
         valPlansel=22000;
         horasplan=2;
+        anexPlan='<p>SERVICIO DE 2 HORAS<br>Servicio general de aseo recomendado ';
+        anexPlan+='para un área no mayor a 45 metros cuadrados actividades que incluyen: ';
+        anexPlan+='barrer, trapear, sacudir, limpieza de baños, limpieza de cocina, lavado';
+        anexPlan+=' de ropa en maquina (incluida por el cliente)<br></p>';
         mostrarOcultar('oculta','fAdicional1')
         mostrarOcultar('oculta','fAdicional2')
     }
     if (plan==2){
         valPlansel=35000;
         horasplan=4;
+        anexPlan='<p>SERVICIO DE 4 HORAS<br>Servicio general de aseo recomendado para un' ;
+        anexPlan+='área no mayor a 90 metros cuadrados actividades que incluyen: barrer, trapear,';
+        anexPlan+=' sacudir, limpieza de baños, limpieza de cocina, lavado de ropa en maquina ';
+        anexPlan+=' (incluida por el cliente)<br></p>';
         mostrarOcultar('oculta','fAdicional1')
         mostrarOcultar('oculta','fAdicional2')
     }
     if (plan==3){
         valPlansel=48000;
         horasplan=6;
+        anexPlan='<p>SERVICIO DE 6 HORAS<br>Servicio general de aseo recomendado para un área'; 
+        anexPlan+='no mayor a 130 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, ';
+        anexPlan+='limpieza de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
         mostrarOcultar('muestra','fAdicional1')
         mostrarOcultar('muestra','fAdicional2')
     }
     if (plan==4){
         valPlansel=60000;
         horasplan=8;
+        anexPlan='<p>SERVICIO DE 8 HORAS<br>Servicio general de aseo recomendado para un área ';
+        anexPlan+='mayor a 131 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, limpieza' ;
+        anexPlan+='de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
         mostrarOcultar('muestra','fAdicional1')
         mostrarOcultar('muestra','fAdicional2')
     }
@@ -1245,6 +1261,7 @@ function selecPlan(plan){
 
     $('#valplanSel').html('<label>$'+valPlansel+'</label> ');
     $('#nominacion').val(valPlansel);
+    $('#anexoPlan').html(anexPlan);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }

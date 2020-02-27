@@ -220,9 +220,11 @@
                         <tbody>
                           
                           <div class="form-group">
-                            <label for="exampleFormControlTextarea1">ANEXO</label>
-                            <label for="lbl">ejemplo plan</label>
+                            <label for="lbl" id="anexoPlan"></label>
                             <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+                          </div>
+                          <div class="form-check" id="fAdicional1">
+                            <label class="form-check-label" for="exampleCheck1">Opcional:</label>
                           </div>
                           <div class="form-check" id="fAdicional1">
                             <input type="checkbox" class="form-check-input" id="CheckAdicional1">
@@ -331,9 +333,9 @@
                           <div class="col-xs-1 col-sm-1"></div>
                           <div class="col-xs-10 col-sm-10" >
                             <div class="thumbnail">
-                              <img src="{{ asset ($profesional->PRO_foto)}}" alt="...">
+                              <img src="{{ asset ($profesional->USR_foto)}}" alt="...">
                               <div class="caption">
-                                <h3>{{$profesional->PRO_nombresprof}} {{$profesional->PRO_apellidosprof}}</h3>
+                                <h3>{{$profesional->name}} {{$profesional->USR_APELLIDOS}}</h3>
                                 <p>
                                   <a class="btn btn-default" onclick="ClientGuardaOrden({{$profesional->id}})" role="button">Seleccionar</a>
                                 </p>
@@ -359,7 +361,7 @@
               </div>
             </div>
 
-            <div class="row" id="bloque5"  style="display: none;">  
+            <div class="row" id="bloque5" style="display: none;">  
               <div class="col-md-12">
                 <div class="box box-primary">
                   <div class="box-header with-border">
