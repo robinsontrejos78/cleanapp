@@ -1278,6 +1278,8 @@ function mostrarOcultar(muestraOculta,id){
 }
 
 function selecPlan(plan){
+
+    var anexPlan='';
     
     $('#valSelectado').val(plan);
     $('#etiqPlanSel').html('<label>plan '+plan+'</label> ');
@@ -1285,24 +1287,38 @@ function selecPlan(plan){
     if (plan==1){
         valPlansel=22000;
         horasplan=2;
+        anexPlan='<p>SERVICIO DE 2 HORAS<br>Servicio general de aseo recomendado ';
+        anexPlan+='para un área no mayor a 45 metros cuadrados actividades que incluyen: ';
+        anexPlan+='barrer, trapear, sacudir, limpieza de baños, limpieza de cocina, lavado';
+        anexPlan+=' de ropa en maquina (incluida por el cliente)<br></p>';
         mostrarOcultar('oculta','fAdicional1')
         mostrarOcultar('oculta','fAdicional2')
     }
     if (plan==2){
         valPlansel=35000;
         horasplan=4;
+        anexPlan='<p>SERVICIO DE 4 HORAS<br>Servicio general de aseo recomendado para un' ;
+        anexPlan+='área no mayor a 90 metros cuadrados actividades que incluyen: barrer, trapear,';
+        anexPlan+=' sacudir, limpieza de baños, limpieza de cocina, lavado de ropa en maquina ';
+        anexPlan+=' (incluida por el cliente)<br></p>';
         mostrarOcultar('oculta','fAdicional1')
         mostrarOcultar('oculta','fAdicional2')
     }
     if (plan==3){
         valPlansel=48000;
         horasplan=6;
+        anexPlan='<p>SERVICIO DE 6 HORAS<br>Servicio general de aseo recomendado para un área'; 
+        anexPlan+='no mayor a 130 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, ';
+        anexPlan+='limpieza de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
         mostrarOcultar('muestra','fAdicional1')
         mostrarOcultar('muestra','fAdicional2')
     }
     if (plan==4){
         valPlansel=60000;
         horasplan=8;
+        anexPlan='<p>SERVICIO DE 8 HORAS<br>Servicio general de aseo recomendado para un área ';
+        anexPlan+='mayor a 131 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, limpieza' ;
+        anexPlan+='de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
         mostrarOcultar('muestra','fAdicional1')
         mostrarOcultar('muestra','fAdicional2')
     }
@@ -1311,6 +1327,7 @@ function selecPlan(plan){
 
     $('#valplanSel').html('<label>$'+valPlansel+'</label> ');
     $('#nominacion').val(valPlansel);
+    $('#anexoPlan').html(anexPlan);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
@@ -1445,3 +1462,94 @@ function ClientGuardaOrden(idProfesional){
 //     });
 // });
 
+//anular orden de servicio-----------------------------------------------------------------------------------------------------------------------
+$(document).on('click', '.anularOrdencliente', function(){
+    
+    var s_nombre  = $(this).attr('data-nombre');
+    var s_email   = $(this).attr('data-email');
+    var s_direc   = $(this).attr('data-dir');
+    var i_idorden = $(this).attr('data-id');
+    var e_td      = $(this).parents('td');
+    var boton1    = $(this);
+    
+    swal({
+      title: "Está seguro de anular la orden de servicio?",
+      text: "",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonClass: "btn-primary",
+      confirmButtonText: "Anular!",
+      cancelButtonClass: "btn-danger",
+      cancelButtonText: "Cancelar!",
+      closeOnConfirm: false,
+      closeOnCancel: false
+    },
+    function(isConfirm) {
+      if (isConfirm) {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type : 'POST',
+            url : 'anularOrdenCliente',
+            data : {i_idorden : i_idorden, s_email : s_email, s_nombre : s_nombre, s_direc : s_direc},
+            beforeSend: function(){
+                var dim = $('#dimmer');
+                dim.css("display", "block");
+            },
+            complete:function(){
+                var dim = $('#dimmer');
+                dim.css("display", "none");
+            },
+            success: function(data){
+                boton1.parents('tr').find('.cancelarOrden').remove();
+                $('.tooltip').remove();
+                e_td.html('<span class="badge bg-red" data-toggle="tooltip" title="" data-placement="top" data-original-title="Orden de Pago Anulada"> Anulado </span>');
+                $('.resultado').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-success alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Orden de Servicio Anulada. Se envió e-mail de confirmación</div></div></div>')
+                swal("Anulada!", "La orden de servicio ha sido anulada.", "success");
+            },
+            error: function(){
+                $('.resultado').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Error al Anular la Orden. Contacte al administrador</div></div></div>');
+                swal("Error", "La orden de servicio no fue anulada", "error");
+            }
+        });
+    } else {
+        swal("Cancelada", "La orden de servicio no fue anulada", "error");
+      }
+    });
+});
+
+//Buscador de Ordenes Módulo Cliente----------------------------------------------------------------------------------------------------------
+$(document).on('click', '#buscarOrdCliente', function(){
+    var i_estadoOrden       = $('#estadoOrd').val();
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type : 'POST',
+        url : 'buscarOrdCliente',
+        data : {i_estadoOrden : i_estadoOrden},
+        beforeSend: function(){
+            var dim = $('#dimmer');
+            dim.css("display", "block");
+        },
+        complete:function(){
+            var dim = $('#dimmer');
+            dim.css("display", "none");
+        },
+        success: function(data){
+            $(".table_").html(data);
+        },
+        error: function(){
+            $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');
+        }
+    });
+});

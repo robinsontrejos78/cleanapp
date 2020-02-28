@@ -168,8 +168,6 @@ public function calificarorden()
             ->get();
 
         return ('listo');
-        
-         
     }
 
 
@@ -209,7 +207,6 @@ public function calificarorden()
                 'NOV_IMAGEN'           => $s_name,
                 'NOV_LOO_TIPONOVEDAD'  => $i_tipo
             ]);
-
     }
 
     public function continuarOrdenes($idor)
