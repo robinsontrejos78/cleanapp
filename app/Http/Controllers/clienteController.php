@@ -74,7 +74,15 @@ class clienteController extends Controller
             ['user_id' => $id,
              'role_id'   => 4
              ]
-            );
+         );
+
+
+        DB::table('inmuebles')->insert(
+            ['INM_USR_IDUSER' => $id,
+            'INM_DIRECCION'   => $request->get('direccion'),
+            'INM_ESTADO'   => 1
+            ]
+        );
 
 
         $empresaUsu                     = new Users_empresa();

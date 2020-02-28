@@ -10,7 +10,7 @@
 			header:{
 				left: 'MiBoton',
 				center:'title',
-				right:'timeGridDay, prev, next'
+				right:'prev, next'
 			},
 			// customButtons:{
 			// 	MiBoton:{

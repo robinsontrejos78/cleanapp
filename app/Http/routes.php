@@ -29,10 +29,6 @@ Route::resource('propiedad', 'PropiedadController');
 
 Route::resource('ciudad', 'CiudadController');
 
-Route::resource('orden', 'OrdenController');
-
-Route::resource('ordenCliente', 'OrdenClienteController');
-
 Route::resource('ordenP', 'OrdenpersonaController');
 
 Route::resource('historial', 'OrdenpersonaController@historialorden');
@@ -47,7 +43,7 @@ Route::resource('reporte', 'ReportesinventarioController@reporte_index');
 
 Route::resource('inscripcion', 'formularioController@mostrarprof');
 
-Route::resource('orden', 'OrdenController');
+Route::resource('orden', 'OrdenController');//duplicadas
 
 Route::resource('vercalificacion', 'OrdenpersonaController@calificaciones');
 
@@ -193,7 +189,6 @@ Route::get('finalizarOrden/{idor}', 'OrdenpersonaController@finalizarOrdenes');
 //ruta para finalizar ordenes de servicio
 Route::post('calificarorden', 'OrdenpersonaController@calificarorden');
 
-
 //buscar ciudad
 Route::post('buscarCiu', 'CiudadController@buscarCiudad');
 
@@ -241,9 +236,35 @@ Route::post('buscarreporte', 'ReportesinventarioController@buscareporte');
 //agenda de profesional de servicio
 Route::get('visualizarAgenda/{id}/edit', 'AgendaprofController@edit');
 
-Route::post('agergarItem', 'AgendaprofController@store');
-
 //rutas para el cliente
+
 Route::get('formcliente', 'clienteController@create');
 
 Route::resource('cliente', 'clienteController');
+
+// Route::resource('ordenCliente', 'OrdenClienteController');
+
+// ORDENES CLIENTE
+
+Route::get('ordenC', 'OrdenClienteController@index');
+
+Route::get('ordenCliente/create', 'OrdenClienteController@create');
+
+Route::post('anularOrdenCliente', 'OrdenClienteController@anularOrdenes');
+
+Route::get('ordenCliente/{id}/edit', 'OrdenClienteController@edit');
+
+Route::post('buscarOrdCliente', 'OrdenClienteController@buscarOrdenes');
+
+Route::get('vercalificacion', 'OrdenClienteController@calificaciones');
+
+// FIN ORDENES CLIENTE
+
+Route::post('buscarOrd', 'OrdenController@buscarOrdenes');
+
+//Anular Ordenes de Servicio
+Route::post('anularOrden', 'OrdenController@anularOrdenes');
+
+Route::post('calificarorden', 'OrdenpersonaController@calificarorden');
+
+Route::post('agergarItem', 'AgendaprofController@store');

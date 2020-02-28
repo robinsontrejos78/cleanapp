@@ -62,8 +62,6 @@ class OrdenController extends Controller
             ->select('users.name', 'USR_APELLIDOS')
             ->get();
 
-           // dd($ordencli);
-
         return view('ordenes.index', compact('estadosO', 'personas', 'ordenServicio'));
     }
 
