@@ -30,7 +30,7 @@
             <input type="text" class="form-control" id="nombreCiu" name="nombreCiu" placeholder="Nombre de la Ciudad" value="{{ $ciudad->CIU_NOMBRE }}" onkeyup="this.value=this.value.toUpperCase();">
           </div>
           <div class="col-md-6">
-            <label for="nombrePais" style="margin-top:20px">Pais</label>
+            <label for="nombrePais" style="margin-top:20px">Departamento</label>
             <input type="text" class="form-control" id="nombrePais" name="nombrePais" placeholder="Nombre del Pais" value="{{ $ciudad->CIU_PAIS }}" onkeyup="this.value=this.value.toUpperCase();">
           </div>         
           <div class="col-md-1 col-md-offset-9" style="margin-top:30px">

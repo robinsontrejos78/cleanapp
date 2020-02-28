@@ -57,8 +57,8 @@
           <label for="inmueble">Dirección</label>
           <select name="inmueble" id="inmueble" class="form-control tipoOrden" >
             <option value="">Seleccione opción</option>
-            @foreach($inmueble as $inm)
-              <option value="{{ $inm->INM_IDINMUEBLE }}">{{ $inm->INM_DIRECCION }} </option>
+           @foreach($cliente as $cli) 
+              <option value="{{ $cli->USR_DIRECCION }}">{{ $cli->USR_DIRECCION }} </option>
             @endforeach
           </select>
         </div>
@@ -96,7 +96,7 @@
        
         <div class="col-md-6">
           <label for="ordDesc">Descripción</label>
-          <textarea name="ordDesc" rows="4" class="form-control" style="margin-top:5px">{{ old('ordDesc')}}</textarea>
+          <textarea name="ordDesc" rows="4" placeholder="Ingresa una descripción u otra dirección donde quieres el servicio" class="form-control" style="margin-top:5px">{{ old('ordDesc')}}</textarea>
         </div>
 
         <div id="vacio">

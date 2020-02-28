@@ -69,6 +69,72 @@ $(document).on('click', '#buscarCiu', function(){
     });
 });
 
+
+
+//Buscador de ciudades_________________________________________________________________________________________________________________________
+$(document).on('click', '#buscarcalprof', function(){
+    var nombreUsu   = $('#nombreUsu').val();
+    var docuprof    = $('#docuprof').val();
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type : 'POST',
+        url : 'mostrarcalprof',
+        data : {nombreUsu : nombreUsu, docuprof : docuprof},
+        beforeSend: function(){
+            var dim = $('#dimmer');
+            dim.css("display", "block");
+        },
+        complete:function(){
+            var dim = $('#dimmer');
+            dim.css("display", "none");
+        },
+        success: function(data){
+            $("table").html(data);
+        },
+        error: function(){
+            $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');
+        }
+    });
+});
+
+//Buscador de calificaciones de clientes_________________________________________________________________________________________________________________________
+$(document).on('click', '#buscarcalcli', function(){
+    var nombreUsucli = $('#nombreUsucli').val();
+    var docucli      = $('#docucli').val();
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type : 'POST',
+        url : 'mostrarcalcli',
+        data : {nombreUsucli : nombreUsucli, docucli : docucli},
+        beforeSend: function(){
+            var dim = $('#dimmer');
+            dim.css("display", "block");
+        },
+        complete:function(){
+            var dim = $('#dimmer');
+            dim.css("display", "none");
+        },
+        success: function(data){
+            $("table").html(data);
+        },
+        error: function(){
+            $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');
+        }
+    });
+});
+
 //Buscador de Usuarios Módulo SuperAdmin-----------------------------------------------------------------------------------------------------------
 $(document).on('click', '#buscarUsu', function(){
     var s_nombreUsuario     = $('#nombreUsu').val();

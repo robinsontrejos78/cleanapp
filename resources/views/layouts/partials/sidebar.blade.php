@@ -47,8 +47,8 @@
                 <li class="treeview">
                     <a href=""><i class='fa fa-star-half-o'></i> <span>Calificaciones</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                    <li><a href="">Clientes</a></li>
-                    <li><a href="">Profesionales</a></li>
+                    <li><a href="{{ url('calificacliente') }}">Clientes</a></li>
+                    <li><a href="{{ url('calificaprof') }}">Profesionales</a></li>
                    </ul>
                 </li>
 

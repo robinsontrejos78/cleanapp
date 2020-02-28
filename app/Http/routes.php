@@ -51,6 +51,13 @@ Route::resource('orden', 'OrdenController');
 
 Route::resource('vercalificacion', 'OrdenpersonaController@calificaciones');
 
+Route::resource('calificaprof', 'CalificacionController@index');
+
+Route::resource('calificacliente', 'CalificacionController@calificarcliente');
+
+Route::resource('mostrarcalcli', 'CalificacionController@mostrarcalcli');
+
+
 //Buscador de empresas ajax
 Route::post('buscarEmp', 'EmpresaController@buscarEmpresa');
 
@@ -65,6 +72,8 @@ Route::post('descartarregistro', 'formularioController@descartarins');
 //Buscar datos de profesional que se inscribio en la plataforma
 Route::post('buscarprof', 'formularioController@mostrardatosprof');
 
+//Buscar datos de profesional que se inscribio en la plataforma
+Route::post('mostrarcalprof', 'CalificacionController@mostrarcalifprof');
 
 //Cambio estado Usuario
 Route::post('cambioEstadoUsu', 'UserController@cambioEstadoUsuario');
