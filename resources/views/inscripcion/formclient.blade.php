@@ -31,7 +31,7 @@
         @endif
 
         <div class="row">
-            <div class="box box-info box-solid" style="width: 500px" >
+            <div class="box box-info box-solid" style="width: 400px" >
                 <div class="box-header with-border" >
                     <h3 class="box-title" >Formulario de Inscripción Para Clientes</h3>
                 </div>
@@ -104,7 +104,7 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" required name="terminos" id="terminos"> <a target="_blank" href="{{ url('terminos') }}"> Terminos y Condiciones</a>
+                                        <input type="checkbox" required name="terminos" id="terminos"> <a target="_blank" href="{{ url('terminos') }}">Acepto Terminos y Condiciones</a>
                                     </label>
                                 </div>
                             </div>

@@ -47,8 +47,8 @@
                 <li class="treeview">
                     <a href=""><i class='fa fa-star-half-o'></i> <span>Calificaciones</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                    <li><a href="">Clientes</a></li>
-                    <li><a href="">Profesionales</a></li>
+                    <li><a href="{{ url('calificacliente') }}">Clientes</a></li>
+                    <li><a href="{{ url('calificaprof') }}">Profesionales</a></li>
                    </ul>
                 </li>
 
@@ -58,6 +58,16 @@
                 <li><a href="{{ url('ordenP') }}"><i class='fa fa-briefcase'></i> <span>Ordenes de Servicio</span></a></li>
                 <li><a href="{{ url('vercalificacion') }}"><i class='fa fa-thumbs-o-up'></i> <span>Calificaciones</span></a></li>
                 <li><a href="{{ url('historial') }}"><i class='fa fa-calendar'></i> <span>Historial de Ordenes</span></a></li>
+
+  <!-- Link para visualizar ordenes sin pagar desactivado     -->          
+                <!-- <li><a href="{{ url('ordenesSinPagar') }}"><i class='fa fa-money'></i> <span>Ordenes sin pagar</span></a></li> -->
+                <!-- <li><a href="#"><i class='fa fa-history'></i> <span>Historial de ordenes</span></a></li> -->
+            @endif
+
+            @if (Auth::user()->hasRole('Cliente'))
+                <li><a href="{{ url('ordenC') }}"><i class='fa fa-briefcase'></i> <span>Ordenes de Servicio</span></a></li>
+                <li><a href="{{ url('vercalificacionCliente') }}"><i class='fa fa-thumbs-o-up'></i> <span>Calificaciones</span></a></li>
+                <!-- <li><a href="{{ url('historialCliente') }}"><i class='fa fa-calendar'></i> <span>Historial de Ordenes</span></a></li> -->
 
   <!-- Link para visualizar ordenes sin pagar desactivado     -->          
                 <!-- <li><a href="{{ url('ordenesSinPagar') }}"><i class='fa fa-money'></i> <span>Ordenes sin pagar</span></a></li> -->

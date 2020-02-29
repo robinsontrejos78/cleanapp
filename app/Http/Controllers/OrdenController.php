@@ -62,8 +62,6 @@ class OrdenController extends Controller
             ->select('users.name', 'USR_APELLIDOS')
             ->get();
 
-           // dd($ordencli);
-
         return view('ordenes.index', compact('estadosO', 'personas', 'ordenServicio'));
     }
 
@@ -84,9 +82,6 @@ class OrdenController extends Controller
             ->where('role_id', 4)
             ->get();
 
-        $inmueble = DB::table('INMUEBLES')
-            ->get();
-
         $profesional = DB::table('users')
            ->join('role_user', 'user_id', '=', 'users.id')
             ->where('role_id', 3)
@@ -94,7 +89,7 @@ class OrdenController extends Controller
 
         $tipoOrden = DB::table('LOOKUP')->where('LOO_GRUPO', 1)->where('LOO_IDLOOKUP', 1)->select('LOO_IDLOOKUP', 'LOO_DESCRIPCION')->get();
         
-        return view('ordenes.create', compact('tipoOrden', 'inmueble', 'cliente', 'profesional'));
+        return view('ordenes.create', compact('tipoOrden', 'cliente', 'profesional'));
     }
 
     /**

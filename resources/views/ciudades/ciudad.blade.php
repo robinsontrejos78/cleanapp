@@ -19,7 +19,7 @@
       </div>
 
       <div class="box-body">
-        <h3 class="box-title">Pais</h3>
+        <h3 class="box-title">Departamento</h3>
         <div>
         <div>
         <input type="text" name="pais">

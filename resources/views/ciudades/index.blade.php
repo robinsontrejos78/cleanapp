@@ -75,7 +75,7 @@
           <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoCiudad">
             <thead>
               <tr>
-                <th class="centro">Pais</th>
+                <th class="centro">Departamento</th>
                 <th class="centro">Ciudad</th>
                 <th class="centro">Estado</th>
                 <th class="centro">Acciones</th>
