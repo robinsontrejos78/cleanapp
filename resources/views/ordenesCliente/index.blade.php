@@ -137,6 +137,11 @@
                                 <span class="glyphicon glyphicon-remove"></span>
                               </button>
                             @endif
+                            @if($orden->estado_orden == "FINALIZADO" && $orden->ORD_CLI_CALIFICO != True )
+                                <a class="btn btn-success btn-sm" href="comenzarOrdenCliente/{{ $orden->ORD_IDORDEN }}" data-original-title="Calificar orden">
+                                  <span class="glyphicon glyphicon-ok"></span>
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

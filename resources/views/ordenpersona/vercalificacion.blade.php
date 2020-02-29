@@ -52,8 +52,8 @@
 				@foreach($valoraciones as $valoracion)
 	          <tr style="text-align:center;">
                 <td>{{ $valoracion->name }}{{ $valoracion->USR_APELLIDOS }}</td>
-                <td>{{ $valoracion->CAL_calificacion }}</td>
-                <td>{{ $valoracion->CAL_observacion }}</td>   
+                <td>{{ $valoracion->CAL_CALIFICACION }}</td>
+                <td>{{ $valoracion->CAL_OBSERVACION }}</td>   
 	              <td class="centro">
                 </td>
 	          </tr>

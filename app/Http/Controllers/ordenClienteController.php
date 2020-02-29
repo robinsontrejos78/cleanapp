@@ -33,7 +33,7 @@ class ordenClienteController extends Controller
           ->where('ORD_PAGADO', 0)
           ->where('c.LOO_GRUPO', 2)
           ->where('ORD_USR_CLI',$idusuario)
-          ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'ORD_INM_IDINMUEBLE', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO')
+          ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'ORD_INM_IDINMUEBLE', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO', 'ORD_CLI_CALIFICO')
           ->orderBy('ORD_FECHAORDEN', 'desc')
           ->take(10)
           ->get();
@@ -253,6 +253,27 @@ class ordenClienteController extends Controller
         return view('ordenesCliente.vercalificacion', compact('valoraciones','contador'));
     }
 
+    public function comenzarOrden($ido)
+    {
+        if (!Auth::user()->hasRole('Cliente')) abort(403);
+        if (!filter_var($ido, FILTER_VALIDATE_INT)) abort(404);
+
+        $idEmpresa = Session::get('idEmpresa');
+        $fecha = Carbon::now();
+        
+
+        $orden = DB::table('ORDEN_SERVICIOS')
+            ->join('LOOKUP', 'ORD_LOO_TIPOORDEN', '=', 'LOO_IDLOOKUP')
+            ->where('LOO_GRUPO', 1)
+            ->where('ORD_IDORDEN', $ido)
+            ->first();
+
+        $tipo = $orden->ORD_LOO_TIPOORDEN;
+
+        return view('ordenesCliente.atenderOrden', compact('orden', 'tipo', 'inventarios'));
+    }
+
+
     public function calificarorden()
     {
         if (!Auth::user()->hasRole('Cliente')) abort(403);
@@ -261,15 +282,13 @@ class ordenClienteController extends Controller
          $calif    = $_POST['calif'];
          $obser    = $_POST['obser'];
          $dataord  = $_POST['dataord'];
-         $dataruta = $_POST['dataruta'];
-
+         $cliente = $_POST['cliente'];
 
         $fecha   = Carbon::now();
 
-
             DB::table('CALIFICACIONES')->insert(
             ['CAL_IDUSERPROF'    => $idPersona,
-             'CAL_IDUSERCLIENTE' => $dataruta,
+             'CAL_IDUSERCLIENTE' => $cliente,
              'CAL_observacion'   => $obser, 
              'CAL_calificacion'  => $calif, 
              'CAL_fecharegistro' => $fecha,
@@ -277,15 +296,14 @@ class ordenClienteController extends Controller
              ]
             ); 
 
-             DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $dataord)->update(['ORD_LOO_ESTADOORDEN' => 3, 'ORD_FINORDEN' => $fecha]);
+             DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $dataord)
+             ->update(['ORD_CLI_CALIFICO' => 1]);
        
-        $ordenes = DB::table('ORDEN_SERVICIOS')
-            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
-            ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
-            ->join('users', 'ORD_USR_CLI', '=', 'users.id')
-            ->where('ORD_USR_ID', $idPersona)
-            ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
-            ->get();
+        // $ordenes = DB::table('ORDEN_SERVICIOS')
+        //     ->join('users', 'ORD_USR_CLI', '=', 'users.id')
+        //     ->where('ORD_USR_ID', $idPersona)
+        //     ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+        //     ->get();
 
         // return ('listo');
       return('entro a calificar');

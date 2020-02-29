@@ -1571,3 +1571,39 @@ $(document).on('click', '#buscarOrdCliente', function(){
         }
     });
 });
+
+//finalizar la orden de servicio con su respectiva calificación----------------------------------------------------------------------------------------------------------
+$(document).on('click', '#finalizarOrdenCliente', function(){
+    
+    var calif     = $('input[name=estrellas]:checked', '#formulario').val();
+    var obser     = $('#obser').val();
+    var dataord   = $('#orden').val();
+    var cliente  = $('#cliente').val();
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type : 'POST',
+        url : '../calificarordenCliente',
+        data : { calif : calif, obser : obser, dataord : dataord, cliente : cliente},
+        beforeSend: function(){
+            var dim = $('#dimmer');
+            dim.css("display", "block");
+        },
+        complete:function(){
+            var dim = $('#dimmer');
+            dim.css("display", "none");
+        },
+        success: function(data){
+          
+              window.location.href='../ordenC';
+        },
+        error: function(){
+            $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');
+        }
+    });
+});
