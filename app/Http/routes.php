@@ -259,13 +259,15 @@ Route::get('ordenC', 'OrdenClienteController@index');
 
 Route::get('ordenCliente/create', 'OrdenClienteController@create');
 
+Route::post('store', 'OrdenClienteController@store');
+
 Route::post('anularOrdenCliente', 'OrdenClienteController@anularOrdenes');
 
 Route::get('ordenCliente/{id}/edit', 'OrdenClienteController@edit');
 
 Route::post('buscarOrdCliente', 'OrdenClienteController@buscarOrdenes');
 
-//Route::get('vercalificacion', 'OrdenClienteController@calificaciones');
+Route::get('vercalificacionCliente', 'OrdenClienteController@calificaciones');
 
 // FIN ORDENES CLIENTE
 

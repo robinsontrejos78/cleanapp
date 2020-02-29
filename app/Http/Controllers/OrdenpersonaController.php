@@ -31,12 +31,11 @@ class OrdenpersonaController extends Controller
         //dd($idPersona);
 
         $ordenes = DB::table('ORDEN_SERVICIOS')
-            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
-            ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
             ->join('users', 'ORD_USR_CLI', '=', 'users.id')
             ->where('ORD_USR_ID', $idPersona)
             ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
             ->get();
+            
         return view('ordenpersona.index', compact('ordenes'));
     }
 
@@ -55,8 +54,6 @@ class OrdenpersonaController extends Controller
         
 
         $orden = DB::table('ORDEN_SERVICIOS')
-            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
-            ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
             ->join('LOOKUP', 'ORD_LOO_TIPOORDEN', '=', 'LOO_IDLOOKUP')
             ->where('LOO_GRUPO', 1)
             ->where('ORD_IDORDEN', $ido)
@@ -273,10 +270,10 @@ public function calificarorden()
         $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
 
    
-$contador = DB::table('CALIFICACIONES')
-                     ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
-                     ->where('CAL_IDUSERCLIENTE', '=', $idPersona)
-                     ->get();
+        $contador = DB::table('CALIFICACIONES')
+            ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
+            ->where('CAL_IDUSERCLIENTE', '=', $idPersona)
+            ->get();
                      
         $valoraciones = DB::table('CALIFICACIONES')
          ->join('users', 'CAL_IDUSERCLIENTE', '=', 'users.id')

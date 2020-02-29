@@ -12,13 +12,30 @@
         {{Session::get('message')}}
     </div>
 @endif
+<div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-star-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Tu Promedio es:</span>
+               @foreach($contador as $conta)
+              <span class="info-box-number">{{ $conta->promedio }}</span>
+              @endforeach
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
 
 <div class="row">
   <div class="col-xs-12">
     <div class="box box-primary">
 
       <div class="box-header with-border">
-        <h3 class="box-title">Lista de Ordenes de Servicio</h3>
+
+        <h3 class="box-title">Calificaciones Otorgadas</h3>
+
       </div>
         <div class="resultado"></div>
       <div class="box-body">
@@ -26,24 +43,18 @@
           <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoEmp">
             <thead>
                 <tr>
-                    <th class="centro">Cliente</th>
-                    <th class="centro">Teléfono</th>
-                    <th class="centro">Dirección</th>
-                    <th class="centro">Fecha de la orden</th>
-                    <th class="centro">Descripción</th>
-                    <th class="centro">Acciones</th>
+                    <th class="centro">Profesional</th>
+                    <th class="centro">Estrellas Otorgadas</th>
+                    <th class="centro">Observación</th>
                 </tr>
             </thead>
             <tbody>
-				@foreach($ordenes as $orden)
+				@foreach($valoraciones as $valoracion)
 	          <tr style="text-align:center;">
-                <td>{{ $orden->name }} {{ $orden->USR_APELLIDOS }}</td>
-                <td>{{ $orden->USR_TELEFONO }}</td>
-	              <td>{{ $orden->ORD_INM_IDINMUEBLE }}</td>
-	              <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d / h:i') }}</td>
-                <td>{{ $orden->ORD_DESCRIPCION }}</td>   
+                <td>{{ $valoracion->name }}{{ $valoracion->USR_APELLIDOS }}</td>
+                <td>{{ $valoracion->CAL_CALIFICACION }}</td>
+                <td>{{ $valoracion->CAL_OBSERVACION }}</td>   
 	              <td class="centro">
-                  <a href="comenzarOrden/{{$orden->ORD_IDORDEN}}" class="btn btn-success btn-xs">Comenzar</a>
                 </td>
 	          </tr>
 				@endforeach

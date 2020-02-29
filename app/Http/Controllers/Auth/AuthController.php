@@ -109,4 +109,12 @@ class AuthController extends Controller
         
         return view('layouts.ajax.show', compact('empresas'));
     }
+
+    public function redirectpath(){
+        if(Auth::user()->hasRole('Cliente')){
+            return '/ordenCliente/create';
+        }else{
+            return '/home';
+        }
+    }
 }

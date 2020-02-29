@@ -115,7 +115,7 @@
                 @foreach($ordenServicio as $orden)
                     <tr class="temporal">
                         <td>{{ $orden->estado_orden }}</td>
-                        <td>{{ $orden->INM_DIRECCION }}</td>
+                        <td>{{ $orden->ORD_INM_IDINMUEBLE }}</td>
                         <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d') }}</td>
                         <td>
                           <?php 
@@ -133,7 +133,7 @@
                                   <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                               @endif
-                              <button class="btn btn-danger btn-sm anularOrdencliente " data-id="{{ $orden->ORD_IDORDEN }}" data-email="{{ $orden->email }}" data-nombre="{{ $orden->name }} {{ $orden->USR_APELLIDOS }}" data-dir="{{ $orden->INM_DIRECCION }}" data-toggle="tooltip" data-placement="top" data-original-title="Anular la Orden de Servicio">
+                              <button class="btn btn-danger btn-sm anularOrdencliente " data-id="{{ $orden->ORD_IDORDEN }}" data-email="{{ $orden->email }}" data-nombre="{{ $orden->name }} {{ $orden->USR_APELLIDOS }}" data-dir="{{ $orden->ORD_INM_IDINMUEBLE }}" data-toggle="tooltip" data-placement="top" data-original-title="Anular la Orden de Servicio">
                                 <span class="glyphicon glyphicon-remove"></span>
                               </button>
                             @endif

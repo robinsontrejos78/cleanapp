@@ -17,7 +17,7 @@ class User extends Authenticatable
     use EntrustUserTrait;
     
     protected $fillable = [
-        'name', 'email', 'password', 'USR_APELLIDOS', 'USR_DOCUMENTO', 'USR_TELEFONO', 'USR_ESTADO',
+        'name', 'email', 'password', 'USR_APELLIDOS', 'USR_DOCUMENTO', 'USR_TELEFONO', 'USR_ESTADO','USR_direccion',
     ];
 
     /**

@@ -1393,11 +1393,29 @@ function ClientGuardaOrden(idProfesional){
 
     $.ajax({
         type: 'POST',
-        url: '../agergarItem',
+        url: '../store',
         data: {inmueble:inmueble,empresa:empresa,usuarioId:usuarioId,cliente:cliente,estadoOrden:estadoOrden,fechaOrden:fechaOrden,inicioOrden:inicioOrden,finOrden:finOrden,tipoOrden:tipoOrden},
   
-        success: function(){
-            swal("orden de servicio creada y guardada con exito!", "Oprima OK para continuar!", "success");
+        success: function(data){
+            // swal("", "", "");
+            swal({
+              title: "orden de servicio creada y guardada con exito!",
+              text: "Oprima OK para continuar!",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonClass: "btn-primary",
+              confirmButtonText: "Aceptar!",
+              cancelButtonClass: "btn-danger",
+              cancelButtonText: "Cancelar!",
+              closeOnConfirm: false,
+              closeOnCancel: false
+            },
+            function(isConfirm) {
+              if (isConfirm) {
+                window.location.href = "../ordenC";
+              }
+            });
+
             // $(":file").filestyle('clear');
             // $('#preview').removeAttr('src');
             // $('#descripcion').val('');
