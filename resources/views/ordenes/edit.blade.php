@@ -8,13 +8,6 @@
 @section('main-content')
 <meta name="_token" content="{{ csrf_token() }}"/>
 
-<section class="content-header" style="margin-bottom:30px">
-    <ol class="breadcrumb">
-        <li><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active"> Editar Orden</li>
-    </ol>
-</section>
-
 @if (count($errors) > 0)
   <div class="alert alert-primary">
       <ul>
@@ -38,7 +31,7 @@
           <input type="hidden" name="_method" value="PUT">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="col-md-6">
-            <label for="inmueble">Inmueble</label>
+            <label for="inmueble">Dirección</label>
             <select name="inmueble" id="inmueble" class="form-control inmueble">
               @foreach($inmuebles as $inmueble)
                 <option value="{{ $inmueble->INM_IDINMUEBLE }}" @if($orden->ORD_INM_IDINMUEBLE == $inmueble->INM_IDINMUEBLE) selected @endif>{{ $inmueble->INM_DIRECCION }}</option>
@@ -46,19 +39,33 @@
             </select>
           </div>
           
-          <div class="col-md-6">
-            <label for="persona">Persona</label>
-            <select name="persona" id="persona" class="form-control tipoPersona">
-              @foreach($personas as $persona)
-                <option value="{{ $persona->id }}" @if($persona->id == $orden->ORD_USR_ID) selected @endif>{{ $persona->name }} {{ $persona->USR_APELLIDOS }}</option>
-              @endforeach            
-            </select>
-          </div>
+
+
+
+       <div class="col-md-6">
+          <label for="tipoOrden">Tipo de Orden</label>
+          <select name="tipoOrden" id="tipoOrden" class="form-control tipoOrden">
+            <option value="">Seleccione opción</option>
+            @foreach($tipoOrden as $tipo)
+              <option value="{{ $tipo->LOO_IDLOOKUP }}">{{ $tipo->LOO_DESCRIPCION }}</option>
+            @endforeach
+          </select>
+        </div>
+
+      <div class="col-md-6">
+          <label for="profesional">Profesional</label>
+          <select name="profesional" id="profesional" class="form-control tipoOrden" >
+            <option value="">Seleccione opción</option>
+            @foreach($profesional as $prof)
+              <option value="{{ $prof->id }}">{{ $prof->name }} {{ $prof->USR_APELLIDOS }}</option>
+            @endforeach
+          </select>
+        </div>
           
           <div class="col-md-6">
             <label for="Fecha">Fecha</label>
             <?php $fecha = strftime('%Y-%m-%d', strtotime($orden->ORD_FECHAORDEN)); ?>
-            <input type="date" name="Fecha" class="form-control" value="{{ $fecha }}">
+            <input type="datetime-local" name="Fecha" class="form-control" value="{{ $fecha }}">
           </div>
 
           <div class="col-md-12" style="margin-top:30px">

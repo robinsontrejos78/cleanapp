@@ -67,7 +67,7 @@
     <div class="box box-primary">
 
       <div class="box-header with-border">
-        <h3 class="box-title">Lista de Ciudades y Paises</h3>
+        <h3 class="box-title">Lista de Ciudades y Departamentos</h3>
       </div>
 
       <div class="box-body">
@@ -89,8 +89,8 @@
                 @else
                 <tr data-id="{{ $ciudad->CIU_IDCIUDAD }}" class="changeEstate">
                 @endif
-                  <td>{{ $ciudad->CIU_NOMBRE}}</td>
-                  <td>{{ $ciudad->CIU_PAIS }}</td>
+                  <td class="centro">{{ $ciudad->CIU_NOMBRE}}</td>
+                  <td class="centro">{{ $ciudad->CIU_PAIS }}</td>
                 
                   <td class="centro">
                       <meta name="_token" content="{{ csrf_token() }}"/>

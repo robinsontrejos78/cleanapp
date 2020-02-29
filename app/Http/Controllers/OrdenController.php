@@ -190,6 +190,11 @@ class OrdenController extends Controller
 
         $idEmpresa = Session::get('idEmpresa');
 
+        $profesional = DB::table('users')
+           ->join('role_user', 'user_id', '=', 'users.id')
+            ->where('role_id', 3)
+            ->get();
+
         $inmuebles = DB::table('PROPIEDADES')
             ->join('INMUEBLES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
             ->where('PRO_EMP_IDEMPRESA', $idEmpresa)
@@ -203,14 +208,16 @@ class OrdenController extends Controller
             ->first();
 
         $personas = DB::table('users')
-            ->where('USR_CIU_IDCIUDAD', $temporal->USR_CIU_IDCIUDAD)
-            ->where('USR_LOO_TIPO', $temporal->ORD_LOO_TIPOORDEN)
+            ->join('role_user', 'users.id', '=', 'user_id')
+            // ->where('USR_CIU_IDCIUDAD', $temporal->USR_CIU_IDCIUDAD)
+            // ->where('USR_LOO_TIPO', $temporal->ORD_LOO_TIPOORDEN)
+            ->where('role_id', 3)
             ->select('id', 'name', 'USR_APELLIDOS')
             ->get();
 
         $tipoOrden = DB::table('LOOKUP')->where('LOO_GRUPO', 1)->select('LOO_IDLOOKUP', 'LOO_DESCRIPCION')->get();
 
-        return view('ordenes.edit', compact('orden', 'inmuebles', 'tipoOrden', 'personas'));
+        return view('ordenes.edit', compact('orden', 'inmuebles', 'tipoOrden', 'personas', 'profesional'));
     }
 
     /**
@@ -243,7 +250,7 @@ class OrdenController extends Controller
             ->select('ORD_USR_ID', 'email', 'INM_DIRECCION', 'name', 'USR_APELLIDOS')
             ->first();
 
-        $name = $validaPersona->name." ".$validaPersona->USR_APELLIDOS;
+         $name = $validaPersona->name." ".$validaPersona->USR_APELLIDOS;
 
         if($validaPersona->ORD_USR_ID != $request->persona)
         {
@@ -450,11 +457,11 @@ class OrdenController extends Controller
         $user = array('email'=>$_POST['s_email']);
         $data = array('detail'=>'Este mensaje es automático. Por favor no responder', 'direccion' => $_POST['s_direc'], 'fecha' => $fecha, 'name'  => $_POST['s_nombre']);
 
-        Mail::send('emails.anularOrden', $data, function ($message) use ($user)
-        {
-        $message->from('ordenanulada@conciergeguru.com', Session::get('nombreEmpresa'));
-        $message->to($user['email'])->subject('Anulación de Orden de Servicio');
-        });
+        // Mail::send('emails.anularOrden', $data, function ($message) use ($user)
+        // {
+        // $message->from('ordenanulada@conciergeguru.com', Session::get('nombreEmpresa'));
+        // $message->to($user['email'])->subject('Anulación de Orden de Servicio');
+        // });
 
         DB::table('ORDEN_SERVICIOS')
             ->where('ORD_IDORDEN', $i_idorden)
