@@ -265,7 +265,7 @@ Route::get('ordenCliente/{id}/edit', 'OrdenClienteController@edit');
 
 Route::post('buscarOrdCliente', 'OrdenClienteController@buscarOrdenes');
 
-Route::get('vercalificacion', 'OrdenClienteController@calificaciones');
+//Route::get('vercalificacion', 'OrdenClienteController@calificaciones');
 
 // FIN ORDENES CLIENTE
 

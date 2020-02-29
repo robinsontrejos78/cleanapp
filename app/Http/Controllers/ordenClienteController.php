@@ -43,7 +43,7 @@ class ordenClienteController extends Controller
           ->orderBy('ORD_FECHAORDEN', 'desc')
           ->take(10)
           ->get();
-	// dd($personas);
+	// dd($ordenServicio);
 
      $ordencli = DB::table('users')
           ->join('role_user', 'users.id', '=', 'user_id')
