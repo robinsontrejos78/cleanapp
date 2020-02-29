@@ -94,11 +94,11 @@ class OrdenpersonaController extends Controller
         
         DB::table('EVIDENCIAS')
             ->insert(['EVI_ORD_IDORDEN' => $i_idor, 
-                      'EVI_DESCRIPCION' => $s_desc, 
-                      'EVI_IMAGEN'      => $s_name,
-                      'EVI_LOO_TIPO'    => $i_tipo,
-                      //'EVI_STEP'        => $i_step
-                   ]);
+            'EVI_DESCRIPCION' => $s_desc, 
+            'EVI_IMAGEN'      => $s_name,
+            'EVI_LOO_TIPO'    => $i_tipo,
+            //'EVI_STEP'        => $i_step
+            ]);
 
 
     }

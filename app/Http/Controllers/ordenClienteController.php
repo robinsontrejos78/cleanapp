@@ -222,4 +222,66 @@ class ordenClienteController extends Controller
         
         return view('ordenes.ajax.buscar', compact('busquedaOrden'));
     }
+
+    public function finalizarOrdenes($idor)
+    {
+        if (!Auth::user()->hasRole('Cliente')) abort(403);
+        if (!filter_var($idor, FILTER_VALIDATE_INT)) abort(404);
+
+        // $fecha = Carbon::now();
+
+        // DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $idor)->update(['ORD_LOO_ESTADOORDEN' => 3, 'ORD_FINORDEN' => $fecha]);
+
+        // $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+
+        // $ordenes = DB::table('ORDEN_SERVICIOS')
+        //     ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+        //     ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+        //     ->where('ORD_USR_ID', $idPersona)
+        //     ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+        //     ->get();
+        
+        // return view('ordenpersona.index', compact('ordenes'));
+        return('entro a finalizar orden');
+    }
+
+    public function calificarorden()
+    {
+        if (!Auth::user()->hasRole('Cliente')) abort(403);
+        $idPersona = Auth::user()->id;
+
+         $calif    = $_POST['calif'];
+         $obser    = $_POST['obser'];
+         $dataord  = $_POST['dataord'];
+         $dataruta = $_POST['dataruta'];
+
+
+        $fecha   = Carbon::now();
+
+
+            DB::table('CALIFICACIONES')->insert(
+            ['CAL_IDUSERPROF'    => $idPersona,
+             'CAL_IDUSERCLIENTE' => $dataruta,
+             'CAL_observacion'   => $obser, 
+             'CAL_calificacion'  => $calif, 
+             'CAL_fecharegistro' => $fecha,
+             'CAL_ORD_IDORDEN'   => $dataord
+             ]
+            ); 
+
+             DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $dataord)->update(['ORD_LOO_ESTADOORDEN' => 3, 'ORD_FINORDEN' => $fecha]);
+       
+        $ordenes = DB::table('ORDEN_SERVICIOS')
+            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+            ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+            ->join('users', 'ORD_USR_CLI', '=', 'users.id')
+            ->where('ORD_USR_ID', $idPersona)
+            ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+            ->get();
+
+        // return ('listo');
+      return('entro a calificar');
+    }
+
 }

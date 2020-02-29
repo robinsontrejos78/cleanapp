@@ -40,18 +40,16 @@ class OrdenController extends Controller
 
         $ordenServicio = DB::table('ORDEN_SERVICIOS')
             ->join('users', 'ORD_USR_ID', '=', 'users.id')
-            ->join('INMUEBLES', 'INM_IDINMUEBLE', '=', 'ORD_INM_IDINMUEBLE')
-            ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
             ->join('LOOKUP as a', 'a.LOO_IDLOOKUP', '=', 'ORD_LOO_TIPOORDEN')
             ->join('LOOKUP as b', 'b.LOO_IDLOOKUP', '=', 'INM_LOO_TIPO')
             ->join('LOOKUP as c', 'c.LOO_IDLOOKUP', '=', 'ORD_LOO_ESTADOORDEN')
             ->where('ORD_LOO_ESTADOORDEN', '!=', 4)
-            ->where('PRO_EMP_IDEMPRESA', $idEmpresa)
+            // ->where('PRO_EMP_IDEMPRESA', $idEmpresa)
             ->where('ORD_PAGADO', 0)
             ->where('a.LOO_GRUPO', 1)
             ->where('b.LOO_GRUPO', 3)
             ->where('c.LOO_GRUPO', 2)
-            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'INM_DIRECCION', 'a.LOO_DESCRIPCION as tipoorden', 'b.LOO_DESCRIPCION as tipoinmueble', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO')
+            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'ORD_INM_IDINMUEBLE', 'a.LOO_DESCRIPCION as tipoorden', 'b.LOO_DESCRIPCION as tipoinmueble', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO')
             ->orderBy('ORD_FECHAORDEN', 'desc')
             ->get();
 
