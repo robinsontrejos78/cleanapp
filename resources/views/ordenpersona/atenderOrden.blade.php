@@ -56,7 +56,7 @@
     <div class="box box-primary">
 
       <div class="box-header with-border">
-        <h3 class="box-title">Orden de Servicio {{ $orden->LOO_DESCRIPCION }} - {{ $orden->INM_DIRECCION }}</h3>
+        <h3 class="box-title">Orden de Servicio {{ $orden->LOO_DESCRIPCION }} - {{ $orden->ORD_INM_IDINMUEBLE }}</h3>
       </div>
 
      <input type="hidden" id="orden" name="" value="{{  $orden->ORD_IDORDEN }}">

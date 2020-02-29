@@ -50,7 +50,6 @@ class CalificacionController extends Controller
 
 
          $nombreUsu   = $_POST['nombreUsu'];
-         $docuprof    = $_POST['docuprof'];
          
     $contador = DB::table('CALIFICACIONES')
                      ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
@@ -60,7 +59,6 @@ class CalificacionController extends Controller
     $busqueda = array();
 
         $nombreUsu    ? $busqueda += array(2 => array('CAL_IDUSERPROF', 'LIKE', '%'.$nombreUsu.'%')) : null;
-        $docuprof     ? $busqueda += array(4 => array('USR_DOCUMENTO', 'LIKE', '%'.$docuprof.'%')) : null;
      
 
      $resultados =  DB::table('users')
@@ -104,7 +102,8 @@ class CalificacionController extends Controller
 
 
          $nombreUsucli = $_POST['nombreUsucli'];
-         $docucli      = $_POST['docucli'];
+         // $docucli      = $_POST['docucli'];
+         
          
     $contador = DB::table('CALIFICACIONES')
                      ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
@@ -113,8 +112,8 @@ class CalificacionController extends Controller
 
     $busqueda = array();
 
-        $nombreUsucli  ? $busqueda += array(2 => array('CAL_IDUSERCLIENTE', 'LIKE', '%'.$nombreUsucli.'%')) : null;
-        $docucli       ? $busqueda += array(4 => array('USR_DOCUMENTO', 'LIKE', '%'.$docucli.'%')) : null;
+        $nombreUsucli  ? $busqueda += array(0 => array('CAL_IDUSERCLIENTE', 'LIKE', '%'.$nombreUsucli.'%')) : null;
+        // $docucli       ? $busqueda += array(1 => array('USR_DOCUMENTO', 'LIKE', '%'.$docucli.'%')) : null;
      
 
      $resultados =  DB::table('users')
@@ -124,7 +123,8 @@ class CalificacionController extends Controller
                     ->where($busqueda)
                     ->orderby('CAL_fecharegistro', 'desc')
                     ->get();
-        
+              
+
         return view('calificaciones.ajax.califcliente', compact('resultados', 'contador'));
 
 

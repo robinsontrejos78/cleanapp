@@ -19,9 +19,9 @@
     @foreach($resultados as $res)
         <tr class="temporal">
             <td class="centro">{{ $res->name }} {{ $res->USR_APELLIDOS }}</td>
-            <td class="centro">{{ $res->CAL_calificacion }}</td>
-            <td class="centro">{{ $res->CAL_fecharegistro }}</td>
-            <td class="centro">{{ $res->CAL_observacion }}</td>
+            <td class="centro">{{ $res->CAL_CALIFICACION }}</td>
+            <td class="centro">{{ $res->CAL_FECHAREGISTRO }}</td>
+            <td class="centro">{{ $res->CAL_OBSERVACION }}</td>
         </tr>
     @endforeach
 </tbody>

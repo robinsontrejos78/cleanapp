@@ -49,10 +49,10 @@
               </select>
           </div>
       </div>
-        <div class="col-md-3">
+<!--         <div class="col-md-3">
           <label for="correoElec">Documento</label>
           <input type="text" class="form-control" id="docucli" placeholder="Número Documento" >
-        </div>
+        </div> -->
         <div class="col-md-3">
           <button style="margin-top:23px" type="button" id="buscarcalcli" class="btn btn-primary" data-toggle="tooltip" title="Buscar" data-container="body">Buscar</button>
         </div>

@@ -50,10 +50,6 @@
           </div>
       </div>
         <div class="col-md-3">
-          <label for="correoElec">Documento</label>
-          <input type="text" class="form-control" id="docuprof" placeholder="Número Documento" >
-        </div>
-        <div class="col-md-3">
           <button style="margin-top:23px" type="button" id="buscarcalprof" class="btn btn-primary" data-toggle="tooltip" title="Buscar" data-container="body">Buscar</button>
         </div>
       </div>

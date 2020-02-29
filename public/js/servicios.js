@@ -74,7 +74,6 @@ $(document).on('click', '#buscarCiu', function(){
 //Buscador de ciudades_________________________________________________________________________________________________________________________
 $(document).on('click', '#buscarcalprof', function(){
     var nombreUsu   = $('#nombreUsu').val();
-    var docuprof    = $('#docuprof').val();
 
     $.ajaxSetup({
         headers: {
@@ -85,7 +84,7 @@ $(document).on('click', '#buscarcalprof', function(){
     $.ajax({
         type : 'POST',
         url : 'mostrarcalprof',
-        data : {nombreUsu : nombreUsu, docuprof : docuprof},
+        data : {nombreUsu : nombreUsu},
         beforeSend: function(){
             var dim = $('#dimmer');
             dim.css("display", "block");
@@ -106,7 +105,7 @@ $(document).on('click', '#buscarcalprof', function(){
 //Buscador de calificaciones de clientes_________________________________________________________________________________________________________________________
 $(document).on('click', '#buscarcalcli', function(){
     var nombreUsucli = $('#nombreUsucli').val();
-    var docucli      = $('#docucli').val();
+    // var docucli      = $('#docucli').val();
 
     $.ajaxSetup({
         headers: {
@@ -117,7 +116,7 @@ $(document).on('click', '#buscarcalcli', function(){
     $.ajax({
         type : 'POST',
         url : 'mostrarcalcli',
-        data : {nombreUsucli : nombreUsucli, docucli : docucli},
+        data : {nombreUsucli : nombreUsucli},
         beforeSend: function(){
             var dim = $('#dimmer');
             dim.css("display", "block");

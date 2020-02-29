@@ -39,7 +39,7 @@
 	          <tr style="text-align:center;">
                 <td>{{ $orden->name }} {{ $orden->USR_APELLIDOS }}</td>
                 <td>{{ $orden->USR_TELEFONO }}</td>
-	              <td>{{ $orden->INM_DIRECCION }}</td>
+	              <td>{{ $orden->ORD_INM_IDINMUEBLE }}</td>
 	              <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d / h:i') }}</td>
                 <td>{{ $orden->ORD_DESCRIPCION }}</td>   
 	              <td class="centro">

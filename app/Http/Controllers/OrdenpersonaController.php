@@ -31,12 +31,13 @@ class OrdenpersonaController extends Controller
         //dd($idPersona);
 
         $ordenes = DB::table('ORDEN_SERVICIOS')
-            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
-            ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
             ->join('users', 'ORD_USR_CLI', '=', 'users.id')
             ->where('ORD_USR_ID', $idPersona)
             ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
             ->get();
+
+            // dd($ordenes);
+
         return view('ordenpersona.index', compact('ordenes'));
     }
 
@@ -55,16 +56,14 @@ class OrdenpersonaController extends Controller
         
 
         $orden = DB::table('ORDEN_SERVICIOS')
-            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
-            ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
             ->join('LOOKUP', 'ORD_LOO_TIPOORDEN', '=', 'LOO_IDLOOKUP')
             ->where('LOO_GRUPO', 1)
             ->where('ORD_IDORDEN', $ido)
             ->first();
 
-      //dd($orden);
 
         $tipo = $orden->ORD_LOO_TIPOORDEN;
+      // dd($tipo);
 
         DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $ido)->update(['ORD_LOO_ESTADOORDEN' => 2, 'ORD_INICIOORDEN' => $fecha]);
         return view('ordenpersona.atenderOrden', compact('orden', 'tipo', 'inventarios'));

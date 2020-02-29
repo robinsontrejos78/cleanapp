@@ -32,16 +32,8 @@
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="col-md-6">
             <label for="inmueble">Dirección</label>
-            <select name="inmueble" id="inmueble" class="form-control inmueble">
-              @foreach($inmuebles as $inmueble)
-                <option value="{{ $inmueble->INM_IDINMUEBLE }}" @if($orden->ORD_INM_IDINMUEBLE == $inmueble->INM_IDINMUEBLE) selected @endif>{{ $inmueble->INM_DIRECCION }}</option>
-              @endforeach
-            </select>
+            <input type="text" name="inmueble" value="{{ $temporal->ORD_INM_IDINMUEBLE }}" id="inmueble" class="form-control inmueble">
           </div>
-          
-
-
-
        <div class="col-md-6">
           <label for="tipoOrden">Tipo de Orden</label>
           <select name="tipoOrden" id="tipoOrden" class="form-control tipoOrden">
