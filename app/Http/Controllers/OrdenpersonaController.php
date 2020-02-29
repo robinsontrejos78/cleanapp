@@ -277,7 +277,7 @@ $contador = DB::table('CALIFICACIONES')
                      ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
                      ->where('CAL_IDUSERCLIENTE', '=', $idPersona)
                      ->get();
-
+                     
         $valoraciones = DB::table('CALIFICACIONES')
          ->join('users', 'CAL_IDUSERCLIENTE', '=', 'users.id')
          ->where('CAL_IDUSERCLIENTE', $idPersona)
