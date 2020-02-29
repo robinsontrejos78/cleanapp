@@ -43,7 +43,7 @@
           <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoEmp">
             <thead>
                 <tr>
-                    <th class="centro">Cliente</th>
+                    <th class="centro">Profesional</th>
                     <th class="centro">Estrellas Otorgadas</th>
                     <th class="centro">Observación</th>
                 </tr>

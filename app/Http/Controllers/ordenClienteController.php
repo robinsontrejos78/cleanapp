@@ -27,23 +27,16 @@ class ordenClienteController extends Controller
 
       $ordenServicio = DB::table('ORDEN_SERVICIOS')
           ->join('users', 'ORD_USR_ID', '=', 'users.id')
-          ->join('INMUEBLES', 'INM_IDINMUEBLE', '=', 'ORD_INM_IDINMUEBLE')
-          ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
-          ->join('LOOKUP as a', 'a.LOO_IDLOOKUP', '=', 'ORD_LOO_TIPOORDEN')
-          ->join('LOOKUP as b', 'b.LOO_IDLOOKUP', '=', 'INM_LOO_TIPO')
           ->join('LOOKUP as c', 'c.LOO_IDLOOKUP', '=', 'ORD_LOO_ESTADOORDEN')
           ->where('ORD_LOO_ESTADOORDEN', '!=', 4)
-          ->where('PRO_EMP_IDEMPRESA', $idEmpresa)
+          ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
           ->where('ORD_PAGADO', 0)
-          ->where('a.LOO_GRUPO', 1)
-          ->where('b.LOO_GRUPO', 3)
           ->where('c.LOO_GRUPO', 2)
           ->where('ORD_USR_CLI',$idusuario)
-          ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'INM_DIRECCION', 'a.LOO_DESCRIPCION as tipoorden', 'b.LOO_DESCRIPCION as tipoinmueble', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO')
+          ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'ORD_INM_IDINMUEBLE', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO', 'ORD_CLI_CALIFICO')
           ->orderBy('ORD_FECHAORDEN', 'desc')
           ->take(10)
           ->get();
-	// dd($ordenServicio);
 
      $ordencli = DB::table('users')
           ->join('role_user', 'users.id', '=', 'user_id')
@@ -61,18 +54,15 @@ class ordenClienteController extends Controller
 
       $idEmpresa = Session::get('idEmpresa');
       $idusuario=Auth::user()->id;
-
-      $inmuebles = DB::table('INMUEBLES')
-      	->where('INM_USR_IDUSER',$idusuario)
-          ->get();
+      $direccion=Auth::user()->USR_DIRECCION;
 
       $profesionales = DB::table('users')
          ->join('role_user', 'user_id', '=', 'users.id')
           ->where('role_id', 3)
-          ->take(5)
+          // ->take(5)
           ->get();
 
-      return view('ordenesCliente.create', compact('profesionales','inmuebles'));
+      return view('ordenesCliente.create', compact('profesionales','direccion'));
   }
 
   public function store(Request $request)
@@ -81,7 +71,7 @@ class ordenClienteController extends Controller
     if (!Auth::user()->hasRole('Cliente')) return abort(403);
 
 		// $idEmpresa = Session::get('idEmpresa');
-    $fechaOrden = strftime('%Y-%m-%d %H:%M:%S', $request->get('fechaOrden'));
+    // $fechaOrden = strftime('%Y-%m-%d %H:%M:%S', $request->get('fechaOrden'));
 
     $datosEvento=request()->all();
 
@@ -132,7 +122,10 @@ class ordenClienteController extends Controller
       // $message->to($user['email'], $user['name'])->subject('Nueva orden de servicio');
       // });
 
-      return redirect('/ordenCliente')->with('message', 'Orden creada con exito. Se ha enviado e-mail de confirmación');
+      return ('Orden creada con exito. Se ha enviado e-mail de confirmación');
+      // return redirect('/ordenC');
+      // return redirect()->route('/ordenCs'); 
+
   }
 
 	public function edit($id)
@@ -206,20 +199,114 @@ class ordenClienteController extends Controller
 
         $busquedaOrden = DB::table('ORDEN_SERVICIOS')
             ->join('users', 'ORD_USR_ID', '=', 'users.id')
-            ->join('INMUEBLES', 'INM_IDINMUEBLE', '=', 'ORD_INM_IDINMUEBLE')
-            ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
-            ->join('LOOKUP as a', 'a.LOO_IDLOOKUP', '=', 'ORD_LOO_TIPOORDEN')
-            ->join('LOOKUP as b', 'b.LOO_IDLOOKUP', '=', 'INM_LOO_TIPO')
             ->join('LOOKUP as c', 'c.LOO_IDLOOKUP', '=', 'ORD_LOO_ESTADOORDEN')
-            ->where('PRO_EMP_IDEMPRESA', $idEmpresa)
-            ->where('a.LOO_GRUPO', 1)
-            ->where('b.LOO_GRUPO', 3)
+            ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
             ->where('c.LOO_GRUPO', 2)
             ->where($busqueda)
             ->where('ORD_USR_CLI',$idusuario)
-            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'INM_DIRECCION', 'a.LOO_DESCRIPCION as tipoorden', 'b.LOO_DESCRIPCION as tipoinmueble', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO', 'ORD_FECHAORDEN')
+            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'ORD_INM_IDINMUEBLE', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO', 'ORD_FECHAORDEN')
+            ->orderBy('ORD_FECHAORDEN', 'desc')
             ->get();
         
-        return view('ordenes.ajax.buscar', compact('busquedaOrden'));
+        return view('ordenesCliente.ajax.buscar', compact('busquedaOrden'));
     }
+
+    public function finalizarOrdenes($idor)
+    {
+        if (!Auth::user()->hasRole('Cliente')) abort(403);
+        if (!filter_var($idor, FILTER_VALIDATE_INT)) abort(404);
+
+        // $fecha = Carbon::now();
+
+        // DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $idor)->update(['ORD_LOO_ESTADOORDEN' => 3, 'ORD_FINORDEN' => $fecha]);
+
+        // $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+
+        // $ordenes = DB::table('ORDEN_SERVICIOS')
+        //     ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+        //     ->join('PROPIEDADES', 'PRO_IDPROPIEDAD', '=', 'INM_PRO_IDPROPIEDAD')
+        //     ->where('ORD_USR_ID', $idPersona)
+        //     ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+        //     ->get();
+        
+        // return view('ordenpersona.index', compact('ordenes'));
+        return('entro a finalizar orden');
+    }
+
+    public function calificaciones()
+    
+    {
+        $idPersona = Auth::user()->id;
+   
+        $contador = DB::table('CALIFICACIONES')
+        ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
+        ->where('CAL_IDUSERCLIENTE', '=', $idPersona)
+        ->get();
+
+        $valoraciones = DB::table('CALIFICACIONES')
+         ->join('users', 'CAL_IDUSERPROF', '=', 'users.id')
+         ->where('CAL_IDUSERCLIENTE', $idPersona)
+         ->orderby('CAL_fecharegistro', 'desc')
+         ->get();
+
+        return view('ordenesCliente.vercalificacion', compact('valoraciones','contador'));
+    }
+
+    public function comenzarOrden($ido)
+    {
+        if (!Auth::user()->hasRole('Cliente')) abort(403);
+        if (!filter_var($ido, FILTER_VALIDATE_INT)) abort(404);
+
+        $idEmpresa = Session::get('idEmpresa');
+        $fecha = Carbon::now();
+        
+
+        $orden = DB::table('ORDEN_SERVICIOS')
+            ->join('LOOKUP', 'ORD_LOO_TIPOORDEN', '=', 'LOO_IDLOOKUP')
+            ->where('LOO_GRUPO', 1)
+            ->where('ORD_IDORDEN', $ido)
+            ->first();
+
+        $tipo = $orden->ORD_LOO_TIPOORDEN;
+
+        return view('ordenesCliente.atenderOrden', compact('orden', 'tipo', 'inventarios'));
+    }
+
+
+    public function calificarorden()
+    {
+        if (!Auth::user()->hasRole('Cliente')) abort(403);
+        $idPersona = Auth::user()->id;
+
+         $calif    = $_POST['calif'];
+         $obser    = $_POST['obser'];
+         $dataord  = $_POST['dataord'];
+         $cliente = $_POST['cliente'];
+
+        $fecha   = Carbon::now();
+
+            DB::table('CALIFICACIONES')->insert(
+            ['CAL_IDUSERPROF'    => $idPersona,
+             'CAL_IDUSERCLIENTE' => $cliente,
+             'CAL_observacion'   => $obser, 
+             'CAL_calificacion'  => $calif, 
+             'CAL_fecharegistro' => $fecha,
+             'CAL_ORD_IDORDEN'   => $dataord
+             ]
+            ); 
+
+             DB::table('ORDEN_SERVICIOS')->where('ORD_IDORDEN', $dataord)
+             ->update(['ORD_CLI_CALIFICO' => 1]);
+       
+        // $ordenes = DB::table('ORDEN_SERVICIOS')
+        //     ->join('users', 'ORD_USR_CLI', '=', 'users.id')
+        //     ->where('ORD_USR_ID', $idPersona)
+        //     ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
+        //     ->get();
+
+        // return ('listo');
+      return('entro a calificar');
+    }
+
 }

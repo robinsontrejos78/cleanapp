@@ -1392,11 +1392,29 @@ function ClientGuardaOrden(idProfesional){
 
     $.ajax({
         type: 'POST',
-        url: '../agergarItem',
+        url: '../store',
         data: {inmueble:inmueble,empresa:empresa,usuarioId:usuarioId,cliente:cliente,estadoOrden:estadoOrden,fechaOrden:fechaOrden,inicioOrden:inicioOrden,finOrden:finOrden,tipoOrden:tipoOrden},
   
-        success: function(){
-            swal("orden de servicio creada y guardada con exito!", "Oprima OK para continuar!", "success");
+        success: function(data){
+            // swal("", "", "");
+            swal({
+              title: "orden de servicio creada y guardada con exito!",
+              text: "Oprima OK para continuar!",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonClass: "btn-primary",
+              confirmButtonText: "Aceptar!",
+              cancelButtonClass: "btn-danger",
+              cancelButtonText: "Cancelar!",
+              closeOnConfirm: false,
+              closeOnCancel: false
+            },
+            function(isConfirm) {
+              if (isConfirm) {
+                window.location.href = "../ordenC";
+              }
+            });
+
             // $(":file").filestyle('clear');
             // $('#preview').removeAttr('src');
             // $('#descripcion').val('');
@@ -1546,6 +1564,42 @@ $(document).on('click', '#buscarOrdCliente', function(){
         },
         success: function(data){
             $(".table_").html(data);
+        },
+        error: function(){
+            $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');
+        }
+    });
+});
+
+//finalizar la orden de servicio con su respectiva calificación----------------------------------------------------------------------------------------------------------
+$(document).on('click', '#finalizarOrdenCliente', function(){
+    
+    var calif     = $('input[name=estrellas]:checked', '#formulario').val();
+    var obser     = $('#obser').val();
+    var dataord   = $('#orden').val();
+    var cliente  = $('#cliente').val();
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        type : 'POST',
+        url : '../calificarordenCliente',
+        data : { calif : calif, obser : obser, dataord : dataord, cliente : cliente},
+        beforeSend: function(){
+            var dim = $('#dimmer');
+            dim.css("display", "block");
+        },
+        complete:function(){
+            var dim = $('#dimmer');
+            dim.css("display", "none");
+        },
+        success: function(data){
+          
+              window.location.href='../ordenC';
         },
         error: function(){
             $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');

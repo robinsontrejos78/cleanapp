@@ -36,8 +36,6 @@ class OrdenpersonaController extends Controller
             ->whereBetween('ORD_LOO_ESTADOORDEN', [1, 2])
             ->get();
 
-            // dd($ordenes);
-
         return view('ordenpersona.index', compact('ordenes'));
     }
 
@@ -93,11 +91,11 @@ class OrdenpersonaController extends Controller
         
         DB::table('EVIDENCIAS')
             ->insert(['EVI_ORD_IDORDEN' => $i_idor, 
-                      'EVI_DESCRIPCION' => $s_desc, 
-                      'EVI_IMAGEN'      => $s_name,
-                      'EVI_LOO_TIPO'    => $i_tipo,
-                      //'EVI_STEP'        => $i_step
-                   ]);
+            'EVI_DESCRIPCION' => $s_desc, 
+            'EVI_IMAGEN'      => $s_name,
+            'EVI_LOO_TIPO'    => $i_tipo,
+            //'EVI_STEP'        => $i_step
+            ]);
 
 
     }
@@ -272,10 +270,10 @@ public function calificarorden()
         $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
 
    
-$contador = DB::table('CALIFICACIONES')
-                     ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
-                     ->where('CAL_IDUSERCLIENTE', '=', $idPersona)
-                     ->get();
+        $contador = DB::table('CALIFICACIONES')
+            ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
+            ->where('CAL_IDUSERCLIENTE', '=', $idPersona)
+            ->get();
                      
         $valoraciones = DB::table('CALIFICACIONES')
          ->join('users', 'CAL_IDUSERCLIENTE', '=', 'users.id')

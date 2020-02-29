@@ -179,23 +179,7 @@ Home
 
                           <div class="form-group col-xs-12">
                             <h4>Direccion</h4>
-                            <select name="InputDireccion" id="InputDireccion" class="form-control">
-                              <option value="">Seleccione...</option>
-                              @foreach($inmuebles as $inmueble)
-                                <option value="{{ $inmueble->INM_IDINMUEBLE }}">{{ $inmueble->INM_DIRECCION }}</option>
-                              @endforeach
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="rdotradir" value="1">
-                            <label class="form-control" for="rdotradir">
-
-                              Otra dirección
-                            </label>
-                          </div>
-                          <div class="form-group col-xs-12">
-                            <h4>otra dirección</h4>
+                            <input type="text" class="form-control" id="InputDireccion" value="{{ $direccion }}">
                           </div>
 
                           <div class="form-group col-md-6">
