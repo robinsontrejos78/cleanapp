@@ -77,9 +77,9 @@ Home
                             <th class="centro"><button type="button" class="btn btn-primary" onClick="selecPlan(4)">PLAN 4 (8) HORAS $60.000</button></th>
                           </tr>
 
-                            <input type="text" id="idcliente" value="{{ auth::user()->id }}">
-                            <input type="text" id="valSelectado">
-                            <input type="text" id="nominacion" value="">
+                            <input type="hidden" id="idcliente" value="{{ auth::user()->id }}">
+                            <input type="hidden" id="valSelectado">
+                            <input type="hidden" id="nominacion" value="">
                         </tbody>
                       </table>
                     </div>
@@ -114,9 +114,6 @@ Home
                           <div class="form-group">
                             <label for="lbl" id="anexoPlan"></label>
                             <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
-                          </div>
-                          <div class="form-check" id="fAdicional1">
-                            <label class="form-check-label" for="exampleCheck1">Opcional:</label>
                           </div>
                           <div class="form-check" id="fAdicional1">
                             <input type="checkbox" class="form-check-input" id="CheckAdicional1">
@@ -211,6 +208,11 @@ Home
                   </div>
                   <div class="box-body">
                       
+                    <div class="form-group col-xs-4">
+                      <label>
+                        <button type="button" class="btn btn-primary" onclick="mostrarOcultar('muestra','bloque3');mostrarOcultar('oculta','bloque4');">Atrás</button>
+                      </label>
+                    </div>
                     @foreach($profesionales as $profesional)
                     <div class="row" >
                       <div class="col-xs-1 col-sm-1"></div>
@@ -227,43 +229,27 @@ Home
                       </div>
                       <div class="col-sm-3 col-md-3"></div>
                     </div>
+                    <div class="form-group col-xs-4">
+                      <label>
+                        <button type="button" class="btn btn-primary" onclick="mostrarOcultar('muestra','bloque3');mostrarOcultar('oculta','bloque4');">Atrás</button>
+                      </label>
+                    </div>
                     @endforeach
 
                     <div class="col-xs-1 col-md-1"></div>
-                    <div class="form-group col-xs-4">
-                      <label>
-                        <button type="button" class="btn btn-primary">Atrás</button>
-                      </label>
-                    </div>
 
-										<div class="col-md-12" style="margin-top:30px">
+			<!-- 							<div class="col-md-12" style="margin-top:30px">
 											<input type="submit" name="guardarOrden" value="Guardar" class="btn btn-success" data-toggle="tooltip" title="" data-container="body" data-original-title="Crear Orden">
 												<a href="{{ url('orden') }}">
 													<button type="button" class="btn btn-danger" data-toggle="tooltip" title="" data-container="body" data-original-title="Regresar al Administrador de Personal">Cancelar</button>
 												</a>
-										</div>  
+										</div> -->  
                     <div class="col-sm-3 col-xs-4"></div>
                   </div>
                   <div class="box-footer">
                   </div>   
                 </div>
               </div>
-            </div>
-
-            <div class="row" id="bloque5" style="display: none;">  
-              <div class="col-md-12">
-                <div class="box box-primary">
-                  <div class="box-header with-border">
-                  </div>
-                  <div class="box-body">
-
-                  	<!-- codigo para el ultimo bloque -->
-
-                  </div>
-                  <div class="box-footer">
-                  </div><!-- footer -->
-                </div><!-- box -->
-              </div><!-- col -->
             </div>
 
           </div><!-- fin del thumbnail -->
@@ -273,6 +259,39 @@ Home
 
     </div> <!-- fin del container -->
   </form>
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalResumen">
+  </button>
+
+  <div class="modal fade" id="modalResumen" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Resumen del servicio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Profesional:<label for="lbl" id="modalProfesional"></label>
+          <br><br>
+          Fecha y Hora: <label for="lbl" id="modalFechaHora"></label>
+          <br><br>
+          Costo: <label for="lbl" id="modalCosto"></label>
+          <br><br>
+          Ver <a href="{{ asset('documentacion/Términos y condiciones.doc') }}">Condiciones</a> y
+          <a href="{{ asset('documentacion/anexo.docx') }}">anexos</a>
+          <br><br>
+
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary cerrarModalResumen">OK</button>
+      </div>
+    </div>
+  </div>
+</div>  
 
 <script src="{{ asset('js/fullCalendarv4.js') }}"></script>
 

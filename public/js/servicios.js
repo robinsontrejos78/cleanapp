@@ -1387,8 +1387,7 @@ function ClientGuardaOrden(idProfesional){
     finOrden=$('#fechaAsig').val()+'T'+ horafin+':00'
     tipoOrden=1
     cliente=$('#idcliente').val()
-
-
+    costo=$('#nominacion').val()
 
     $.ajax({
         type: 'POST',
@@ -1411,7 +1410,11 @@ function ClientGuardaOrden(idProfesional){
             },
             function(isConfirm) {
               if (isConfirm) {
-                window.location.href = "../ordenC";
+                $('#modalProfesional').html(idProfesional);
+                $('#modalFechaHora').html(fechaOrden);
+                $('#modalCosto').html(costo);
+                $('#modalResumen').modal('show')
+                // window.location.href = "../ordenC";
               }
             });
 
@@ -1424,9 +1427,14 @@ function ClientGuardaOrden(idProfesional){
         error: function(){
             swal("Error al guardar la orden!", "Intente de nuevo!", "error");
         }
-    });
-    
+    }); 
 }
+
+$(document).on('click','.cerrarModalResumen',function(){
+    window.location.href = "../ordenC";
+});
+
+
 
 
 
