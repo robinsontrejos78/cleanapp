@@ -35,7 +35,7 @@
             <!-- Optionally, you can add icons to the links -->
                 <li><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span> @if(Auth::user()->hasRole('Administrador')) Servicios Ejecutados @else Inicio @endif</span></a></li>
             @if (Auth::user()->hasRole('SuperAdmin'))    
-                <li><a href="{{ url ('empresa') }}"><i class='fa fa-bank'></i> <span>Empresas</span></a></li>
+                <!-- <li><a href="{{ url ('empresa') }}"><i class='fa fa-bank'></i> <span>Empresas</span></a></li> -->
                 <li><a href="{{ url ('user') }}"><i class='fa fa-users'></i> <span>Usuarios</span></a></li>
             @endif
             
