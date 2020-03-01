@@ -260,8 +260,8 @@ Home
     </div> <!-- fin del container -->
   </form>
 
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalResumen">
-  </button>
+<!--   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalResumen">
+  </button> -->
 
   <div class="modal fade" id="modalResumen" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
