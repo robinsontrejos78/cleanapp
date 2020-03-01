@@ -1405,8 +1405,8 @@ function ClientGuardaOrden(idProfesional){
               confirmButtonText: "Aceptar!",
               cancelButtonClass: "btn-danger",
               cancelButtonText: "Cancelar!",
-              closeOnConfirm: false,
-              closeOnCancel: false
+              closeOnConfirm: true,
+              closeOnCancel: true
             },
             function(isConfirm) {
               if (isConfirm) {
