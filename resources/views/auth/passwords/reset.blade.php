@@ -9,7 +9,7 @@
     <body class="login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/home') }}"><b>The Concierge Guru</b></a>
+            <a href="{{ url('/home') }}"><b>CLEANAPPS</b></a>
         </div><!-- /.login-logo -->
 
         @if (session('status'))
