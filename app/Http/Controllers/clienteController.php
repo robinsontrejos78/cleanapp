@@ -79,7 +79,7 @@ class clienteController extends Controller
         DB::table('USERS_EMPRESAS')->insert(
             ['USE_EMP_IDEMPRESA' => 1,
              'USE_USR_id' => $id, 
-        );
+        ]);
         
 
         return redirect('/')->with('message', 'Usuario creado con exito');
