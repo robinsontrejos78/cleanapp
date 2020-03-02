@@ -154,15 +154,15 @@ Home
                             <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
                             </div>
                           </div>
-                            <div class="form-group">
-                                <label>Hora +30</label>
-                                <div class="col-sm-10">
+                          <div class="form-group">
+                                <label class="col-sm-2 control-label">Hora +30</label>
+                                <div class="col-sm-4">
                                 <input type="time" class="form-control" id="inputHoras">
                               </div>
                             </div>
                           <div>
                         <div class="form-group">
-                            <label>Dirección</label>
+                            <label class="col-sm-2 control-label">Dirección</label>
                              <div class="col-sm-2">
                              <input type="text" class="form-control" id="InputDireccion" value="{{ $direccion }}">
                              </div>
