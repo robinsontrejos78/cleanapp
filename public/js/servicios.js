@@ -1556,6 +1556,7 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
     horaInicial    = $('#inputHoras').val();
     plancha        = document.getElementById("CheckAdicional1").checked;
     cocina         = document.getElementById("CheckAdicional2").checked;
+    
 
     $.ajaxSetup({
         headers: {

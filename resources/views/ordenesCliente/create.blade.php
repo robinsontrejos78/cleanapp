@@ -153,11 +153,12 @@ Home
                               <div class="col-sm-4">
                                <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
                             </div>
-                        </div>
-                        <div class="form-group">
-                                <label class="col-sm-2 control-label">Hora +30</label>
-                                <div class="col-sm-4">
-                                <input type="time" class="form-control" id="inputHoras">
+
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label">Hora</label>
+                              <div class="col-sm-4">
+                                  <input type="time" class="form-control" id="horaInicial">
                               </div>
                         </div>
                         <div class="form-group">
@@ -167,6 +168,7 @@ Home
                              </div>
                         </div>
                         <div class="form-group col-md-6">
+
                             <label >
                               <button type="button" class="btn btn-primary"  onclick="mostrarOcultar('muestra','bloque2');mostrarOcultar('oculta','bloque3');">Atrás</button>
                             </label>
@@ -186,9 +188,9 @@ Home
                 </div>
               </div>
             </div>
-              <input type="hidden" id="idcliente" value="{{ auth::user()->id }}">
-              <input type="hidden" id="valSelectado">
-              <input type="hidden" id="nominacion" value="">
+              <input type="text" id="idcliente" value="{{ auth::user()->id }}">
+              <input type="text" id="valSelectado">
+              <input type="text" id="nominacion" value="">
             </form>
 
             <div class="row" id="bloque4"></div>
