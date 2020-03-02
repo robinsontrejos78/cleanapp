@@ -1344,7 +1344,7 @@ function ClientGuardaOrden(idProfesional){
 
     var f = new Date();
 
-    horaInicial=$('#inputHoras').val();
+    horaInicial=$('#horaInicial').val();
     horafin=(parseInt(horaInicial.substring(0,2))+horasplan)+horaInicial.substring(2,5);
 
     var dd=f.getDate();
