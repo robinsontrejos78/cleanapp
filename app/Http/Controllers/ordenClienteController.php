@@ -72,15 +72,16 @@ class OrdenClienteController extends Controller
       $idEmpresa = Session::get('idEmpresa');
       $idusuario=Auth::user()->id;
 
-      $idcliente      = $_POST['costo'];
-      $plan           = $_POST['costo'];
-      $fecha          = $_POST['costo'];
-      $horaInicial    = $_POST['costo'];
-      $plancha        = $_POST['costo'];
-      $cocina         = $_POST['costo'];
+      $idcliente      = $_POST['idcliente'];
+      $plan           = $_POST['plan'];
+      $fecha          = $_POST['fecha'];
+      $horaInicial    = $_POST['horaInicial'];
+      $plancha        = $_POST['plancha'];
+      $cocina         = $_POST['cocina'];
 
       $profesionales = DB::table('users')
         ->join('role_user', 'user_id', '=', 'users.id')
+        // ->join('ORDEN_SERVICIOS','user_id','=','ORD_USR_ID')
         ->where('role_id', 3)
         ->take(5)
         ->get();
