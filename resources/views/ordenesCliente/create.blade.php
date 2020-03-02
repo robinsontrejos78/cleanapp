@@ -153,15 +153,16 @@ Home
                             <h4>Fecha</h4>
                             <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
                           </div>
-
+<!-- 
                           <div class="form-group  col-md-6 col-xs-5">
                             <h4>Hora +30</h4>
                             <input type="time" class="form-control" id="inputHoras" placeholder="--:--">
                           </div>
-                
+                 -->
                 <div class="form-group">
-                  <div class="col-sm-10">
-                    <input type="time" class="form-control" id="fnaciprof" placeholder="Fecha Nacimiento">
+                  <div class="col-md-6 col-xs-5">
+                    <h4>Hora +30</h4>
+                    <input type="time" class="form-control" id="inputHoras" placeholder="--:--">
                   </div>
                 </div>
 
