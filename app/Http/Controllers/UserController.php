@@ -284,10 +284,10 @@ class UserController extends Controller
         $us = User::where('id', '=', $id)->first();
         $us -> attachRole(3);
 
-        $usuE = new Users_empresa();
-        $usuE->USE_EMP_IDEMPRESA = $idEmpresa;
-        $usuE->USE_USR_id = $id;
-        $usuE->save();
+        DB::table('USERS_EMPRESAS')->insert(
+            ['USE_EMP_IDEMPRESA' => 1,
+             'USE_USR_id' => $id, 
+        ]);
 
         return redirect('/indexPersona')->with('message', 'Persona creado con exito');
     }
