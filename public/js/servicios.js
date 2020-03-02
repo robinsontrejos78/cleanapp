@@ -1267,6 +1267,7 @@ function verDispProf(id){
 }
 
 function mostrarOcultar(muestraOculta,id){
+
   element = document.getElementById(id);
   if(muestraOculta=='muestra'){
      element.style.display='block'
@@ -1280,8 +1281,6 @@ function selecPlan(plan){
 
     var anexPlan='';
     
-    $('#valSelectado').val(plan);
-    $('#etiqPlanSel').html('<label>plan '+plan+'</label> ');
     
     if (plan==1){
         valPlansel=22000;
@@ -1324,33 +1323,13 @@ function selecPlan(plan){
     mostrarOcultar('muestra','bloque2');
     mostrarOcultar('oculta','bloque1');
 
-    $('#valplanSel').html('<label>$'+valPlansel+'</label> ');
+    $('#valSelectado').val(plan);
+    $('#etiqPlanSel').html('Plan: '+plan);
+    $('#valplanSel').html('Valor: $'+valPlansel);
     $('#nominacion').val(valPlansel);
     $('#anexoPlan').html(anexPlan);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
-}
-
-$(document).on('change','#CheckAdicional1',function(){
-    calcAdicionales();
-});
-$(document).on('change','#CheckAdicional2',function(){
-    calcAdicionales();
-});
-
-function calcAdicionales(adicional){
-
-    valPlanseladi=valPlansel;
-
-    if(CheckAdicional1.checked==true && CheckAdicional2.checked==true){
-    }
-    if(CheckAdicional1.checked==true && CheckAdicional2.checked==false){
-    }
-    if(CheckAdicional1.checked==false && CheckAdicional2.checked==true){
-    }
-
-    $('#valplanSel').html('<label>$'+valPlanseladi+'</label> ');
-
 }
 
 function ClientGuardaOrden(idProfesional){
@@ -1611,6 +1590,47 @@ $(document).on('click', '#finalizarOrdenCliente', function(){
         },
         error: function(){
             $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');
+        }
+    });
+});
+
+
+$( "#buscaProfOdenCli" ).on( "click", function() {
+
+    idcliente      = $('#idcliente').val();
+    plan           = $('#valSelectado').val();
+    fecha          = $('#fechaAsig').val();
+    horaInicial    = $('#inputHoras').val();
+    plancha        = document.getElementById("CheckAdicional1").checked;
+    cocina         = document.getElementById("CheckAdicional2").checked;
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+     $.ajax({
+        type : 'POST',
+        url : '../buscaProfOrdenCliente',
+        data : { idcliente : idcliente, plan : plan, fecha : fecha, horaInicial : horaInicial, plancha : plancha, cocina : cocina },
+        beforeSend: function(){
+            // var dim = $('#dimmer');
+            // dim.css("display", "block");
+        },
+        complete:function(){
+            // var dim = $('#dimmer');
+            // dim.css("display", "none");
+        },
+        success: function(data){
+            // mostrarOcultar('muestra','bloque4');
+            mostrarOcultar('oculta','bloque3');
+            $('#bloque4').html(data);
+          
+              // window.location.href='../ordenC';
+        },
+        error: function(){
+            // $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');
         }
     });
 });
