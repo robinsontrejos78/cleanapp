@@ -62,7 +62,30 @@ class ordenClienteController extends Controller
           // ->take(5)
           ->get();
 
-      return view('ordenesCliente.create', compact('profesionales','direccion'));
+      return view('ordenesCliente.create', compact('direccion'));
+  }
+
+  public function buscaProf()
+  {
+      if (!Auth::user()->hasRole('Cliente')) abort(403);
+
+      $idEmpresa = Session::get('idEmpresa');
+      $idusuario=Auth::user()->id;
+
+      $idcliente      = $_POST['costo'];
+      $plan           = $_POST['costo'];
+      $fecha          = $_POST['costo'];
+      $horaInicial    = $_POST['costo'];
+      $plancha        = $_POST['costo'];
+      $cocina         = $_POST['costo'];
+
+      $profesionales = DB::table('users')
+        ->join('role_user', 'user_id', '=', 'users.id')
+        ->where('role_id', 3)
+        ->take(5)
+        ->get();
+
+      return view('ordenesCliente.ajax.buscaProf', compact('profesionales'));
   }
 
   public function store(Request $request)

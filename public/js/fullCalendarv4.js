@@ -8,8 +8,8 @@
 			plugins: ['dayGrid', 'interaction','timeGrid','list'],
 			// defaultView:'timeGridDay'
 			header:{
-				left: 'MiBoton',
-				center:'title',
+				// left: 'MiBoton',
+				left:'title',
 				right:'prev, next'
 			},
 			// customButtons:{

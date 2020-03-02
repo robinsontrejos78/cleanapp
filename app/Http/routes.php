@@ -273,6 +273,8 @@ Route::get('comenzarOrdenCliente/{idorden}', 'OrdenClientecontroller@comenzarOrd
 
 Route::post('calificarordenCliente', 'OrdenClienteController@calificarorden');
 
+Route::post('buscaProfOrdenCliente', 'OrdenClienteController@buscaProf');
+
 
 // FIN ORDENES CLIENTE
 
