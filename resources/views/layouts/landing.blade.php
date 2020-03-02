@@ -148,7 +148,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             <br><br><span style="color:silver;font-weight:bold">PROFESIONALES:</span>
                 <h2><font color="DODGERBLUE">TRABAJA CON <b></font><a href="{{ url ('formprofe') }}"> NOSOTROS</a></b></h2> 
                 @if (Auth::guest())
-                    <B><h1><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></h1></B>
+                    <B><h1><a href="{{ url('/home') }}">{{ trans('adminlte_lang::message.login') }}</a></h1></B>
                 @endif<br>
             </div>
         </div>
