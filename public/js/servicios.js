@@ -1417,54 +1417,7 @@ $(document).on('click','.cerrarModalResumen',function(){
 
 
 
-//Registrar datos del formulario para solicitud del cliente----------------------------------------------
-// $(document).on('click', '#inscripcionCliente', function(){
-    
-//     nuevoObjeto={
-//         nombreUsu       : $('#nombres').val(),
-//         apellidoUsu     : $('#apellidos').val(),
-//         tipodoc         : $('#tipodoc').val(),
-//         USR_DOCUMENTO   : $('#numerodoc').val(),
-//         direccionUsu    : $('#direccion').val(),
-//         telefono        : $('#telefono').val(),
-//         celularUsu      : $('#celularUsu').val(),
-//         city            : $('#city').val(),
-//         emailUsu        : $('#mail').val(),
-//         passwordUsu     : $('#passwordUsu').val(),
-//         passwordUsu     : $('#mail').val(),
-//         s_terminos      : $('#terminos').is(":checked"),
-//         s_datos         : $('#datos').is(":checked"),
-//     }
 
-
-//     $.ajaxSetup({
-//         headers: {
-//             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-//         }
-//     });
-
-     
-//     $.ajax({
-//         type : 'POST',
-//         url :'{{ url("agregarCliente")}}',
-//         data : nuevoObjeto,
-//         beforeSend: function(){
-//             // var dim = $('#dimmer');
-//             // dim.css("display", "block");
-//         },
-//         complete:function(){
-//             // var dim = $('#dimmer');
-//             // dim.css("display", "none");
-//         },
-//         success: function(data){
-//             console.log(data);
-//             //swal('La Reserva se ha registrado con éxito');
-//             },
-//         error: function(){
-//             alert('error');
-//         }
-//     });
-// });
 
 //anular orden de servicio-----------------------------------------------------------------------------------------------------------------------
 $(document).on('click', '.anularOrdencliente', function(){
