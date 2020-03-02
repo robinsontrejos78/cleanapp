@@ -191,6 +191,7 @@ Home
               <input type="text" id="idcliente" value="{{ auth::user()->id }}">
               <input type="text" id="valSelectado">
               <input type="text" id="nominacion" value="">
+              <input type="text" id="horasPlan" value="">
             </form>
 
             <div class="row" id="bloque4"></div>

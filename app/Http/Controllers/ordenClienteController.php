@@ -76,6 +76,7 @@ class OrdenClienteController extends Controller
       $plan           = $_POST['plan'];
       $fecha          = $_POST['fecha'];
       $horaInicial    = $_POST['horaInicial'];
+      $horasPlan      = $_POST['horasPlan'];
       $plancha        = $_POST['plancha'];
       $cocina         = $_POST['cocina'];
 

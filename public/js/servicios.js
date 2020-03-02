@@ -1328,6 +1328,7 @@ function selecPlan(plan){
     $('#valplanSel').html('Valor: $'+valPlansel);
     $('#nominacion').val(valPlansel);
     $('#anexoPlan').html(anexPlan);
+    $('#horasPlan').html(anexPlan);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
@@ -1556,7 +1557,7 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
     horaInicial    = $('#inputHoras').val();
     plancha        = document.getElementById("CheckAdicional1").checked;
     cocina         = document.getElementById("CheckAdicional2").checked;
-    
+    horasPlan      = $('#horasPlan').val();  
 
     $.ajaxSetup({
         headers: {
@@ -1567,7 +1568,7 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
      $.ajax({
         type : 'POST',
         url : '../buscaProfOrdenCliente',
-        data : { idcliente : idcliente, plan : plan, fecha : fecha, horaInicial : horaInicial, plancha : plancha, cocina : cocina },
+        data : { idcliente : idcliente, plan : plan, fecha : fecha, horaInicial : horaInicial, plancha : plancha, cocina : cocina,horasPlan:horasPlan },
         beforeSend: function(){
             // var dim = $('#dimmer');
             // dim.css("display", "block");
