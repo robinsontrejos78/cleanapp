@@ -158,7 +158,12 @@ Home
                             <h4>Hora +30</h4>
                             <input type="time" class="form-control" id="inputHoras" placeholder="--:--">
                           </div>
-
+                
+                <div class="form-group">
+                  <div class="col-sm-10">
+                    <input type="time" class="form-control" id="fnaciprof" placeholder="Fecha Nacimiento">
+                  </div>
+                </div>
 
                           <div class="form-group col-xs-12">
                             <h4>Dirección</h4>
