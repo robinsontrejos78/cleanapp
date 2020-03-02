@@ -65,10 +65,8 @@
           <div class="col-md-6">
             <label for="tipoPer" style="margin-top:20px">Tipo de Persona</label>
             <select name="tipoPer" id="tipoPer" class="form-control">
-              <option value="">Seleccione opción</option>
+              <option>Seleccione opción</option>
               <option value="1" @if($user->USR_LOO_TIPO == 1) selected @endif>Personal de Aseo</option>
-              <option value="2" @if($user->USR_LOO_TIPO == 2) selected @endif>Personal de Mantenimiento</option>
-              <option value="3" @if($user->USR_LOO_TIPO == 3) selected @endif>Personal Inventario</option>
             </select>
           </div>
           <div class="col-md-6">

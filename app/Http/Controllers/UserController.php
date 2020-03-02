@@ -124,7 +124,6 @@ class UserController extends Controller
             return redirect('/user')->with('messageE', 'Usuario no encontrada. ERROR');
 
         $empresas = DB::table('EMPRESAS')
-            ->where('EMP_IDEMPRESA', '!=', $idEmpresa)
             ->select('EMP_IDEMPRESA', 'EMP_NOMBRE')
             ->get();
 
