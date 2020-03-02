@@ -150,7 +150,7 @@ Home
                           </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Fecha</h4>
-                              <div class="col-sm-4">
+                              <div class="col-sm-10">
                                <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
                             </div>
 
