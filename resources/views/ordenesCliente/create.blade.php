@@ -160,7 +160,7 @@ Home
                           </div>
                  -->
                 <div class="form-group">
-                  <div class="col-sm-4">
+                  <div class="col-md-6 col-xs-5">
                     <h4>Hora +30</h4>
                     <input type="time" class="form-control" id="inputHoras">
                   </div>
