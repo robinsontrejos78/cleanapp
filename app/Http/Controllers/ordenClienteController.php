@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Auth;
 use DB;
 
-class ordenClienteController extends Controller
+class OrdenClienteController extends Controller
 {
 	public function __construct()
   {
