@@ -71,7 +71,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Fecha de Nacimiento</label>
                   <div class="col-sm-10">
-                    <input type="time" class="form-control" id="fnaciprof" placeholder="Fecha Nacimiento">
+                    <input type="date" class="form-control" id="fnaciprof" placeholder="Fecha Nacimiento">
                   </div>
                 </div>
                  <div class="form-group">
