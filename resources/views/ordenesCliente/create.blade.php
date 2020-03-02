@@ -148,29 +148,25 @@ Home
                           <div class="form-group col-md-12">
                               <div id='calendar' style="margin:2% auto;"></div>
                           </div>
-
-                          <div class="form-group col-md-6 col-xs-7">
+                          <div>
+                            <div class="form-group col-md-6 col-xs-7">
                             <h4>Fecha</h4>
                             <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
+                            </div>
                           </div>
-<!-- 
-                          <div class="form-group  col-md-6 col-xs-5">
-                            <h4>Hora +30</h4>
-                            <input type="time" class="form-control" id="inputHoras" placeholder="--:--">
+                            <div class="form-group">
+                                <label>Hora +30</label>
+                                <div class="col-sm-10">
+                                <input type="time" class="form-control" id="inputHoras">
+                              </div>
+                            </div>
+                          <div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                             <div class="col-sm-2">
+                             <input type="text" class="form-control" id="InputDireccion" value="{{ $direccion }}">
+                             </div>
                           </div>
-                 -->
-                <div class="form-group">
-                  <div class="col-sm-2">
-                    <label>Hora +30</label>
-                    <input type="time" class="form-control" id="inputHoras">
-                  </div>
-                </div>
-
-                          <div class="col-sm-2">
-                            <h4>Dirección</h4>
-                            <input type="text" class="form-control" id="InputDireccion" value="{{ $direccion }}">
-                          </div>
-
                           <div class="form-group col-md-6">
                             <label >
                               <button type="button" class="btn btn-primary"  onclick="mostrarOcultar('muestra','bloque2');mostrarOcultar('oculta','bloque3');">Atrás</button>
