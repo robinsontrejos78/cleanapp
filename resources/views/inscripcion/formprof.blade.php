@@ -286,7 +286,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer" align="left">
-                <a href="{{ url('/login') }}"> <button type="button" class="btn btn-default">Salir</button></a>
+                <a href="{{ url('/login')}}"> <button type="button" class="btn btn-default">Salir</button></a>
                 <button type="button" id="inscripcion"  class="btn btn-info pull-right">Aceptar</button>
               </div>
               <!-- /.box-footer -->
