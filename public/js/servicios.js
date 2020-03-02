@@ -1280,6 +1280,7 @@ function mostrarOcultar(muestraOculta,id){
 function selecPlan(plan){
 
     var anexPlan='';
+    var horasplan=0;
     
     
     if (plan==1){
@@ -1328,7 +1329,7 @@ function selecPlan(plan){
     $('#valplanSel').html('Valor: $'+valPlansel);
     $('#nominacion').val(valPlansel);
     $('#anexoPlan').html(anexPlan);
-    $('#horasPlan').val(horasplan);
+    $('#horasPlan').val(horasPlan);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
@@ -1345,7 +1346,7 @@ function ClientGuardaOrden(idProfesional){
     var f = new Date();
 
     horaInicial=$('#horaInicial').val();
-    horafin=(parseInt(horaInicial.substring(0,2))+horasplan)+horaInicial.substring(2,5);
+    horafin=(parseInt(horaInicial.substring(0,2))+horasPlan)+horaInicial.substring(2,5);
 
     var dd=f.getDate();
     var mm=f.getMonth()+1;

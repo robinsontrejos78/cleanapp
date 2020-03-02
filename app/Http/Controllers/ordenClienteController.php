@@ -80,8 +80,8 @@ class OrdenClienteController extends Controller
       $plancha        = $_POST['plancha'];
       $cocina         = $_POST['cocina'];
 
-      $horaInicial = date ( 'H:i:s' , $horaInicial);
-      $horaFinal = strtotime ( '+'.$horasPlan.' hour' , strtotime ($horaInicial) ) ;
+      // $horaInicial = date ( 'H:i:s' , $horaInicial);
+      // $horaFinal = strtotime ( '+'.$horasPlan.' hour' , strtotime ($horaInicial) ) ;
 
 
       $profesionales = DB::table('users')
