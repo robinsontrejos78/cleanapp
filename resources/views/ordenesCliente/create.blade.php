@@ -149,7 +149,7 @@ Home
                               <div id='calendar' style="margin:2% auto;"></div>
                           </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Fecha</h4>
+                            <label class="col-sm-6 control-label">Fecha</h4>
                               <div class="col-sm-10">
                                <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
                             </div>
@@ -157,7 +157,7 @@ Home
                           </div>
                           <div class="form-group">
                             <label class="col-sm-2 control-label">Hora</label>
-                              <div class="col-sm-4">
+                              <div class="form-group col-md-6">
                                   <input type="time" class="form-control" id="horaInicial">
                               </div>
                         </div>
