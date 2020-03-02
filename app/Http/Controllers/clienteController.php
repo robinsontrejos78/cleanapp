@@ -76,10 +76,10 @@ class clienteController extends Controller
              ]
          );
 
-        $empresaUsu                     = new Users_empresa();
-        $empresaUsu->USE_EMP_IDEMPRESA  = 1;
-        $empresaUsu->USE_USR_id         = $id;
-        $empresaUsu->save();
+        DB::table('USERS_EMPRESAS')->insert(
+            ['USE_EMP_IDEMPRESA' => 1,
+             'USE_USR_id' => $id, 
+        ]);
         
 
         return redirect('/')->with('message', 'Usuario creado con exito');
