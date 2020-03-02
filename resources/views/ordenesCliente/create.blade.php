@@ -160,13 +160,13 @@ Home
                           </div>
                  -->
                 <div class="form-group">
-                  <div class="col-md-6 col-xs-5">
-                    <h4>Hora +30</h4>
+                  <div class="col-sm-2">
+                    <label>Hora +30</label>
                     <input type="time" class="form-control" id="inputHoras">
                   </div>
                 </div>
 
-                          <div class="form-group col-xs-12">
+                          <div class="col-sm-2">
                             <h4>Dirección</h4>
                             <input type="text" class="form-control" id="InputDireccion" value="{{ $direccion }}">
                           </div>
