@@ -52,7 +52,7 @@
             <label for="emailUsu" style="margin-top:20px">Email</label>
             <input type="email" class="form-control" id="emailUsu" name="emailUsu" placeholder="Correo electrónico" value="{{ $user->email }}" onkeyup="this.value=this.value.toLowerCase();">
           </div>
-          <div class="col-md-6" style="margin-top:20px">
+          <div  class="col-md-6" style="diplay: none;">
             <label for="empresaUsu">Empresa</label>
             <select name="empresaUsu" id="empresaUsu" class="form-control">
               @foreach($empresas as $empresa)
