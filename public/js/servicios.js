@@ -1550,15 +1550,13 @@ $(document).on('click', '#finalizarOrdenCliente', function(){
 
 $( "#buscaProfOdenCli" ).on( "click", function() {
 
-    horafin=(parseInt(horaInicial.substring(0,2))+horasplan)+horaInicial.substring(2,5);
-
-    idcliente           = $('#idcliente').val();
-    plan                = $('#valSelectado').val();
-    fecha               = $('#fechaAsig').val();
-    horaInicial         = $('#inputHoras').val();
-    plancha             = document.getElementById("CheckAdicional1").checked;
-    cocina              = document.getElementById("CheckAdicional2").checked;
-    nombreProfesional   = $('#nombreProfesional').val();
+    idcliente      = $('#idcliente').val();
+    plan           = $('#valSelectado').val();
+    fecha          = $('#fechaAsig').val();
+    horaInicial    = $('#inputHoras').val();
+    plancha        = document.getElementById("CheckAdicional1").checked;
+    cocina         = document.getElementById("CheckAdicional2").checked;
+    
 
     $.ajaxSetup({
         headers: {
@@ -1569,7 +1567,7 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
      $.ajax({
         type : 'POST',
         url : '../buscaProfOrdenCliente',
-        data : { idcliente : idcliente, plan : plan, fecha : fecha, horaInicial : horaInicial, plancha : plancha, cocina : cocina,nombreProfesional:nombreProfesional },
+        data : { idcliente : idcliente, plan : plan, fecha : fecha, horaInicial : horaInicial, plancha : plancha, cocina : cocina },
         beforeSend: function(){
             // var dim = $('#dimmer');
             // dim.css("display", "block");

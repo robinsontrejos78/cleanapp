@@ -155,17 +155,17 @@ Home
                             </div>
                           </div>
                           <div class="form-group">
-                                <label class="col-sm-2 control-label">Hora +30</label>
-                                <div class="col-sm-4">
-                                <input type="time" class="form-control" id="inputHoras">
+                            <label class="col-sm-2 control-label">Hora</label>
+                              <div class="col-sm-4">
+                                  <input type="time" class="form-control" id="horaInicial">
                               </div>
                             </div>
                           <div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Dirección</label>
-                             <div class="col-sm-2">
-                             <input type="text" class="form-control" id="InputDireccion" value="{{ $direccion }}">
-                             </div>
+                          <label class="col-sm-2 control-label">Dirección</label>
+                            <div class="col-sm-2">
+                              <input type="text" class="form-control" id="InputDireccion" value="{{ $direccion }}">
+                            </div>
                           </div>
                           <div class="form-group col-md-6">
                             <label >
@@ -188,10 +188,9 @@ Home
                 </div>
               </div>
             </div>
-              <input type="hidden" id="idcliente" value="{{ auth::user()->id }}">
-              <input type="hidden" id="valSelectado">
-              <input type="hidden" id="nominacion" value="">
-              <input type="hidden" id="nombreProfesional" value="">
+              <input type="text" id="idcliente" value="{{ auth::user()->id }}">
+              <input type="text" id="valSelectado">
+              <input type="text" id="nominacion" value="">
             </form>
 
             <div class="row" id="bloque4"></div>
