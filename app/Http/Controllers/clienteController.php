@@ -76,15 +76,6 @@ class clienteController extends Controller
              ]
          );
 
-
-        DB::table('inmuebles')->insert(
-            ['INM_USR_IDUSER' => $id,
-            'INM_DIRECCION'   => $request->get('direccion'),
-            'INM_ESTADO'   => 1
-            ]
-        );
-
-
         $empresaUsu                     = new Users_empresa();
         $empresaUsu->USE_EMP_IDEMPRESA  = 1;
         $empresaUsu->USE_USR_id         = $id;
