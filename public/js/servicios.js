@@ -1328,7 +1328,7 @@ function selecPlan(plan){
     $('#valplanSel').html('Valor: $'+valPlansel);
     $('#nominacion').val(valPlansel);
     $('#anexoPlan').html(anexPlan);
-    $('#horasPlan').html(anexPlan);
+    $('#horasPlan').val(horasplan);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
@@ -1483,6 +1483,7 @@ $(document).on('click', '.anularOrdencliente', function(){
 
 //Buscador de Ordenes Módulo Cliente----------------------------------------------------------------------------------------------------------
 $(document).on('click', '#buscarOrdCliente', function(){
+
     var i_estadoOrden       = $('#estadoOrd').val();
 
     $.ajaxSetup({
@@ -1554,10 +1555,10 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
     idcliente      = $('#idcliente').val();
     plan           = $('#valSelectado').val();
     fecha          = $('#fechaAsig').val();
-    horaInicial    = $('#inputHoras').val();
+    horaInicial    = $('#horaInicial').val();
     plancha        = document.getElementById("CheckAdicional1").checked;
     cocina         = document.getElementById("CheckAdicional2").checked;
-    horasPlan      = $('#horasPlan').val();  
+    horasPlan      = $('#horasPlan').val();
 
     $.ajaxSetup({
         headers: {
@@ -1568,7 +1569,7 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
      $.ajax({
         type : 'POST',
         url : '../buscaProfOrdenCliente',
-        data : { idcliente : idcliente, plan : plan, fecha : fecha, horaInicial : horaInicial, plancha : plancha, cocina : cocina,horasPlan:horasPlan },
+        data : { idcliente : idcliente, plan : plan, fecha : fecha, horaInicial : horaInicial, plancha : plancha, cocina : cocina, horasPlan : horasPlan },
         beforeSend: function(){
             // var dim = $('#dimmer');
             // dim.css("display", "block");

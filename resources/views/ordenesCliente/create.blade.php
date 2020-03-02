@@ -175,7 +175,7 @@ Home
                         </div>
                         <div class="form-group col-md-6">
                             <label >
-                              <button type="button" class="btn btn-primary"  id="buscaProfOdenCli">Siguiente</button>
+                              <button type="button" class="btn btn-primary" id="buscaProfOdenCli">Siguiente</button>
                             </label>
                         </div>
                         </tbody>
@@ -188,10 +188,10 @@ Home
                 </div>
               </div>
             </div>
-              <input type="text" id="idcliente" value="{{ auth::user()->id }}">
-              <input type="text" id="valSelectado">
-              <input type="text" id="nominacion" value="">
-              <input type="text" id="horasPlan" value="">
+              <input type="hidden" id="idcliente" value="{{ auth::user()->id }}">
+              <input type="hidden" id="valSelectado">
+              <input type="hidden" id="nominacion" value="">
+              <input type="hidden" id="horasPlan" value="">
             </form>
 
             <div class="row" id="bloque4"></div>

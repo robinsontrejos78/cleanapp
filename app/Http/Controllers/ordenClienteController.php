@@ -80,16 +80,19 @@ class OrdenClienteController extends Controller
       $plancha        = $_POST['plancha'];
       $cocina         = $_POST['cocina'];
 
+      $horaInicial = date ( 'H:i:s' , $horaInicial);
+      $horaFinal = strtotime ( '+'.$horasPlan.' hour' , strtotime ($horaInicial) ) ;
+
+
       $profesionales = DB::table('users')
         ->join('role_user', 'user_id', '=', 'users.id')
-        // ->join('ORDEN_SERVICIOS','user_id','=','ORD_USR_ID')
-        // ->whereRaw('( (ORD_INICIOORDEN<'2017-01-25 11:17:19.000' and ORD_INICIOORDEN<'2017-01-25 12:17:59.000' and  dateadd(minute,30,ORD_FINORDEN)<'2017-01-25T11:17:19.000' or dateadd(minute,30,ORD_FINORDEN)<'2017-01-25T12:17:59.000') or (ORD_INICIOORDEN>'2017-01-25 11:17:19.000' and ORD_INICIOORDEN>'2017-01-25 12:17:59.000' and DATE_ADD(ORD_FINORDEN, INTERVAL 30 MINUTE)>'2017-01-25T11:17:19.000' or DATE_ADD(ORD_FINORDEN, INTERVAL 30 MINUTE)>'2017-01-25T12:17:59.000') )');
+        ->join('ORDEN_SERVICIOS','user_id','=','ORD_USR_ID')
+        //->whereRaw('( (ORD_INICIOORDEN<'.$horaInicial.' and ORD_INICIOORDEN < '.$horaFinal.' and  dateadd(minute,30,ORD_FINORDEN)<'.$horaInicial.' or dateadd(minute,30,ORD_FINORDEN)<'.$horaFinal.') or (ORD_INICIOORDEN>'.$horaInicial.' and ORD_INICIOORDEN>'.$horaFinal.' and DATE_ADD(ORD_FINORDEN, INTERVAL 30 MINUTE)>'.$horaInicial.' or DATE_ADD(ORD_FINORDEN, INTERVAL 3  MINUTE) > '.$horaFinal.') )');
         ->where('role_id', 3)
-        ->
         ->take(5)
         ->get();
 
-      return view('ordenesCliente.ajax.buscaProf', compact('profesionales'));
+      return view('ordenesCliente.ajax.buscaProf', compact ('profesionales'));
   }
 
   public function store(Request $request)
