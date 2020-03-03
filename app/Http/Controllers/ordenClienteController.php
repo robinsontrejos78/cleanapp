@@ -72,22 +72,24 @@ class OrdenClienteController extends Controller
       $idEmpresa = Session::get('idEmpresa');
       $idusuario=Auth::user()->id;
 
-      $idcliente      = $_POST['idcliente'];
       $plan           = $_POST['plan'];
       $fecha          = $_POST['fecha'];
-      $horaInicial    = $_POST['horaInicial'];
+      $horaInicial    = $_POST['fecha'].' '.$_POST['horaInicial'];
       $horasPlan      = $_POST['horasPlan'];
       $plancha        = $_POST['plancha'];
       $cocina         = $_POST['cocina'];
 
-      // $horaInicial = date ( 'H:i:s' , $horaInicial);
-      // $horaFinal = strtotime ( '+'.$horasPlan.' hour' , strtotime ($horaInicial) ) ;
+      $horaInicial = strtotime ( $horaInicial);
+      $horaFinal = strtotime ('+'.$horasPlan.' hours', $horaInicial);
+      $horaInicial = strtotime ('-30 minutes', $horaInicial);
+      $horaFinal = strtotime ('+30 minutes', $horaFinal);
 
+      $horaInicial=date("Y-m-d H:i:s ",$horaInicial);
+      $horaFinal=date("Y-m-d H:i:s ",$horaFinal);
 
       $profesionales = DB::table('users')
         ->join('role_user', 'user_id', '=', 'users.id')
-        ->join('ORDEN_SERVICIOS','user_id','=','ORD_USR_ID')
-        //->whereRaw('( (ORD_INICIOORDEN<'.$horaInicial.' and ORD_INICIOORDEN < '.$horaFinal.' and  dateadd(minute,30,ORD_FINORDEN)<'.$horaInicial.' or dateadd(minute,30,ORD_FINORDEN)<'.$horaFinal.') or (ORD_INICIOORDEN>'.$horaInicial.' and ORD_INICIOORDEN>'.$horaFinal.' and DATE_ADD(ORD_FINORDEN, INTERVAL 30 MINUTE)>'.$horaInicial.' or DATE_ADD(ORD_FINORDEN, INTERVAL 3  MINUTE) > '.$horaFinal.') )');
+        ->whereRaw(" users.id NOT IN ( select users.id from users inner join role_user on user_id=users.id inner join ORDEN_SERVICIOS on user_id=ORD_USR_ID where role_id=3 and (ORD_INICIOORDEN <= '".$horaInicial."' and '".$horaInicial."'<= ORD_FINORDEN or ORD_INICIOORDEN <= '".$horaFinal."' and '".$horaFinal."' <= ORD_FINORDEN) )")
         ->where('role_id', 3)
         ->take(5)
         ->get();

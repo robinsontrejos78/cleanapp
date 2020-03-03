@@ -1280,12 +1280,12 @@ function mostrarOcultar(muestraOculta,id){
 function selecPlan(plan){
 
     var anexPlan='';
-    var horasplan=0;
+    var valhorasPlan=0;
     
     
     if (plan==1){
         valPlansel=22000;
-        horasplan=2;
+        valhorasplan=2;
         anexPlan='<p>SERVICIO DE 2 HORAS<br>Servicio general de aseo recomendado ';
         anexPlan+='para un área no mayor a 45 metros cuadrados actividades que incluyen: ';
         anexPlan+='barrer, trapear, sacudir, limpieza de baños, limpieza de cocina, lavado';
@@ -1295,7 +1295,7 @@ function selecPlan(plan){
     }
     if (plan==2){
         valPlansel=35000;
-        horasplan=4;
+        valhorasplan=4;
         anexPlan='<p>SERVICIO DE 4 HORAS<br>Servicio general de aseo recomendado para un' ;
         anexPlan+='área no mayor a 90 metros cuadrados actividades que incluyen: barrer, trapear,';
         anexPlan+=' sacudir, limpieza de baños, limpieza de cocina, lavado de ropa en maquina ';
@@ -1305,7 +1305,7 @@ function selecPlan(plan){
     }
     if (plan==3){
         valPlansel=48000;
-        horasplan=6;
+        valhorasplan=6;
         anexPlan='<p>SERVICIO DE 6 HORAS<br>Servicio general de aseo recomendado para un área'; 
         anexPlan+='no mayor a 130 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, ';
         anexPlan+='limpieza de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
@@ -1314,13 +1314,14 @@ function selecPlan(plan){
     }
     if (plan==4){
         valPlansel=60000;
-        horasplan=8;
+        valhorasplan=8;
         anexPlan='<p>SERVICIO DE 8 HORAS<br>Servicio general de aseo recomendado para un área ';
         anexPlan+='mayor a 131 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, limpieza' ;
         anexPlan+='de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
         mostrarOcultar('muestra','fAdicional1')
         mostrarOcultar('muestra','fAdicional2')
     }
+
     mostrarOcultar('muestra','bloque2');
     mostrarOcultar('oculta','bloque1');
 
@@ -1329,7 +1330,7 @@ function selecPlan(plan){
     $('#valplanSel').html('Valor: $'+valPlansel);
     $('#nominacion').val(valPlansel);
     $('#anexoPlan').html(anexPlan);
-    $('#horasPlan').val(horasPlan);
+    $('#horasPlan').val(valhorasplan);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
@@ -1346,7 +1347,7 @@ function ClientGuardaOrden(idProfesional){
     var f = new Date();
 
     horaInicial=$('#horaInicial').val();
-    horafin=(parseInt(horaInicial.substring(0,2))+horasPlan)+horaInicial.substring(2,5);
+    horafin=(parseInt(horaInicial.substring(0,2))+Number(horasPlan))+horaInicial.substring(2,5);
 
     var dd=f.getDate();
     var mm=f.getMonth()+1;
@@ -1363,9 +1364,9 @@ function ClientGuardaOrden(idProfesional){
     empresa=1
     usuarioId=idProfesional
     estadoOrden=1
-    fechaOrden=f.getFullYear()+'-'+mm+'-'+dd+'T00:00:00'
-    inicioOrden=$('#fechaAsig').val()+'T'+ horaInicial+':00'
-    finOrden=$('#fechaAsig').val()+'T'+ horafin+':00'
+    fechaOrden=f.getFullYear()+'-'+mm+'-'+dd+' 00:00:00'
+    inicioOrden=$('#fechaAsig').val()+' '+ horaInicial+':00'
+    finOrden=$('#fechaAsig').val()+' '+ horafin+':00'
     tipoOrden=1
     cliente=$('#idcliente').val()
     costo=$('#nominacion').val()
@@ -1391,9 +1392,9 @@ function ClientGuardaOrden(idProfesional){
             },
             function(isConfirm) {
               if (isConfirm) {
-                $('#modalProfesional').html(idProfesional);
-                $('#modalFechaHora').html(fechaOrden);
-                $('#modalCosto').html(costo);
+                $('#modalProfesional').html($('#nomprof').val());
+                $('#modalFechaHora').html(inicioOrden);
+                $('#modalCosto').html('$ '+costo);
                 $('#modalResumen').modal('show')
                 // window.location.href = "../ordenC";
               }
@@ -1553,7 +1554,6 @@ $(document).on('click', '#finalizarOrdenCliente', function(){
 
 $( "#buscaProfOdenCli" ).on( "click", function() {
 
-    idcliente      = $('#idcliente').val();
     plan           = $('#valSelectado').val();
     fecha          = $('#fechaAsig').val();
     horaInicial    = $('#horaInicial').val();
@@ -1570,7 +1570,7 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
      $.ajax({
         type : 'POST',
         url : '../buscaProfOrdenCliente',
-        data : { idcliente : idcliente, plan : plan, fecha : fecha, horaInicial : horaInicial, plancha : plancha, cocina : cocina, horasPlan : horasPlan },
+        data : { plan : plan, fecha : fecha, horaInicial : horaInicial, plancha : plancha, cocina : cocina, horasPlan : horasPlan },
         beforeSend: function(){
             // var dim = $('#dimmer');
             // dim.css("display", "block");
