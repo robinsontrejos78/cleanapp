@@ -87,7 +87,7 @@ class OrdenClienteController extends Controller
 
       $profesionales = DB::table('users')
         ->join('role_user', 'user_id', '=', 'users.id')
-        ->whereRaw(" users.id NOT IN ( selects users.id from users inner join role_user on user_id=users.id inner join ORDEN_SERVICIOS on user_id=ORD_USR_ID where role_id=3 and ((ORD_INICIOORDEN - INTERVAL 30 MINUTE) <= '".$horaInicial."' and '".$horaInicial."'<= (ORD_FINORDEN + INTERVAL 30 MINUTE) or (ORD_INICIOORDEN  - INTERVAL 30 MINUTE) <= '".$horaFinal."' and '".$horaFinal."' <= (ORD_FINORDEN + INTERVAL 30 MINUTE) ) )")
+        ->whereRaw(" users.id NOT IN ( select users.id from users inner join role_user on user_id=users.id inner join ORDEN_SERVICIOS on user_id=ORD_USR_ID where role_id=3 and ((ORD_INICIOORDEN - INTERVAL 30 MINUTE) <= '".$horaInicial."' and '".$horaInicial."'<= (ORD_FINORDEN + INTERVAL 30 MINUTE) or (ORD_INICIOORDEN  - INTERVAL 30 MINUTE) <= '".$horaFinal."' and '".$horaFinal."' <= (ORD_FINORDEN + INTERVAL 30 MINUTE) ) )")
         ->where('role_id', 3)
         ->take(5)
         ->get();
