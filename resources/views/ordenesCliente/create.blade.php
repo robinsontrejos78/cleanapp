@@ -50,9 +50,9 @@ Home
                       <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoUsu">
                         <thead>
                           <tr>
-                            <th class="centro"> 
+                            <td class="centro"> 
                               Seleccione el plan
-                            </th>
+                            </td>
                           </tr>
                         </thead>
 
@@ -175,7 +175,7 @@ Home
                         </div>
                         <div class="form-group col-md-6">
                             <label >
-                              <button type="button" class="btn btn-primary"  id="buscaProfOdenCli">Siguiente</button>
+                              <button type="button" class="btn btn-primary" id="buscaProfOdenCli">Siguiente</button>
                             </label>
                         </div>
                         </tbody>
@@ -188,9 +188,10 @@ Home
                 </div>
               </div>
             </div>
-              <input type="text" id="idcliente" value="{{ auth::user()->id }}">
-              <input type="text" id="valSelectado">
-              <input type="text" id="nominacion" value="">
+              <input type="hidden" id="idcliente" value="{{ auth::user()->id }}">
+              <input type="hidden" id="valSelectado">
+              <input type="hidden" id="nominacion" value="">
+              <input type="hidden" id="horasPlan" value="">
             </form>
 
             <div class="row" id="bloque4"></div>
@@ -210,23 +211,19 @@ Home
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Resumen del servicio</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h3 class="modal-title">Resumen del servicio</h3>
       </div>
       <div class="modal-body">
         <p>
-          Profesional:<label for="lbl" id="modalProfesional"></label>
-          <br><br>
-          Fecha y Hora: <label for="lbl" id="modalFechaHora"></label>
-          <br><br>
-          Costo: <label for="lbl" id="modalCosto"></label>
-          <br><br>
+          Profesional: <h4 id="modalProfesional"></h4>
+          <br>
+          Fecha y Hora: <h4 id="modalFechaHora"></h4>
+          <br>
+          Costo: <h4 id="modalCosto"></h4>
+          <br>
           Ver <a href="{{ asset('documentacion/Términos y condiciones.doc') }}">Condiciones</a> y
           <a href="{{ asset('documentacion/anexo.docx') }}">anexos</a>
-          <br><br>
-
+          <br>
         </p>
       </div>
       <div class="modal-footer">
