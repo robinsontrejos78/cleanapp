@@ -53,7 +53,9 @@ Route::resource('calificacliente', 'CalificacionController@calificarcliente');
 
 Route::resource('mostrarcalcli', 'CalificacionController@mostrarcalcli');
 
+Route::resource('imagen', 'UserController@cambiarimagen');
 
+Route::post('guardarimagen', 'UserController@guardarimagen');
 
 
 //Buscador de empresas ajax
@@ -271,7 +273,7 @@ Route::post('buscarOrdCliente', 'OrdenClienteController@buscarOrdenes');
 
 Route::get('vercalificacionCliente', 'OrdenClienteController@calificaciones');
 
-Route::get('comenzarOrdenCliente/{idorden}', 'OrdenClientecontroller@comenzarOrden');
+Route::get('comenzarOrdenCliente/{idorden}', 'OrdenClienteController@comenzarOrden');
 
 Route::post('calificarordenCliente', 'OrdenClienteController@calificarorden');
 
