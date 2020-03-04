@@ -906,6 +906,56 @@ $(document).on('click', '.cancelarOrden', function(){
     });
 });
 
+
+//vargar y guardar la imgagen del profesional
+$(document).on('click', '#guardarimagen', function(){
+
+    $('.msg').remove();
+    if(!data_Imagen){
+        $('.informacion').html('<div class="col-md-12"><div class="alert alert-danger alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><i class="icon fa fa-warning"> No ha llenado toda la información</div></div>');
+        return;        
+    }
+  
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    
+    $.ajax({
+        type: 'POST',
+        url: 'guardarimagen',
+        data: data_Imagen,
+        dataType: 'text',
+        beforeSend: function(){
+            var dim = $('#dimmer');
+            dim.css("display", "block");
+        },
+        complete:function(){
+            var dim = $('#dimmer');
+            dim.css("display", "none");
+        },
+        success: function(data){
+            swal(data);
+            $(":file").filestyle('clear');
+            $('#preview').removeAttr('src');
+            $('#descripcion').val('');
+            data_Imagen=null;
+        },
+        error: function(){
+            swal("Error al guardar la Imagen!", "Intente de nuevo!");
+        }
+
+
+    });
+    
+});
+
+
+
+
+
+
 //anular orden de servicio-----------------------------------------------------------------------------------------------------------------------
 $(document).on('click', '.anularOrden', function(){
     var s_nombre  = $(this).attr('data-nombre');

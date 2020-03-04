@@ -64,8 +64,10 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     
             <ul class="nav navbar-nav navbar-right">
             @if (Auth::guest())
-                    <h3><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></h3>
-                @endif<br>
+                    <h3 font-color="black"><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></h3>
+            @else
+                    <B><h3><a href="{{ url('/home') }}">Regresar</a></h1></B>
+            @endif<br>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -135,6 +137,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <h2><font color="skyblue">SOLICITAR <b></font><a href="{{ url ('formcliente') }}"> SERVICIO</a></b></h2>
                 @if (Auth::guest())
                     <B><h1><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></h1><B>
+                @else
+                    <B><h1><a href="{{ url('/home') }}">Regresar</a></h1></B>
                 @endif<br>
             </div>
         </div>
@@ -149,6 +153,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <h2><font color="DODGERBLUE">TRABAJA CON <b></font><a href="{{ url ('formprofe') }}"> NOSOTROS</a></b></h2> 
                 @if (Auth::guest())
                     <B><h1><a href="{{ url('/home') }}">{{ trans('adminlte_lang::message.login') }}</a></h1></B>
+                @else
+                    <B><h1><a href="{{ url('/home') }}">Regresar</a></h1></B>
                 @endif<br>
             </div>
         </div>

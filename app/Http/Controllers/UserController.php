@@ -383,4 +383,47 @@ class UserController extends Controller
 
         return redirect('/indexPersona')->with('message', 'Persona Modificada con exito');
     }
+        public function cambiarimagen()
+    {
+        if (!Auth::user()->hasRole('Profesional')) return abort(403);
+        // if (!filter_var($id, FILTER_VALIDATE_INT)) abort(404);
+        
+
+        return view('users.imagenprof');
+    }
+
+        public function guardarimagen()
+    {
+        if (!Auth::user()->hasRole('Profesional')) abort(403);
+         $idUsu = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+        
+
+        $s_name = $_POST['fname'];
+       // $s_name = $_POST['data_Imagen']['fname'];
+        $time = time();
+        $s_name = $time."_".$idUsu."_".$s_name;
+        
+        $filename = "image/fotos/".$s_name;
+
+        $data = substr($_POST['data'], strpos($_POST['data'], ",") + 1);
+        $decodedData = base64_decode($data);
+        
+        $fp = fopen($filename, 'wb');
+        fwrite($fp, $decodedData);
+        fclose($fp);
+
+       
+        $doc = DB::table('users')
+            ->select('id')
+            ->where('id', $idUsu)
+            ->first();
+
+   DB::table('users')
+            ->where('users.id', $idUsu)
+            ->update(['USR_foto' => $s_name]);
+
+
+            return with('Imagen Guardada');
+   
+    }
 }
