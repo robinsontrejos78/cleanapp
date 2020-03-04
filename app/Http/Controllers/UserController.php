@@ -420,7 +420,7 @@ class UserController extends Controller
 
    DB::table('users')
             ->where('users.id', $idUsu)
-            ->update(['USR_foto' => $s_name]);
+            ->update(['USR_foto' => $filename]);
 
 
             return with('Imagen Guardada');
