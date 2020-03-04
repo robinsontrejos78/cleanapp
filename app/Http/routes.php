@@ -53,9 +53,7 @@ Route::resource('calificacliente', 'CalificacionController@calificarcliente');
 
 Route::resource('mostrarcalcli', 'CalificacionController@mostrarcalcli');
 
-Route::resource('imagen', 'UserController@cambiarimagen');
 
-Route::post('guardarimagen', 'UserController@guardarimagen');
 
 
 //Buscador de empresas ajax
