@@ -115,20 +115,21 @@
           <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoEmp">
             <thead>
                 <tr>
-                    <th class="centro">Tipo</th>
+                    <th class="centro">Asignado a</th>
+                    <th class="centro">Documento</th>
                     <th class="centro">Estado</th>
                     <th class="centro">Dirección</th>
                     <th class="centro">Fecha</th>
                     <th class="centro">Duración</th>
-                    <th class="centro">Asignado a</th>
-                    <th class="centro">Costo</th>
+                    <!-- <th class="centro">Costo</th> -->
                     <th class="centro">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($ordenServicio as $orden)
                     <tr class="temporal">
-                        <td class="centro">{{ $orden->tipoorden }}</td>
+                        <td class="centro">{{ $orden->name }} {{ $orden->USR_APELLIDOS }}</td>
+                        <td class="centro">{{ $orden->USR_DOCUMENTO }}</td>
                         <td class="centro">{{ $orden->estado_orden }}</td>
                         <td class="centro">{{ $orden->ORD_INM_IDINMUEBLE }}</td>
                         <td class="centro">{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d') }}</td>
@@ -139,12 +140,13 @@
                             echo $since_start->h.' H '.$since_start->i.' M ';
                           ?>                          
                         </td>
-                        <td class="centro">{{ $orden->name }} {{ $orden->USR_APELLIDOS }}</td>
-                        <td class="centro">{{ $orden->ORD_COSTO }}</td>
+                        <!-- <td class="centro">{{-- $orden->ORD_COSTO --}}</td> -->
 
                         <td class="centro" style="width: 125px;">
                             @if($orden->estado_orden != "FINALIZADO")
-                              <!-- <a class="btn btn-primary btn-sm borrar" href="orden/{{ $orden->ORD_IDORDEN }}/edit" role="button" data-toggle="tooltip" title="" data-placement="top" data-original-title="Modificar Orden de Servicio" data-container="body"><span class="glyphicon glyphicon-pencil"></span></a> -->
+                              @if($orden->estado_orden == "ESPERADOREQUERIMIENTOS")
+                                <!-- <a class="btn btn-primary btn-sm borrar" href="orden/{{ $orden->ORD_IDORDEN }}/edit" role="button" data-toggle="tooltip" title="" data-placement="top" data-original-title="Modificar Orden de Servicio" data-container="body"><span class="glyphicon glyphicon-pencil"></span></a> -->
+                              @endif
                               <button class="btn btn-danger btn-sm anularOrden borrar" data-id="{{ $orden->ORD_IDORDEN }}" data-email="{{ $orden->email }}" data-nombre="{{ $orden->name }} {{ $orden->USR_APELLIDOS }}" data-dir="{{ $orden->ORD_INM_IDINMUEBLE }}" data-toggle="tooltip" data-placement="top" data-original-title="Anular la Orden de Servicio"><span class="glyphicon glyphicon-remove"></span></button>
                             @endif
                         </td>

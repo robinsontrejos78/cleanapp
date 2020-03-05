@@ -40,16 +40,14 @@ class OrdenController extends Controller
 
         $ordenServicio = DB::table('ORDEN_SERVICIOS')
             ->join('users', 'ORD_USR_ID', '=', 'users.id')
-            ->join('LOOKUP as a', 'a.LOO_IDLOOKUP', '=', 'ORD_LOO_TIPOORDEN')
             ->join('LOOKUP as c', 'c.LOO_IDLOOKUP', '=', 'ORD_LOO_ESTADOORDEN')
             ->where('ORD_LOO_ESTADOORDEN', '!=', 4)
             ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
             ->where('ORD_PAGADO', 0)
-            ->where('a.LOO_GRUPO', 1)
             ->where('c.LOO_GRUPO', 2)
-            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'ORD_INM_IDINMUEBLE', 'a.LOO_DESCRIPCION as tipoorden',  'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO')
+            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'ORD_INM_IDINMUEBLE', 'USR_DOCUMENTO',  'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO')
             ->orderBy('ORD_FECHAORDEN', 'desc')
-           ->get();
+            ->get();
     //dd($ordenServicio);
  
        // $ordencli = DB::table('users')
@@ -372,25 +370,20 @@ class OrdenController extends Controller
 
         $busqueda = array();
 
+
         $i_nombrePersona     ? $busqueda += array(0 => array('ORD_USR_ID', '=', $i_nombrePersona)) : null;
         $i_documentoPersona  ? $busqueda += array(1 => array('ORD_USR_ID', '=', $i_documentoPersona)) : null;
         $i_estadoOrden       ? $busqueda += array(2 => array('ORD_LOO_ESTADOORDEN', '=', $i_estadoOrden)) : null;
 
         $busquedaOrden = DB::table('ORDEN_SERVICIOS')
             ->join('users', 'ORD_USR_ID', '=', 'users.id')
-            ->join('INMUEBLES', 'INM_IDINMUEBLE', '=', 'ORD_INM_IDINMUEBLE')
-            ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
-            ->join('LOOKUP as a', 'a.LOO_IDLOOKUP', '=', 'ORD_LOO_TIPOORDEN')
-            ->join('LOOKUP as b', 'b.LOO_IDLOOKUP', '=', 'INM_LOO_TIPO')
             ->join('LOOKUP as c', 'c.LOO_IDLOOKUP', '=', 'ORD_LOO_ESTADOORDEN')
             // ->where('ORD_LOO_ESTADOORDEN', '!=', 5)
-            ->where('PRO_EMP_IDEMPRESA', $idEmpresa)
+            ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
             // ->where('ORD_PAGADO', 0)
-            ->where('a.LOO_GRUPO', 1)
-            ->where('b.LOO_GRUPO', 3)
             ->where('c.LOO_GRUPO', 2)
             ->where($busqueda)
-            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'INM_DIRECCION', 'a.LOO_DESCRIPCION as tipoorden', 'b.LOO_DESCRIPCION as tipoinmueble', 'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO', 'ORD_FECHAORDEN')
+            ->select('ORDEN_SERVICIOS.*', 'users.name', 'email', 'USR_APELLIDOS', 'ORD_INM_IDINMUEBLE',  'c.LOO_DESCRIPCION as estado_orden', 'ORD_PAGADO', 'ORD_FECHAORDEN','USR_DOCUMENTO')
             ->get();
         
         return view('ordenes.ajax.buscar', compact('busquedaOrden'));

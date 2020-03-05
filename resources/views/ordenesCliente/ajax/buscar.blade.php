@@ -28,8 +28,14 @@
             <td class="centro">
                 @if(!$orden->ORD_PAGADO && $orden->ORD_LOO_ESTADOORDEN != 4)
                     @if($orden->estado_orden != "FINALIZADO")
-                        <a class="btn btn-primary btn-sm borrar" href="orden/{{ $orden->ORD_IDORDEN }}/edit" role="button" data-toggle="tooltip" title="" data-placement="top" data-original-title="Modificar Orden de Servicio" data-container="body"><span class="glyphicon glyphicon-pencil"></span></a>
-                        <button class="btn btn-danger btn-sm anularOrden borrar" data-id="{{ $orden->ORD_IDORDEN }}" data-email="{{ $orden->email }}" data-nombre="{{ $orden->name }} {{ $orden->USR_APELLIDOS }}" data-dir="{{ $orden->ORD_INM_IDINMUEBLE }}" data-toggle="tooltip" data-placement="top" data-original-title="Anular la Orden de Servicio"><span class="glyphicon glyphicon-remove"></span></button>
+                        @if($orden->estado_orden == "ESPERADOREQUERIMIENTOS")
+                            <a class="btn btn-primary btn-sm borrar" href="orden/{{ $orden->ORD_IDORDEN }}/edit" role="button" data-toggle="tooltip" title="" data-placement="top" data-original-title="Modificar Orden de Servicio" data-container="body">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        @endif
+                        <button class="btn btn-danger btn-sm anularOrden borrar" data-id="{{ $orden->ORD_IDORDEN }}" data-email="{{ $orden->email }}" data-nombre="{{ $orden->name }} {{ $orden->USR_APELLIDOS }}" data-dir="{{ $orden->ORD_INM_IDINMUEBLE }}" data-toggle="tooltip" data-placement="top" data-original-title="Anular la Orden de Servicio">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
                     @endif
                 @endif
                 @if($orden->ORD_LOO_ESTADOORDEN == 4)
