@@ -1347,7 +1347,7 @@ function selecPlan(plan){
     if (plan==2){
         valPlansel=35000;
         valhorasplan=4;
-        anexPlan='<p>SERVICIO DE 4 HORAS<br>Servicio general de aseo recomendado para un' ;
+        anexPlan='<p>SERVICIO DE 4 HORAS<br>Servicio general de aseo recomendado para un ';
         anexPlan+='área no mayor a 90 metros cuadrados actividades que incluyen: barrer, trapear,';
         anexPlan+=' sacudir, limpieza de baños, limpieza de cocina, lavado de ropa en maquina ';
         anexPlan+=' (incluida por el cliente)<br></p>';
