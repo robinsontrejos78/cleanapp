@@ -59,7 +59,7 @@
     <div class="box-body">
        <div class="col-md-12">
           <label for="imagen">Carga la Imagen desde el Teléfono:</label>
-          <input type="file" accept="image/*" id="BSbtninfo" name="imagen" id="img">
+          <input type="file" accept="image/*" id="BSbtninfo" name="imagen" capture="camera" id="img">
         </div>
         <div class="col-md-12" align="center" >
           <button style="margin-top:23px" type="button" id="guardarimagen" class="btn btn-primary" data-toggle="tooltip" title="Guardar" data-container="body">Guardar</button>

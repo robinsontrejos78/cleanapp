@@ -1636,6 +1636,6 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
     $('#BSbtninfo').filestyle({
         iconName : 'glyphicon glyphicon-circle-arrow-up',
         buttonName : 'btn-danger',
-        buttonText : ' Tomar foto'
+        buttonText : ' Subir foto'
     });
 // FIN ESTILO DE INPUT FILE
