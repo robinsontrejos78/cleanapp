@@ -385,7 +385,7 @@ class UserController extends Controller
     }
         public function cambiarimagen()
     {
-        if (!Auth::user()->hasRole('Profesional')) return abort(403);
+        if (Auth::guest()) return abort(403);
         // if (!filter_var($id, FILTER_VALIDATE_INT)) abort(404);
         
 
