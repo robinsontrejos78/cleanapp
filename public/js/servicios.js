@@ -384,9 +384,10 @@ $(document).on('click', '#inscripcion', function(){
             dim.css("display", "none");
         },
         success: function(data){
-          alert(data);
+          // alert(data);
           //swal('La Reserva se ha registrado con éxito');
-            },
+          swal("Registrada!", "La Reserva se ha registrado con éxito.", "success");
+        },
         error: function(){
         }
     });
