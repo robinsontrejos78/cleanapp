@@ -78,7 +78,7 @@
 
 @endsection
 
-
+<!-- 
 <script>
 var data_Imagen;
 
@@ -129,4 +129,4 @@ window.onload = function (){
 
   };
 }
-</script>
+</script> -->

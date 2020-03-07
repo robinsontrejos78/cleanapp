@@ -2,7 +2,55 @@
 
 var valPlansel='0';
 var horasplan='0';
+var data_Imagen;
 
+window.onload = function (){
+  document.getElementById('BSbtninfo').onchange = function(evt) {
+    
+    try {
+        nombre = this.files[0].name;
+    }
+    catch(err) {
+        document.getElementById('preview').removeAttribute("src");
+        data_Imagen = null;
+        return;
+    }
+
+    nombre = this.files[0].name;
+    ImageTools.resize(this.files[0], {
+        width: 320, // maximum width
+        height: 240 // maximum height
+    }, function(blob, didItResize) {
+        // didItResize will be true if it managed to resize it, otherwise false (and will return the original file as 'blob')
+        document.getElementById('preview').src = window.URL.createObjectURL(blob);
+        // you can also now upload this blob using an XHR.
+        var myFile = blobToFile(blob, nombre);
+        
+        function blobToFile(theBlob, fileName){
+        var b = theBlob;
+        //A Blob() is almost a File() - it's just missing the two properties below which we will add
+        b.name = fileName;
+        b.lastModifiedDate = new Date();
+        return b;
+        }
+
+        convertirBlobAData(myFile);
+        
+        function convertirBlobAData( blob ) {
+          var reader = new FileReader();
+          reader.onload = function(event){
+            var fd = {};
+            fd["fname"] = nombre;
+            fd["data"]  = event.target.result;
+            data_Imagen = fd;
+          };
+
+          reader.readAsDataURL(blob);
+        }
+    });
+
+  };
+}
 
 //Buscador de empresas Módulo SuperAdmin
 $(document).on('click', '#buscarEmp', function(){
