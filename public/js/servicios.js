@@ -1298,16 +1298,6 @@ $(document).on('click', '.finished', function(event){
     });
 
 });
-/*
-    * * * * *  DEJAR AL FINAL DE TODAS LAS FUNCIONES * * * * *
-*/
-// ESTILO DE INPUT FILE----------------------------------------------------------------------------------------
-    $('#BSbtninfo').filestyle({
-        iconName : 'glyphicon glyphicon-circle-arrow-up',
-        buttonName : 'btn-danger',
-        buttonText : ' Tomar foto'
-    });
-// FIN ESTILO DE INPUT FILE
 
 
 function verDispProf(id){
@@ -1639,3 +1629,13 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
         }
     });
 });
+/*
+    * * * * *  DEJAR AL FINAL DE TODAS LAS FUNCIONES * * * * *
+*/
+// ESTILO DE INPUT FILE----------------------------------------------------------------------------------------
+    $('#BSbtninfo').filestyle({
+        iconName : 'glyphicon glyphicon-circle-arrow-up',
+        buttonName : 'btn-danger',
+        buttonText : ' Tomar foto'
+    });
+// FIN ESTILO DE INPUT FILE
