@@ -139,4 +139,10 @@
 
 @endif
 
+@if(Auth::user()->hasRole('Cliente'))
+  <div class="col-xs-3">
+    <a href="{{ url('ordenCliente/create') }}" class="btn btn-primary btn-flat">Agregar Orden de servicio</a>
+  </div>
+@endif
+
 @endsection
