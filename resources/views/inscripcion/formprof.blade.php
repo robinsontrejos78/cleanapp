@@ -1,15 +1,10 @@
 
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<meta name="_token" content="{{ csrf_token() }}"/>
-<meta http-equiv="Expires" content="0">
-<meta http-equiv="Last-Modified" content="0">
-<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
-<meta http-equiv="Pragma" content="no-cache">
 @extends('layouts.auth')
-@section('main-content')
-@section('htmlheader_title')
-    Log in
-@endsection
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<meta name="_token" content="{{ csrf_token() }}"/>
+   
+
 
 
 @section('content')
@@ -290,10 +285,10 @@
                 <button type="button" id="inscripcion"  class="btn btn-info pull-right">Aceptar</button>
               </div>
               <!-- /.box-footer -->
+                <div class="resultado"></div>
             </form>
           </div>
 </div>
-
 </div>
 </div>
 

@@ -322,7 +322,6 @@ $(document).on('click', '#inscripcion', function(){
     var telrefcoma    = $('#telrefcoma').val();
     var s_terminos    =$('#terminos').is(":checked");
     var s_datos       =$('#datos').is(":checked");
-
         $('#nombresprof').val("");
         $('#apellidosprof').val("");
         $('#tipodocprof').val("");
@@ -384,9 +383,8 @@ $(document).on('click', '#inscripcion', function(){
             dim.css("display", "none");
         },
         success: function(data){
-          alert(data);
-          //swal('La Reserva se ha registrado con éxito');
-            },
+        $('.resultado').html('<div class="row"><div class="col-sm-12 col-md-offset-0"><div class="alert alert-success alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 30px;><span>&times;</span></button><span class=".glyphicon .glyphicon-saved" aria-hidden="true"></span><b>Te has registrado con exito!,</b> uno de nuestros agentes te contactará pronto.</div></div></div>');
+         },
         error: function(){
         }
     });
