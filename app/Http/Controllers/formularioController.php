@@ -202,10 +202,15 @@ class formularioController extends Controller
      if (!Auth::user()->hasRole('Administrador')) abort(403);
        $idEmpresa = Session::get('idEmpresa');
 
+     $resultados =  DB::table('PROFESIONALES')
+                    ->where('PRO_estado', 0)
+                    ->orderby('PRO_fecharegistro', 'desc')
+                    ->get();
 
-  $contador = DB::select('select COUNT(PRO_numdocprof) as total FROM PROFESIONALES as t1 where PRO_estado = 0 and NOT EXISTS (SELECT NULL FROM users as t2 WHERE t2.USR_DOCUMENTO = t1.PRO_numdocprof)');
+
+    $contador = DB::select('select COUNT(PRO_numdocprof) as total FROM PROFESIONALES as t1 where PRO_estado = 0 and NOT EXISTS (SELECT NULL FROM users as t2 WHERE t2.USR_DOCUMENTO = t1.PRO_numdocprof)');
               
-       return view('users.mostrarprof', compact('contador'));
+       return view('users.mostrarprof', compact('contador', 'resultados'));
     }
 
     /**

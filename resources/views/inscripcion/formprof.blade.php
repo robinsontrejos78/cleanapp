@@ -73,7 +73,7 @@
                   <div class="col-sm-12">
                     <select name="genero" id="generoprof" class="form-control" >
                     <option>Género</option>
-                     <option value="M">Masculino</option>
+                    <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
                     <option value="Otro">Otro</option>
                   </select>
@@ -89,9 +89,9 @@
                     <select name="estado" id="antigprof" class="form-control" >
                     <option>Antiguedad en esta Ciudad</option>
                     <option value="Menos de un año">Menos de 1 año</option>
-                    <option value="Casado">Entre 1 y 3</option>
-                    <option value="Union Libre">Entre 3 y 5</option>
-                    <option value="Separado">Más de 5 años</option>
+                    <option value="Entre 1 y 3">Entre 1 y 3</option>
+                    <option value="Entre 3 y 5">Entre 3 y 5</option>
+                    <option value="Más de 5 años">Más de 5 años</option>
                   </select>
                   </div>
                 </div>

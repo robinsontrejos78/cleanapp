@@ -1361,7 +1361,7 @@ function selecPlan(plan){
         valPlansel=60000;
         valhorasplan=8;
         anexPlan='<p>SERVICIO DE 8 HORAS<br>Servicio general de aseo recomendado para un área ';
-        anexPlan+='mayor a 131 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, limpieza' ;
+        anexPlan+='mayor a 131 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, limpieza ' ;
         anexPlan+='de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
         anexPlan+='<p>Horas nocturnas desde la 19:00 horas hasta las 6:00 horas es el 1.5  veces el valor<br></p>';
         anexPlan+='<p>Horas dominicales desde 12:00 horas hasta las 23:59 horas es el 2 veces el valor</p>';
@@ -1645,6 +1645,6 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
     $('#BSbtninfo').filestyle({
         iconName : 'glyphicon glyphicon-circle-arrow-up',
         buttonName : 'btn-danger',
-        buttonText : ' Subir foto'
+        buttonText : ' Subir Foto'
     });
 // FIN ESTILO DE INPUT FILE
