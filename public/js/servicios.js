@@ -1344,7 +1344,7 @@ function selecPlan(plan){
     if (plan==3){
         valPlansel=48000;
         valhorasplan=6;
-        anexPlan='<p>SERVICIO DE 6 HORAS<br>Servicio general de aseo recomendado para un área'; 
+        anexPlan='<p>SERVICIO DE 6 HORAS<br>Servicio general de aseo recomendado para un área '; 
         anexPlan+='no mayor a 130 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, ';
         anexPlan+='limpieza de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
         mostrarOcultar('muestra','fAdicional1')
@@ -1354,7 +1354,7 @@ function selecPlan(plan){
         valPlansel=60000;
         valhorasplan=8;
         anexPlan='<p>SERVICIO DE 8 HORAS<br>Servicio general de aseo recomendado para un área ';
-        anexPlan+='mayor a 131 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, limpieza' ;
+        anexPlan+='mayor a 131 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, limpieza ' ;
         anexPlan+='de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
         mostrarOcultar('muestra','fAdicional1')
         mostrarOcultar('muestra','fAdicional2')

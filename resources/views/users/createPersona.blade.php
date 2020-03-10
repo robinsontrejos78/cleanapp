@@ -26,27 +26,27 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="col-md-6">
             <label for="nombrePer" style="margin-top:20px">Nombres</label>
-            <input type="text" class="form-control" id="nombrePer" name="nombrePer" placeholder="Nombres del Usuario" value="{{ old('nombrePer') }}" onkeyup="this.value=this.value.toUpperCase();">
+            <input type="text" class="form-control" id="nombrePer" name="nombrePer" placeholder="Nombres del Profesional" value="{{ old('nombrePer') }}" onkeyup="this.value=this.value.toUpperCase();">
           </div>
           <div class="col-md-6">
             <label for="apellidoPer" style="margin-top:20px">Apellidos</label>
-            <input type="text" class="form-control" id="apellidoPer" name="apellidoPer" placeholder="Apellidos del usuario" value="{{ old('apellidoPer') }}" onkeyup="this.value=this.value.toUpperCase();">
+            <input type="text" class="form-control" id="apellidoPer" name="apellidoPer" placeholder="Apellidos del Profesional" value="{{ old('apellidoPer') }}" onkeyup="this.value=this.value.toUpperCase();">
           </div>
           <div class="col-md-6">
             <label for="documentoPer" style="margin-top:20px">Documento</label>
-            <input type="text" class="form-control" id="documentoPer" name="USR_DOCUMENTO" placeholder="Documento del usuario" value="{{ old('USR_DOCUMENTO') }}">
+            <input type="text" class="form-control" id="documentoPer" name="USR_DOCUMENTO" placeholder="Documento del Profesional" value="{{ old('USR_DOCUMENTO') }}">
           </div>
           <div class="col-md-6">
             <label for="telefonoPer" style="margin-top:20px">Teléfono</label>
-            <input type="number" class="form-control" id="telefonoPer" name="telefonoPer" placeholder="Teléfono del Usuario" value="{{ old('telefonoPer') }}">
+            <input type="number" class="form-control" id="telefonoPer" name="telefonoPer" placeholder="Teléfono del Profesional" value="{{ old('telefonoPer') }}">
           </div>
           <div class="col-md-6">
             <label for="celularPer" style="margin-top:20px">Celular</label>
-            <input type="number" class="form-control" id="celularPer" name="celularPer" placeholder="Teléfono Movil del Usuario" value="{{ old('celularPer') }}">
+            <input type="number" class="form-control" id="celularPer" name="celularPer" placeholder="Teléfono Movil del Profesional" value="{{ old('celularPer') }}">
           </div>
           <div class="col-md-6">
             <label for="direccionPer" style="margin-top:20px">Dirección</label>
-            <input type="text" class="form-control" id="direccionPer" name="direccionPer" placeholder="Dirección del Usuario" value="{{ old('direccionPer') }}">
+            <input type="text" class="form-control" id="direccionPer" name="direccionPer" placeholder="Dirección del Profesional" value="{{ old('direccionPer') }}">
           </div>
           <div class="col-md-6">
             <label for="emailPer" style="margin-top:20px">Email</label>

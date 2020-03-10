@@ -62,17 +62,17 @@
     <div class="box box-primary">
 
       <div class="box-header with-border">
-        <h3 class="box-title">Buscar Persona <span class="badge bg-teal"  data-toggle="tooltip" title="Puede filtrar la busqueda por Nombre de la persona, Apellido o email" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
+        <h3 class="box-title">Buscar Profesional <span class="badge bg-teal"  data-toggle="tooltip" title="Puede filtrar la busqueda por Nombre de la persona, Apellido o email" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
       </div>
 
       <div class="box-body">
         <div class="col-md-3">
           <label for="nombreUsu">Nombre</label>
-          <input type="text" class="form-control" id="nombreUsu" placeholder="Nombre del Usuario" onkeyup="this.value=this.value.toUpperCase();">
+          <input type="text" class="form-control" id="nombreUsu" placeholder="Nombre del Profesional" onkeyup="this.value=this.value.toUpperCase();">
         </div>
         <div class="col-md-3">
           <label for="apellidoUsu">Apellido</label>
-          <input type="text" class="form-control" id="apellidoUsu" placeholder="apellido del Usuario" onkeyup="this.value=this.value.toUpperCase();">
+          <input type="text" class="form-control" id="apellidoUsu" placeholder="Apellido del Profesional" onkeyup="this.value=this.value.toUpperCase();">
         </div>
         <div class="col-md-3">
           <label for="correoElec">Email</label>
