@@ -14,7 +14,7 @@
         <tr class="temporal">
             <td>{{ $orden->estado_orden }}</td>
             <td>{{ $orden->ORD_INM_IDINMUEBLE }}</td>
-            <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d / h:i') }}</td>
+            <td>{{ date_format(new DateTime($orden->ORD_INICIOORDEN), 'Y-m-d  h:i') }}</td>
             <td>
                 <?php 
                   $start_date = new DateTime($orden->ORD_INICIOORDEN);

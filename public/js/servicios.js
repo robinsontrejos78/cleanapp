@@ -1328,6 +1328,9 @@ function selecPlan(plan){
         anexPlan+='para un área no mayor a 45 metros cuadrados actividades que incluyen: ';
         anexPlan+='barrer, trapear, sacudir, limpieza de baños, limpieza de cocina, lavado';
         anexPlan+=' de ropa en maquina (incluida por el cliente)<br></p>';
+        anexPlan+='<p>Horas nocturnas desde la 19:00 horas hasta las 6:00 horas es el 1.5  veces el valor<br></p>';
+        anexPlan+='<p>Horas dominicales desde 12:00 horas hasta las 23:59 horas es el 2 veces el valor</p>';
+
         mostrarOcultar('oculta','fAdicional1')
         mostrarOcultar('oculta','fAdicional2')
     }
@@ -1338,15 +1341,19 @@ function selecPlan(plan){
         anexPlan+='área no mayor a 90 metros cuadrados actividades que incluyen: barrer, trapear,';
         anexPlan+=' sacudir, limpieza de baños, limpieza de cocina, lavado de ropa en maquina ';
         anexPlan+=' (incluida por el cliente)<br></p>';
+        anexPlan+='<p>Horas nocturnas desde la 19:00 horas hasta las 6:00 horas es el 1.5  veces el valor<br></p>';
+        anexPlan+='<p>Horas dominicales desde 12:00 horas hasta las 23:59 horas es el 2 veces el valor</p>';
         mostrarOcultar('oculta','fAdicional1')
         mostrarOcultar('oculta','fAdicional2')
     }
     if (plan==3){
         valPlansel=48000;
         valhorasplan=6;
-        anexPlan='<p>SERVICIO DE 6 HORAS<br>Servicio general de aseo recomendado para un área'; 
+        anexPlan='<p>SERVICIO DE 6 HORAS<br>Servicio general de aseo recomendado para un área '; 
         anexPlan+='no mayor a 130 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, ';
         anexPlan+='limpieza de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
+        anexPlan+='<p>Horas nocturnas desde la 19:00 horas hasta las 6:00 horas es el 1.5  veces el valor<br></p>';
+        anexPlan+='<p>Horas dominicales desde 12:00 horas hasta las 23:59 horas es el 2 veces el valor</p>';
         mostrarOcultar('muestra','fAdicional1')
         mostrarOcultar('muestra','fAdicional2')
     }
@@ -1356,6 +1363,8 @@ function selecPlan(plan){
         anexPlan='<p>SERVICIO DE 8 HORAS<br>Servicio general de aseo recomendado para un área ';
         anexPlan+='mayor a 131 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, limpieza' ;
         anexPlan+='de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
+        anexPlan+='<p>Horas nocturnas desde la 19:00 horas hasta las 6:00 horas es el 1.5  veces el valor<br></p>';
+        anexPlan+='<p>Horas dominicales desde 12:00 horas hasta las 23:59 horas es el 2 veces el valor</p>';
         mostrarOcultar('muestra','fAdicional1')
         mostrarOcultar('muestra','fAdicional2')
     }
