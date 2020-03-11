@@ -85,7 +85,6 @@
               <tr>
                 <th class="centro">Fecha del Servicio</th>
                 <th class="centro">Dirección</th>
-                <th class="centro">Propietario</th>
                 <th class="centro">Teléfono</th>
                 <th class="centro">Generado por</th>
                 <th class="centro">Terminar Novedad</th>
@@ -96,7 +95,6 @@
                 <tr>
                   <td class="centro" >{{ $novedad->ORD_FECHAORDEN }}</td>
                   <td class="centro" >{{ $novedad->ORD_INM_IDINMUEBLE }}</td>
-                  <td class="centro" >{{ $novedad->ORD_INM_IDINMUEBLE }} </td>
                   <td class="centro" >{{ $novedad->USR_TELEFONO }} </td>
                   <td class="centro" >{{ $novedad->name }} {{ $novedad->USR_APELLIDOS }}</td>
                   <td class="centro">
