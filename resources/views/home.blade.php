@@ -100,7 +100,7 @@
                   <td class="centro" >{{ $novedad->INM_TELEFONO }} </td>
                   <td class="centro" >{{ $novedad->name }} {{ $novedad->USR_APELLIDOS }}</td>
                   <td class="centro">
-        				    <button class="btn btn-info btn-sm terminarnovedad" data-idnov="{{$novedad->NOV_IDNOVEDAD}}"><i class="fa fa-fw fa-thumbs-o-up"></i> </button>
+        				    <button class="btn btn-info btn-sm terminarnovedad" data-idnov="{{$novedad->ORD_IDORDEN}}"><i class="fa fa-fw fa-thumbs-o-up"></i> </button>
                   </td>
                 </tr>
               @endforeach    

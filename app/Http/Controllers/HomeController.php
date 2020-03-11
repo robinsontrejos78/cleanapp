@@ -42,18 +42,17 @@ class HomeController extends Controller
         if (Auth::user()->hasRole('Administrador'))
         {
 
-            $novedades  = DB::table("NOVEDADES")
-                ->join('ORDEN_SERVICIOS', 'ORD_IDORDEN', '=', 'NOV_ORD_IDORDEN')
+            $novedades  = DB::table("ORDEN_SERVICIOS")
                 ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
                 ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
-                ->join('users', 'ORD_USR_ID', '=', 'id')
-                ->join('LOOKUP', 'LOO_IDLOOKUP', '=', 'NOV_LOO_TIPONOVEDAD')
+                ->join('users', 'ORD_USR_ID', '=', 'users.id')
                 ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
-                ->where('LOO_GRUPO', '=', 4)
-                ->where('NOV_ESTADO', 0)
-                ->select('NOV_IDNOVEDAD', 'LOO_DESCRIPCION', 'NOV_DESCRIPCION', 'ORD_FECHAORDEN', 'INM_DIRECCION', 'INM_PROPIETARIO', 'INM_TELEFONO', 'name', 'USR_APELLIDOS', 'PRO_NOMBRE')
+                ->where('ORD_LOO_ESTADOORDEN', '=', 4)
+                ->select('ORD_IDORDEN', 'ORD_FECHAORDEN', 'INM_DIRECCION', 'INM_PROPIETARIO', 'INM_TELEFONO', 'name', 'USR_APELLIDOS', 'PRO_NOMBRE')
                 ->get();
 
+            // ->orderBy('ORD_FECHAORDEN', 'desc')
+            // ->get();
                 
             $contador = DB::table("NOVEDADES")
                 ->join('ORDEN_SERVICIOS', 'ORD_IDORDEN', '=', 'NOV_ORD_IDORDEN')

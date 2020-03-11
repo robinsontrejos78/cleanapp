@@ -517,18 +517,18 @@ class OrdenController extends Controller
     {
         $idnovedad = $_POST['idnovedad'];
 
-        DB::table('NOVEDADES')
-            ->where('NOV_IDNOVEDAD', $idnovedad)
-            ->Update(['NOV_ESTADO' => 1]);
+        DB::table('ORDEN_SERVICIOS')
+            ->where('ORD_IDORDEN', $idnovedad)
+            ->Update(['ORD_LOO_ESTADOORDEN' => 0]);
 
-        $datos = DB::table('NOVEDADES')
-            ->join('ORDEN_SERVICIOS', 'ORD_IDORDEN', '=', 'NOV_ORD_IDORDEN')
-            ->join('users', 'id', '=', 'ORD_USR_ID')
-            ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
-            ->join('LOOKUP', 'ORD_LOO_TIPOORDEN', '=', 'LOO_IDLOOKUP')
-            ->where('LOO_GRUPO', 1)
-            ->select('name', 'USR_APELLIDOS', 'INM_DIRECCION')
-            ->get();
+        // $datos = DB::table('NOVEDADES')
+        //     ->join('ORDEN_SERVICIOS', 'ORD_IDORDEN', '=', 'NOV_ORD_IDORDEN')
+        //     ->join('users', 'id', '=', 'ORD_USR_ID')
+        //     ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
+        //     ->join('LOOKUP', 'ORD_LOO_TIPOORDEN', '=', 'LOO_IDLOOKUP')
+        //     ->where('LOO_GRUPO', 1)
+        //     ->select('name', 'USR_APELLIDOS', 'INM_DIRECCION')
+        //     ->get();
 
         
     }
