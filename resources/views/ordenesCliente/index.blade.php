@@ -133,11 +133,13 @@
                                   <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                               @endif
+                              @if($orden->ORD_INICIOORDEN > $diaAnterior)
                               <button class="btn btn-danger btn-sm anularOrdencliente " data-id="{{ $orden->ORD_IDORDEN }}" data-email="{{ $orden->email }}" data-nombre="{{ $orden->name }} {{ $orden->USR_APELLIDOS }}" data-dir="{{ $orden->ORD_INM_IDINMUEBLE }}" data-toggle="tooltip" data-placement="top" data-original-title="Anular la Orden de Servicio">
                                 <span class="glyphicon glyphicon-remove"></span>
                               </button>
+                              @endif
                             @endif
-                            @if($orden->estado_orden == "FINALIZADO" && $orden->ORD_CLI_CALIFICO != True )
+                            @if($orden->estado_orden == "FINALIZADO" && $orden->ORD_CLI_CALIFICO != True  )
                                 <a class="btn btn-success btn-sm" href="comenzarOrdenCliente/{{ $orden->ORD_IDORDEN }}" data-original-title="Calificar orden">
                                   <span class="glyphicon glyphicon-ok"></span>
                                 </a>
@@ -160,3 +162,4 @@
 
 
 @endsection
+

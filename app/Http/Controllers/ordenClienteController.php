@@ -45,7 +45,9 @@ class OrdenClienteController extends Controller
           ->select('users.name', 'USR_APELLIDOS')
           ->get();
 
-      return view('ordenesCliente.index', compact('estadosO', 'ordenServicio'));
+      $diaAnterior=Carbon::now()->subDay(1);
+
+      return view('ordenesCliente.index', compact('estadosO', 'ordenServicio','diaAnterior'));
   }
 
   public function create()
