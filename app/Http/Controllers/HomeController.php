@@ -43,7 +43,9 @@ class HomeController extends Controller
         {
 
             $novedades  = DB::table("ORDEN_SERVICIOS")
-                ->join('users', 'ORD_USR_ID', '=', 'users.id')
+                ->join('users', 'ORD_USR_CLI', '=', 'users.id')
+                ->join('role_user', 'ORD_USR_CLI', '=', 'user_id')
+                ->where('role_id', '=', 4)
                 ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
                 ->where('ORD_LOO_ESTADOORDEN', '=', 3)
                 ->select('ORD_IDORDEN', 'ORD_FECHAORDEN', 'ORD_INM_IDINMUEBLE', 'USR_TELEFONO', 'name', 'USR_APELLIDOS')
