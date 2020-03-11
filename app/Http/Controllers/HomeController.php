@@ -43,21 +43,18 @@ class HomeController extends Controller
         {
 
             $novedades  = DB::table("ORDEN_SERVICIOS")
-                ->join('INMUEBLES', 'ORD_INM_IDINMUEBLE', '=', 'INM_IDINMUEBLE')
-                ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
                 ->join('users', 'ORD_USR_ID', '=', 'users.id')
                 ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
                 ->where('ORD_LOO_ESTADOORDEN', '=', 3)
-                ->select('ORD_IDORDEN', 'ORD_FECHAORDEN', 'INM_DIRECCION', 'INM_PROPIETARIO', 'INM_TELEFONO', 'name', 'USR_APELLIDOS', 'PRO_NOMBRE')
+                ->select('ORD_IDORDEN', 'ORD_FECHAORDEN', 'ORD_INM_IDINMUEBLE', 'USR_TELEFONO', 'name', 'USR_APELLIDOS')
                 ->get();
-
+   // dd($novedades);
             // ->orderBy('ORD_FECHAORDEN', 'desc')
             // ->get();
                 
-            $contador = DB::table("NOVEDADES")
-                ->join('ORDEN_SERVICIOS', 'ORD_IDORDEN', '=', 'NOV_ORD_IDORDEN')
+            $contador = DB::table("ORDEN_SERVICIOS")
                 ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
-                ->where('NOV_ESTADO', 0)
+                ->where('ORD_LOO_ESTADOORDEN', 3)
                 ->count();
 
 

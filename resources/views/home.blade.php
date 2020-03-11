@@ -95,9 +95,9 @@
               @foreach($novedades as $novedad)
                 <tr>
                   <td class="centro" >{{ $novedad->ORD_FECHAORDEN }}</td>
-                  <td class="centro" >{{ $novedad->PRO_NOMBRE }} - {{ $novedad->INM_DIRECCION }}</td>
-                  <td class="centro" >{{ $novedad->INM_PROPIETARIO }} </td>
-                  <td class="centro" >{{ $novedad->INM_TELEFONO }} </td>
+                  <td class="centro" >{{ $novedad->ORD_INM_IDINMUEBLE }}</td>
+                  <td class="centro" >{{ $novedad->ORD_INM_IDINMUEBLE }} </td>
+                  <td class="centro" >{{ $novedad->USR_TELEFONO }} </td>
                   <td class="centro" >{{ $novedad->name }} {{ $novedad->USR_APELLIDOS }}</td>
                   <td class="centro">
         				    <button class="btn btn-info btn-sm terminarnovedad" data-idnov="{{$novedad->ORD_IDORDEN}}"><i class="fa fa-fw fa-thumbs-o-up"></i> </button>
