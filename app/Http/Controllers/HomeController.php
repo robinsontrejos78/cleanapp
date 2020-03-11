@@ -47,7 +47,7 @@ class HomeController extends Controller
                 ->join('PROPIEDADES', 'INM_PRO_IDPROPIEDAD', '=', 'PRO_IDPROPIEDAD')
                 ->join('users', 'ORD_USR_ID', '=', 'users.id')
                 ->where('ORD_EMP_IDEMPRESA', $idEmpresa)
-                ->where('ORD_LOO_ESTADOORDEN', '=', 4)
+                ->where('ORD_LOO_ESTADOORDEN', '=', 3)
                 ->select('ORD_IDORDEN', 'ORD_FECHAORDEN', 'INM_DIRECCION', 'INM_PROPIETARIO', 'INM_TELEFONO', 'name', 'USR_APELLIDOS', 'PRO_NOMBRE')
                 ->get();
 
