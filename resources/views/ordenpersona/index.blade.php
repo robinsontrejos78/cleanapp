@@ -30,6 +30,7 @@
                     <th class="centro">Teléfono</th>
                     <th class="centro">Dirección</th>
                     <th class="centro">Fecha de la orden</th>
+                    <th class="centro">Horas</th>
                     <th class="centro">Descripción</th>
                     <th class="centro">Acciones</th>
                 </tr>
@@ -40,7 +41,14 @@
                 <td>{{ $orden->name }} {{ $orden->USR_APELLIDOS }}</td>
                 <td>{{ $orden->USR_TELEFONO }}</td>
 	              <td>{{ $orden->ORD_INM_IDINMUEBLE }}</td>
-	              <td>{{ date_format(new DateTime($orden->ORD_FECHAORDEN), 'Y-m-d / h:i') }}</td>
+	              <td>{{ date_format(new DateTime($orden->ORD_INICIOORDEN), 'Y-m-d  h:i') }}</td>
+                <td>
+                  <?php 
+                    $start_date = new DateTime($orden->ORD_INICIOORDEN);
+                    $since_start = $start_date->diff(new DateTime($orden->ORD_FINORDEN));
+                    echo $since_start->h.' H ';
+                  ?>                          
+                </td>
                 <td>{{ $orden->ORD_DESCRIPCION }}</td>   
 	              <td class="centro">
                   <a href="comenzarOrden/{{$orden->ORD_IDORDEN}}" class="btn btn-success btn-xs">Comenzar</a>
