@@ -36,7 +36,7 @@
     <div class="box box-primary">
 
       <div class="box-header with-border">
-        <h3 class="box-title">Cargar Imagen del Profesional <span class="badge bg-teal"  data-toggle="tooltip"  data-container="body"></span></h3>
+        <h3 class="box-title">Cargar Imagen <span class="badge bg-teal"  data-toggle="tooltip"  data-container="body"></span></h3>
       </div>
 
 
