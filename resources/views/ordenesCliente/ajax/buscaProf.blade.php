@@ -15,10 +15,9 @@
                 <img src="{{ asset ($profesional->USR_foto)}}" alt="...">
                 <div class="caption">
                   <h3>{{$profesional->name}} {{$profesional->USR_APELLIDOS}}</h3>
-                  <input type="hidden" value="{{$profesional->name}} {{$profesional->USR_APELLIDOS}}" id="nomprof">
                   <p>
                     <a class="btn btn-default" href="{{ url('/ordenCliente/create') }}">Atrás</a>
-                    <a class="btn btn-primary" onclick="ClientGuardaOrden({{$profesional->id}})" role="button">Seleccionar</a>
+                    <a class="btn btn-primary" onclick="ClientGuardaOrden( {{$profesional->id}},'{{$profesional->name}} {{$profesional->USR_APELLIDOS}}')" role="button">Seleccionar</a>
                   </p>
                 </div>
               </div>

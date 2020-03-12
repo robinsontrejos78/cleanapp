@@ -1382,7 +1382,7 @@ function selecPlan(plan){
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
 
-function ClientGuardaOrden(idProfesional){
+function ClientGuardaOrden(idProfesional,nombreprofesional){
 
     $.ajaxSetup({
         headers: {
@@ -1417,6 +1417,8 @@ function ClientGuardaOrden(idProfesional){
     tipoOrden=1
     cliente=$('#idcliente').val()
     costo=$('#nominacion').val()
+    nomprof=nombreprofesional
+
 
     $.ajax({
         type: 'POST',
@@ -1439,7 +1441,7 @@ function ClientGuardaOrden(idProfesional){
             },
             function(isConfirm) {
               if (isConfirm) {
-                $('#modalProfesional').html($('#nomprof').val());
+                $('#modalProfesional').html(nomprof);
                 $('#modalFechaHora').html(inicioOrden);
                 $('#modalCosto').html('$ '+costo);
                 $('#modalResumen').modal('show')

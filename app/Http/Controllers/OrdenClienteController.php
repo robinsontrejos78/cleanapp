@@ -45,9 +45,9 @@ class OrdenClienteController extends Controller
           ->select('users.name', 'USR_APELLIDOS')
           ->get();
 
-      $diaAnterior=Carbon::now()->subDay(1);
+      $diaSiguiente=Carbon::now()->addDay(1);
       //no esta funcionando
-      return view('ordenesCliente.index', compact('estadosO', 'ordenServicio','diaAnterior'));
+      return view('ordenesCliente.index', compact('estadosO', 'ordenServicio','diaSiguiente'));
   }
 
   public function create()
