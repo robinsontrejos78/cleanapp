@@ -394,7 +394,7 @@ class UserController extends Controller
 
         public function guardarimagen()
     {
-        if (!Auth::user()->hasRole('Profesional')) abort(403);
+        if (Auth::guest()) return abort(403);
          $idUsu = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
         
 
