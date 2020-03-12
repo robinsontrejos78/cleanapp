@@ -51,7 +51,7 @@
                 </td>
                 <td>{{ $orden->ORD_DESCRIPCION }}</td>   
 	              <td class="centro">
-                  <a href="comenzarOrden/{{$orden->ORD_IDORDEN}}" class="btn btn-success btn-xs">Comenzar</a>
+                  <a href="comenzarOrden/{{$orden->ORD_IDORDEN}}" class="btn btn-success btn-xs">Terminar</a>
                 </td>
 	          </tr>
 				@endforeach

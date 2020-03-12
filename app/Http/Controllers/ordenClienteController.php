@@ -46,7 +46,7 @@ class OrdenClienteController extends Controller
           ->get();
 
       $diaAnterior=Carbon::now()->subDay(1);
-
+      //no esta funcionando
       return view('ordenesCliente.index', compact('estadosO', 'ordenServicio','diaAnterior'));
   }
 
