@@ -56,6 +56,7 @@ class CalificacionController extends Controller
                      ->where('CAL_IDUSERPROF', '=', $nombreUsu)
                      ->get();
 
+                     dd($contador);
     $busqueda = array();
 
         $nombreUsu    ? $busqueda += array(2 => array('CAL_IDUSERPROF', 'LIKE', '%'.$nombreUsu.'%')) : null;
@@ -107,7 +108,7 @@ class CalificacionController extends Controller
          
     $contador = DB::table('CALIFICACIONES')
                      ->select(DB::raw('round(AVG(CAL_calificacion),1) AS promedio'))
-                     ->where('CAL_IDUSERPROF', '=', $nombreUsucli)
+                     ->where('CAL_IDUSERCLIENTE', '=', $nombreUsucli)
                      ->get();
 
     $busqueda = array();
