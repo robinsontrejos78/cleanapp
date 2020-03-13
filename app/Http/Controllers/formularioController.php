@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\createprofesionalRequest;
 use Illuminate\Support\Facades\Session;    //variable de sessión
 use Illuminate\Http\Request;
 use App\Http\Requests;
