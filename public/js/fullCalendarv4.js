@@ -12,6 +12,7 @@
 				left:'title',
 				right:'prev, next'
 			},
+
 			// customButtons:{
 			// 	MiBoton:{
 			// 		text:'Boton',
@@ -19,6 +20,11 @@
 			// 		}
 			// 	}
 			// },
+			validRange: function(nowDate) {
+	    		return {
+	      			start: nowDate
+	    		};
+  			},
 			eventClick:function(info){
 				// console.log(info.event.title);
 				// console.log(info.event.start);
@@ -34,8 +40,7 @@
 				// console.log(info);
 				$('#fechaAsig').val(info.dateStr);
 				// calendar.addEvent({ title:"Evento x", date:info.dateStr });
-			}
-			,
+			},
 			// events:[
 			// {
 			// 	title:"Mi evento 1",
