@@ -153,31 +153,35 @@ Home
                               <div class="form-group col-sm-12 col-xs-12">
                                <input id="fechaAsig" type="date" name="fechaAsig" disabled class="form-control" value="{{ old('fechaAsig') }}">
                             </div>
-
                           </div>
+
+
                           <div class="form-group">
-                            <label class="col-sm-12 col-xs-12 control-label">Hora</label>
-                            <div class="form-group col-md-12 col-xs-12">
+                            <div class="col-md-12">
+                              <label class="col-sm-12 col-xs-12 control-label">Hora</label>
                               <input type="time" class="form-control" id="horaInicial">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-12 col-xs-12 control-label">Dirección</label>
-                             <div class="form-group col-md-12 col-xs-12">
-                             <input type="text" id="InputDireccion" class="form-control" value="{{ $direccion }}">
-                             </div>
-                        </div>
-                        <div class="form-group col-md-6">
 
-                            <label >
-                              <button type="button" class="btn btn-primary"  onclick="mostrarOcultar('muestra','bloque2');mostrarOcultar('oculta','bloque3');">Atrás</button>
-                            </label>
+                        <div class="form-group">
+                          <div class="col-md-12">
+                            <label for="direccionUsu" style="margin-top:20px">Dirección</label>
+                            <input type="text" class="form-control" id="InputDireccion" placeholder="Dirección"  value="{{ $direccion }}">
+                          </div>
                         </div>
+
+                        <div class="form-group col-md-6">
+                          <label >
+                            <button type="button" class="btn btn-primary"  onclick="mostrarOcultar('muestra','bloque2');mostrarOcultar('oculta','bloque3');">Atrás</button>
+                          </label>
+                        </div>
+
                         <div class="form-group col-md-6">
                             <label >
                               <button type="button" class="btn btn-primary" id="buscaProfOdenCli">Siguiente</button>
                             </label>
                         </div>
+
                         </tbody>
 
                       </table>

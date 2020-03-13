@@ -80,7 +80,6 @@ class clienteController extends Controller
              'USE_USR_id' => $id, 
         ]);
         
-
-        return redirect('/login')->with('message', 'Te has registrado con éxito, ahora puedes disfrutar de nuestros servicios');
+        // return redirect('/login')->with('message', 'Te has registrado con éxito, ahora puedes disfrutar de nuestros servicios');
     }
 }
