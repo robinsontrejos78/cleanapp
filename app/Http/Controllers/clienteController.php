@@ -51,7 +51,6 @@ class clienteController extends Controller
          // if (!Auth::user()->hasRole('Cliente')) return abort(403);
 
         $datosEvento=request()->except(['_token']);
-
         
         $user                    = new User();
         $user->name              = $request->get('nombres');
@@ -81,7 +80,6 @@ class clienteController extends Controller
              'USE_USR_id' => $id, 
         ]);
         
-
-        return redirect('/')->with('message', 'Usuario creado con exito');
+        // return redirect('/login')->with('message', 'Te has registrado con éxito, ahora puedes disfrutar de nuestros servicios');
     }
 }

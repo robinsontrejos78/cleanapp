@@ -5,12 +5,21 @@
 @endsection
 
 @section('content')
+@if(Session::has('message'))
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="alert alert-success alert-dismissible" role="alert" style="text-align:center">
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+        <span class="glyphicon" aria-hidden="true"></span> {{Session::get('message')}}
+      </div>
+    </div>
+  </div>  
+@endif
+
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-
             <a href="{{ url('/home') }}">Te damos la Bienvenida!</a>
-
         </div>
 
     @if (count($errors) > 0)
