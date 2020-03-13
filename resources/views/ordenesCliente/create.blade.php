@@ -158,7 +158,7 @@ Home
                           <div class="form-group">
                             <div class="col-md-12">
                               <label class="col-sm-12 col-xs-12 control-label">Hora</label>
-                              <input type="time" class="form-control" id="horaInicial">
+                              <input type="time" step="900" class="form-control" id="horaInicial" >
                             </div>
                           </div>
 
