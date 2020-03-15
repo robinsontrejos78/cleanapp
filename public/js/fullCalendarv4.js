@@ -41,12 +41,14 @@
 				$('#fechaAsig').val(info.dateStr);
 				// calendar.addEvent({ title:"Evento x", date:info.dateStr });
 			},
-			// events:[
-			// {
-			// 	title:"Mi evento 1",
-			// 	start: "2020-02-16 12:30:00",
-			// 	descripcion: "la descripcion"
-			// }]
+			events:[
+			{
+				title:"Mi evento 1",
+				start: "2020-03-14 12:30:00",
+				descripcion: "la descripcion",
+			 	rendering: "background",
+			 	color: 'yellow'
+			}]
 		});
 		calendar.setOption('locale','Es');
 
