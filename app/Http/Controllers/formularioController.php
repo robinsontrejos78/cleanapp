@@ -282,7 +282,7 @@ class formularioController extends Controller
         // $fecha = $fecha->toDateString();
 
         // dd($fecha);
-             $registros =  DB::table('indisponibilidades')
+             $registros =  DB::table('INDISPONIBILIDADES')
                     ->where('ind_pro_id', $usuario)
                     ->orderby('ind_dia', 'desc')
                     ->get();
@@ -307,9 +307,10 @@ class formularioController extends Controller
          $motivo      = $_POST['motivo'];
 
 
-              DB::table('indisponibilidades')->insert(
-                        ['id_fecharegistro' => $fecha,
+              DB::table('INDISPONIBILIDADES')->insert(
+                        [
                          'ind_pro_id'       => $usuario,
+                         'id_fecharegistro' => $fecha,
                          'ind_dia'          => $fechaagenda,
                          'id_horainicio'    => $horainicio,
                          'id_horafinal'     => $horafinal,
