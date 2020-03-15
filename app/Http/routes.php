@@ -55,6 +55,8 @@ Route::resource('mostrarcalcli', 'CalificacionController@mostrarcalcli');
 
 Route::resource('imagen', 'UserController@cambiarimagen');
 
+Route::resource('programar', 'formularioController@programador');
+
 Route::post('guardarimagen', 'UserController@guardarimagen');
 
 
@@ -63,6 +65,9 @@ Route::post('buscarEmp', 'EmpresaController@buscarEmpresa');
 
 //Envio de formulario de profesionales
 Route::post('inscripcionprof', 'formularioController@createprof');
+
+//Almacenar fechas de insdisponibilidades
+Route::post('indisponibilidad', 'formularioController@guardarindisp');
 
 //Buscador de usuarios ajax
 Route::post('buscarUsu', 'UserController@buscarUsuario');

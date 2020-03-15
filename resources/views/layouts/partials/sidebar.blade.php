@@ -58,6 +58,7 @@
                 <li><a href="{{ url('ordenP') }}"><i class='fa fa-briefcase'></i> <span>Ordenes de Servicio</span></a></li>
                 <li><a href="{{ url('vercalificacion') }}"><i class='fa fa-thumbs-o-up'></i> <span>Calificaciones</span></a></li>
                 <li><a href="{{ url('historial') }}"><i class='fa fa-calendar'></i> <span>Historial de Ordenes</span></a></li>
+                <li><a href="{{ url('programar') }}"><i class='fa fa-book'></i> <span>Programa tu Agenda</span></a></li>
 
   <!-- Link para visualizar ordenes sin pagar desactivado     -->          
                 <!-- <li><a href="{{ url('ordenesSinPagar') }}"><i class='fa fa-money'></i> <span>Ordenes sin pagar</span></a></li> -->
