@@ -28,45 +28,37 @@
 @endif
 
 <div class="row">
-
-
   <div class="col-md-12">
     <div class="box box-primary">
-
       <div class="box-header with-border">
         <h3 class="box-title">Programador de fechas no laborables <span class="badge bg-teal"  data-toggle="tooltip" title="Puedes escoger los dias y las horas en las que no puedes trabajar" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
       </div>
-
       <div class="box-body">
-        <table class="table table-bordered table-hover table-striped table_" >
-            <thead>
-              <tr>
-                <th class="centro">Elige el Día</th>
-                <th class="centro">Hora Inicial</th>
-                <th class="centro">Hora Final</th>
-                <th class="centro">Motivo  <span class="badge bg-teal"  data-toggle="tooltip" title="Para que recuerdes, porqué?,  nó podías laborar ese dia" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></th>
-              </tr>
-            </thead>
-            <tbody>
-               <tr>
-                <th class="centro"> <input type="date" id="fechaagenda" class="form-control"></th>
-                <th class="centro"> <input type="time" id="horainicio" class="form-control"></th>
-                <th class="centro"> <input type="time" id="horafinal" class="form-control"></th>
-                <th class="centro"> <input type="text" id="motivo" class="form-control"></th>
-              </tr>
-            </tbody>
-          </table>
+        <div class="col-md-3">
+                <label>Elige el Día</label>
+                 <input type="date" id="fechaagenda" class="form-control">
+        </div>
+        <div class="col-md-3">
+                <label>Hora Inicial</label>
+                <th class="centro"> <input type="time" id="horainicio" class="form-control">
+        </div>
+        <div class="col-md-3">
+                <label>Hora Final</label>
+                <th class="centro"> <input type="time" id="horafinal" class="form-control">
+        </div>
+        <div class="col-md-3">
+                <label>Motivo  </label><span class="badge bg-teal"  data-toggle="tooltip" title="Para que recuerdes, porqué?,  nó podías laborar ese dia" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span>
+                <th class="centro"> <input type="text" id="motivo" class="form-control">
+        </div>
+      </div>
         <div class="col-md-3" >
           <button style="margin-top:23px" type="button" id="registraragenda" class="btn btn-primary" data-toggle="tooltip" title="Buscar" data-container="body">Registrar Fecha</button>
         </div>
-      </div>
-
       <div class="box-footer">
         <div class="busqueda"></div>
       </div>
-           
-    </div>
-  </div>
+   </div>
+ </div>
 </div>
 
 <div class="row">
@@ -105,9 +97,6 @@
           </table>
         </div>
       </div>
-
-     
-           
     </div>
   </div>
 </div>
