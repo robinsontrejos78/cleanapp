@@ -36,7 +36,7 @@
 
 <div class="row">
   <div class="col-xs-3">
-    <a href="{{ url('empresa/create') }}"" class="btn btn-danger btn-flat">Agregar Empresa</a>
+    <a href="{{ url('empresa/create') }}" class="btn btn-danger btn-flat">Agregar Empresa</a>
   </div><br><br>
 
   <div class="col-md-12">

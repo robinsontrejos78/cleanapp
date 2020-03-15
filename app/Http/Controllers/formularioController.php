@@ -272,5 +272,53 @@ class formularioController extends Controller
         return view('users.ajax.buscarinscprof', compact('resultados', 'users'));
     }
 
+       public function programador()
+    {
+          if (!Auth::user()->hasRole('Profesional')) abort(403);
+        $idEmpresa = Session::get('idEmpresa');
+        $usuario = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+        // $fecha = new Carbon('now');
+        // $fecha = $fecha->toDateString();
+
+        // dd($fecha);
+             $registros =  DB::table('INDISPONIBILIDADES')
+                    ->where('ind_pro_id', $usuario)
+                    ->orderby('ind_dia', 'desc')
+                    ->get();
+
+          return view('inscripcion.agendaprofesional', compact('registros'));
+    }
+    
+      public function guardarindisp()
+    {
+          if (!Auth::user()->hasRole('Profesional')) abort(403);
+             $idEmpresa = Session::get('idEmpresa');
+             $usuario = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+
+        $fecha = new Carbon('now');
+        $fecha = $fecha->toDateString();
+
+
+         $fechaagenda = $_POST['fechaagenda'];
+         $horainicio  = $_POST['horainicio'];
+         $horafinal   = $_POST['horafinal'];
+         $motivo      = $_POST['motivo'];
+
+
+              DB::table('INDISPONIBILIDADES')->insert(
+                        [
+                         'ind_pro_id'       => $usuario,
+                         'id_fecharegistro' => $fecha,
+                         'ind_dia'          => $fechaagenda,
+                         'id_horainicio'    => $horainicio,
+                         'id_horafinal'     => $horafinal,
+                         'id_motivo'        => $motivo
+                         ]
+                        );
+
+       return with('Nueva fecha de indisponibilidad registrada');
+    }
    
 }
