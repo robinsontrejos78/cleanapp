@@ -34,15 +34,15 @@
         <h3 class="box-title">Programador de fechas laborables <span class="badge bg-teal"  data-toggle="tooltip" title="Puedes escoger los dias y las horas en las que puedes trabajar" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
       </div>
       <div class="box-body">
-        <div class="col-md-3">
+        <div class="col-md-4">
                 <label>Elige el Día</label>
                  <input type="date" id="fechaagenda" class="form-control">
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
                 <label>Hora Inicial</label>
                 <th class="centro"> <input type="time" id="horainicio" class="form-control">
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
                 <label>Hora Final</label>
                 <th class="centro"> <input type="time" id="horafinal" class="form-control">
         </div>
@@ -73,7 +73,6 @@
                 <th class="centro">Día</th>
                 <th class="centro">Hora Inicial</th>
                 <th class="centro">Hora Final</th>
-                <th class="centro">Motivo</th>
               </tr>
             </thead>
             <tbody>
@@ -86,7 +85,6 @@
                   <td class="centro">{{ $registro->ind_dia }}</td>
                   <td class="centro">{{ $registro->id_horainicio }}</td>
                   <td class="centro">{{ $registro->id_horafinal }}</td>
-                  <td class="centro">{{ $registro->id_motivo }}</td>
                 </tr>
               @endforeach
             </tbody>
