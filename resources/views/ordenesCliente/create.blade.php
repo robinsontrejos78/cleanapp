@@ -120,7 +120,7 @@ Home
                       
                   </div>
                   <div class="box-footer">
-                    <div class="col-md-6">
+                    <div class="col-md-2">
                         <button type="button" class="btn btn-primary" onclick="mostrarOcultar('muestra','bloque1');mostrarOcultar('oculta','bloque2');">Atrás</button>
                     </div>
                     <div class="col-md-6">
@@ -131,7 +131,6 @@ Home
                 </div>
               </div>
             </div>
-
       
             <div class="row" id="bloque3"  style="display: none;">  
               <div class="col-md-12">
@@ -170,17 +169,6 @@ Home
                           </div>
                         </div>
 
-                        <div class="form-group col-md-6">
-                          <label >
-                            <button type="button" class="btn btn-primary"  onclick="mostrarOcultar('muestra','bloque2');mostrarOcultar('oculta','bloque3');">Atrás</button>
-                          </label>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label >
-                              <button type="button" class="btn btn-primary" id="buscaProfOdenCli">Siguiente</button>
-                            </label>
-                        </div>
 
                         </tbody>
 
@@ -188,6 +176,17 @@ Home
                     </div>
                   </div>
                   <div class="box-footer">
+                    <div class="form-group col-md-2">
+                      <label >
+                        <button type="button" class="btn btn-primary"  onclick="mostrarOcultar('muestra','bloque2');mostrarOcultar('oculta','bloque3');">Atrás</button>
+                      </label>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label >
+                          <button type="button" class="btn btn-primary" id="buscaProfOdenCli">Siguiente</button>
+                        </label>
+                    </div>
                   </div>   
                 </div>
               </div>
