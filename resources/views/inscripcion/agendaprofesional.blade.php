@@ -31,7 +31,7 @@
   <div class="col-md-12">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">Programador de fechas no laborables <span class="badge bg-teal"  data-toggle="tooltip" title="Puedes escoger los dias y las horas en las que no puedes trabajar" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
+        <h3 class="box-title">Programador de fechas laborables <span class="badge bg-teal"  data-toggle="tooltip" title="Puedes escoger los dias y las horas en las que puedes trabajar" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
       </div>
       <div class="box-body">
         <div class="col-md-3">
@@ -45,10 +45,6 @@
         <div class="col-md-3">
                 <label>Hora Final</label>
                 <th class="centro"> <input type="time" id="horafinal" class="form-control">
-        </div>
-        <div class="col-md-3">
-                <label>Motivo  </label><span class="badge bg-teal"  data-toggle="tooltip" title="Para que recuerdes, porqué?,  nó podías laborar ese dia" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span>
-                <th class="centro"> <input type="text" id="motivo" class="form-control">
         </div>
       </div>
         <div class="col-md-3" >
@@ -66,7 +62,7 @@
     <div class="box box-primary">
 
       <div class="box-header with-border">
-        <h3 class="box-title">Fechas Registradas como no Laborables de la Semana</h3>
+        <h3 class="box-title">Registro histórico de fechas Laborables </h3>
       </div>
 
       <div class="box-body">

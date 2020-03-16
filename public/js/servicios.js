@@ -1222,12 +1222,10 @@ $(document).on('click', '#registraragenda', function(){
     var fechaagenda = $('#fechaagenda').val();
     var horainicio  = $('#horainicio').val();
     var horafinal   = $('#horafinal').val();
-    var motivo      = $('#motivo').val();
 
       $('#fechaagenda').val("");
       $('#horainicio').val("");
       $('#horafinal').val("");
-      $('#motivo').val("");
 
 
     $.ajaxSetup({
@@ -1239,7 +1237,7 @@ $(document).on('click', '#registraragenda', function(){
     $.ajax({
         type : 'POST',
         url : 'indisponibilidad',
-        data : {fechaagenda : fechaagenda, horainicio : horainicio, horafinal : horafinal, motivo : motivo},
+        data : {fechaagenda : fechaagenda, horainicio : horainicio, horafinal : horafinal},
         beforeSend: function(){
             var dim = $('#dimmer');
             dim.css("display", "block");

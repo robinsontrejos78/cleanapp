@@ -318,7 +318,7 @@ class formularioController extends Controller
                          ]
                         );
 
-       return with('Nueva fecha de indisponibilidad registrada');
+       return with('Nueva fecha de disponibilidad registrada');
     }
    
 }
