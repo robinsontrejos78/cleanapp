@@ -304,7 +304,6 @@ class formularioController extends Controller
          $fechaagenda = $_POST['fechaagenda'];
          $horainicio  = $_POST['horainicio'];
          $horafinal   = $_POST['horafinal'];
-         $motivo      = $_POST['motivo'];
 
 
               DB::table('INDISPONIBILIDADES')->insert(
@@ -313,12 +312,11 @@ class formularioController extends Controller
                          'id_fecharegistro' => $fecha,
                          'ind_dia'          => $fechaagenda,
                          'id_horainicio'    => $horainicio,
-                         'id_horafinal'     => $horafinal,
-                         'id_motivo'        => $motivo
+                         'id_horafinal'     => $horafinal
                          ]
                         );
 
-       return with('Nueva fecha de indisponibilidad registrada');
+       return with('Nueva fecha de disponibilidad registrada');
     }
    
 }
