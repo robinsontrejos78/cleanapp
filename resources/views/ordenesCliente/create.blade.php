@@ -25,6 +25,7 @@ Home
 	<div class="alert alert-danger alert-dismissible" role="alert"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
 		<button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
 		{{Session::get('message')}}
+
 	</div>
 </div>
 </div>
@@ -160,6 +161,7 @@ Home
                               <label class="col-sm-12 col-xs-12 control-label">Hora</label>
                               <input type="time" step="900" class="form-control" id="horaInicial" >
                             </div>
+                            <div id="errorFecha"></div>
                         </div>
 
                         <div class="form-group">

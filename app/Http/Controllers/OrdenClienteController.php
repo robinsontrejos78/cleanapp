@@ -84,9 +84,9 @@ class OrdenClienteController extends Controller
       $cocina         = $_POST['cocina'];
 
       $horaInicial = strtotime ( $horaInicial);
-      // if($fechaActual<=$horaInicial){
-      //   return redirect('ordenCliente/create')->with('message', 'fecha u hora no valida');
-      // }
+      if($horaInicial<=strtotime($fechaActual)){
+        return 'false';
+      }
 
       $horaFinal = strtotime ('+'.$horasPlan.' hours', $horaInicial);
 
