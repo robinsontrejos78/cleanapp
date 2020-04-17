@@ -6,6 +6,7 @@
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			height: 455,
 			plugins: ['dayGrid', 'interaction','timeGrid','list'],
+			selectable:true,
 			// defaultView:'timeGridDay'
 			header:{
 				// left: 'MiBoton',
