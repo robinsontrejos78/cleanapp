@@ -8,6 +8,7 @@ use \Eventviva\ImageResize;
 use App\Http\Requests;
 use Carbon\Carbon;
 use Auth;
+use Mail;
 use DB;
 
 class OrdenClienteController extends Controller
@@ -111,7 +112,7 @@ class OrdenClienteController extends Controller
     if (!Auth::user()->hasRole('Cliente')) return abort(403);
 
 		// $idEmpresa = Session::get('idEmpresa');
-    // $fechaOrden = strftime('%Y-%m-%d %H:%M:%S', $request->get('fechaOrden'));
+    //$fechaOrden = strftime('%Y-%m-%d %H:%M:%S', $request->get('fechaOrden'));
 
     $datosEvento=request()->all();
 
@@ -135,6 +136,11 @@ class OrdenClienteController extends Controller
       ->select('email', 'name', 'USR_APELLIDOS')
       ->first();
 
+     $cliente = DB::table('users')
+      ->where('id', $request->get('cliente'))
+      ->select('USR_TELEFONO', 'name', 'USR_APELLIDOS','USR_CELULAR')
+      ->first();
+
     $inmueble = DB::table('INMUEBLES')
     	->where('INM_IDINMUEBLE', $request->get('inmueble'))
       ->select('INM_DIRECCION')
@@ -145,22 +151,29 @@ class OrdenClienteController extends Controller
       ->where('LOO_IDLOOKUP', $request->get('tipoOrden'))
       ->select('LOO_DESCRIPCION')
       ->first();
+      
+      $ticket = $persona->email;
 
-      // $user = array('email'=>$persona->email, 'name'=>'eduardo');
-      //               $data= array(
-      //               'detail'    => 'Este mensaje es automático. Por favor no responder', 
-      //               'costo'     => $_POST['costo'],
-      //               'direccion' => $inmueble->INM_DIRECCION,
-      //               'tipo'      => $tipo->LOO_DESCRIPCION,
-      //               'fecha'     => $fechaOrden, 
-      //               'name'      => $persona->name,
-      //               'surname'   => $persona->USR_APELLIDOS);
+      $data= array(
+      'detail'    => 'Este mensaje es automático. Por favor no responder', 
+      'direccion' => $request->get('inmueble'),
+      'tipo'      => $tipo->LOO_DESCRIPCION,
+      'fecha'     => $request->get('inicioOrden'), 
+      'name'      => $persona->name,
+      'cliente'   => $cliente->name.' '.$cliente->USR_APELLIDOS,
+      'telcliente'   => $cliente->USR_TELEFONO,
+      'celcliente'   => $cliente->USR_CELULAR,
+      'surname'   => $persona->USR_APELLIDOS);
 
-      // Mail::send('emails.nuevaOrden', $data, function ($message) use ($user)
-      // {
-      // $message->from('administrador@cleanapps.com.co'));
-      // $message->to($user['email'], $user['name'])->subject('Nueva orden de servicio');
-      // });
+
+       
+
+      Mail::send('emails.nuevaOrden', $data, function ($message) use ($ticket)
+      {
+      
+      $message->from('serviciocleanapps@gmail.com');
+      $message->to($ticket)->subject('Nueva orden de servicio');
+      });
 
       return ('Orden creada con exito. Se ha enviado e-mail de confirmación');
       // return redirect('/ordenC');
