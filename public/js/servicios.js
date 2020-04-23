@@ -1650,7 +1650,6 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
     cocina         = document.getElementById("CheckAdicional2").checked;
     horasPlan      = $('#horasPlan').val();
 
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -1678,11 +1677,17 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
                 // dim.css("display", "none");
             },
             success: function(data){
-                // mostrarOcultar('muestra','bloque4');
-                mostrarOcultar('oculta','bloque3');
-                $('#bloque4').html(data);
-              
-                  // window.location.href='../ordenC';
+                if(data=='false'){
+                    $('#errorFecha').html('<div class="row"><div class="col-md-10 col-md-offset-1"><div class="alert alert-danger alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> La combinación Fecha Hora es menor a la actual</div></div></div>');
+                }
+                else{
+                    // mostrarOcultar('muestra','bloque4');
+                    mostrarOcultar('oculta','bloque3');
+                    $('#bloque4').html(data);
+                  
+                      // window.location.href='../ordenC';
+                }
+
             },
             error: function(){
                 // $('.busqueda').html('<div class="row"><div class="col-md-6 col-md-offset-3"><div class="alert alert-warning alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Problemas al tratar de hacer la busqueda. Contacte al administrador</div></div></div>');

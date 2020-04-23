@@ -82,19 +82,18 @@ class clienteController extends Controller
              'USE_USR_id' => $id, 
         ]);
 
-        
-      //  $use = array('email'=>$request->get('mail'));
+      
       $data= array('detail'=>'Este mensaje es automático. Por favor no responder'); 
-       
        
 
       Mail::send('emails.inscripcionCliente', $data, function ($message) use ($correo)
       {
-       // dd($correo);
+       
       $message->from('serviciocleanapps@gmail.com');
       $message->to($correo)->subject('Bienvenido(a) Cleanapps');
       });
 
      return redirect('/login')->with('message', 'Te has registrado con éxito, ahora puedes disfrutar de nuestros servicios');
+
     }
 }
