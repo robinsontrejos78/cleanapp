@@ -149,11 +149,11 @@ class OrdenController extends Controller
         //               'name'      => $persona->name,
         //               'surname'   => $persona->USR_APELLIDOS);
 
-        // Mail::send('emails.nuevaOrden', $data, function ($message) use ($user)
-        // {
-        // $message->from('ordendeservicio@conciergeguru.com', Session::get('nombreEmpresa'));
-        // $message->to($user['email'], $user['name'])->subject('Nueva orden de servicio');
-        // });
+      // Mail::send('emails.nuevaOrden', $data, function ($message) use ($user)
+      // {
+      // $message->from('administrador@cleanapps.com.co'));
+      // $message->to($user['email'], $user['name'])->subject('Nueva orden de servicio');
+      // });
 
         return redirect('/orden')->with('message', 'Orden creada con exito. Se ha enviado e-mail de confirmación');
     }

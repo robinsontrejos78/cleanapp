@@ -151,7 +151,7 @@ class OrdenClienteController extends Controller
 
       // Mail::send('emails.nuevaOrden', $data, function ($message) use ($user)
       // {
-      // $message->from('ordendeservicio@conciergeguru.com', Session::get('nombreEmpresa'));
+      // $message->from('administrador@cleanapps.com.co'));
       // $message->to($user['email'], $user['name'])->subject('Nueva orden de servicio');
       // });
 

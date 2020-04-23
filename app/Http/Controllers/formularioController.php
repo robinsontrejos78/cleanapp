@@ -10,6 +10,7 @@ use App\devolucion;
 use Carbon\Carbon;
 use App\Ciudade;
 use Auth;
+use Mail;
 use DB;
 
 
@@ -25,24 +26,7 @@ class formularioController extends Controller
     {
       /*  $this->middleware('auth');*/
     }
-//     public function index()
-//     {
-//      /*  if (!Auth::user()->hasRole('Administrador')) abort(403);
-//        $idEmpresa = Session::get('idEmpresa');
-// */
-//         $hoy = Carbon::now();
-//         $hoy = $hoy->toDateTimeString();
-//         $fecha = new Carbon('yesterday');
-//         $fecha = $fecha->toDateString();
 
-//         $ciudades = DB::table('CIUDADES')
-//             ->select('CIU_IDCIUDAD', 'CIU_NOMBRE')
-//             ->where('CIU_EMP_IDEMPRESA', Session::get('idEmpresa'))
-//             ->get();
-
-//         return view('inscripcion.formclient', compact('ciudades'));
-
-//     }
    public function formprof()
     {
   /*     if (!Auth::user()->hasRole('Administrador')) abort(403);
@@ -156,6 +140,16 @@ class formularioController extends Controller
              'PRO_estado'        => 0
              ]
             );
+       
+      $data = array('name'=>'Nueva Inscripción');
+                     
+      Mail::send('emails.nuevaInscripcion', $data, function ($message)
+      {
+      $message->from('serviciocleanapps@gmail.com');
+      $message->to('administrador@cleanapps.com.co')->subject('Nueva inscripción');
+      });
+
+
          return with("Te Has Registrado con Éxito, Uno de Nuestros Asesores se Contactará Pronto");
 
 
@@ -173,8 +167,6 @@ class formularioController extends Controller
 
          $data  = $_POST['data'];
 
-
-// dd($data);
       DB::table('PROFESIONALES')
             ->where('id',$data)
             ->update(['PRO_estado' => 1]);
@@ -278,10 +270,6 @@ class formularioController extends Controller
         $idEmpresa = Session::get('idEmpresa');
         $usuario = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
 
-        // $fecha = new Carbon('now');
-        // $fecha = $fecha->toDateString();
-
-        // dd($fecha);
              $registros =  DB::table('INDISPONIBILIDADES')
                     ->where('ind_pro_id', $usuario)
                     ->orderby('ind_dia', 'desc')

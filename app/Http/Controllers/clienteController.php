@@ -14,6 +14,7 @@ use App\Role;
 use App\userRole;
 use App\Users_empresa;
 use Auth;
+use Mail;
 use DB;
 
 
@@ -46,7 +47,7 @@ class clienteController extends Controller
         return view('inscripcion.formclient', compact('ciudades'));
     }
 
-        public function store(Request $request)
+    public function store(Request $request)
     {
          // if (!Auth::user()->hasRole('Cliente')) return abort(403);
 
@@ -68,6 +69,7 @@ class clienteController extends Controller
 
         $id = DB::getPdo()->lastInsertId();
 
+        $correo = $request->get('mail');
 
         DB::table('role_user')->insert(
             ['user_id' => $id,
@@ -79,7 +81,20 @@ class clienteController extends Controller
             ['USE_EMP_IDEMPRESA' => 1,
              'USE_USR_id' => $id, 
         ]);
+
         
-        // return redirect('/login')->with('message', 'Te has registrado con éxito, ahora puedes disfrutar de nuestros servicios');
+      //  $use = array('email'=>$request->get('mail'));
+      $data= array('detail'=>'Este mensaje es automático. Por favor no responder'); 
+       
+       
+
+      Mail::send('emails.inscripcionCliente', $data, function ($message) use ($correo)
+      {
+       // dd($correo);
+      $message->from('serviciocleanapps@gmail.com');
+      $message->to($correo)->subject('Bienvenido(a) Cleanapps');
+      });
+
+     return redirect('/login')->with('message', 'Te has registrado con éxito, ahora puedes disfrutar de nuestros servicios');
     }
 }
