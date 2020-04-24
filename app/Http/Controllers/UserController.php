@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Users_empresa;
 use App\User;
+use Mail;
 use Auth;
 use DB;
 
@@ -281,6 +282,11 @@ class UserController extends Controller
         $userid = DB::table('users')->orderby('id', 'desc')->select('id')->first();
         $id = $userid->id;
 
+      $persona = DB::table('users')
+          ->where('id', $id)
+          ->select('email', 'name', 'USR_APELLIDOS')
+          ->first();
+
         $us = User::where('id', '=', $id)->first();
         $us -> attachRole(3);
 
@@ -288,6 +294,20 @@ class UserController extends Controller
             ['USE_EMP_IDEMPRESA' => 1,
              'USE_USR_id' => $id, 
         ]);
+
+   $ticket = $persona->email;
+
+      $data= array(
+      'detail'     => 'Este mensaje es automático. Por favor no lo responda', 
+      'contrasena' => $request->get('passwordPer'),
+      'name'       => $persona->name,
+      'apellido'   => $persona->USR_APELLIDOS);
+
+      Mail::send('emails.nuevoProfesional', $data, function ($message) use ($ticket)
+      {
+      $message->from('serviciocleanapps@gmail.com');
+      $message->to($ticket)->subject('Inscripción de Profesional');
+      });
 
         return redirect('/indexPersona')->with('message', 'Persona creado con exito');
     }

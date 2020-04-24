@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\createprofesionalRequest;
+use App\Http\Requests\inscripcionprofRequest;
 use Illuminate\Support\Facades\Session;    //variable de sessión
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -50,7 +50,7 @@ class formularioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createprof()
+    public function createprof(Request $request)
     {
     // if (!Auth::user()->hasRole('persona')) abort(403);
     //    $idEmpresa = Session::get('idEmpresa');
