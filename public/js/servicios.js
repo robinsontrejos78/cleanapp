@@ -1424,6 +1424,9 @@ function selecPlan(plan){
 
 function ClientGuardaOrden(idProfesional,nombreprofesional){
 
+    $('#btnClientGuardaOrden').attr("disabled", true);
+    document.getElementById("btnClientGuardaOrden").value = "Enviando...";
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -1488,17 +1491,11 @@ function ClientGuardaOrden(idProfesional,nombreprofesional){
                 // window.location.href = "../ordenC";
               }
             });
-
-            // $(":file").filestyle('clear');
-            // $('#preview').removeAttr('src');
-            // $('#descripcion').val('');
-            // data_Imagen=null;
-            // window.location.reload(true);
         },
         error: function(){
             swal("Error al guardar la orden!", "Intente de nuevo!", "error");
         }
-    }); 
+    });
 }
 
 $(document).on('click','.cerrarModalResumen',function(){
@@ -1678,7 +1675,7 @@ $( "#buscaProfOdenCli" ).on( "click", function() {
             },
             success: function(data){
                 if(data=='false'){
-                    $('#errorFecha').html('<div class="row"><div class="col-md-10 col-md-offset-1"><div class="alert alert-danger alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> La combinación Fecha Hora es menor a la actual</div></div></div>');
+                    $('#errorFecha').html('<div class="row"><div class="col-md-10 col-md-offset-1"><div class="alert alert-danger alert-dismissible msg" role="alert"><button type="button" class="close" data-dismiss="alert" margin-top: 20px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Combinación Fecha Hora incorrecta</div></div></div>');
                 }
                 else{
                     // mostrarOcultar('muestra','bloque4');

@@ -31,6 +31,13 @@ class OrdenController extends Controller
         $idEmpresa = Session::get('idEmpresa');
         $estadosO = DB::table('LOOKUP')->where('LOO_GRUPO', 2)->select('LOO_IDLOOKUP', 'LOO_DESCRIPCION')->get();
 
+      $fechaActualOrden=Carbon::now();
+
+       DB::table('ORDEN_SERVICIOS')
+        ->where('ORD_INICIOORDEN','<', $fechaActualOrden)
+        ->where('ORD_LOO_ESTADOORDEN', 1)
+        ->update(['ORD_LOO_ESTADOORDEN' => 5]);
+
         $personas = Db::table('users')
             ->join('USERS_EMPRESAS', 'users.id', '=', 'USE_USR_id')
             ->where('USE_EMP_IDEMPRESA', $idEmpresa)
