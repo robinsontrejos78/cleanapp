@@ -27,7 +27,8 @@
         </div>
     @endif
 
-
+<!--   <div id="vacio" class="form-group">
+  </div> -->
 
 <div class="row">
 
@@ -41,37 +42,37 @@
               <div class="box-body" align="right">
                  <div class="form-group">
                   <div class="col-sm-12" >
-                    <input type="text" class="form-control" id="nombresprof" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombres">
+                    <input type="text" class="form-control" id="nombresprof"  onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombres">
                   </div>
                 </div>
                  <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="apellidosprof" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellidos">
+                    <input type="text" class="form-control" id="apellidosprof"  onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellidos">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <select name="tipodocpro" id="tipodocprof" required class="form-control" >
+                    <select name="tipodocpro" id="tipodocprof"  class="form-control" >
                     <option>Tipo Documento</option>
                     <option value="C.C">C.C.</option>
                     <option value="C.E">C.E.</option>
                   </select>
                   </div>
                 </div>
-                <div class="form-group">
+                <div id="num" class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" required id="numdocprof" placeholder="Número Documento">
+                    <input type="text" class="form-control"  id="numdocprof" placeholder="Número Documento">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Fecha de Nacimiento</label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control" required id="fnaciprof" placeholder="Fecha Nacimiento">
+                    <input type="date" class="form-control"  id="fnaciprof" placeholder="Fecha Nacimiento">
                   </div>
                 </div>
                  <div class="form-group">
                   <div class="col-sm-12">
-                    <select name="genero" id="generoprof" required class="form-control" >
+                    <select name="genero" id="generoprof"  class="form-control" >
                     <option>Género</option>
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
@@ -81,12 +82,12 @@
                 </div>
                  <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" required class="form-control" id="lugarnacprof" onkeyup="this.value=this.value.toUpperCase();" placeholder="Donde vive?">
+                    <input type="text"  class="form-control" id="lugarnacprof" onkeyup="this.value=this.value.toUpperCase();" placeholder="Ciudad Donde vive?">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <select name="estado" id="antigprof" required class="form-control" >
+                    <select name="estado" id="antigprof"  class="form-control" >
                     <option>Antiguedad en esta Ciudad</option>
                     <option value="Menos de un año">Menos de 1 año</option>
                     <option value="Entre 1 y 3">Entre 1 y 3</option>
@@ -97,7 +98,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <select name="estado" id="estcivilprof" required class="form-control" >
+                    <select name="estado" id="estcivilprof"  class="form-control" >
                     <option>Estado Civil</option>
                      <option value="Casado">Casado(a)</option>
                     <option value="Union Libre">Unión Libre</option>
@@ -109,28 +110,28 @@
                 </div>
                  <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" required class="form-control" id="dirprof" onkeyup="this.value=this.value.toUpperCase();" placeholder="Dirección">
+                    <input type="text"  class="form-control" id="dirprof" onkeyup="this.value=this.value.toUpperCase();" placeholder="Dirección">
                   </div>
                 </div>
-                 <div class="form-group">
+                 <div id="tel" class="form-group">
                   <div class="col-sm-12">
-                    <input type="number" required class="form-control" id="telprof" placeholder="Celular">
+                    <input type="number"  class="form-control" id="telprof" placeholder="Celular">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="number" required class="form-control" id="telresprof" placeholder="Teléfono Residencia">
+                    <input type="number"  class="form-control" id="telresprof" placeholder="Teléfono Residencia">
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div id="mail" class="form-group">
                   <div class="col-sm-12">
-                    <input type="email" id="mailprof" class="form-control" onkeyup="this.value=this.value.toLowerCase();" placeholder="Correo Electrónico">
+                    <input type="email"  id="mailprof" class="form-control" onkeyup="this.value=this.value.toLowerCase();" placeholder="Correo Electrónico">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <select name="nivel" required id="nivelprof" class="form-control" >
+                    <select name="nivel"  id="nivelprof" class="form-control" >
                     <option>Nivel de Escolaridad</option>
                      <option value="Primaria">Primaria</option>
                     <option value="Bachiller">Bachiller</option>
@@ -143,12 +144,12 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="number" required class="form-control" id="percarprof"  placeholder="Total Personas a Cargo">
+                    <input type="number"  class="form-control" id="percarprof"  placeholder="Total Personas a Cargo">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <select name="nivel" required id="planchar" class="form-control" >
+                    <select name="nivel"  id="planchar" class="form-control" >
                     <option>Puede realizar labores de Planchado?</option>
                     <option value="1">SÍ</option>
                     <option value="0">NO</option>
@@ -157,7 +158,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <select name="nivel" required id="cocinar" class="form-control" >
+                    <select name="nivel"  id="cocinar" class="form-control" >
                     <option>Puede realizar labores de Cocina?</option>
                     <option value="1">SÍ</option>
                     <option value="0">NO</option>
@@ -170,17 +171,17 @@
             </div>
             <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="nomcon" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombres">
+                    <input type="text" class="form-control" id="nomcon"  onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombres">
                   </div>
                 </div>
                  <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" required id="apecon" onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellidos">
+                    <input type="text" class="form-control"  id="apecon" onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellidos">
                   </div>
                 </div>
              <div class="form-group">
                   <div class="col-sm-12">
-                    <select name="tipodo" id="tipodoccon" required class="form-control" >
+                    <select name="tipodo" id="tipodoccon"  class="form-control" >
                     <option>Tipo Documento</option>
                     <option value="C.C">C.C.</option>
                     <option value="C.E">C.E.</option>
@@ -190,7 +191,7 @@
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="number" class="form-control" required id="numerodoccon" placeholder="Número Documento">
+                    <input type="number" class="form-control"  id="numerodoccon" placeholder="Número Documento">
                   </div>
                 </div>
             </div>
@@ -200,27 +201,27 @@
             </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="nombrefa" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombres">
+                    <input type="text" class="form-control" id="nombrefa"  onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombres">
                   </div>
                 </div>
                  <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="aperefa" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellidos">
+                    <input type="text" class="form-control" id="aperefa"  onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellidos">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="parentrefa" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Parentesco">
+                    <input type="text" class="form-control" id="parentrefa"  onkeyup="this.value=this.value.toUpperCase();" placeholder="Parentesco">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="citirefa" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Ciudad">
+                    <input type="text" class="form-control" id="citirefa"  onkeyup="this.value=this.value.toUpperCase();" placeholder="Ciudad">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="number" class="form-control" id="telrefa" required placeholder="Teléfono">
+                    <input type="number" class="form-control" id="telrefa"  placeholder="Teléfono">
                   </div>
                 </div>
                 </div>
@@ -233,28 +234,28 @@
             <div class="box-header with-border" >
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="nomrefcoma" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombres">
+                    <input type="text" class="form-control" id="nomrefcoma"  onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombres">
                   </div>
                 </div>
                  <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="aperefcoma" required onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellidos">
+                    <input type="text" class="form-control" id="aperefcoma"  onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellidos">
                   </div>
                 </div>
             
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" required id="parentrefcoma" onkeyup="this.value=this.value.toUpperCase();" placeholder="Parentesco">
+                    <input type="text" class="form-control"  id="parentrefcoma" onkeyup="this.value=this.value.toUpperCase();" placeholder="Parentesco">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" required id="citicoma" onkeyup="this.value=this.value.toUpperCase();" placeholder="Ciudad">
+                    <input type="text" class="form-control"  id="citicoma" onkeyup="this.value=this.value.toUpperCase();" placeholder="Ciudad">
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input type="number" required class="form-control" id="telrefcoma" placeholder="Teléfono">
+                    <input type="number"  class="form-control" id="telrefcoma" placeholder="Teléfono">
                   </div>
                 </div>
               </div>
@@ -263,7 +264,7 @@
                   <div class="col-sm-offset-2 col-sm-12">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox" id="datos" required checked> <a target="_blank" href="{{ url('habeas') }}"> Acepto Política Tratamiento de Datos</a>
+                        <input type="checkbox" id="datos"  checked> <a target="_blank" href="{{ url('habeas') }}"> Acepto Política Tratamiento de Datos</a>
                       </label>
                     </div>
                   </div>
@@ -272,7 +273,7 @@
                   <div class="col-sm-offset-2 col-sm-12">
                     <div class="checkbox">
                       <label>
-                        <input type="checkbox" required  id="terminos"> <a target="_blank" href="{{ url('terminos') }}">Acepto Términos y Condiciones</a>
+                        <input type="checkbox"   id="terminos"> <a target="_blank" href="{{ url('terminos') }}">Acepto Términos y Condiciones</a>
                       </label>
                     </div>
                   </div>

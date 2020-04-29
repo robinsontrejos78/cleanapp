@@ -293,6 +293,11 @@ $(document).on('click', '#inscripcion', function(){
     var apellidosprof = $('#apellidosprof').val();
     var tipodocprof   = $('#tipodocprof').val();
     var numdocprof    = $('#numdocprof').val();
+    if (numdocprof == ''){
+        $('#num').append('<div class="row"><div class="col-md-10 col-md-offset-1"><div class="alert alert-warning alert-dismissible msg" role="alert" style="margin-top:10px"><button type="button" class="close" data-dismiss="alert" margin-top: 10px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>    El documento es obligatorio</div></div></div>');
+        $('#numdocprof').focus();
+        return;
+    }
     var fnaciprof     = $('#fnaciprof').val();
     var generoprof    = $('#generoprof').val();
     var lugarnacprof  = $('#lugarnacprof').val();
@@ -300,8 +305,19 @@ $(document).on('click', '#inscripcion', function(){
     var estcivilprof  = $('#estcivilprof').val();
     var dirprof       = $('#dirprof').val();
     var telprof       = $('#telprof').val();
+    if (telprof == ''){
+        $('#tel').append('<div class="row"><div class="col-md-10 col-md-offset-1"><div class="alert alert-warning alert-dismissible msg" role="alert" style="margin-top:10px"><button type="button" class="close" data-dismiss="alert" margin-top: 10px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>    El celular es obligatorio</div></div></div>');
+        $('#telprof').focus();
+        return;
+    }
     var telresprof    = $('#telresprof').val();
     var mailprof      = $('#mailprof').val();
+   if (mailprof == ''){
+        $('#mail').append('<div class="row"><div class="col-md-10 col-md-offset-1"><div class="alert alert-warning alert-dismissible msg" role="alert" style="margin-top:10px"><button type="button" class="close" data-dismiss="alert" margin-top: 10px;><span>&times;</span></button><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>    El correo es obligatorio</div></div></div>');
+        $('#mailprof').focus();
+        return;
+    }
+
     var nivelprof     = $('#nivelprof').val();
     var percarprof    = $('#percarprof').val();
     var planchar      = $('#planchar').val();
@@ -322,6 +338,7 @@ $(document).on('click', '#inscripcion', function(){
     var telrefcoma    = $('#telrefcoma').val();
     var s_terminos    =$('#terminos').is(":checked");
     var s_datos       =$('#datos').is(":checked");
+    
         $('#nombresprof').val("");
         $('#apellidosprof').val("");
         $('#tipodocprof').val("");

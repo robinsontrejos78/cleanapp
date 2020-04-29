@@ -60,7 +60,7 @@
                 </div>
             </form>
             <br>
-            <a href="{{ url('/login') }}">Log in</a><br>
+            <a href="{{ url('/login') }}">Iniciar sesión</a><br>
 
         </div><!-- /.login-box-body -->
 
