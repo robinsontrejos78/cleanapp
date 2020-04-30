@@ -251,14 +251,6 @@ class OrdenController extends Controller
             $fecha = Carbon::now();
             $fecha = $fecha->format('l jS \\of F Y h:i:s A');
 
-            // $user = array('email'=>$validaPersona->email);
-            // $data = array('detail'=>'Este mensaje es automático. Por favor no responder', 'direccion' => $validaPersona->INM_DIRECCION, 'fecha' => $fecha, 'name'  => $name);
-
-            // Mail::send('emails.anularOrden', $data, function ($message) use ($user)
-            // {
-            // $message->from('ordenanulada@conciergeguru.com', Session::get('nombreEmpresa'));
-            // $message->to($user['email'])->subject('Anulación de Orden de Servicio');
-            // });
 
             DB::table('ORDEN_SERVICIOS')
                 ->where('ORD_IDORDEN', $id)
@@ -441,19 +433,38 @@ class OrdenController extends Controller
         $s_nombre  = $_POST['s_nombre'];
         $fecha = Carbon::now();
         $fecha = $fecha->format('l jS \\of F Y h:i:s A');
-                
-        $user = array('email'=>$_POST['s_email']);
-        $data = array('detail'=>'Este mensaje es automático. Por favor no responder', 'direccion' => $_POST['s_direc'], 'fecha' => $fecha, 'name'  => $_POST['s_nombre']);
 
-        // Mail::send('emails.anularOrden', $data, function ($message) use ($user)
-        // {
-        // $message->from('ordenanulada@conciergeguru.com', Session::get('nombreEmpresa'));
-        // $message->to($user['email'])->subject('Anulación de Orden de Servicio');
-        // });
+         $datosa =  DB::table('ORDEN_SERVICIOS')
+            ->join('users', 'users.id', '=', 'ORD_USR_ID')
+            ->where('ORD_IDORDEN', $i_idorden)
+            ->select('name', 'email', 'ORD_INM_IDINMUEBLE', 'ORD_INICIOORDEN')
+            ->first();   
+        
+         $datosb =  DB::table('ORDEN_SERVICIOS')
+            ->join('users', 'users.id', '=', 'ORD_USR_CLI')
+            ->where('ORD_IDORDEN', $i_idorden)
+            ->select('name', 'email')
+            ->first();  
+        
 
         DB::table('ORDEN_SERVICIOS')
             ->where('ORD_IDORDEN', $i_idorden)
             ->update(['ORD_LOO_ESTADOORDEN' => 4]);   
+
+            $user = array('emaila'=>$datosa->email, 'emailb'=>$datosb->email);
+         
+            $data = array('detail'    => 'Este mensaje es automático. Por favor no responder', 
+                          'namea'     => $datosa->name,
+                          'nameb'     => $datosb->name,
+                          'direc'     => $datosa->ORD_INM_IDINMUEBLE,
+                          'fecha'     => $datosa->ORD_INICIOORDEN); 
+           
+         
+            Mail::send('emails.anularOrden', $data, function ($message) use ($user)
+            {
+            $message->from('serviciocleanapps@gmail.com');
+            $message->to($user['emaila'], $user['emailb'])->subject('Anulación de orden de servicio');
+            });
     }
 
     public function evidenciasOrdenes($idor)

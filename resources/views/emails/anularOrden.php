@@ -4,11 +4,14 @@
       <meta charset="utf-8">
    	</head>
    	<body>
-    	<h5><?php echo $fecha ?></h5>
       <h4><?php echo $detail ?></h4>
-      <h5>Sr(a). <?php echo $name ?></h5>
-    	<h5>Este mensaje es para informarle que se le ha anulado la orden de servicio del Inmueble Hubicado en: <?php echo $direccion ?></h5>
-    	<h4>La fecha de anulación: <?php echo $fecha; ?></h4>
-		  <h5>Cordial saludo</h5>
+
+      <h5>CLEANAPPS, informa que la orden de servicio</h5>
+      <h5>asignada a <?php echo $namea ?></h5>
+      <h5>En la dirección <?php echo $direc ?></h5>
+    	<h5>Para el dia : <?php echo $fecha; ?></h4>
+      <h5>Ha sido anulada.</h5>
+
+		  <h5>Cordial saludo.</h5>
 	  </body>
 </html>

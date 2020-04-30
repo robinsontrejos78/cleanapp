@@ -53,9 +53,9 @@
 
 
 <div class="row">
-  <div class="col-xs-3">
+<!--   <div class="col-xs-3">
     <a href="{{ url('orden/create') }}" class="btn btn-primary btn-flat">Agregar Orden de servicio</a>
-  </div>
+  </div> -->
   <br>
   <br>
 <div class="row">
