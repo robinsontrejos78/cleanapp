@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Auth;
 use Mail;
 use DB;
+use Illuminate\Support\Collection;
 
 class OrdenClienteController extends Controller
 {
@@ -25,6 +26,13 @@ class OrdenClienteController extends Controller
       $idEmpresa = Session::get('idEmpresa');
       $idusuario=Auth::user()->id;
       $estadosO = DB::table('LOOKUP')->where('LOO_GRUPO', 2)->select('LOO_IDLOOKUP', 'LOO_DESCRIPCION')->get();
+
+      $fechaActualOrden=Carbon::now();
+
+       DB::table('ORDEN_SERVICIOS')
+        ->where('ORD_INICIOORDEN','<', $fechaActualOrden)
+        ->where('ORD_LOO_ESTADOORDEN', 1)
+        ->update(['ORD_LOO_ESTADOORDEN' => 5]);
 
       $ordenServicio = DB::table('ORDEN_SERVICIOS')
           ->join('users', 'ORD_USR_ID', '=', 'users.id')
@@ -84,6 +92,9 @@ class OrdenClienteController extends Controller
       $plancha        = $_POST['plancha'];
       $cocina         = $_POST['cocina'];
 
+      $plancha = ($plancha == "true") ? 1 : 0;
+      $cocina = ($cocina == "true") ? 1 : 0;
+
       $horaInicial = strtotime ( $horaInicial);
       if($horaInicial<=strtotime($fechaActual)){
         return 'false';
@@ -99,11 +110,28 @@ class OrdenClienteController extends Controller
         ->whereRaw(" users.id NOT IN ( select users.id from users inner join role_user on user_id=users.id inner join ORDEN_SERVICIOS on user_id=ORD_USR_ID where role_id=3 and ORD_LOO_ESTADOORDEN = 1 and ((ORD_INICIOORDEN - INTERVAL 29 MINUTE) <= '".$horaInicial."' and '".$horaInicial."'<= (ORD_FINORDEN + INTERVAL 29 MINUTE) or (ORD_INICIOORDEN  - INTERVAL 29 MINUTE) <= '".$horaFinal."' and '".$horaFinal."' <= (ORD_FINORDEN + INTERVAL 29 MINUTE) ) )")
         ->whereRaw(" users.id IN ( select users.id from users inner join INDISPONIBILIDADES on users.id=ind_pro_id where (TIMESTAMP(ind_dia,id_horainicio) <= '".$horaInicial."' and '".$horaInicial."'<= TIMESTAMP(ind_dia,id_horafinal) or TIMESTAMP(ind_dia,id_horainicio) <= '".$horaFinal."' and '".$horaFinal."' <= TIMESTAMP(ind_dia,id_horafinal) ) )")
         ->where('role_id', 3)
+        ->where('usr_cocina', $cocina)
+        ->where('usr_plancha', $plancha)
         ->where('USR_ESTADO',1)
         ->take(5)
         ->get();
 
-      return view('ordenesCliente.ajax.buscaProf', compact ('profesionales'));
+      $profesionalesConEstrellas = collect();
+
+      foreach($profesionales as $p){
+
+        $calificacion = DB::table('calificaciones')
+          ->select(DB::raw('round(sum(cal_calificacion)/count(cal_calificacion),1) as cal_estrellas') )
+          ->where([['cal_idusercliente',$p->id],])
+          ->first();
+        
+          $respuesta='cal_estrellas';
+          $p->$respuesta = $calificacion->cal_estrellas;
+
+        $profesionalesConEstrellas->push($p);
+      }
+
+      return view('ordenesCliente.ajax.buscaProf', compact ('profesionalesConEstrellas','profesionales'));
   }
 
   public function store(Request $request)
@@ -129,7 +157,7 @@ class OrdenClienteController extends Controller
          'ORD_PAGADO'          => 0
     ]);
         
-    // return redirect('/empresa')->with('message', 'Empresa creada con exito');
+    //return redirect('/empresa')->with('message', 'Empresa creada con exito');
 
 		$persona = DB::table('users')
     	->where('id', $request->get('usuarioId'))
