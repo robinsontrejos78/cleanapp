@@ -121,7 +121,7 @@ class OrdenClienteController extends Controller
       foreach($profesionales as $p){
 
         $calificacion = DB::table('CALIFICACIONES')
-          ->select(DB::raw('round(sum(cal_calificacion)/count(cal_calificacion),1) as cal_estrellas') )
+          ->select(DB::raw('CASE when round(sum(cal_calificacion)/count(cal_calificacion),1) is null then 5 else round(sum(cal_calificacion)/count(cal_calificacion),1) end as cal_estrellas') )
           ->where([['cal_idusercliente',$p->id],])
           ->first();
         
