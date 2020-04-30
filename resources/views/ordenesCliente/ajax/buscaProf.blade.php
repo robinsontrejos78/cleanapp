@@ -21,9 +21,9 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">CALIFICACIÓN ESTRELLAS:</span>
-                         <span class="info-box-number">{{$profesional->cal_estrellas}}</span>
+                         <span class="info-box-number">{{$profesional->cal_estrellas}} </span>
                       </div>
-                      <!-- /.info-box-content -->
+                      <!-- /.info-box-content   -->
                     </div>
                     <!-- /.info-box -->
                   </p>
