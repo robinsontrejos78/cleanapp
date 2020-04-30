@@ -258,6 +258,14 @@ class OrdenController extends Controller
             $fecha = Carbon::now();
             $fecha = $fecha->format('l jS \\of F Y h:i:s A');
 
+            // $user = array('email'=>$validaPersona->email);
+            // $data = array('detail'=>'Este mensaje es automático. Por favor no responder', 'direccion' => $validaPersona->INM_DIRECCION, 'fecha' => $fecha, 'name'  => $name);
+
+            // Mail::send('emails.anularOrden', $data, function ($message) use ($user)
+            // {
+            // $message->from('ordenanulada@conciergeguru.com', Session::get('nombreEmpresa'));
+            // $message->to($user['email'])->subject('Anulación de Orden de Servicio');
+            // });
 
             DB::table('ORDEN_SERVICIOS')
                 ->where('ORD_IDORDEN', $id)
