@@ -77,6 +77,22 @@
             </select>
           </div>
           <div class="col-md-6">
+            <label for="planchar" style="margin-top:20px">Realiza labores de Planchado?</label>
+               <select name="planchar"  id="planchar" class="form-control" >
+                    <option value="">Seleccione opción</option>
+                    <option value="0" @if(old('planchar') == 0) selected @endif>NO</option>
+                    <option value="1" @if(old('planchar') == 1) selected @endif>SI</option>
+                </select>
+          </div>
+         <div class="col-md-6">
+            <label for="cocinar" style="margin-top:20px">Realizar labores de Cocina?</label>
+               <select name="cocinar"  id="cocinar" class="form-control" >
+                    <option>Seleccione</option>
+                    <option value="0" @if(old('cocinar') == 0) selected @endif>NO</option>
+                    <option value="1" @if(old('cocinar') == 1) selected @endif>SI</option>
+               </select>
+          </div>
+          <div class="col-md-6">
             <label for="passwordPer" style="margin-top:20px">Password</label>
             <input type="text" class="form-control" id="passwordPer" name="passwordPer" placeholder="Contraseña" value="{{ old('passwordPer') }}">
           </div><div class="col-md-6">

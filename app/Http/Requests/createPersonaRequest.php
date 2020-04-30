@@ -33,7 +33,9 @@ class createPersonaRequest extends Request
             'passwordPer'   => 'required|confirmed|min:6',
             'tipoPer'       => 'required',
             'ciudadPer'     => 'required',
-            'generoPer'     => 'required'
+            'generoPer'     => 'required',
+            'planchar'      => 'required',
+            'cocinar'       => 'required'
         ];
     }
 }
