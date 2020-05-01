@@ -63,7 +63,7 @@
     <div class="box box-primary">
 
       <div class="box-header with-border">
-        <h3 class="box-title">Buscar Ordenes <span class="badge bg-teal"  data-toggle="tooltip" title="Puede filtrar la busqueda por Nombre de Persona, Documento, Estado de la orden ó Estado del pago" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
+        <h3 class="box-title">Buscar Ordenes <span class="badge bg-teal"  data-toggle="tooltip" title="Puede filtrar la busqueda por Nombre de Persona, Documento o Estado de la orden" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
       </div>
 
       <div class="box-body">

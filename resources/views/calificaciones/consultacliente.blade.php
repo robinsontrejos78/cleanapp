@@ -34,7 +34,7 @@
     <div class="box box-primary">
 
       <div class="box-header with-border">
-        <h3 class="box-title">Buscar Calificación de Cliente <span class="badge bg-teal"  data-toggle="tooltip" title="Puede filtrar la busqueda por Nombre de la persona, Apellido o email" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
+        <h3 class="box-title">Buscar Calificación de Cliente <span class="badge bg-teal"  data-toggle="tooltip" title="Puede filtrar la busqueda por Nombre de la persona" data-container="body"><i class="fa fa-fw fa-info-circle"></i></span></h3>
       </div>
 
       <div class="box-body">

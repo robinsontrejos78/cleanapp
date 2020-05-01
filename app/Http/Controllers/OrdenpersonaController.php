@@ -30,6 +30,7 @@ class OrdenpersonaController extends Controller
         $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
         //dd($idPersona);
 
+
         $ordenes = DB::table('ORDEN_SERVICIOS')
             ->join('users', 'ORD_USR_CLI', '=', 'users.id')
             ->where('ORD_USR_ID', $idPersona)
