@@ -261,7 +261,7 @@ class formularioController extends Controller
                     ->orderby('PRO_fecharegistro', 'desc')
                     ->get();
 
-        return view('users.ajax.buscarinscprof', compact('resultados', 'users'));
+        return view('users.ajax.buscarinscprof', compact('resultados'));
     }
 
        public function programador()
