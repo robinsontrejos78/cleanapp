@@ -415,10 +415,12 @@ $(document).on('click', '#buscarprof', function(){
     var fechaprof  = $('#fechaprof').val();
     var docuprof   = $('#docuprof').val();
     var nombreprof = $('#nombreprof').val();
+    var apellidoprof = $('#apellidoprof').val();
 
         $('#fechaprof').val("");
         $('#docuprof').val("");
         $('#nombreprof').val("");     
+        $('#apellidoprof').val("");     
 
     $.ajaxSetup({
         headers: {
@@ -429,7 +431,7 @@ $(document).on('click', '#buscarprof', function(){
     $.ajax({
         type : 'POST',
         url : 'buscarprof',
-        data : {fechaprof : fechaprof, docuprof : docuprof, nombreprof : nombreprof},
+        data : {fechaprof : fechaprof, docuprof : docuprof, nombreprof : nombreprof, apellidoprof : apellidoprof},
         beforeSend: function(){
             var dim = $('#dimmer');
             dim.css("display", "block");

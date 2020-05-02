@@ -247,12 +247,14 @@ class formularioController extends Controller
          $fechaprof  = $_POST['fechaprof'];
          $docuprof   = $_POST['docuprof'];
          $nombreprof = $_POST['nombreprof'];
+         $apellidoprof = $_POST['apellidoprof'];
             
     $busqueda = array();
 
         $fechaprof    ? $busqueda += array(2 => array('PRO_fecharegistro', 'LIKE', '%'.$fechaprof.'%')) : null;
         $docuprof     ? $busqueda += array(3 => array('PRO_numdocprof', 'LIKE', '%'.$docuprof.'%')) : null;
         $nombreprof   ? $busqueda += array(4 => array('PRO_nombresprof', 'LIKE', '%'.$nombreprof.'%')) : null;
+        $apellidoprof ? $busqueda += array(4 => array('PRO_apellidosprof', 'LIKE', '%'.$apellidoprof.'%')) : null;
      
 
      $resultados =  DB::table('PROFESIONALES')

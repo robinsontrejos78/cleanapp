@@ -49,17 +49,21 @@
       </div>
 
       <div class="box-body">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label for="nombrePer" style="margin-top:20px">Fecha Inscripción</label>
             <input type="date" class="form-control" id="fechaprof" >
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label for="documentoPer" style="margin-top:20px">Documento</label>
             <input type="text" class="form-control" id="docuprof"  placeholder="Documento del usuario" >
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <label for="telefonoPer" style="margin-top:20px">Nombre</label>
             <input type="text" class="form-control" id="nombreprof" onkeyup="this.value=this.value.toUpperCase();" placeholder="Nombre" >
+          </div>
+          <div class="col-md-3">
+            <label for="telefonoPer" style="margin-top:20px">Apellido</label>
+            <input type="text" class="form-control" id="apellidoprof" onkeyup="this.value=this.value.toUpperCase();" placeholder="Apellido" >
           </div>
           <div class="col-md-6">
           <button style="margin-top:23px" type="button" id="buscarprof" class="btn btn-primary" data-toggle="tooltip" title="Buscar" data-container="body">Buscar</button>
