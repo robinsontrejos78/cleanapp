@@ -152,7 +152,7 @@
                    @foreach($foto as $fotos)
                      <div class="col-xs-6 col-md-6">
                         <div class="thumbnail">
-                           <img src="../{{$fotos->USR_foto}}" class="verImagen" alt="" data-toggle="tooltip" title="" height="800" width="800">
+                           <img src="../{{$fotos->USR_foto}}" class="verImagen" alt="" data-toggle="tooltip" title="" height="100%" width="100%">
                         </div>
                      </div>
                    @endforeach
