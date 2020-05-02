@@ -56,7 +56,7 @@ class CalificacionController extends Controller
                      ->where('CAL_IDUSERPROF', '=', $nombreUsu)
                      ->get();
 
-                     dd($contador);
+                     //dd($contador);
     $busqueda = array();
 
         $nombreUsu    ? $busqueda += array(2 => array('CAL_IDUSERPROF', 'LIKE', '%'.$nombreUsu.'%')) : null;

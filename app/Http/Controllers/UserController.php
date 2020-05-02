@@ -269,6 +269,8 @@ class UserController extends Controller
         $user->USR_LOO_TIPO      = $request->get('tipoPer');
         $user->USR_CIU_IDCIUDAD  = $request->get('ciudadPer');
         $user->USR_SEXO          = $request->get('generoPer');
+        $user->USR_plancha       = $request->get('planchar');
+        $user->USR_cocina        = $request->get('cocinar');
         $user->password          = bcrypt($request->get('passwordPer'));
         $user->USR_ESTADO        = 1;
         $user->save();

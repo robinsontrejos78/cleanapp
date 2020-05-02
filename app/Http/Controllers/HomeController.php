@@ -72,12 +72,32 @@ class HomeController extends Controller
                 ->get();
 
 
+        // $foto = DB::table('users')
+        //     ->where('id', $idPersona)
+        //     ->select('USR_foto')
+        //     ->get();
+
             $inmuebles = DB::table("INMUEBLES")
                 ->select('INM_IDINMUEBLE','INM_DIRECCION')
                 ->where('INM_USR_IDUSER', Auth::user()->id)
                 ->get();
 
-                return view('home', compact('profesionales','inmuebles'));
+
+                return view('home', compact('profesionales','inmuebles', 'foto'));
+        } 
+
+       if (Auth::user()->hasRole('Profesional'))
+        {
+
+        $idPersona = Session::get('login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d');
+
+        $foto = DB::table('users')
+            ->where('id', $idPersona)
+            ->select('name','USR_APELLIDOS','USR_foto')
+            ->get();
+
+
+                return view('home', compact('foto'));
         }        
 
         return view('home');

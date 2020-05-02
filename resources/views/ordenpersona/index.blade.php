@@ -31,7 +31,7 @@
                     <th class="centro">Dirección</th>
                     <th class="centro">Fecha de la orden</th>
                     <th class="centro">Horas</th>
-                    <th class="centro">Descripción</th>
+                    <th class="centro">Descripción del plan</th>
                     <th class="centro">Acciones</th>
                 </tr>
             </thead>

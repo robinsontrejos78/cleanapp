@@ -133,6 +133,38 @@
     </a>
   </div>
 </div>
+<div class="row">
+  <div class="col-xs-10">
+    <div class="box box-info">
+
+      <div class="box-header with-border">
+      </div>
+        <div class="box-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped table_" data-ruta="cambioEstadoEmp" style="center">
+            <thead>
+              @foreach($foto as $fot)
+              <h4>Hola {{$fot->name}} {{$fot->USR_APELLIDOS}}</h4> 
+              @endforeach 
+            </thead>
+            <tbody>
+                <div class="box-body" >
+                   @foreach($foto as $fotos)
+                     <div class="col-xs-6 col-md-6">
+                        <div class="thumbnail">
+                           <img src="../{{$fotos->USR_foto}}" class="verImagen" alt="" data-toggle="tooltip" title="" height="100%" width="100%">
+                        </div>
+                     </div>
+                   @endforeach
+                </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 @endif
