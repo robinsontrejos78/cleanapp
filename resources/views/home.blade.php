@@ -134,7 +134,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-xs-10">
     <div class="box box-info">
 
       <div class="box-header with-border">
