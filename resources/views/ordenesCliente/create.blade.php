@@ -197,6 +197,7 @@ Home
               <input type="hidden" id="valSelectado">
               <input type="hidden" id="nominacion" value="">
               <input type="hidden" id="horasPlan" value="">
+              <input type="hidden" id="descripcionplan" value="">
             </form>
 
             <div class="row" id="bloque4"></div>

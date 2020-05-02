@@ -92,8 +92,10 @@ class OrdenClienteController extends Controller
       $plancha        = $_POST['plancha'];
       $cocina         = $_POST['cocina'];
 
-      $plancha = ($plancha == "true") ? 1 : 0;
-      $cocina = ($cocina == "true") ? 1 : 0;
+      $plancha = ($plancha == "true") ? true : false;
+      $cocina = ($cocina == "true") ? true : false;
+
+      //dd($plancha);
 
       $horaInicial = strtotime ( $horaInicial);
       if($horaInicial<=strtotime($fechaActual)){
@@ -110,12 +112,14 @@ class OrdenClienteController extends Controller
         ->whereRaw(" users.id NOT IN ( select users.id from users inner join role_user on user_id=users.id inner join ORDEN_SERVICIOS on user_id=ORD_USR_ID where role_id=3 and ORD_LOO_ESTADOORDEN = 1 and ((ORD_INICIOORDEN - INTERVAL 29 MINUTE) <= '".$horaInicial."' and '".$horaInicial."'<= (ORD_FINORDEN + INTERVAL 29 MINUTE) or (ORD_INICIOORDEN  - INTERVAL 29 MINUTE) <= '".$horaFinal."' and '".$horaFinal."' <= (ORD_FINORDEN + INTERVAL 29 MINUTE) ) )")
         ->whereRaw(" users.id IN ( select users.id from users inner join INDISPONIBILIDADES on users.id=ind_pro_id where (TIMESTAMP(ind_dia,id_horainicio) <= '".$horaInicial."' and '".$horaInicial."'<= TIMESTAMP(ind_dia,id_horafinal) or TIMESTAMP(ind_dia,id_horainicio) <= '".$horaFinal."' and '".$horaFinal."' <= TIMESTAMP(ind_dia,id_horafinal) ) )")
         ->where('role_id', 3)
-        ->where('usr_cocina', $cocina)
-        ->where('usr_plancha', $plancha)
+        // ->where('usr_cocina', $cocina)
+        // ->where('usr_plancha', $plancha)
         ->where('USR_ESTADO',1)
         ->take(5)
         ->get();
 
+
+// dd($profesionales);
       $profesionalesConEstrellas = collect();
 
       foreach($profesionales as $p){
@@ -142,7 +146,19 @@ class OrdenClienteController extends Controller
 		// $idEmpresa = Session::get('idEmpresa');
     //$fechaOrden = strftime('%Y-%m-%d %H:%M:%S', $request->get('fechaOrden'));
 
-    $datosEvento=request()->all();
+    // $datosEvento=request()->all();
+
+    $FECHAORDEN=Carbon::now();
+
+    $INICIOORDEN = strtotime ( $request->get('inicioOrden').' '.$request->get('horaInicial'));
+    if($INICIOORDEN<=strtotime($FECHAORDEN)){
+      return 'false';
+    }
+
+    $FINORDEN = strtotime ('+'.$request->get('horasplan').' hours', $INICIOORDEN);
+
+    $INICIOORDEN=date("Y-m-d H:i:s ",$INICIOORDEN);
+    $FINORDEN=date("Y-m-d H:i:s ",$FINORDEN);
 
     DB::table('ORDEN_SERVICIOS')->insert(
         ['ORD_INM_IDINMUEBLE'  => $request->get('inmueble'), 
@@ -151,10 +167,11 @@ class OrdenClienteController extends Controller
          'ORD_USR_CLI'         => $request->get('cliente'), 
          'ORD_LOO_ESTADOORDEN' => $request->get('estadoOrden'), 
          'ORD_LOO_TIPOORDEN'   => $request->get('tipoOrden'),
-         'ORD_FECHAORDEN'      => $request->get('fechaOrden'),
-         'ORD_INICIOORDEN'     => $request->get('inicioOrden'),
-         'ORD_FINORDEN'        => $request->get('finOrden'),
-         'ORD_PAGADO'          => 0
+         'ORD_FECHAORDEN'      => $FECHAORDEN,
+         'ORD_INICIOORDEN'     => $INICIOORDEN,
+         'ORD_FINORDEN'        => $FINORDEN,
+         'ORD_PAGADO'          => 0,
+         'ORD_DESCRIPCION'     => $request->get('descripcionplan')
     ]);
         
     //return redirect('/empresa')->with('message', 'Empresa creada con exito');

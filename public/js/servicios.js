@@ -1381,6 +1381,7 @@ function selecPlan(plan){
     if (plan==1){
         valPlansel=22000;
         valhorasplan=2;
+        valdescripcionplan="SERVICIO DE 2 HORAS";
         anexPlan='<p>SERVICIO DE 2 HORAS<br>Servicio general de aseo recomendado ';
         anexPlan+='para un área no mayor a 45 metros cuadrados actividades que incluyen: ';
         anexPlan+='barrer, trapear, sacudir, limpieza de baños, limpieza de cocina, lavado';
@@ -1394,6 +1395,7 @@ function selecPlan(plan){
     if (plan==2){
         valPlansel=35000;
         valhorasplan=4;
+        valdescripcionplan="SERVICIO DE 4 HORAS";
         anexPlan='<p>SERVICIO DE 4 HORAS<br>Servicio general de aseo recomendado para un ';
         anexPlan+='área no mayor a 90 metros cuadrados actividades que incluyen: barrer, trapear,';
         anexPlan+=' sacudir, limpieza de baños, limpieza de cocina, lavado de ropa en maquina ';
@@ -1406,6 +1408,7 @@ function selecPlan(plan){
     if (plan==3){
         valPlansel=48000;
         valhorasplan=6;
+        valdescripcionplan="SERVICIO DE 6 HORAS";
         anexPlan='<p>SERVICIO DE 6 HORAS<br>Servicio general de aseo recomendado para un área '; 
         anexPlan+='no mayor a 130 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, ';
         anexPlan+='limpieza de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
@@ -1417,6 +1420,7 @@ function selecPlan(plan){
     if (plan==4){
         valPlansel=60000;
         valhorasplan=8;
+        valdescripcionplan="SERVICIO DE 8 HORAS";
         anexPlan='<p>SERVICIO DE 8 HORAS<br>Servicio general de aseo recomendado para un área ';
         anexPlan+='mayor a 131 metros cuadrados actividades que incluyen: barrer, trapear, sacudir, limpieza ' ;
         anexPlan+='de baños, limpieza de cocina, lavado de ropa en maquina (incluida por el cliente)<br></p>';
@@ -1435,6 +1439,7 @@ function selecPlan(plan){
     $('#nominacion').val(valPlansel);
     $('#anexoPlan').html(anexPlan);
     $('#horasPlan').val(valhorasplan);
+    $('#descripcionplan').val(valdescripcionplan);
     
     // $('#<%=lblPlanSel.ClientID%>').html("Nuevo valor"); 
 }
@@ -1453,38 +1458,28 @@ function ClientGuardaOrden(idProfesional,nombreprofesional){
 
     var f = new Date();
 
-    horaInicial=$('#horaInicial').val();
     horafin=(parseInt(horaInicial.substring(0,2))+Number(horasPlan))+horaInicial.substring(2,5);
-
-    var dd=f.getDate();
-    var mm=f.getMonth()+1;
-
-    if (dd<10){
-        dd='0'+dd;
-    }
-    if (mm<10){
-        mm='0'+mm;
-    }
 
 
     inmueble=$('#InputDireccion').val()
     empresa=1
     usuarioId=idProfesional
     estadoOrden=1
-    fechaOrden=f.getFullYear()+'-'+mm+'-'+dd+' 00:00:00'
-    inicioOrden=$('#fechaAsig').val()+' '+ horaInicial+':00'
-    finOrden=$('#fechaAsig').val()+' '+ horafin+':00'
+    inicioOrden=$('#fechaAsig').val()
+    horaInicial=$('#horaInicial').val();
     tipoOrden=1
+    horasplan=$('#horasPlan').val();
     cliente=$('#idcliente').val()
     costo=$('#nominacion').val()
     nomprof=nombreprofesional
+    descripcionplan=$('#descripcionplan').val();
 
 
     $.ajax({
         type: 'POST',
         url: '../store',
-        data: {inmueble:inmueble,empresa:empresa,usuarioId:usuarioId,cliente:cliente,estadoOrden:estadoOrden,fechaOrden:fechaOrden,inicioOrden:inicioOrden,finOrden:finOrden,tipoOrden:tipoOrden},
-  
+        data: {inmueble:inmueble,empresa:empresa,usuarioId:usuarioId,cliente:cliente,estadoOrden:estadoOrden,inicioOrden:inicioOrden,horaInicial:horaInicial,tipoOrden:tipoOrden,horasplan:horasplan,descripcionplan:descripcionplan},
+        // data: {inmueble:inmueble,empresa:empresa,usuarioId:usuarioId,cliente:cliente,estadoOrden:estadoOrden,fechaOrden:fechaOrden,inicioOrden:inicioOrden,finOrden:finOrden,tipoOrden:tipoOrden},  
         success: function(data){
             // swal("", "", "");
             swal({
@@ -1502,7 +1497,7 @@ function ClientGuardaOrden(idProfesional,nombreprofesional){
             function(isConfirm) {
               if (isConfirm) {
                 $('#modalProfesional').html(nomprof);
-                $('#modalFechaHora').html(inicioOrden);
+                $('#modalFechaHora').html(inicioOrden+' '+horaInicial);
                 $('#modalCosto').html('$ '+costo);
                 $('#modalResumen').modal('show')
                 // window.location.href = "../ordenC";
